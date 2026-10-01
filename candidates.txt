@@ -1,0 +1,356 @@
+Total pristine search/retrieval candidate reviews: 118
+
+[1] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: bbdfc7a1-63cb-4553-9b5d-f3c5be6663ba
+Review: AI search is slower, less accurate, and more presumptuous than the version we had before. When AI search first came out, we even had a choice between the two, no longer. It's forced AI that interests the companies' surveillance more than the customers' choice, and I'll be switching to another storage provider as soon as possible. For work, I'd look up "maps" to pull up maps of locations I service, but the AI assumes I want Google Maps or "map view" and takes over my phone's control to switch.
+
+[2] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 62db9478-859f-4268-ba13-7f56ac143998
+Review: I've been thinking about writing a review since the change in the way I can edit my own photos, but I thought it'd be fine. It's not. This sucks. Google lens is no longer in the suggested actions at the bottom, instead you have to tap on the three dots in the upper right corner, which is just unnecessary and annoying. The editor is actually trash now, like I'd rather download an extra app to edit/crop my pics and everytime I want to look through my albums it opens the search function.
+
+[3] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: d6276e7a-5d2b-4533-ac69-4242148d9e22
+Review: Photos used to be the perfect photos app. it had the best search funding of any app. I used to race iphone users to see how far we could find the same photo and I always won. Now this near perfect search function has been replaced by AI, which not only doesn't return the photos I'm looking for, it actually acts as a stumbling block to me finding them. It's slow and inefficient. Another perfectly good tool ruined in the name of trying to convince us that AI is inevitable.
+
+[4] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 24478ad8-ae32-4f50-8f3f-d98b5f706357
+Review: Photos is forcing AI generated "creations" that use your photos. If you want to use the image search and ask questions about pictures, you have to have this enabled. There is no way to disable it. I have turned everything off except the AI itself so I can still image search, but it is analyzing my photos without me telling it to. And it's generating extremely ugly AI images and pinning them at the top of my gallery in giant tiles that can't be hidden... Yet another awful addition in a long line.
+
+[5] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 5392a1d0-afec-4227-8f73-b480d964c2c8
+Review: I'm a long time, heavy user of Google Photos & an Alphabet stockholder. Until yesterday Photos took <1 second to delete photos. Last night I downloaded the latest update. Now it takes 20 seconds per photo. Will Google ever learn to not screw up something that is working perfectly well, i.e. your Search! IF IT AIN'T BROKEN, DON'T "FIX" IT. What is wrong with y'all??
+
+[6] (FACE_RECOGNITION_RETRIEVAL) Rating: 1 | ID: 46ca1057-94f2-4ede-a253-e1c740e10472
+Review: The face tagging feature is poor and it's had the same issues for years. Unable to tag faces it doesn't detect. Unable to change the name of faces it's tagged wrong. Each tag has loads and loads of random other photos tagged under the same name when they're not even remotely similar. Very very disappointing. Even worse that they've never even attempted to improve it.
+
+[7] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 2865fbd1-e82d-4490-a7d9-5f4df1482d6d
+Review: Search doesn't work like it used to, so it kind of makes this app worthless to me! With nearly 60k photos I can no longer search for SOME family and friends names in label descriptions I've make over many years, very frustrating. I've contaced google and they cannot find a resolution! Oh, and also something new, the app actually erases what I type on the description! I have to remember to copy text so I can cut and paste, or I have to retype everything!
+
+[8] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 3c905b64-706d-4481-b3cc-306f0416cff1
+Review: Something annoying happened in the recent version! I usually edit pictures and send them to friends. Now, after I edit them, although I see them in the gallery, when I try to choose from FB or Whatsapp - I can't find the edited ones at all! I tried to search in different folders - nothing... Update after the developer's replay: I waited enough time, the photos didn't appear in my gallery till now (after a week!) And even more - I see them in the gallery on my old Pixel 3
+
+[9] (FACE_RECOGNITION_RETRIEVAL) Rating: 1 | ID: fc669de5-7c8c-4bd8-a274-f7b51d5377d0
+Review: One of the main things I really like about this app and use it for is face grouping and that is getting worse and worse. I've followed all the steps to refresh and allow the app to process the faces, but for some reason pictures with very clear faces aren't getting grouped and aren't getting registered as faces so I can't even manually add them. Please fix this, it's so frustrating. Thank you Google for your useless response, I've already tried everything and it's included in my review.
+
+[10] (FACE_RECOGNITION_RETRIEVAL) Rating: 1 | ID: 0a4c0ec5-ddea-4a62-acf4-74ec701d5dbc
+Review: After a certain amount of time, the app stops labeling photos of a certain person and won't even let me manually label it because it refuses to list the photo of having a face in it. I believe it only happens with people of color, because it has not happened to me with any other photos.
+
+[11] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: e01d05dc-be47-4429-822a-559d72517fb1
+Review: You can no longer search your photos without turning on Backup. Time for a new App, goodbye Photos. Update: Google Dark Patterns and Prevent Uninstallation. Actually Photos pretends you can uninstall it, but it just hides, uploading all your data to the cloud against your will. I smell a class action lawsuit brewing..
+
+[12] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 1f68ab12-a59a-4dc6-a247-5153e5ca9ad3
+Review: They removed the ability to see photo information. it used to be if you clicked the "about" button it would tell you the format of the photo for example. now it's been replaced with an AI slop search bar. I don't need AI to look at my damn photo I need to know if it's a JPEG or PNG. Just another thing in the long list of AI slop features that no one asked for to make your user experience "better" you're welcome!
+
+[13] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 56b98d58-f989-4991-bfeb-3e25738a4b89
+Review: Hate the update, no longer able to search without using Gemini, which I also hate. Have disabled Gemini, because I couldn't search anything, without it popping up several times, even though I had already said no, and closed it. *Editing to add, since there's no way to reply to your reply. Ask photos also requires Gemini, so that doesn't help at all. Thanks for nothing 👍🏻
+
+[14] (AI_SEARCH) Rating: 1 | ID: e626cbbf-1c0a-4167-8a8f-4538be21b518
+Review: The new layout for browsing images now expands images at random to take up the space of six or even nine images, even at the furthest zoom out. Makes it look really cluttered and unorganized. I get that they want to make it easier to look for a specific photo, but don't expand images when I've got them set to the smallest they can be on my screen. The new ai editing features will lower the quality of your image noticeably. I've also seen the app get slower upon turning Gemini features on.
+
+[15] (CANNOT_FIND_PHOTO) Rating: 1 | ID: c3d63140-a872-4b55-8a04-7747712af335
+Review: Locked Folder is missing from my Google Photos app. I checked Collections, but there is no Locked Folder option at all. I also checked the settings, but I cannot find the Locked Folder or its backup option. This happened after the recent Google Photos update. Please help me restore access to my Locked Folder. I have important photos stored there and I do not want them to be deleted. 😭
+
+[16] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 31ab9f12-ffb4-4711-ad73-cc3f4af13a3b
+Review: Search used to be effortless, but the latest updates ruined it. It can't locate anything anymore even obvious photos that I know are right there in my library. Frustrating to see a core feature stop working properly. peak enshittification
+
+[17] (AI_SEARCH) Rating: 1 | ID: 99515c9a-fd60-40e5-9a78-7dfef9d1d187
+Review: Enough with the frequent modals trying to get me to activate Gemini so I can do "AI" nonsense to my photos. If I ever decide I want it I can go enable it myself. Edited to add: This is supposed to be my photos app. Not a shopping app and certainly not a fashion app. I don't want pictures of my wardrobe. I even disabled wardrobe in settings yet the big square for wardrobe is still in the collections tab. Attn Product Manager for Photos: STOP TRYING TO JUICE YOUR DUMB KPI for your bonus.
+
+[18] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: f38f4a2f-7eb0-453b-a273-47075e4d5460
+Review: Their is a lot to like about the photo app. the editing tools are great and very easy to use. The new AI edits are quite impressive. However, facial recognition! This used to work well but has become a complete mess recently to the point it's useless to even try and search by name. Random people in backgrounds are being assigned key family members. It ignores 50% of the people clearly in the foreground. And there is no way to manually assign people to help fix errors, Apart from remove photo.
+
+[19] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: dc40fa6f-05fe-43fa-8899-2f48bfa5ee59
+Review: This app is practically unusable anymore. The search engine doesn't ever freaking work when trying to find a specific photo, Even on Wi-Fi the page loads slow when trying to find a picture(Or doesn't load at all), It still doesn't have an option to where it can just save all of your photos/videos into albums without having to manually create them again. I'm only giving this 2 stars because it's one of the only ways that I know to backup my device photos without having to use a PC.
+
+[20] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: e48f580e-9687-4819-ada1-9814a4131e2b
+Review: Service has steadily declined for years now. Lots of features just completely don't work, for example saving a new frame from a motion photo. They removed the ability to search your photos if they aren't backed up. The cherry on top is recently they added an effect to your memories so that a large number comes in and shows you how many years it's been, unfortunately this new effect has ruined to quality of every single photo it shows. I really don't know how some of this leaves beta.
+
+[21] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: fb853800-f7d4-4c6c-aa94-30548f6bfa21
+Review: this app used to be perfect, but the quality has gone downhill. the new ai search rarely finds the photos i want in comparison to the old search where i'd find my photos every time. there's also a recent bug where adding photos to an album sometimes creates duplicates, and they are really hard to get rid of. it seems to be related to a delay when pressing the button to add a collection of photos, sometimes this hangs for like 10 seconds and i think if i press it twice i get duplicates.
+
+[22] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: bd1afa26-2281-4093-a462-b9b6f1f4f0b5
+Review: Loved Google Photos. Always demonstrating to people how easy it was to find a photo i.e. 'Dog in a hat'. Now the search has changed to AI and it's terrible. Even changing to classic, the same search will show your photo briefly, then change to 'Nothing found' or a huge list of random garbage. I cannot search anything. So sad. I have thousands of photos in storage. Google was my end all, be all.
+
+[23] (FACE_RECOGNITION_RETRIEVAL) Rating: 2 | ID: 60cc6956-735e-4794-953f-32cf31a2de40
+Review: It was great but in collections it only sometimes let's me merge faces with collections I already have, most of the time it won't pick up the collections I already have there so have to save lots of groupings of the same person in duplicate names. Edit: I mean that with some faces, when I try to merge, it's not picking up that there's already a grouping with their name on so I have many groupings named the same, although other faces it's fine and their name shows on the 'suggested' list.
+
+[24] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 544c13cb-c662-4b03-a148-6c0dafaf20f5
+Review: Poor usability. Can't select a bunch of photos to move them to an album AND archive at same time. (Photos have to be reselected for subsequent actions.) App insists on labelling my dog as one that died 15 years ago despite them being different colours. Basic editing options such as cropping and straightening are not as quick to access as they should be. Search terms and results are biased towards North American norms.
+
+[25] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 2d623efd-0948-4012-9181-9ed640859eb9
+Review: Within the past couple weeks, I'm unable to use search - all searches return no results. App no longer grabs search terms from the 'commenting' area where I label important photos or screenshots from the past. I've tried force stop, reboot, update, clear cache - no change. Concerned that clear data or uninstalling will cause photo losses. Can anyone please give me my next SAFE steps to resolve this? Thank you.
+
+[26] (CANNOT_FIND_PHOTO) Rating: 2 | ID: b9ab5ac3-1cab-497b-8526-422d5b17e0be
+Review: I went into the app looking for something to send my sister only to discover that it's missing. Just before that I had asked the app to back up my photos to clear up space and it seems a handful had been erased entirely. I'm pretty irritated and now I'm wondering if this is a one time error or how often this happened previously and I never noticed before. I tried all the stuff the "help" section suggestions and nothing. Can't find those images or an explanation.
+
+[27] (FACE_RECOGNITION_RETRIEVAL) Rating: 2 | ID: 3a3a8915-8a45-4e12-9ebc-4219c284dd76
+Review: Even with the latest updates, it would not let you edit or add location to the backup photos. Some of the photos detected the wrong person or pet or face, and again, it would not let you edit with correct categories. There are many little things like that they need to be more detail oriented when they come out with new/update version.
+
+[28] (CANNOT_FIND_PHOTO) Rating: 2 | ID: 4fceb7fc-7f57-4831-bc53-b1faed472b58
+Review: I don't like how the app constantly rearrange photos, making them very difficult to find. I also don't appreciate the app creating slide shows on its own. For example, the app took pictures of my mom not along after she passed. She was very ill and the pictures were her at her worst. I was shocked the app used the pictures and, without my permission, put together a slide show. It was painful to see. Perhaps there is a way to shut off this feature, but I can't find it. Not a fan of this app
+
+[29] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 069518e9-1250-41a0-bc6b-5a550e521b4a
+Review: Ongoing issue for some time now. It fails to recognise pets in a lot of photos. If I type in search bar "dogs", those pet photos appear, however if I just go through People and Pets, photos do not appear despite turning on the pets function. It recognises some but not others... edit: face groups was turned on and still not working..
+
+[30] (FACE_RECOGNITION_RETRIEVAL) Rating: 2 | ID: 7f6fcc90-54db-4eef-bb86-7c75181f24cb
+Review: Lowering my rating until my issue is fixed. Cannot create new faces or add photos to faces. Several months now with no feedback. Original review: Mostly happy with this app. Now that my whole life in pictures belongs to Google, I really hope that they live forever. Even now that they have started charging for extra storage, I see no better option. Though less of an issue than before, there are still times when Google photos overrides/undo what I do manually, ex. tagging faces, merging faces.
+
+[31] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 4c948ab7-3878-480e-b54f-660896aa0345
+Review: Specifically purchased the type of phone I have for this photos app. For years I have been thrilled. However, with AI (just like Gmail app now) I'm exhausted, frustrated, and disappointed. SO much time I wasted finding a simple photo (or not). I despise AI integrations in the apps. It used to be that I could bypass it. I appreciated that. CANNOT any longer. What good is the app (and especially AI) if I can't find photos I know exist (and used to be able to find) using basic search terms.
+
+[32] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: f58f0d55-7b9c-426c-9f9d-2078530c61c0
+Review: organization difficulty. it's great having folders but I wish they'd disappear from the main folder or something once organized into one otherwise they can get sorted into multiple folders and it's a mess. also the search for any of my Pic is difficult when I'm trying to find a specific one but any of the key words don't make it pop up so I end up just having to scroll. it seems like a problem other users are having as I see very similar reviews. the app updates often but ive had this same issue
+
+[33] (AI_SEARCH) Rating: 2 | ID: 7ff95532-c66a-4b03-b847-3736344a8261
+Review: still a horror show of usability for editing (no I'm not going to use Gemini to create AI slop) and the timeline doesn't show all photos even if they're tagged with location and timestamp (same on browser, so it's not just the app).
+
+[34] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 3453c13d-fa12-4c32-a72f-3260c7e00652
+Review: Far too many changes behind the scenes. A while back my pictures were backed up from my phone and then available in Google Photos on my phone and laptop as well as Photoscan by Google. Now it is unclear what has been kept or lost. The tools keep changing around behind the scenes and we never get new signposts. The new search cannot be jigged. it shows people who are distinctly not me as photos of me are labelled me. It can't be told. Then keyword searched is replaced by chatty scatter-gun AI
+
+[35] (AI_SEARCH) Rating: 2 | ID: c0abd93b-4780-41c4-84ba-eac49ea56a8f
+Review: I like how Google keeps adding updates every 2 weeks just to remind me in the gallery that "your app is up to date". So, I keep updating the app instead of checking my photo and video collections. They keep adding features that are not needed before. Also, they also add gemini pro features inside the app so that I can accidentally click on the payment button and get busy for 2 minutes to get out there whenever I want to make myself busy when others want to talk with me (yk for farming aura)
+
+[36] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 65d73c75-b625-4cfd-b61e-6a289cd1a2b0
+Review: PLEASE FIX ASAP! WHERE DO THE EDITED PHOTOS GO? As soon as you finish editing and click SAVE it's GONE and you can only search for the original photo again! PLEASE FIX THIS! Also still need to make the editor LARGER and the buttons easier but overall the navigation menus and saving still need help! Search works ok but saved photos should be saved instantly to an easy to find location! edited and automatic edits and missed "memories" are also hard to find a calendar option and more folders too
+
+[37] (CANNOT_FIND_PHOTO) Rating: 2 | ID: 4dbb0510-81f3-4f9d-88e1-ed52c7708190
+Review: This latest update to remove the months is awful. I can't find the pictures I want because they are all combined together and the 'months' floating on top does not help because I can't tell where one month ends and the other begins which is how I would find my pictures easily before. I pay for all the space I have, so should not have be subjected to this update. Worst update ever. And why do I have some photos made larger than all the others? What the heck? Updating without asking?
+
+[38] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 163d2039-63f6-4cc1-a3a8-a1b3b8d9e7da
+Review: The app layout used to be so good...but now all the photos appear together... without the photos of one date being separated from another date. Please change back to the previous one. Edit: Another issue. Setting Locations for each photo has become a nightmare, what I want to search for doesn't come up, and existing locations can't be removed easily
+
+[39] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 1224b82e-1b51-4a55-8aec-eb79973d5015
+Review: Google is well on the way to destroying what used to be very good app with their censorship BS. NSFW photos are here to stay, and as long as editing and searching with Lens don't go outside of each person's account it is ludicrous to restrict them. It is very frustrating as a semi-professional photographer to have the AI editing restricted and Lens restricted and Nano Banana 2 restricted and leave out a large segment of users who have no thought of misusing it.
+
+[40] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 4c3065ba-7660-4a99-80fd-7307a0d46b11
+Review: I used to really like this app but things have gotten so confusing that it's nearly impossible to find pictures. I don't understand why sometimes pictures from the cloud show up and sometimes they don't. Why can I not see all my pictures in the main feed? Often I'll save a picture and it will be seemingly nowhere. Screenshots are the worst. The only features I can appreciate are sorting people by face and the AI search to find specific things (when it works).
+
+[41] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: 9957c225-6b93-4205-b8c6-fd9cd6670f0e
+Review: I don't like the new update at all. why are some pictures bigger than others? its easier to view when they are all the same size especially for finding pictures. I miss pictures if I'm searching for a certain one when one photo is way bigger than other
+
+[42] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: f141d621-96df-4ad1-835e-69e80d311e2f
+Review: I deleted a bunch of my photos and the photos icon on the screen of my phone disappeared. I found it when I swiped up for apps. I tried to move it back to the screen but there was no option to do that but said google was an option and now it's gone and I have to do a search to find photos. When I do get the photos folder open it tells me theres no photos while I'm looking at one. I have to click collections. I just quit using it. now I use Facebook Messenger and send pics to my computer
+
+[43] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: d926fd85-3427-4c3b-a218-15d85358b26d
+Review: Would be great to be able to have the search feature in locked folder. Ridiculous how this feature isn't available for lock folder in this app. Having to endlessly scroll to try and find something specific. Should also have the same feature month/day/year.
+
+[44] (SEARCH_BAR_OR_QUERY) Rating: 2 | ID: a2bee9ea-3dfd-431d-aa09-fbbf49e52c3a
+Review: the latest update is garbage. the search function is useless. I search up human, animal, painting, rollercoaster, all things that ARE IN MY CAMERA ROLL and all things I've looked up before. it used to find these things perfectly fine. but now it's completely useless and won't give me ANY results.
+
+[45] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: fac36b13-cb88-4c52-b7e4-ddfa7d73025b
+Review: Good for photo storage and searching, but it sends too many memories/themed notifications each day and there isn't an option to fine-tune this other than to disable them. I like the occasional one to look back on but the current rate is pestering. Similarly, there's a pop-up (I think about AI editing of something? I dismiss it because I want to 👏 look 👏 at 👏 my 👏 photos when I open the app) that holds up using the app for what it's for. it's gotten pretty irritating to use.
+
+[46] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: 3ae7ed7f-72b4-4872-ab3f-6fb4b3aee0a8
+Review: Few feedback . If I search for an album, currently only those uploaded by me are shown and not those shared with me in search results. . A time delay option should be made available before the uploads starts. You see I am. Not a pro photographer, I do make mistakes and I would like to delete those mistakes before it gets uploaded. The delay will allow me to delete/edit photos before it gets uploaded. . The album search is not always handy. It shows photos but many albums which I know are there are not shown. I have to manually scroll through all of. The albums to get it. . The most irritating part, if I share a pic with someone,the app should just give me a link to share which it does but it also for some strange reasons creates a new album with that photo. This eventually ends up clogging my album gallery. You can just give a link using which people can view / download.
+
+[47] (CANNOT_FIND_PHOTO) Rating: 3 | ID: 53ce2f32-49ee-4f6a-ae8f-ff05fe7533c3
+Review: The apps good and everything.. but it doesn't retain the photos in the original album names from which its backing them up. As a result one has to manually create an album and select the photos one by one and add them. Also, when the app backs up the photos later, u hav to manually add newly added photos to the album. So in the library all sorts of photos from ur phone albums are gng to be added all in one place wch is like a big mess. One cannot find the photo they might be looking for without wasting so much of their time. Please add the feature that where the app backs up photos in the same order and categories/folders from wch it is backing up in the phn.
+
+[48] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: e5c9be75-7682-47dc-9e0e-a1909edc5dff
+Review: Change is sometimes difficult. Finding specific photos varies between easy and challenging, depending on both Google's and your interpretation of search words. The latest changes have made it more difficult to find photos by people's names.. Those albums have disappeared from easy view; you have to figure out how to find them.
+
+[49] (FACE_RECOGNITION_RETRIEVAL) Rating: 3 | ID: 475a0a0f-bcd5-47f8-9d8f-111e3f298ed0
+Review: With the last update or couple, the facial recognition got SO bad. It used to be pretty good, recognizing faces 80% or so of the time. Now within ten pictures of clear faces, it'll recognize 10% or even less. But then I save a photo of a 360p face and it's perfectly recognizable?? Or even a silhouette of a side profile is recognized, yet not a clear face. Please fix the facial recognition. I have so many pictures I'd love to put into folders but just can't.
+
+[50] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: a063c498-e373-40ef-8576-598daab29f0d
+Review: Another Google app that's becoming more and more infuriatingly unusable by the day. I love the Gemini app itself and I pay an additional fee for it, but when integrated into other Google Apps such as photos it just plain sucks. 😢 in particular search functions now terrible I can't find any photos of looking for and most of the time the deletion and creation of new photos are impossible to sync up between my iPad and my Google pixel phone. integrating Gemini into so many apps so fast seems to
+
+[51] (FACE_RECOGNITION_RETRIEVAL) Rating: 3 | ID: 9f712c43-3f31-42fd-a5e0-ab9faba6c0c6
+Review: It's mostly good but some photos don't have my face highlighted or those of other ppl. There's no way to manually add a face so when I go to look up pictures of myself for sharing, etc. those photos aren't available and I have to scroll to find them if I don't know the date. Very inconvenient. Pleeeeeease add a manual face adding option.
+
+[52] (AI_SEARCH) Rating: 3 | ID: 3f7a2f62-b720-437e-bdd3-bc769e884f64
+Review: Google Photos is and always has been a very great tool for managing your photo gallery and syncing it between devices. However, I'm not super fond of the AI stuff everywhere. I wish there was an opt-out toggle. If I want AI to edit my photos, I'll go to the Gemini app for that, not Google Photos, because AI doesn't belong there.
+
+[53] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: bd953071-c12e-49d1-9d15-53bd2978a137
+Review: Great editing features. It would be improved hugely if the facial organisation allowed efficient manual rearrangement. Removing faces takes a really long time as well as not being able to delete categories which the app has made which may consist of completely random photos. You also cannot manually add photos to a face which is annoying. The worst feature however is the search function constantly never working and showing blanks for even the suggested search.
+
+[54] (PHOTO_FINDING) Rating: 3 | ID: b7217d13-fac5-42ab-b065-fabd199fd68d
+Review: Miss the old separation of photos by dates that left a break. This new continuous scrolling is messy, and annoying to locate photos based on date. Also, when trying to add locations to photos, when typing in the text box, nothing happens and pressing enter doesn't come up with anything to click.
+
+[55] (FACE_RECOGNITION_RETRIEVAL) Rating: 3 | ID: 15bb71f4-75a3-4829-9e32-468d65a69f0a
+Review: Very useful feature "Conversation" is hidden God knows where... UI became extremely poor for the multi trillion-dollar company. By pure luck I was able to locate it: My profile->phone settings->Sharing->Manage sharing activity ->Conversation!!!! it's super bad... Then I was able to find a bit easier way through the Bell icon. Face recognition feature is horrible, mixing people or creating many identities from the one face. (for reals, it's extremely bad...)
+
+[56] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: 2ffe8362-763b-4ec8-995b-b775d5ca3e34
+Review: Facial recognition works great. Searching for objects or places also works well. However, the sync and backup fails by not organizing your backed up photos within the same albums as your phone's gallery albums. This ends up scattering all the backed up photos and videos into one main album. Google Drive keeps your backed up/synced files organized within your folders, the same way you have them organized on your computer, and changes them in real time as you change your file organization. 🤷🏽‍♂️
+
+[57] (PHOTO_FINDING) Rating: 3 | ID: c9e7d180-0f7f-48b1-a4e9-4735fbdc8ccf
+Review: every time this updates it gets more difficult to find photos. Response isn't helpful. I sort my photos into albums, but the album titles vanish and I'm left with sorting through thousands of files to find one because they aren't named except by download numbers. Difficult to find number xxxxxxxxxxxxcccdd among thousands of similar numbers.
+
+[58] (CANNOT_FIND_PHOTO) Rating: 3 | ID: 27f71481-d858-4e26-a57c-b51830501609
+Review: update after Dev response: it's not working guys. there is a bug and I can prove it even though I have some backed up photos, clean the uploaded ones option doesn't clean or delete any photos. can't find anything to delete ! edit : I mean all my photos are backed up. I see the cloud icon even. still it doesn't work. It doesn't clean already backed up photos. some photos could be uploaded from my tablet. some other photos could be uploaded from my other devices etc.
+
+[59] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: b54b49c3-d528-44fb-81a9-ebc909f928af
+Review: I can no longer search my photos for people, colors, objects or words (etc). trying to ask Gemini doesn't work and just sends me back to the search page which always yeilds no results.
+
+[60] (CANNOT_FIND_PHOTO) Rating: 3 | ID: 582d4584-bcb2-42be-b2fb-b49f80e46029
+Review: this app is so frustrating, and I always struggle to find the feature I want. today I just wanted to switch between the 2 Google accounts so that I can try and create an album on my other account and I couldn't find the way to switch accounts. there is no profile picture anywhere. Aaarrrrgggghhhh! update: my profile photo has re-appeared again in top right corner. wasn't there at time of review. updating to 3 stars as still a frustrating UI.
+
+[61] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: a682d12c-0d6a-469f-a80d-273bde174578
+Review: Its Greate for Personnel use but its Not Good for Business Media content organise. because it doesn't super powerful identify, search & organise products and services photographs & their Data. it identified an organised only people and pets photographs and that the most weirdest thing I ever found in this Gphotos app. there's extremely high Need to improve this app for business use... 🙄🙄🙄🙄
+
+[62] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: da80cc2c-2fba-46b4-bde8-844b1921bc8c
+Review: It's missing something! I want to move my pictures to an album and those photos get deleted from the main photos. I have so many photos it takes days to find one photo cause the search sucked. So, I got to go one by one to find the picture. Please do an update.
+
+[63] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: 2cadc2d5-808b-4f2d-902b-cbfd61f8dfa4
+Review: I appreciate the restoration of perspective, but it has not been restored in Video which makes no sense. Please stop dumbing down functionality with unnecessary AI features while removing critical features that have previously existed. Photo Search is another egregious move, as if the majority of use cases are "vibe hunting" in their own photos. If I'm searching my own photos, it's because I'm looking for something specific (read: deterministic user searches).
+
+[64] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: bfb0d9d2-17f9-416a-83ab-abe1255ae5b6
+Review: PLEASE add the option to size all previews in the grid-based gallery view the same size. I do NOT want any of my photos randomly 4 times the size of the others using up 4 spots on the screen it makes it really jarring to scroll through searching for a particular photo.
+
+[65] (FACE_RECOGNITION_RETRIEVAL) Rating: 3 | ID: d18eacb5-54d4-4986-9598-e7cfcc3a1978
+Review: for some reason, my backed up photos are not recognised and categorised by face. some of my VERY old photos yes but not all. it is very upsetting that an app of this caliber can't even group photos or recognise photos by face. please fix this or is it a problem for only me?
+
+[66] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: 9bae19b0-2f3a-41a7-a22e-d54a09dfbbb7
+Review: the app has been so poor recently with the search keywords. even when your photo is being backedup, you still have to look for it manually. I wonder whats the usefulness of the search if you cant find your pictures without seeing "no results"
+
+[67] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: a24bf0d7-b924-41fb-af96-71c15dd1ce55
+Review: The crop tool glitches if you use the auto crop and then try to adjust it. You can't crop from one side at a time, only from a corner. When you hold your finger to see the original, it shows you the pre-cropped version. You can't enhance and then see what was changed to adjust it. And you have to save a copy. These updates went the wrong direction. The only thing that's better is you can search for your albums as you're adding to them.
+
+[68] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: 11611d40-f237-4d95-a2d3-f13a62f2bcb4
+Review: where did the search feature go? I have to "ask" now? Will you stop trying to "improve" Google photos. Leave it alone. it's getting complicated to use. Unfortunately my phone only relies on Google Photos. it's becoming an annoying app to use. Stop the "AI" features. God it's infuriating! 😠
+
+[69] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: aa7ec930-3d67-496c-b8c2-5e84ece96871
+Review: All are Perfect but, once i open photos app, it's showing main menu and select a specific folder and going inside for searching photos then come reverse not coming main menu, Automatically close the app. it's a big issue. kindly solve and update
+
+[70] (SEARCH_BAR_OR_QUERY) Rating: 3 | ID: 7a1c4008-b04f-441d-b488-d1d6fb4203aa
+Review: Up and down, finally a bit more stable. Some things are great, but base functionality of a photo gallery can be buggy. A lot of new features, but at its core, I just want a place for my photos be live, be accessible, searchable, and stable. The other features are nice, when the base is covered. At least I can get my photo information again - a couple years ago they really borked this app.
+
+[71] (FACE_RECOGNITION_RETRIEVAL) Rating: 4 | ID: 31175e77-203d-40ab-845a-83e5555f95b4
+Review: The app is so nice as far..I even purchased storage..but it would be nice if we get the option to enlist faces manually as well because sometimes it doesn't automatically recognise faces of the photo taken either from back , side or in dim light . hence if we can manually add face it would be easier for us to find out photos based on face 🤌
+
+[72] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 2e38a63c-962a-4b57-b166-545de0b37c15
+Review: A true gallery! Much more than just a place dumped with all your photos. Few Improvements: 1. While adding photos to existing album, there's no way to search for the album. Have to scroll through the entire list of albums to find out the one I'm looking for. 2. Would be great if "Hide People" option really hides ALL the photos they're present in. 3. App displays all the info about a photo (date taken, people, location, etc) - would be great if it also shows the album(s) it belongs to.
+
+[73] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 645778f9-8df3-4592-a56a-42b547308060
+Review: Comparing to Flickr the upload and organization feature is better. Loved the mini AI tool - the Assistant of suggesting artifacts. Liked the app and love to have more better UX in next releases, though it's still a good one. +1 BTW, would love to have the feature: Local photo vs. Synced photo filter will let us easily distinguish the non-synced items, instead searching through all the mess.
+
+[74] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: e3bc1db6-4d55-4bf6-8763-f480c7e16c7a
+Review: the app is actually good. you can do a lot of things to edit photos or videos, the search bar and the app automatically selects photos of different people and store in one place. my problem is the need for data/wifi connection to access/view the photos and videos, also the very small storage is very annoying to deal with I cant upload my stuff and most of my files can't be deleted. pls it add at least 5 more GB of free storage but overall the app is great
+
+[75] (FACE_RECOGNITION_RETRIEVAL) Rating: 4 | ID: d874566f-b1d1-4ea6-b0f6-4db4b36fd46c
+Review: How did I just discover Google Photos now 🙃 but I do have some complaints 1: alot of photos/videos are misfiled cuz you can't modify who is tagged in it. You should be able to manually box and tag. Especially with side view faces that aren't recognized 2: For more private photos/videos there should be a private folder. 3: when im assigning a face to a name i already have, it won't let me select the name rather or gives me an error message
+
+[76] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 2c69117c-ccdc-4ca1-8c00-1ebd2162e145
+Review: When the Screenshots folder is opened it displays ‘photos missing from search Turn on backup’ message. All taken screenshots now appear in the Camera folder instead. I don’t use ‘backup’ & don’t want to, I use other methods that do not utilize search. This is frustrating and annoying.
+
+[77] (CANNOT_FIND_PHOTO) Rating: 4 | ID: cbb835d0-f0c6-4771-a8c3-a0f7a6bca484
+Review: photos is great, but the new update they put in for music playing over the "memories" is very annoying! I can't hear the original audio and I can't find an option to turn the music off. I'd be giving 5 stars for this rating if that was fixed!
+
+[78] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: b6113344-54ee-4c99-ab5e-94d0d4b6cd3e
+Review: Since my last review the app has improved dramatically. However, there is still one niggle. The taskbar could do with being able to modify to suit. I would rather organise that to Collections, Photos, Search, Create as this is the most used order.
+
+[79] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 1d0cc16e-b136-4439-b11d-79865a284856
+Review: App is great. Lots of things are better then before and the team have listened to feedback regarding search, especially for searching albums. Huge improvement! It would be great to have ' switch faces' option when editing, like the Samsung photo gallery. Eg if someone is blinking in one photo you can swap it for a different face in another photo in that burst
+
+[80] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 0ccde87d-b1e7-4e56-96c6-5cae0271bf58
+Review: I've been using this app for many years now!! and I'm disappointed to say that the new update actually made me want to yeet my phone. the update really sucks this year and I hate that the videos and photos are big while the others stay small. I can't edit the size either and sometimes the app glitches and everything turns grey and it's really frustrating. I was also disappointed with the album, search etc moved to bottom, hope this gets fixed!
+
+[81] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: dba216ba-5543-43de-85e5-d577921db15b
+Review: After Brain research gray madder matters , what I am trying to say is at 68 I have to learn how to use my phone and everything else without a memory.I can't remember anything very long.Its been alot of fun and not.
+
+[82] (AI_SEARCH) Rating: 4 | ID: da495d9c-52a2-46bd-bb00-07b5d92905ca
+Review: I have always loved the Google photos App- ♥️ I love the options & all of the tools that it has, as well as the new #AI Gemini with the photos App but unfortunately it is crashing A LOT and it has been for 6 months or longer. I really hope the Google developers can PLEASE fix this.
+
+[83] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: d306f2a8-e48f-461c-b584-3797e0468abc
+Review: Guys, why don't you provide a direct download feature in the application so that it is easier to use without having to go back to the browser?If you can access it via a browser, don't spend too much time searching for the file while downloading. It's really a hassle just to find the file you want.
+
+[84] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 78e37e80-40b7-4e0e-99ae-0bea61d8e8ec
+Review: Please add subfolders to the Locked Folder in Google Photos. It would make it much easier to organize private photos and videos into categories like Personal, Family, Work, or Documents. This would improve privacy, save time when searching, and make the Locked Folder much more useful.This should fit comfortably within a 300-byte limit while clearly explaining the idea.
+
+[85] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 048d059c-a5d9-41b6-8f9d-d72e2a9ad719
+Review: I would really like to be able to label my horse under the people and pets categories. Why isn't there an option to select a face on a photo to add a label? Sadly, it only detects human faces. I can pull up several pictures of my horse when I search for horse, but I would really like to be able to label the pictures myself into a label. A manual selection labeling feature would be really nice for pictures that have faces that are not automatically detected.
+
+[86] (SEARCH_BAR_OR_QUERY) Rating: 4 | ID: 466488fc-01ac-4fe0-995e-1c88f138f3c3
+Review: ✨ Can't search the album, when I'm in a albums, I want to add some photos from this album to the searched album. But I can't search the album to add these photos to the searched album ✨ Missing feature on Web/PC: Can’t view or edit Album Description on PC like on Android.
+
+[87] (FACE_RECOGNITION_RETRIEVAL) Rating: 4 | ID: 180005cb-b566-4430-847a-7be23ae046b9
+Review: I have questions & need some answers !! I've been using this app since 2017. I need to know, how to add a photo to a face group; when the option doesn't exist to add to a face group? To identify the person or animal in the photo? I have asked for feedback, while using the app & I haven't received a response yet! I like having the face groups, so if I'm looking for a particular person's or animal's picture, it makes it more readily available, to locate in a terabyte of pictures. Can we add option
+
+[88] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 407fb276-32b4-48f6-b825-fdf4f57c9a27
+Review: Excellent Photo Management App! Google Photos is one of the most useful apps for safely storing, organizing, and accessing photos and videos. The automatic backup, powerful search, easy sharing, and smart organization features make it extremely convenient. I especially like how easily I can find old photos and memories by date, location, or people. Simple, reliable, and very user-friendly. Highly recommended! 👍📸
+
+[89] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 26476128-9573-4e06-a9bd-a4382bb4fe1a
+Review: They added search to the Add To Album popup! Someone *is* reading all those feedbacks I send!!! Easy backup of photos and videos. Nice interface for browsing photos and videos. Sometimes fails or errors out, but not too bad. Video creator is mostly automatic but I like the amount of tweaking it provides (adjusting music, filter, and titles).
+
+[90] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 24e628d4-e435-4971-afd3-ff777feb031b
+Review: Google Photos is one of the best apps for storing and organizing photos. It automatically backs up your images, offers powerful search features, and groups faces and places accurately. The editing tools are simple yet effective. The cloud storage helps free up space on your phone. Some features now require a subscription, but overall it’s a reliable and smart photo management app.
+
+[91] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 9a1e075b-c040-4df6-b187-5b66f3a4fcd9
+Review: Google Photos is an excellent app for storing, organizing, and backing up photos and videos. The search and automatic organization features are very useful, and it makes finding old memories easy. Overall, a simple, reliable, and user-friendly photo storage app. Highly recommended! 📸✨
+
+[92] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 6f455c4a-9f1d-4bbe-8b9a-c9ff846ea0ab
+Review: Google Photos is an excellent app for storing, organizing, and managing photos and videos. The automatic backup, powerful search, easy sharing, editing tools, and smart organization features make it extremely convenient. I especially like how easy it is to find old memories and access them across devices. Overall, a must-have app for managing photos and videos.
+
+[93] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 53fd4734-7980-43f1-b324-71efa9d83f50
+Review: Absolutely love Google Photos! The automatic backup gives me peace of mind that I’ll never lose my pictures. Plus, the memories and collages it creates automatically are beautiful. A must-have app! ⭐⭐⭐⭐⭐" "Life saver app for phone storage! Keeps all my memories secure in high quality. Super smooth and easy to use. ⭐⭐⭐⭐⭐" ​"The best app to keep memories safe. The cloud backup is seamless, and the smart search feature makes it so easy to find old photos. Highly recommended! ⭐⭐⭐⭐⭐"
+
+[94] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 3166efe3-e029-4db4-9779-1b9caca33b61
+Review: Google Photos is an excellent app for storing, organizing, and sharing photos and videos. The backup feature is reliable, and the search and editing tools are very useful. The interface is clean, fast, and easy to use. I hope future updates continue to improve storage management and add more editing features. Overall, it's one of the best photo gallery apps available.
+
+[95] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 7a0531cb-1278-4c51-82d1-3aaaffad3f48
+Review: Google Photos is a very useful and easy-to-use app for storing, organizing and viewing photos and videos. The backup feature is really helpful, and the search and editing tools make managing photos much easier. Overall, a great app for keeping memories safe. ⭐⭐⭐⭐⭐
+
+[96] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: a6381079-a985-4176-a2a3-bead8541057f
+Review: Google Photos is the best app for storing and organizing memories! Automatic backup works seamlessly and I never worry about losing photos. Search feature is super smart - can find pictures just by typing what's in them. Editing tools are simple yet powerful. Truly a must-have app for everyone!
+
+[97] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: ada4c676-9822-4a94-8ebe-e292625e14a9
+Review: I love the new Ai additional help in the search bar. However, when I request a search using words I know are included in what I'm looking for, it comes up empty. I know with time this would be improved upon. All in all, I'm still extremely pleased with the app 👌🏽
+
+[98] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: d06e38be-055d-4051-92fe-d651571a8a93
+Review: Google Photos is simply the best photo management app I've ever used. The backup is fast and reliable, the search is incredibly accurate, and the AI-powered features make organizing memories effortless. I love how easy it is to find old photos, free up storage, and keep everything securely synced across devices. The interface is clean, smooth, and user-friendly. A truly world-class app that keeps getting better with every update. Highly recommended!
+
+[99] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 67176cd9-ca57-4671-a149-96ad6a17f1fb
+Review: Google Photos is the most useful app for storing and organizing photos. The automatic backup, easy search, albums, and sharing features make managing memories so convenient. Simple, reliable, and easy to use!
+
+[100] (AI_SEARCH) Rating: 5 | ID: 53f5898f-1dff-4fa7-8333-e814d874985b
+Review: it's a perfect photo app it has tons of helpful things for your photos, like Gemini AI, AI editing, folders, collections, collages, and more for your photos!
+
+[101] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 0d4f8a16-ebfc-4558-b101-40acb3f42961
+Review: Pros: * Photos and videos are backed up securely and automatically. * Smart search helps you find photos of people or places within seconds. * The 'Memories' feature surfaces past special moments. * Sharing albums with others is incredibly easy. * Built-in editing tools allow for quick adjustments. * Photos are synced across all your devices. Cons: * Storage beyond the free 15 GB allowance requires payment. * Some users may have privacy concerns regarding cloud storage regulations.
+
+[102] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 351c3f52-da6d-4deb-a028-b494ac3a54cd
+Review: Solid, with a few rough edges Genuinely one of the best-executed apps on my phone. Backup is seamless, AI search is scary accurate ("dog on beach" just works), and Memories surfaces old photos I'd forgotten about. Editing tools like Magic Eraser punch above their weight for free. Could improve: - Storage tiers feel stingy since dropping unlimited free storage - Duplicate detection is inconsistent - Video compression on backup is aggressive; a clearer "near-original" quality toggle would help.
+
+[103] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: f9aa7659-bba1-4e66-a322-6b28ae0dc972
+Review: Google Photos is an excellent app for backing up and organizing photos and videos. The search feature is incredibly useful, and the app makes it easy to relive memories. One of the best photo management apps available.
+
+[104] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 6e8c1980-8b3a-4a8c-92a5-315efdf89177
+Review: Google Photos is fantastic for backing up all my pictures automatically. The search feature is really smart and makes finding memories incredibly easy.
+
+[105] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 788e1618-71e0-4281-aa54-112ad345b66d
+Review: Google Photos is an absolute masterpiece. The cloud backup is seamless, and the AI search is so smart that I can just type "dog" or "beach" and find photos from five years ago instantly. It frees up gigabytes of space on my phone and keeps my memories completely safe.
+
+[106] (AI_SEARCH) Rating: 5 | ID: a7139d29-3f8b-4243-ae48-f7ab7a5795d2
+Review: This is probably the best thing google developed as far as a reliability and rivals the apple cloud acting as another option which I my opinion is a lot better than apple. I'm just bummed I recently broke my 5g phone. going back to Android 14 hasn't been at all delightful but then on top of it this back up phone I'm currently using can't access Gemini. to which I was just getting use to and starting to enjoy spending hours with Google photos and Gemini working together. do urself a favor upgrade
+
+[107] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 2bf42470-548a-493b-9a5b-68d52ad444e8
+Review: They added search to the Add To Album popup! Someone *is* reading all those feedbacks I send!!! Easy backup of photos and videos. Nice interface for browsing photos and videos.
+
+[108] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 60848b00-a833-4697-af6c-3c4440659eb1
+Review: Google Photos is one of the best photo management apps! The backup, search, editing tools, and AI features make managing photos super easy and convenient. Love the clean experience! 📸✨
+
+[109] (PHOTO_FINDING) Rating: 5 | ID: a475d0c4-6b07-4654-afce-32727b2dc1a2
+Review: simply superb This app is excellent. It makes it easy to back up my photos and videos, and I can access them from anywhere. The app is fast, and finding photos is very easy. It's simple to use, and I'm completely satisfied with it. Thank you to the Google team for creating such a wonderful app!అద్భుతంగా ఉంది. నా ఫోటోలు, వీడియోలను సులభంగా బ్యాకప్ చేసి, ఎక్కడి నుంచైనా యాక్సెస్ చేయగలుగుతున్నాను. యాప్ వేగంగా పనిచేస్తుంది, ఫోటోలను వెతకడం కూడా చాలా ఈజీగా ఉంది. వాడటానికి చాలా సింపుల్‌గా వుంది
+
+[110] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 5b31bb2b-d271-41c0-b3f6-47ae46e8955b
+Review: I love the daily memories feature. But, just as all other photos app its difficult to find a specific, one or few, photos. The search feature is not up to par.
+
+[111] (SEARCH_BAR_OR_QUERY) Rating: 5 | ID: 74079f57-09fa-4205-be30-4d6b97129206
+Review: My app is not giving me all of the coupons that I choose. I tried to search for a deal on dog food and I know that they sell it bc I've bought it from them before. I couldn't even find it on the website. This is a awesome app for all of my photos.
+
+[112] (CANNOT_FIND_PHOTO) Rating: 1 | ID: 821b9c14-cf6b-4c54-8c7a-6d0b10048fc0
+Review: Can't find my device photos even if I backed everything up. I can't also find it in my files. I didn't even "accidentally" delete it. Please fix this issue. I don't know what to do. Tried clearing the cache. The photos were very important to me.
+
+[113] (CANNOT_FIND_PHOTO) Rating: 1 | ID: 03ba0f04-e8ec-42f6-b8c4-b7ad4f484023
+Review: I can't find any of my photos that they took off of my gallery. I hate Google photos. this app takes my well organized photos off of my phone and organizes them in a way that I can't find anything. I don't want their storage. I am afraid to uninstall cus it may delete all of my photos. if I do get them back i will never be able to organize them the way I had them. oh! this makes me so mad. wish i could take googles photos, and scramble them up. HEY GOOGLE! Give me my photos back you thieves!
+
+[114] (CANNOT_FIND_PHOTO) Rating: 1 | ID: 942c4795-6c73-47ba-8de5-df1a59160977
+Review: Whoever designed this was linguistically challenged. Stop using so many synonyms. Images, photos, pictures, is all the SAME thing!!! If there's a way to be ignorant, people will find it. You star a photo and can't find it elsewhere. It gets filed under collections that doesn't show up everywhere either. Then you run into a stupid folder called favorites. Starred and favorites is the SAME thing. This is a display of massive lack of intelligence.
+
+[115] (FACE_RECOGNITION_RETRIEVAL) Rating: 1 | ID: 3be20948-45e3-439e-9caf-a362d5fd776b
+Review: face group doesn't work on my old android. I can't access the settings to turn it off. Deleting.
+
+[116] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: 55124187-bbcd-4c32-b8ed-2be7922282e1
+Review: sharing photos to Gemini or Signal or other app doesn't work - literally nothing happens. Search is useless - it doesn't come up with anything on first attempt, sometimes never
+
+[117] (SEARCH_BAR_OR_QUERY) Rating: 1 | ID: c5a0669e-3256-4824-ad70-5e1e1324b8e3
+Review: The latest update is horrible. Photos used to have the most amazing AI search. The search in this version is HORRIBLE. You keep becoming more like Apple and iPhone every day
+
+[118] (AI_SEARCH) Rating: 2 | ID: 8248e690-792d-4c7d-a6c2-66b6fd2cfd46
+Review: Lacking image search features and Gemini integration.
+

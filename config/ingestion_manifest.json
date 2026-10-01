@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "project": "Google Photos Discovery Engine — Part 1 Evidence Corpus",
+  "target_total_records": 308,
+  "sources": [
+    {
+      "source_key": "PLAY_STORE",
+      "methodology": "UNSOLICITED_PUBLIC",
+      "name": "Google Play Store Public Reviews",
+      "document_reference": "raw_reviews_dataset.json",
+      "target_record_count": 245,
+      "optional_subsets": {
+        "pristine_curated": 23,
+        "exploratory_batch": 50
+      },
+      "required_fields": ["external_id", "raw_text", "rating", "failure_mode", "job_to_be_done"]
+    },
+    {
+      "source_key": "REDDIT",
+      "methodology": "UNSOLICITED_PUBLIC",
+      "name": "Reddit r/googlephotos Power-User Discussions",
+      "document_reference": "reddit reviews .docx",
+      "target_record_count": 38,
+      "required_fields": ["external_id", "raw_text", "failure_mode", "structured_situation"]
+    },
+    {
+      "source_key": "USER_INTERVIEW",
+      "methodology": "PROMPTED_INTERVIEW",
+      "name": "1:1 Behavioral Retrieval Testing Episodes",
+      "document_reference": "GOOGLE PHOTOS INTERVIEW (1).docx",
+      "target_record_count": 25,
+      "participant_count": 6,
+      "required_fields": ["external_id", "raw_text", "user_debrief", "failure_mode"]
+    }
+  ],
+  "validation_rules": {
+    "disallow_flattened_methodology": true,
+    "disallow_outdated_count_assumptions": [113],
+    "strict_external_id_uniqueness": true,
+    "zero_null_required_fields": true
+  }
+}

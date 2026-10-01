@@ -1,0 +1,1631 @@
+[
+  {
+    "review_id": "rev-user-a",
+    "app_name": "Google Photos",
+    "review_date": "2026-04-29 03:47:29",
+    "rating": 1,
+    "original_review": "AI search is slower, less accurate, and more presumptuous than the version we had before. When AI search first came out, we even had a choice between the two, no longer. It's forced AI that interests the companies' surveillance more than the customers' choice, and I'll be switching to another storage provider as soon as possible. For work, I'd look up \"maps\" to pull up maps of locations I service, but the AI assumes I want Google Maps or \"map view\" and takes over my phone's control to switch.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "SEARCH_ACCURACY",
+      "LOCATION_SEARCH"
+    ],
+    "job_to_be_done": "Search photos library for specific work diagrams/maps",
+    "search_method": [
+      "AI_SEARCH",
+      "LOCATION_SEARCH"
+    ],
+    "failure_mode": "CONTEXT_NOT_UNDERSTOOD",
+    "research_interpretation": "User experiences CONTEXT_NOT_UNDERSTOOD when AI search presumptuously hijacks map diagram retrieval into Google Maps app navigation.",
+    "signal_strength": "HIGH",
+    "source": "Google Play Store"
+  },
+  {
+    "review_id": "rev-user-c",
+    "app_name": "Google Photos",
+    "review_date": "2026-03-12",
+    "rating": 2,
+    "original_review": "AI Assisted search is not working on desktop\nIt used to be that in the search bar I could type in words describing something like say \"cooling fan\" and after a moment it would presumably use AI to show me all the results that it thought would have a cooling fan pictured in it. That has recently stopped working on Desktop and Mobile, but I am primarily using a Desktop to access my library.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Retrieve photos of specific objects (cooling fan) across desktop and mobile using AI-assisted descriptive search",
+    "search_method": [
+      "AI_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "User reports that AI-assisted descriptive search for specific objects (cooling fan) stopped returning results across both desktop and mobile.",
+    "signal_strength": "HIGH",
+    "source": "Google Photos Web/Play Store"
+  },
+  {
+    "review_id": "d6276e7a-5d2b-4533-ac69-4242148d9e22",
+    "app_name": "Google Photos",
+    "review_date": "2026-09-03 04:25:39",
+    "rating": 1,
+    "original_review": "Photos used to be the perfect photos app. it had the best search funding of any app. I used to race iphone users to see how far we could find the same photo and I always won. Now this near perfect search function has been replaced by AI, which not only doesn't return the photos I'm looking for, it actually acts as a stumbling block to me finding them. It's slow and inefficient. Another perfectly good tool ruined in the name of trying to convince us that AI is inevitable.",
+    "relevance": "RELEVANT",
+    "evidence_type": "MIXED",
+    "category": [
+      "AI_SEARCH",
+      "RETRIEVAL_DIFFICULTY",
+      "SEARCH_PROBLEM",
+      "SEARCH_RELEVANCE"
+    ],
+    "job_to_be_done": "Find specific photos quickly using search bar",
+    "search_method": [
+      "AI_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "User experiences 'CANNOT_FIND_PHOTO' while attempting to 'Find specific photos quickly using search bar'. Pain points mapped to [AI_SEARCH, RETRIEVAL_DIFFICULTY, SEARCH_PROBLEM, SEARCH_RELEVANCE].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "46ca1057-94f2-4ede-a253-e1c740e10472",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-06 20:10:13",
+    "rating": 1,
+    "original_review": "The face tagging feature is poor and it's had the same issues for years. Unable to tag faces it doesn't detect. Unable to change the name of faces it's tagged wrong. Each tag has loads and loads of random other photos tagged under the same name when they're not even remotely similar. Very very disappointing. Even worse that they've never even attempted to improve it.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "FACE_RECOGNITION",
+      "SEARCH_ACCURACY",
+      "SEARCH_RELEVANCE"
+    ],
+    "job_to_be_done": "Find and organize photos of a specific person via facial grouping",
+    "search_method": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH"
+    ],
+    "failure_mode": "WRONG_PERSON",
+    "research_interpretation": "User experiences 'WRONG_PERSON' while attempting to 'Find and organize photos of a specific person via facial grouping'. Pain points mapped to [FACE_RECOGNITION, SEARCH_ACCURACY, SEARCH_RELEVANCE].",
+    "signal_strength": "HIGH",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "2865fbd1-e82d-4490-a7d9-5f4df1482d6d",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-09 05:18:51",
+    "rating": 1,
+    "original_review": "Search doesn't work like it used to, so it kind of makes this app worthless to me! With nearly 60k photos I can no longer search for SOME family and friends names in label descriptions I've make over many years, very frustrating. I've contaced google and they cannot find a resolution! Oh, and also something new, the app actually erases what I type on the description! I have to remember to copy text so I can cut and paste, or I have to retype everything!",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "LARGE_LIBRARY_OVERLOAD",
+      "RETRIEVAL_DIFFICULTY",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Retrieve specific family and friend photos from a 60,000 photo library via label descriptions",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "User experiences 'CANNOT_FIND_PHOTO' while attempting to 'Retrieve specific family and friend photos from a 60,000 photo library via label descriptions'. Pain points mapped to [LARGE_LIBRARY_OVERLOAD, RETRIEVAL_DIFFICULTY, SEARCH_PROBLEM].",
+    "signal_strength": "HIGH",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "fc669de5-7c8c-4bd8-a274-f7b51d5377d0",
+    "app_name": "Google Photos",
+    "review_date": "2026-09-01 23:59:24",
+    "rating": 1,
+    "original_review": "One of the main things I really like about this app and use it for is face grouping and that is getting worse and worse. I've followed all the steps to refresh and allow the app to process the faces, but for some reason pictures with very clear faces aren't getting grouped and aren't getting registered as faces so I can't even manually add them. Please fix this, it's so frustrating. Thank you Google for your useless response, I've already tried everything and it's included in my review.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "FACE_RECOGNITION"
+    ],
+    "job_to_be_done": "Find and organize photos of a specific person via facial grouping",
+    "search_method": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH"
+    ],
+    "failure_mode": "PERSON_NOT_RECOGNIZED",
+    "research_interpretation": "User experiences 'PERSON_NOT_RECOGNIZED' while attempting to 'Find and organize photos of a specific person via facial grouping'. Pain points mapped to [FACE_RECOGNITION].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "0a4c0ec5-ddea-4a62-acf4-74ec701d5dbc",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-31 01:57:34",
+    "rating": 1,
+    "original_review": "After a certain amount of time, the app stops labeling photos of a certain person and won't even let me manually label it because it refuses to list the photo of having a face in it. I believe it only happens with people of color, because it has not happened to me with any other photos.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "FACE_RECOGNITION"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "UNKNOWN"
+    ],
+    "failure_mode": "PERSON_NOT_RECOGNIZED",
+    "research_interpretation": "User experiences 'PERSON_NOT_RECOGNIZED' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [FACE_RECOGNITION].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "bd1afa26-2281-4093-a462-b9b6f1f4f0b5",
+    "app_name": "Google Photos",
+    "review_date": "2025-02-23 06:57:01",
+    "rating": 2,
+    "original_review": "Loved Google Photos. Always demonstrating to people how easy it was to find a photo i.e. 'Dog in a hat'. Now the search has changed to AI and it's terrible. Even changing to classic, the same search will show your photo briefly, then change to 'Nothing found' or a huge list of random garbage. I cannot search anything. So sad. I have thousands of photos in storage. Google was my end all, be all.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "LARGE_LIBRARY_OVERLOAD",
+      "NATURAL_LANGUAGE_SEARCH",
+      "OBJECT_RECOGNITION",
+      "SEARCH_RELEVANCE"
+    ],
+    "job_to_be_done": "Retrieve specific photo based on descriptive recall ('Dog in a hat') from thousands of photos",
+    "search_method": [
+      "AI_SEARCH",
+      "NATURAL_LANGUAGE",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "User experiences 'IRRELEVANT_RESULTS' while attempting to 'Retrieve specific photo based on descriptive recall ('Dog in a hat') from thousands of photos'. Pain points mapped to [AI_SEARCH, LARGE_LIBRARY_OVERLOAD, NATURAL_LANGUAGE_SEARCH, OBJECT_RECOGNITION, SEARCH_RELEVANCE].",
+    "signal_strength": "HIGH",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "2d623efd-0948-4012-9181-9ed640859eb9",
+    "app_name": "Google Photos",
+    "review_date": "2024-09-05 03:20:55",
+    "rating": 2,
+    "original_review": "Within the past couple weeks, I'm unable to use search - all searches return no results. App no longer grabs search terms from the 'commenting' area where I label important photos or screenshots from the past. I've tried force stop, reboot, update, clear cache - no change. Concerned that clear data or uninstalling will cause photo losses. Can anyone please give me my next SAFE steps to resolve this? Thank you.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Find specific document, receipt, or screenshot",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "User experiences 'CANNOT_FIND_PHOTO' while attempting to 'Find specific document, receipt, or screenshot'. Pain points mapped to [SEARCH_PROBLEM].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "069518e9-1250-41a0-bc6b-5a550e521b4a",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-31 21:10:34",
+    "rating": 2,
+    "original_review": "Ongoing issue for some time now. It fails to recognise pets in a lot of photos. If I type in search bar \"dogs\", those pet photos appear, however if I just go through People and Pets, photos do not appear despite turning on the pets function. It recognises some but not others... edit: face groups was turned on and still not working..",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "FACE_RECOGNITION",
+      "OBJECT_RECOGNITION",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "FACE_RECOGNITION",
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH",
+      "PERSON_SEARCH"
+    ],
+    "failure_mode": "PERSON_NOT_RECOGNIZED",
+    "research_interpretation": "User experiences 'PERSON_NOT_RECOGNIZED' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [FACE_RECOGNITION, OBJECT_RECOGNITION, SEARCH_ACCURACY].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "f58f0d55-7b9c-426c-9f9d-2078530c61c0",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-10 08:55:23",
+    "rating": 2,
+    "original_review": "organization difficulty. it's great having folders but I wish they'd disappear from the main folder or something once organized into one otherwise they can get sorted into multiple folders and it's a mess. also the search for any of my Pic is difficult when I'm trying to find a specific one but any of the key words don't make it pop up so I end up just having to scroll. it seems like a problem other users are having as I see very similar reviews. the app updates often but ive had this same issue",
+    "relevance": "RELEVANT",
+    "evidence_type": "FEATURE_REQUEST",
+    "category": [
+      "FEATURE_REQUEST",
+      "RETRIEVAL_DIFFICULTY",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Locate a specific photo when keyword search fails to return results",
+    "search_method": [
+      "MANUAL_SCROLLING"
+    ],
+    "failure_mode": "MANUAL_SCROLLING_REQUIRED",
+    "research_interpretation": "User experiences 'MANUAL_SCROLLING_REQUIRED' while attempting to 'Locate a specific photo when keyword search fails to return results'. Pain points mapped to [FEATURE_REQUEST, RETRIEVAL_DIFFICULTY, SEARCH_PROBLEM].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "d926fd85-3427-4c3b-a218-15d85358b26d",
+    "app_name": "Google Photos",
+    "review_date": "2026-07-21 04:51:18",
+    "rating": 2,
+    "original_review": "Would be great to be able to have the search feature in locked folder. Ridiculous how this feature isn't available for lock folder in this app. Having to endlessly scroll to try and find something specific. Should also have the same feature month/day/year.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FEATURE_REQUEST",
+    "category": [
+      "DATE_SEARCH",
+      "FEATURE_REQUEST"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "DATE_SEARCH",
+      "MANUAL_SCROLLING"
+    ],
+    "failure_mode": "MANUAL_SCROLLING_REQUIRED",
+    "research_interpretation": "User experiences 'MANUAL_SCROLLING_REQUIRED' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [DATE_SEARCH, FEATURE_REQUEST].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "a2bee9ea-3dfd-431d-aa09-fbbf49e52c3a",
+    "app_name": "Google Photos",
+    "review_date": "2026-07-21 06:51:17",
+    "rating": 2,
+    "original_review": "the latest update is garbage. the search function is useless. I search up human, animal, painting, rollercoaster, all things that ARE IN MY CAMERA ROLL and all things I've looked up before. it used to find these things perfectly fine. but now it's completely useless and won't give me ANY results.",
+    "relevance": "RELEVANT",
+    "evidence_type": "MIXED",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Retrieve photos by object, subject, or scene concepts in camera roll",
+    "search_method": [
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "User experiences 'CANNOT_FIND_PHOTO' while attempting to 'Retrieve photos by object, subject, or scene concepts in camera roll'. Pain points mapped to [OBJECT_RECOGNITION, SEARCH_PROBLEM].",
+    "signal_strength": "HIGH",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "e5c9be75-7682-47dc-9e0e-a1909edc5dff",
+    "app_name": "Google Photos",
+    "review_date": "2024-09-30 20:00:55",
+    "rating": 3,
+    "original_review": "Change is sometimes difficult. Finding specific photos varies between easy and challenging, depending on both Google's and your interpretation of search words. The latest changes have made it more difficult to find photos by people's names.. Those albums have disappeared from easy view; you have to figure out how to find them.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "ALBUM"
+    ],
+    "failure_mode": "OTHER",
+    "research_interpretation": "User experiences 'OTHER' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [RETRIEVAL_DIFFICULTY].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "475a0a0f-bcd5-47f8-9d8f-111e3f298ed0",
+    "app_name": "Google Photos",
+    "review_date": "2025-05-19 10:24:23",
+    "rating": 3,
+    "original_review": "With the last update or couple, the facial recognition got SO bad. It used to be pretty good, recognizing faces 80% or so of the time. Now within ten pictures of clear faces, it'll recognize 10% or even less. But then I save a photo of a 360p face and it's perfectly recognizable?? Or even a silhouette of a side profile is recognized, yet not a clear face. Please fix the facial recognition. I have so many pictures I'd love to put into folders but just can't.",
+    "relevance": "RELEVANT",
+    "evidence_type": "MIXED",
+    "category": [
+      "FACE_RECOGNITION",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Find and organize photos of a specific person via facial grouping",
+    "search_method": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH"
+    ],
+    "failure_mode": "PERSON_NOT_RECOGNIZED",
+    "research_interpretation": "User experiences 'PERSON_NOT_RECOGNIZED' while attempting to 'Find and organize photos of a specific person via facial grouping'. Pain points mapped to [FACE_RECOGNITION, SEARCH_ACCURACY].",
+    "signal_strength": "HIGH",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "b54b49c3-d528-44fb-81a9-ebc909f928af",
+    "app_name": "Google Photos",
+    "review_date": "2026-09-10 19:01:48",
+    "rating": 3,
+    "original_review": "I can no longer search my photos for people, colors, objects or words (etc). trying to ask Gemini doesn't work and just sends me back to the search page which always yeilds no results.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "AI_SEARCH",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "AI_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "User experiences 'CANNOT_FIND_PHOTO' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [AI_SEARCH, SEARCH_PROBLEM].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "9bae19b0-2f3a-41a7-a22e-d54a09dfbbb7",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-13 14:32:00",
+    "rating": 3,
+    "original_review": "the app has been so poor recently with the search keywords. even when your photo is being backedup, you still have to look for it manually. I wonder whats the usefulness of the search if you cant find your pictures without seeing \"no results\"",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "OTHER_RETRIEVAL_EVIDENCE"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "UNKNOWN"
+    ],
+    "failure_mode": "OTHER",
+    "research_interpretation": "User experiences 'OTHER' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [OTHER_RETRIEVAL_EVIDENCE].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "d874566f-b1d1-4ea6-b0f6-4db4b36fd46c",
+    "app_name": "Google Photos",
+    "review_date": "2026-09-16 03:38:34",
+    "rating": 4,
+    "original_review": "How did I just discover Google Photos now 🙃 but I do have some complaints 1: alot of photos/videos are misfiled cuz you can't modify who is tagged in it. You should be able to manually box and tag. Especially with side view faces that aren't recognized 2: For more private photos/videos there should be a private folder. 3: when im assigning a face to a name i already have, it won't let me select the name rather or gives me an error message",
+    "relevance": "RELEVANT",
+    "evidence_type": "MIXED",
+    "category": [
+      "FACE_RECOGNITION"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "UNKNOWN"
+    ],
+    "failure_mode": "OTHER",
+    "research_interpretation": "User experiences 'OTHER' while attempting to 'Find a specific photo or memory based on descriptive recall'. Pain points mapped to [FACE_RECOGNITION].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "048d059c-a5d9-41b6-8f9d-d72e2a9ad719",
+    "app_name": "Google Photos",
+    "review_date": "2026-06-27 00:08:15",
+    "rating": 4,
+    "original_review": "I would really like to be able to label my horse under the people and pets categories. Why isn't there an option to select a face on a photo to add a label? Sadly, it only detects human faces. I can pull up several pictures of my horse when I search for horse, but I would really like to be able to label the pictures myself into a label. A manual selection labeling feature would be really nice for pictures that have faces that are not automatically detected.",
+    "relevance": "RELEVANT",
+    "evidence_type": "EXPECTATION",
+    "category": [
+      "FACE_RECOGNITION",
+      "OBJECT_RECOGNITION"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "FACE_RECOGNITION",
+      "OBJECT_SEARCH",
+      "PERSON_SEARCH"
+    ],
+    "failure_mode": "NONE",
+    "research_interpretation": "User validates successful retrieval capability aligning with JTBD: 'Find a specific photo or memory based on descriptive recall' across [FACE_RECOGNITION, OBJECT_RECOGNITION].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "180005cb-b566-4430-847a-7be23ae046b9",
+    "app_name": "Google Photos",
+    "review_date": "2026-05-20 01:48:53",
+    "rating": 4,
+    "original_review": "I have questions & need some answers !! I've been using this app since 2017. I need to know, how to add a photo to a face group; when the option doesn't exist to add to a face group? To identify the person or animal in the photo? I have asked for feedback, while using the app & I haven't received a response yet! I like having the face groups, so if I'm looking for a particular person's or animal's picture, it makes it more readily available, to locate in a terabyte of pictures. Can we add option",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "FACE_RECOGNITION",
+      "OBJECT_RECOGNITION"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "NONE",
+    "research_interpretation": "User validates successful retrieval capability aligning with JTBD: 'Find a specific photo or memory based on descriptive recall' across [FACE_RECOGNITION, OBJECT_RECOGNITION].",
+    "signal_strength": "HIGH",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "ada4c676-9822-4a94-8ebe-e292625e14a9",
+    "app_name": "Google Photos",
+    "review_date": "2026-08-24 11:25:09",
+    "rating": 5,
+    "original_review": "I love the new Ai additional help in the search bar. However, when I request a search using words I know are included in what I'm looking for, it comes up empty. I know with time this would be improved upon. All in all, I'm still extremely pleased with the app 👌🏽",
+    "relevance": "RELEVANT",
+    "evidence_type": "SUCCESS",
+    "category": [
+      "AI_SEARCH"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "AI_SEARCH",
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "NONE",
+    "research_interpretation": "User validates successful retrieval capability aligning with JTBD: 'Find a specific photo or memory based on descriptive recall' across [AI_SEARCH].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "144ec96c-cff8-4927-b6a4-9010c3de3abb",
+    "app_name": "Google Photos",
+    "review_date": "2026-05-24 22:28:19",
+    "rating": 5,
+    "original_review": "The app is good, but I wish the photos in albums could be zoomed out like in the overview or favorites view; they feel too close, and some of my albums are too big, making it difficult to find what I'm looking for. I would also like them to be separated by date and to allow you to switch between older to newer and vice versa. Something similar to how photos appear in favorites.",
+    "relevance": "RELEVANT",
+    "evidence_type": "EXPECTATION",
+    "category": [
+      "FEATURE_REQUEST",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Find a specific photo or memory based on descriptive recall",
+    "search_method": [
+      "ALBUM",
+      "DATE_SEARCH"
+    ],
+    "failure_mode": "NONE",
+    "research_interpretation": "User validates successful retrieval capability aligning with JTBD: 'Find a specific photo or memory based on descriptive recall' across [FEATURE_REQUEST, RETRIEVAL_DIFFICULTY].",
+    "signal_strength": "MEDIUM",
+    "source": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_IN"
+  },
+  {
+    "review_id": "rev-clean-595",
+    "app_name": "Google Photos",
+    "review_date": "2026-09-09 20:06:46",
+    "rating": 4,
+    "original_review": "I love it, but please add a direct button to merge face groups. The AI constantly creates multiple albums for the same person due to age or angles. While I know they can theoretically be combined by renaming the group to trigger a suggestion or reassigning photos, it's very unintuitive and frequently fails, leaving duplicated profiles with the exact same name.",
+    "relevance": "RELEVANT",
+    "evidence_type": "SUCCESS",
+    "category": [
+      "FACE_RECOGNITION",
+      "AI_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve target photos efficiently",
+    "search_method": [
+      "MANUAL_SCROLLING"
+    ],
+    "failure_mode": "NONE",
+    "research_interpretation": "User provides direct feedback on FACE_RECOGNITION, AI_SEARCH.",
+    "signal_strength": "HIGH",
+    "source": "Google Play Store"
+  },
+  {
+    "review_id": "reddit-raw-003",
+    "app_name": "Google Photos",
+    "original_review": "Search function only shows very few photos\nNo matter what device I try the search function on, it only shows me a few photos. For example, when I search for \"dog\" , only 6 pictures come up (4 from 2015, 2 from this year???) even though I am SURE I have more dog photos.\nI tried contacting support but they were very useless. They kept telling me to search for some Gemini function in Preferences but the setting just isn't there on my phone! They could not wrap their head around that for some reason and kept telling me to find it.\nThis has been a problem for like a year or two. Help would be much appreciated.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_ACCURACY",
+      "RETRIEVAL_DIFFICULTY",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Retrieve personal dog photos across multiple years from library",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "User experiences extreme under-retrieval (only 6 photos returned out of many known dog photos spanning a decade) across multiple devices.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating personal dog photos across devices using keyword search.",
+      "what_user_remembers": "User is certain they have dozens/hundreds of dog photos spanning multiple years (knows photos from years between 2015 and current year exist).",
+      "retrieval_clue_used": "Object/animal keyword 'dog'.",
+      "what_they_tried": "Searched 'dog' across multiple devices; contacted Google support.",
+      "what_happened": "Search returned only 6 pictures (4 from 2015, 2 from current year), omitting the vast majority of dog photos.",
+      "workaround_or_outcome": "Contacted support who erroneously directed them to a non-existent Gemini setting in Preferences."
+    }
+  },
+  {
+    "review_id": "reddit-raw-004",
+    "app_name": "Google Photos",
+    "original_review": "Google photos removing 'search' and replacing it with 'ask' is the worst feature I've ever seen\nI take a lot of photos. I have over 50k photos and videos on my phone. I like taking photos of birds. I used to be able to search 'kookaburra' and a kookaburra would show up.... Now nothing comes up at all.\nSo instead, I 'ask' for birds... It shows me 6 photos. I have over 400 photos of birds...\nI live underneath a flight path and take photos of the planes all the time... 'ask' shows me only 19 photos... I probably have a few hundred\nWhat the actual fuck is this AI bullshit",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "LARGE_LIBRARY_OVERLOAD",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve specific bird species and airplane photos from 50k+ media library",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "AI_SEARCH",
+      "NATURAL_LANGUAGE",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "In a 50k+ library, replacement of classic search with 'Ask Photos' caused complete failure on specific species ('kookaburra' returns 0) and severe under-retrieval (6 of 400+ birds, 19 of hundreds of planes).",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos of specific bird species (kookaburra), generic birds, and airplanes in a 50,000+ photo collection.",
+      "what_user_remembers": "User frequently photographs birds (owns 400+ bird photos) and airplanes (owns hundreds of plane photos under a flight path); remembers specific bird species 'kookaburra'.",
+      "retrieval_clue_used": "Specific species keyword 'kookaburra', conversational queries 'birds' and 'planes' in Ask Photos.",
+      "what_they_tried": "Attempted exact keyword search for 'kookaburra'; then attempted conversational prompts using 'Ask' for birds and planes.",
+      "what_happened": "'kookaburra' returns nothing; 'Ask' for birds returns only 6 of 400+ photos; 'Ask' for planes returns only 19 of hundreds.",
+      "workaround_or_outcome": "Tried transitioning between traditional keyword search and Ask Photos conversational prompts with total degradation."
+    }
+  },
+  {
+    "review_id": "reddit-raw-005",
+    "app_name": "Google Photos",
+    "original_review": "What happened to the search feature on the app?\nThe search option used to deliver amazing results. You could search \"bike\" and any photo, screenshot, etc with a bike in it would show up, along with any image with the text \"bike\". It also worked for any captions or descriptive text manually added to a photo. This was also extremely helpful for photos of documents or bills. All you had to do was search something like \"Progressive\" and there's the photo I took of my insurance bill.\nOver the past few weeks, this feature is useless. Search results are giving me photos that have nothing to do with the search term. Now it's divided in \"most recent\" and \"best match\" both of which are garbage. Anyone notice this change? Or know how to get back to the old search results?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "SEARCH_RELEVANCE",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Retrieve photographed utility bills/documents (Progressive insurance) and object photos/screenshots (bikes)",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "User relies on OCR text extraction on documents ('Progressive' on insurance bill) and object tags ('bike'), but new search partitioning into 'most recent' and 'best match' returns completely irrelevant images.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos of utility/insurance bills and specific objects/screenshots (bikes).",
+      "what_user_remembers": "User remembers photographing their Progressive insurance bill and saving photos/screenshots of bikes with visible text or captions.",
+      "retrieval_clue_used": "Document vendor OCR text ('Progressive'), object/text keyword ('bike').",
+      "what_they_tried": "Searched 'bike' and searched document vendor name 'Progressive'.",
+      "what_happened": "Search returned irrelevant photos having nothing to do with the search terms; results bifurcated into unhelpful 'most recent' and 'best match' categories.",
+      "workaround_or_outcome": "Asked community how to revert to the old classic search results."
+    }
+  },
+  {
+    "review_id": "reddit-raw-006",
+    "app_name": "Google Photos",
+    "original_review": "dear lord please tell me there is a way to go back to the old photo search\nI can't believe how good google is at taking something perfectly useful and making it an absolute masterclass in worthless inconvenience\nI used to be able to type something like \"I love being a man\" (weird example but it's text in a meme i knew i had saved and was trying to find) and it would instantly gather every photo i had that contained those words. Absolutely amazing technology to me and extremely useful\nFor what reason do you change that into an AI chatbot? FUcking WHY. The cherry on top is that it now says \" i can't help with that\" to every thing i've tried so far.\nWhy ? Why? Just why?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve saved meme screenshot based on remembered in-image text snippet",
+    "search_method": [
+      "AI_SEARCH",
+      "NATURAL_LANGUAGE",
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Replacing instant text-in-image OCR search with conversational AI chatbot broke meme/quote retrieval, causing the chatbot to reject queries with 'I can't help with that'.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating a saved meme containing a specific memorable quote.",
+      "what_user_remembers": "Exact text embedded within the meme: 'I love being a man'.",
+      "retrieval_clue_used": "Exact in-image text string ('I love being a man').",
+      "what_they_tried": "Typed remembered in-image text snippet into search bar/chatbot.",
+      "what_happened": "AI chatbot responded 'I can't help with that' to all attempts instead of querying image OCR text.",
+      "workaround_or_outcome": "Inquired about methods to revert to old classic photo search."
+    }
+  },
+  {
+    "review_id": "reddit-raw-007",
+    "app_name": "Google Photos",
+    "original_review": "I can no longer search for photos by date\nI have saved photos from when my child was a baby in Google photos. I've always been able to search by date, for example \"July 2016,\" but now when I do that it says I can't search using those terms. I don't see any option to disable the AI search feature. I'm going to have to migrate all of my photos to a different platform if this keeps up, there's no point in storing photos if I can't search for them without AI.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "DATE_SEARCH",
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve baby photos of child from a specific month and year (July 2016)",
+    "search_method": [
+      "DATE_SEARCH",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Forced AI search disabled temporal month/year date queries ('July 2016'), preventing user from retrieving milestone baby photos of their child.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating child's baby photos from a known month and year.",
+      "what_user_remembers": "Child was a baby during July 2016.",
+      "retrieval_clue_used": "Month and year date string ('July 2016').",
+      "what_they_tried": "Typed 'July 2016' into search bar.",
+      "what_happened": "AI search explicitly reported that it cannot search using those terms.",
+      "workaround_or_outcome": "Attempted to find setting to disable AI; preparing to migrate entire photo collection to an alternative platform."
+    }
+  },
+  {
+    "review_id": "reddit-raw-008",
+    "app_name": "Google Photos",
+    "original_review": "Classic Search is gone.\nIt looks like they finally pulled the plug on classic search for Google Photos. I tried looking for a video today and I wasn’t able to bypass the Gemini AI crap and was greeted with this. Does anyone have a way to search for specific photos and or videos? I had renamed some of them with keywords to make it easier to find but it doesn’t look like that will work anymore. I’m on iOS 18.5. Google Photos 7.34.0",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve a specific video using custom keyword renamed filenames",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Mandatory Gemini AI interface prevents retrieval of specific videos that were deliberately renamed with keywords for fast discovery.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating a specific video that had been manually renamed with descriptive keywords.",
+      "what_user_remembers": "User remembers renaming the video with specific keywords to make it easily retrievable.",
+      "retrieval_clue_used": "Custom renamed keywords in filename.",
+      "what_they_tried": "Searched for renamed video using keywords on iOS 18.5 (Google Photos 7.34.0); attempted to bypass Gemini AI.",
+      "what_happened": "Gemini AI blocked classic search; renamed keywords no longer surface the target video.",
+      "workaround_or_outcome": "Asked community for workarounds to bypass Gemini AI to retrieve specific files."
+    }
+  },
+  {
+    "review_id": "reddit-raw-009",
+    "app_name": "Google Photos",
+    "original_review": "Search only shows old photos from years ago, no new photos\nWhen I search for keywords in the Google photos app or on the web, I only get results from photos I've backed up from an old phone, from 2023 or earlier. No photos I've taken with my current phone show up.\nAll the photos are backed up in the cloud and I've tried turning backup on and off. I can't find any solutions online.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY",
+      "DATE_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve photos taken on current phone (post-2023) using keywords",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "Search indexing pipeline broke across device upgrades: keyword queries only return old photos backed up from pre-2023 phone, failing to index any photos taken on current device.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Searching for recent photos taken with current device.",
+      "what_user_remembers": "User knows recent photos were taken with current phone and successfully backed up to cloud.",
+      "retrieval_clue_used": "Keywords in search bar (app and web).",
+      "what_they_tried": "Searched keywords on app and web; toggled cloud backup on and off.",
+      "what_happened": "Search only returned old photos from 2023 or earlier (from previous phone); zero new photos appeared in search results.",
+      "workaround_or_outcome": "Toggled cloud backup on/off and searched online for solutions without resolution."
+    }
+  },
+  {
+    "review_id": "reddit-raw-010",
+    "app_name": "Google Photos",
+    "original_review": "Google Photos' New AI Search Sucks\nAnyone else notice how bad the new Google Photos Search is? Yesterday, for example, I search for pics with the new version, and it gave me 2 pics. It did show I could click to \"see more\", but clicking on that gave a screen that said \"no more results\". I of course had MANY photos so I switched back to \"Classic Search\" and put in same word and got all the pics I was expecting, and in date order and with the date showing! NOT the first time I've used the new search and found it completely useless. How is it that they screwed it up and give us something WORSE?",
+    "relevance": "RELEVANT",
+    "evidence_type": "MIXED",
+    "category": [
+      "AI_SEARCH",
+      "SEARCH_ACCURACY",
+      "SEARCH_PROBLEM",
+      "DATE_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve all photos matching a keyword in chronological date order",
+    "search_method": [
+      "AI_SEARCH",
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "AI search truncates results to 2 images with 'no more results', whereas switching back to Classic Search returns the full set in chronological order with date headers.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Searching for a specific keyword in library with known large photo volume.",
+      "what_user_remembers": "User is certain they have many photos matching the searched term.",
+      "retrieval_clue_used": "Keyword search term.",
+      "what_they_tried": "Searched keyword in new AI version; clicked 'see more'; then reverted to 'Classic Search' with identical keyword.",
+      "what_happened": "New AI search returned only 2 photos and claimed 'no more results'; Classic Search returned all expected photos in date order with dates displayed.",
+      "workaround_or_outcome": "Switched back to 'Classic Search' to successfully retrieve complete results."
+    }
+  },
+  {
+    "review_id": "reddit-raw-011",
+    "app_name": "Google Photos",
+    "original_review": "It's absolute garbage for me on the app. e.g. if I search for \"23 April 2023\" I get a whole bunch of seemingly random photos. If I do the exact same search on photos.google.com, actually get photos from the 23rd of april 2023.\nI'm amazed that a search engine company is unable to perform search properly on one of their flagship apps.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "DATE_SEARCH",
+      "SEARCH_PROBLEM",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Retrieve photos taken on a specific calendar day (23 April 2023)",
+    "search_method": [
+      "DATE_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "Exact date query ('23 April 2023') returns random irrelevant photos on the mobile app, but functions correctly on web (photos.google.com).",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos taken on a specific calendar day.",
+      "what_user_remembers": "Exact date of capture: '23 April 2023'.",
+      "retrieval_clue_used": "Full date query ('23 April 2023').",
+      "what_they_tried": "Searched exact date in mobile app vs photos.google.com on desktop.",
+      "what_happened": "Mobile app returned a bunch of random photos not from that date; desktop web correctly displayed photos from 23rd April 2023.",
+      "workaround_or_outcome": "Switched from mobile app to desktop web interface to find the photos."
+    }
+  },
+  {
+    "review_id": "reddit-raw-013",
+    "app_name": "Google Photos",
+    "original_review": "It's so annoying! Even searching by location is such a process. When I search for \"France\" it used to give me all the photos I took in France. Now it loads for a while and then gives me a hand of it's \"Best Matches\". Not at all useful.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "LOCATION_SEARCH",
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "INCOMPLETE_RESULTS"
+    ],
+    "job_to_be_done": "Retrieve all travel photos taken in a specific country (France)",
+    "search_method": [
+      "LOCATION_SEARCH",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "Searching by location ('France') previously returned all photos from that country, but new AI system forces a long loading delay and truncates results to a small set of 'Best Matches'.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos from a trip to France.",
+      "what_user_remembers": "Took photos during travels in France.",
+      "retrieval_clue_used": "Country location keyword ('France').",
+      "what_they_tried": "Searched location 'France' in Google Photos.",
+      "what_happened": "App loaded for a long time and returned only a handful of 'Best Matches' instead of the full gallery of France photos.",
+      "workaround_or_outcome": "Forced to settle for incomplete 'Best Matches'."
+    }
+  },
+  {
+    "review_id": "reddit-raw-015",
+    "app_name": "Google Photos",
+    "original_review": "Its horrendous. I used to be able to type in SEGA SATURN and it would show me all my sega saturn pics....today...show's me jack nothin'. They blow.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve photos of a specific gaming console / item (Sega Saturn)",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Object/text recognition failed to surface existing gaming console photos when searching for exact product name ('SEGA SATURN').",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos of a Sega Saturn console in photo library.",
+      "what_user_remembers": "User knows they have photos of their Sega Saturn console/games.",
+      "retrieval_clue_used": "Exact product name keyword ('SEGA SATURN').",
+      "what_they_tried": "Typed 'SEGA SATURN' into search bar.",
+      "what_happened": "Search returned zero results ('shows me jack nothin').",
+      "workaround_or_outcome": "Complete retrieval failure; no workaround."
+    }
+  },
+  {
+    "review_id": "reddit-raw-016",
+    "app_name": "Google Photos",
+    "original_review": "GDAMNIT IT SUCKS. It can not differentiate between different varieties of fruit that I have tagged and marked with my own descriptions. You can leave the ai search but add the text description search back in. I had all the things i needed in my photos labeled for my own use and now I can't find anything, its completely useless. I will likely cancel my subscription if I can find another image storage service that gives me back the description search, even if I have to re-tag everything. This is infuriating.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Differentiate and retrieve photos of specific fruit varieties labeled with custom descriptions",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "OBJECT_NOT_RECOGNIZED",
+    "research_interpretation": "AI search cannot distinguish specific fruit varieties and ignores user-applied metadata descriptions, completely breaking specialized agricultural/botanical inventory retrieval.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos of specific varieties of fruit labeled with custom descriptions.",
+      "what_user_remembers": "User meticulously tagged and marked photos with their own descriptions distinguishing different varieties of fruit.",
+      "retrieval_clue_used": "Custom text descriptions and fruit variety names.",
+      "what_they_tried": "Searched for fruit descriptions and varieties.",
+      "what_happened": "AI search failed to differentiate varieties and failed to index or retrieve photos based on user-entered description text.",
+      "workaround_or_outcome": "Considering canceling subscription and migrating to an alternative service that supports description text search."
+    }
+  },
+  {
+    "review_id": "reddit-raw-017",
+    "app_name": "Google Photos",
+    "original_review": "So how is everyone enjoying Google Photos being completely unable to identify the most basic photos that it could 6 months ago?\nI've had a dog for 10 years. Now when I search for \"dog\" I get a tiny subset of the photos I used to. Unrelated I use blowtorches for my day job. I search for blowtorch. I get eight results none of which contains a blowtorch. Google Photo search is now so bad I'm longing for the days 20 years ago when we manually entered metadata and tags to photos so we could find them later.\nWhat are people doing now that Google Photos is now incapable of showing us our photos based on search terms?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_ACCURACY",
+      "SEARCH_PROBLEM",
+      "IRRELEVANT_RESULTS"
+    ],
+    "job_to_be_done": "Retrieve work tool photos (blowtorches) for day job and personal dog photos from past 10 years",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "Object recognition severely degraded: 'dog' returns only a tiny fraction of 10 years of photos, while work query 'blowtorch' returns 8 photos, none of which actually contain a blowtorch.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving work equipment photos (blowtorches) for professional use and personal photos of a 10-year-old dog.",
+      "what_user_remembers": "Owned dog for 10 years; regularly photographs blowtorches used in day job.",
+      "retrieval_clue_used": "Object keywords 'dog' and 'blowtorch'.",
+      "what_they_tried": "Searched 'dog' and searched 'blowtorch'.",
+      "what_happened": "'dog' returned only a tiny subset of 10 years of pictures; 'blowtorch' returned 8 photos, zero of which contained a blowtorch.",
+      "workaround_or_outcome": "Expressed desire to return to manual metadata tagging from 20 years ago."
+    }
+  },
+  {
+    "review_id": "reddit-raw-018",
+    "app_name": "Google Photos",
+    "original_review": "Has anyone else noticed that searching by date in Google Photos has suddenly stopped working properly?\nI used to be able to type something like “20 October” and it would show all the “Best match” options first, then relevant results grouped by date — really tidy and easy to browse.\nNow, when I search a date, it just gives me a giant block of random photos and I have to open them one by one to check when they’re actually from. It doesn’t seem to sort them by date at all anymore.\nI’m using the Android version of the app - has this feature been removed, or is it just bugged for some people? I've got over 47,000 photos and planned on finally trying to sort them out once a day, but this has ruined all my plans if it's throwing up photos from all sorts of irrelevant dates.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "DATE_SEARCH",
+      "LARGE_LIBRARY_OVERLOAD",
+      "SEARCH_PROBLEM",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Sort and organize 47,000 photos by retrieving media from a specific calendar date (20 October)",
+    "search_method": [
+      "DATE_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "In a 47,000 photo library, date search ('20 October') stopped grouping chronologically and instead returns an unsorted block of photos from irrelevant dates, forcing painful manual inspection.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Organizing a large 47k photo library by searching specific dates (e.g. '20 October').",
+      "what_user_remembers": "Knows photos were taken on October 20th; expects results sorted/grouped by date.",
+      "retrieval_clue_used": "Date query ('20 October').",
+      "what_they_tried": "Searched '20 October' on Android app.",
+      "what_happened": "Returned a giant block of random photos from all sorts of irrelevant dates, without chronological sorting.",
+      "workaround_or_outcome": "Forced to open photos one by one individually to check their actual timestamps."
+    }
+  },
+  {
+    "review_id": "reddit-raw-019",
+    "app_name": "Google Photos",
+    "original_review": "Yeah I've been using Google photos for years mainly because I can add keywords and easily find stuff later. Now with AI or doesn't seem to recognize that the pics have keywords and tries to guess pics that match a theme of the words I entered, without finding a picture that literally has those exact words in the description :/",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "KEYWORD_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve photos using exact keywords previously stored in image descriptions",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "CONTEXT_NOT_UNDERSTOOD",
+    "research_interpretation": "AI semantic matching prioritizes thematic guesswork over exact keyword matching, failing to surface photos that literally contain the exact query words in their description.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos using keywords manually added to photo descriptions over years.",
+      "what_user_remembers": "User remembers adding specific keywords to photo descriptions for future retrieval.",
+      "retrieval_clue_used": "Exact descriptive keywords.",
+      "what_they_tried": "Entered exact keywords in search bar.",
+      "what_happened": "AI guesses photos matching a general theme rather than retrieving the photos containing the exact words in description.",
+      "workaround_or_outcome": "Complete retrieval breakdown for metadata-tagged photos."
+    }
+  },
+  {
+    "review_id": "reddit-raw-020",
+    "app_name": "Google Photos",
+    "original_review": "This AI-powered search is fundamentally a downgrade as a search tool on its own. But even worse, the interface and experience is completely half-baked. Add it to the list of products Google has butchered without anybody asking, in the name of improvement.\nExamples of Poor User Experience:\nDepending on what you search and what it finds, there's no option to show the results in chronological order as one continuous results gallery — it's whatever they think is most \"relevant\" in order of their defined relevancy. This behavior isn't consistent across all searches—it appears to be conditional based off of something to do with the results it finds from your gallery. This makes it very hard to hunt for specific pictures or pictures from certain events or milestones, as you don't have the marker of time to help identify it.\nWhen I search for something — like \"peppers\" — it shows a small subset of my results grouped together by something like relevancy/best match or date. For example, if I have 50 pepper photos, it'll show 10, then a \"+40 more\" tile that expands the rest.\nThe problem (beyond the chronological issue): If I try to multi-select photos, the expanded view collapses every time I click one. So I'm constantly re-opening the group just to select the next image. It's infuriating.\nThese are basic UX/UI fallings that result in a massive downgrade and should have been caught and resolved before anything was rolled out. Even worse, Google has a history of leaving these types of nuisances and bugs indefinitely with no hope that they will ever resolve them.\nI've seen people mention a setting to revert to \"classic\" view... I’ve been boned by Google enough times to know they’ll eventually kill that option too. The classic version — the one that actually works and needed no changes — is a big aspect of what originally sold me on their platform in the first place and led me to becoming chained to their ecosystem at this point. This is an all too familiar series of events across the Google suites, which is happening on an increasingly frequent scale over the last 3 to 5 years.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "AI_SEARCH",
+      "OBJECT_RECOGNITION",
+      "EVENT_CONTEXT_SEARCH",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Hunt for milestone event photos and multi-select object photos (peppers) from search results",
+    "search_method": [
+      "OBJECT_SEARCH",
+      "KEYWORD_SEARCH",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "MANUAL_SCROLLING_REQUIRED",
+    "research_interpretation": "AI relevance ranking breaks chronological mental models for event/milestone retrieval, and grouping UI collapses expanded sets every time an item is selected.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Searching for milestone/event photos and multi-selecting object photos ('peppers').",
+      "what_user_remembers": "User has ~50 photos of peppers; relies on chronological time markers to locate milestone events.",
+      "retrieval_clue_used": "Object query 'peppers', event milestone timeframes.",
+      "what_they_tried": "Searched 'peppers', expanded the '+40 more' tile, and attempted to multi-select photos.",
+      "what_happened": "Results ordered by arbitrary AI relevancy rather than timeline; expanded group collapses every time a photo is selected.",
+      "workaround_or_outcome": "Forced to repeatedly re-open collapsed groups; considering reverting to classic view."
+    }
+  },
+  {
+    "review_id": "reddit-raw-024",
+    "app_name": "Google Photos",
+    "original_review": "Hello, I can no longer search by date to pull up photos from a particular day. I've tried various input formats (3/15/23, 3/15/2023, 031323, etc) and none of them work. I used to search by date all the time. Not sure if this is a known bug or I'm doing something wrong. Using version 6.61 on Android 13 5.1.\nReally appreciate any advice or input. Thanks in advance for any help.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "DATE_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Pull up photos taken on a particular calendar day (March 15, 2023)",
+    "search_method": [
+      "DATE_SEARCH"
+    ],
+    "failure_mode": "REQUIRES_EXACT_DATE",
+    "research_interpretation": "Searching by date broke across multiple standard date formats ('3/15/23', '3/15/2023', '031323'), returning zero results on Android 13.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Attempting to locate photos from a particular day (March 15, 2023).",
+      "what_user_remembers": "Exact calendar date photos were taken.",
+      "retrieval_clue_used": "Various numerical date formats: '3/15/23', '3/15/2023', '031323'.",
+      "what_they_tried": "Tested multiple numerical date input permutations in search bar on Android (v6.61).",
+      "what_happened": "None of the date formats worked to surface photos from that day.",
+      "workaround_or_outcome": "Asked community for assistance or workaround formats."
+    }
+  },
+  {
+    "review_id": "reddit-raw-025",
+    "app_name": "Google Photos",
+    "original_review": "I'm trying to find photos from Feb this year, and the app gives just 7 of the 30 I took that day. The website shows them all. I wouldn't be annoyed if I wasn't a paying customer. So I should be getting what I pay for.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "DATE_SEARCH",
+      "SEARCH_PROBLEM",
+      "INCOMPLETE_RESULTS"
+    ],
+    "job_to_be_done": "Retrieve all 30 photos taken on a specific day in February this year",
+    "search_method": [
+      "DATE_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "Mobile app search artificially truncates date queries to 7 of 30 photos taken on that day, whereas website displays the full 30 photos.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos taken on a specific day in February of the current year.",
+      "what_user_remembers": "User remembers taking 30 photos on that day in February.",
+      "retrieval_clue_used": "Date timeframe ('Feb this year').",
+      "what_they_tried": "Searched for February photos in mobile app vs web interface.",
+      "what_happened": "Mobile app returned only 7 of 30 photos; website showed all 30 photos.",
+      "workaround_or_outcome": "Accessed photos via web browser to see the complete set."
+    }
+  },
+  {
+    "review_id": "reddit-raw-026",
+    "app_name": "Google Photos",
+    "original_review": "I've been using the search function for years to find places I've visited. One search term I used often is \"museum\" and it showed me all the museums I've been to. Then about 2-3 weeks ago that stopped working. Now it's showing me one museum I visited in 2018 and that's it.\nI don't understand why this isn't working anymore or how to fix it.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "LOCATION_SEARCH",
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve photos from museum visits across multiple years",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "LOCATION_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "Category/venue search ('museum') experienced severe under-retrieval, showing only a single museum from 2018 and omitting all other museum visits.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos from places visited over the years using category search.",
+      "what_user_remembers": "User visited numerous museums over years and frequently used the term to find them.",
+      "retrieval_clue_used": "Venue/place keyword 'museum'.",
+      "what_they_tried": "Searched 'museum' in search bar.",
+      "what_happened": "Only showed one museum visited in 2018; all subsequent and prior museum photos stopped appearing.",
+      "workaround_or_outcome": "No workaround found; asked community for fixes."
+    }
+  },
+  {
+    "review_id": "reddit-raw-028",
+    "app_name": "Google Photos",
+    "original_review": "THIS!!## I tried searching \"Trina Turk\" lemme explain first. I sell clothing Trina Turk is a label. In the past if I searched for this I would see all of the photos with the words \"Trina Turk\" in the photo as well as some that have the term in the info of the photo. I SHOULD get maybe 50 photos, but I got 18. Also not one of those photos was of a clothing tag with the words \"Trina Turk\" in the photo!! Very irritating I have thousands and thousands of product photos scrolling through to find something could take all day.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "LARGE_LIBRARY_OVERLOAD",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve inventory photos of clothing items with 'Trina Turk' brand tag from thousands of product photos",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "Clothing reseller searching for brand label ('Trina Turk') via OCR and metadata received only 18 of ~50 photos, none of which showed the clothing tag, forcing day-long manual scrolling.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Clothing reseller retrieving product inventory photos for a specific brand label ('Trina Turk').",
+      "what_user_remembers": "Reseller remembers taking ~50 photos containing the clothing brand tag 'Trina Turk' or having the term in photo info.",
+      "retrieval_clue_used": "Brand label text in image OCR and info area ('Trina Turk').",
+      "what_they_tried": "Searched 'Trina Turk' in Google Photos.",
+      "what_happened": "Expected ~50 photos, received only 18, and not one was of a clothing tag with the brand name.",
+      "workaround_or_outcome": "Forced into day-long manual scrolling through thousands of product photos."
+    }
+  },
+  {
+    "review_id": "reddit-raw-030",
+    "app_name": "Google Photos",
+    "original_review": "I tried to test the google photo search by choosing a Screenshot that I took and in that picture it has \"LES PIRES REACTIONS TWITTER\" , I copy and paste this and it doesn't give me a result . This is so annoying",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Locate specific screenshot containing known French text snippet",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "OCR text-in-image search failed completely when querying an exact copy-pasted headline ('LES PIRES REACTIONS TWITTER') from a known screenshot.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Testing retrieval of a specific screenshot using exact embedded headline text.",
+      "what_user_remembers": "User has screenshot with exact headline text 'LES PIRES REACTIONS TWITTER'.",
+      "retrieval_clue_used": "Exact copy-pasted OCR text string ('LES PIRES REACTIONS TWITTER').",
+      "what_they_tried": "Copy-pasted exact text from the screenshot directly into the search bar.",
+      "what_happened": "Search returned zero results.",
+      "workaround_or_outcome": "Complete retrieval failure; no workaround."
+    }
+  },
+  {
+    "review_id": "reddit-raw-031",
+    "app_name": "Google Photos",
+    "original_review": "The search used to be amazing, perhaps a year ago now. I used to be able to do searches like: \"painting of a woman in a blue dress\" \"black and white dog in Hawaii\" \"green pancakes in Japan\" and it would reliably find the photo I was thinking of. Now, all of these searches do not return any results.\nJust as a test I searched for \"portrait of a woman\" (of which I probably have hundreds of photos from museum trips over the years), and it only brought up a few photos, and 90% of them were not portraits of a woman, but rather a photo of a painting that happened to have a lady standing in the shot. That makes some sense, but the search used to be good enough to infer what I meant.\nThe search is the main thing I have used Google Photos for, so I would really like to switch to a new system.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "NATURAL_LANGUAGE_SEARCH",
+      "AI_SEARCH",
+      "OBJECT_RECOGNITION",
+      "SEARCH_RELEVANCE"
+    ],
+    "job_to_be_done": "Retrieve specific visual memories (dog in Hawaii, green pancakes in Japan, painting of woman in blue dress) using natural language descriptions",
+    "search_method": [
+      "NATURAL_LANGUAGE",
+      "AI_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "Natural-language multi-attribute visual queries ('painting of a woman in a blue dress', 'black and white dog in Hawaii', 'green pancakes in Japan') completely stopped returning results, and 'portrait of a woman' returned 90% irrelevant bystander photos.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating specific photos based on rich multi-attribute visual and contextual descriptions.",
+      "what_user_remembers": "Remembers visual details: a black and white dog in Hawaii, green pancakes eaten in Japan, a painting of a woman in a blue dress, hundreds of museum portraits.",
+      "retrieval_clue_used": "Complex natural-language descriptive queries: 'painting of a woman in a blue dress', 'black and white dog in Hawaii', 'green pancakes in Japan', 'portrait of a woman'.",
+      "what_they_tried": "Typed multi-attribute natural language descriptions into search bar.",
+      "what_happened": "Descriptive queries returned zero results; 'portrait of a woman' returned only a few photos, 90% irrelevant (paintings with a bystander lady).",
+      "workaround_or_outcome": "Seeking to switch from Google Photos to a new photo system."
+    }
+  },
+  {
+    "review_id": "reddit-raw-032",
+    "app_name": "Google Photos",
+    "original_review": "I used to brag all the time about how I could type in basically anything and it would find me pictures of it. The last many times I've tried to do this though, I'll get few/no results until I really mess with the search query or just try and find it by date, and in the best case searches still don't work as well as they used to. One possible factor is I notice it returns no results when certain words are in the query. I have a photo with the comment \"Me with a fat face at work.\" Searching that exact comment returns no results, but if I remove the word fat, the one with the comment + a dozen more. But yeah it's also generally worse. Typing in motorcycle only returns maybe 40% of the photos I have of motorcycles. It used to be more like 90%+",
+    "relevance": "RELEVANT",
+    "evidence_type": "MIXED",
+    "category": [
+      "KEYWORD_SEARCH",
+      "DATE_SEARCH",
+      "SEARCH_PROBLEM",
+      "OBJECT_RECOGNITION"
+    ],
+    "job_to_be_done": "Retrieve workplace photo with specific comment and motorcycle photos",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "DATE_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "SEARCH_TOO_NARROW",
+    "research_interpretation": "Search query censorship/filtering completely blocks retrieval when queries contain words like 'fat' ('Me with a fat face at work'), while object search ('motorcycle') recall dropped from 90%+ to 40%.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating a workplace photo with a specific saved comment and retrieving motorcycle photos.",
+      "what_user_remembers": "Remembers exact comment attached to photo: 'Me with a fat face at work'; knows they have a large collection of motorcycle photos.",
+      "retrieval_clue_used": "Exact comment text, edited comment text, object keyword 'motorcycle', date fallback.",
+      "what_they_tried": "Searched exact comment; removed word 'fat'; searched 'motorcycle'; fell back to date search.",
+      "what_happened": "Exact comment returned 0 results; removing 'fat' returned the photo + a dozen more; 'motorcycle' only returned 40% of photos (used to return 90%+).",
+      "workaround_or_outcome": "Query rephrasing (removing blacklisted words) and falling back to manual date search."
+    }
+  },
+  {
+    "review_id": "reddit-raw-033",
+    "app_name": "Google Photos",
+    "original_review": "I took pictures of all my paintbucket with their paint code back in 2017/2018 and tested the search function with paintbucket and got em all. Just recently I tried paintbucket and nothing. Then I tried bucket... nothing. Paint ... Nothing. And ended up having to scroll through both 2018 and 2019 until i found them. WTF google!!",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "MANUAL_SCROLLING_REQUIRED",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Locate reference photos of paint buckets with paint codes taken in 2017/2018",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH",
+      "MANUAL_SCROLLING"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Object search for utility reference photos ('paintbucket') completely failed across multiple query relaxations ('bucket', 'paint'), forcing full manual scrolling through two years of photos (2018–2019).",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating reference photos of paint buckets with paint codes taken in 2017/2018.",
+      "what_user_remembers": "Took photos of paint buckets with paint codes in 2017/2018.",
+      "retrieval_clue_used": "Keywords: 'paintbucket', 'bucket', 'paint'.",
+      "what_they_tried": "Successive query broadening: searched 'paintbucket', then 'bucket', then 'paint'.",
+      "what_happened": "All keyword searches returned nothing.",
+      "workaround_or_outcome": "Manually scrolled through entire 2018 and 2019 timeline until photos were located."
+    }
+  },
+  {
+    "review_id": "reddit-raw-034",
+    "app_name": "Google Photos",
+    "original_review": "I have images from a thermal camera that I use to find easily with \"thermique\" (french for thermal), now it finds nothing, I have to search in english.\nAnd you can't see the results in chronological order, it's either \"best results\" which mix everything or \"most recent\" which doesn't have anything you're looking for…",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "NATURAL_LANGUAGE_SEARCH",
+      "SEARCH_PROBLEM",
+      "SEARCH_RELEVANCE",
+      "DATE_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve thermal camera images using native language keyword in chronological order",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "NATURAL_LANGUAGE"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Multilingual retrieval broke for non-English queries ('thermique' returns nothing), and English results cannot be sorted chronologically ('best results' scrambles timeline, 'most recent' misses target).",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos captured with a thermal camera.",
+      "what_user_remembers": "Photos were taken with a thermal camera.",
+      "retrieval_clue_used": "French keyword 'thermique' vs English keyword 'thermal'.",
+      "what_they_tried": "Searched native French term 'thermique'; then translated query to English 'thermal'.",
+      "what_happened": "French search returns nothing; English search mixes up timeline without chronological order.",
+      "workaround_or_outcome": "Forced to translate query to English and struggle with scrambled chronological ordering."
+    }
+  },
+  {
+    "review_id": "reddit-raw-035",
+    "app_name": "Google Photos",
+    "original_review": "Awful!! Yesterday I thought maybe they were trying to push people to Gemini and I saw there is now the choice to use Gemini AI search within photos so I turned it on... Same lousy results as the regular search. I had also noticed it is no longer recognizing new faces. My friends and family who I have added the name info too previously still work but we had a new grandchild born last month and Google photos will not find her picture by searching her face. I added a name to one picture and created an album with two photos. The picture I added her name to does show up in Collections with all the other people but if I click on it Google Photos just finds the 2 pictures in the album I created not the dozens of other. Very frustrated with this horrendous downgrade. I knew they had dialed face search way back in Chrome, but within my own photos??? Give me a break!",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "FACE_RECOGNITION",
+      "AI_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve photos of newborn grandchild using facial recognition",
+    "search_method": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH",
+      "AI_SEARCH",
+      "ALBUM"
+    ],
+    "failure_mode": "PERSON_NOT_RECOGNIZED",
+    "research_interpretation": "Facial recognition pipeline fails to index or cluster new faces (newborn grandchild born last month), finding only the 2 photos manually placed into an album and missing dozens of others.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos of a newborn grandchild across recent photo library.",
+      "what_user_remembers": "Grandchild was born last month; has dozens of photos of her.",
+      "retrieval_clue_used": "Grandchild's face profile / labeled name.",
+      "what_they_tried": "Turned on Gemini AI search; labeled baby's face on one photo; created a 2-photo album.",
+      "what_happened": "Google Photos failed to detect or cluster her face in dozens of other photos; clicking her person profile in Collections only showed the 2 album photos.",
+      "workaround_or_outcome": "Manually created an album with 2 photos, leaving dozens of others undiscoverable."
+    }
+  },
+  {
+    "review_id": "reddit-raw-036",
+    "app_name": "Google Photos",
+    "original_review": "search is incredibly terrible now. I tag a large portion of my photos with keywords and descriptions so I can find them at later dates, especially moments/events of my kids and other things that may be relevant to something I need to reference later down the road. It used to be flawless at picking up the photos I added info to.......now I get a bunch of crap that isn't relevant and what's killing me is 99% of the time it does't pull up any of the photos I have added \"xyz\" keyword to the description",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "KEYWORD_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY",
+      "EVENT_CONTEXT_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve milestone photos/events of children using custom keyword tags in descriptions",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "IRRELEVANT_RESULTS",
+    "research_interpretation": "Search engine ignores user-tagged keywords in descriptions for kids' milestones and events, returning irrelevant media 99% of the time.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating specific moments/events of children tagged with custom keywords.",
+      "what_user_remembers": "User meticulously tagged descriptions with specific keywords for kids' events/milestones to reference later.",
+      "retrieval_clue_used": "Custom description keywords.",
+      "what_they_tried": "Searched using tagged keywords.",
+      "what_happened": "99% of the time, search fails to pull up photos containing the tagged keywords, returning irrelevant junk instead.",
+      "workaround_or_outcome": "Complete retrieval breakdown for tagged family milestones."
+    }
+  },
+  {
+    "review_id": "reddit-raw-037",
+    "app_name": "Google Photos",
+    "original_review": "I used to be able to search multiple names at a time (first name only) and it would pull up all pics/vids with those people/pets. Now, it's showing me \"no results.\" These names are saved in my people/pets section. Am I doing something wrong? Did something change? How do I search for multiple people/pets?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve photos/videos featuring multiple specific people and pets together",
+    "search_method": [
+      "PERSON_SEARCH",
+      "FACE_RECOGNITION"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Compound person/pet search broke: typing multiple first names saved in People & Pets section returns 'no results'.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos and videos containing multiple specific family members or pets.",
+      "what_user_remembers": "Names of family members and pets, which are registered in People & Pets section.",
+      "retrieval_clue_used": "Multiple first names simultaneously.",
+      "what_they_tried": "Typed multiple first names into search bar.",
+      "what_happened": "Returned 'no results' despite subjects being registered.",
+      "workaround_or_outcome": "Asked community how to execute compound multi-subject searches."
+    }
+  },
+  {
+    "review_id": "reddit-raw-038",
+    "app_name": "Google Photos",
+    "original_review": "I just noticed that \"no results\" displays whenever I type a pet's name. If I type two people, it displays. If I type one person and one pet, no results. If I type two pets, no results. If I type one pet, no results. These pets are registered as faces in my Google photos and have thousands of pictures to their registered faces.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH",
+      "SEARCH_PROBLEM",
+      "SEARCH_ACCURACY"
+    ],
+    "job_to_be_done": "Retrieve photos of registered pets alone and alongside family members",
+    "search_method": [
+      "PERSON_SEARCH",
+      "FACE_RECOGNITION"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Systemic bug in facial search logic: pet face recognition returns 'no results' for single pet, two pets, or person + pet combinations, despite thousands of photos indexed to registered pet faces.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos of registered pets individually and in combination with family members.",
+      "what_user_remembers": "Pets have registered face profiles with thousands of photos assigned to them.",
+      "retrieval_clue_used": "Pet name, Person + Pet combination, Two Pets combination.",
+      "what_they_tried": "Systematically tested: one pet, two pets, one person + one pet, two people.",
+      "what_happened": "'no results' for one pet, two pets, and person + pet; only two people succeeded.",
+      "workaround_or_outcome": "Documented and shared systematic query failure logic with community."
+    }
+  },
+  {
+    "review_id": "reddit-raw-039",
+    "app_name": "Google Photos",
+    "original_review": "I used to be able to do a search for two people in the same photo. I would search for Bob and Sue and pictures of Bob and Sue would come up. Now. I search for Bob and Sue and get no results found when I know that's clearly wrong. Has something changed with AI and I need to redo a setting?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "FACE_RECOGNITION",
+      "PERSON_SEARCH",
+      "AI_SEARCH",
+      "SEARCH_PROBLEM"
+    ],
+    "job_to_be_done": "Retrieve photos featuring two specific individuals together (Bob and Sue)",
+    "search_method": [
+      "PERSON_SEARCH",
+      "FACE_RECOGNITION"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Co-occurrence person search ('Bob and Sue') broke under AI updates, returning 'no results found' for known co-occurring subjects.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos containing two specific people together in the same picture.",
+      "what_user_remembers": "User knows for certain that photos featuring Bob and Sue together exist.",
+      "retrieval_clue_used": "Compound name query: 'Bob and Sue'.",
+      "what_they_tried": "Searched 'Bob and Sue' in search bar.",
+      "what_happened": "Returned 'no results found'.",
+      "workaround_or_outcome": "Asked community if AI update altered search settings."
+    }
+  },
+  {
+    "review_id": "reddit-raw-041",
+    "app_name": "Google Photos",
+    "original_review": "Anyone know why google photos limits the search terms it will use? Is there a list of banned words? Like many people I suspect I use keywords in the title of my pictures to make it easier to search and find them later on. A common word that I use is \"devil\", it's a keyword in dozens, maybe hundreds of my pictures but if I search for it google says \"no results\". Very strange.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "KEYWORD_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve dozens/hundreds of photos titled with specific keyword ('devil')",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "SEARCH_TOO_NARROW",
+    "research_interpretation": "Blacklisted search term filtering silently suppresses queries for words like 'devil', blocking retrieval for hundreds of photos deliberately titled with that keyword.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos titled with the keyword 'devil'.",
+      "what_user_remembers": "User titled dozens or hundreds of pictures with the keyword 'devil' for easy future discovery.",
+      "retrieval_clue_used": "Title keyword 'devil'.",
+      "what_they_tried": "Searched 'devil' in Google Photos search.",
+      "what_happened": "Search returned 'no results' due to banned word filtering.",
+      "workaround_or_outcome": "Asked community about list of banned words."
+    }
+  },
+  {
+    "review_id": "reddit-raw-042",
+    "app_name": "Google Photos",
+    "original_review": "I'm trying to lookup a screenshot I took in Twitter, but it doesn't seem to work in the search bar. It only seems to allow me to lookup specific names and items. Is there some sort of way I can fix this?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Lookup and retrieve a specific screenshot captured in Twitter",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "OBJECT_SEARCH"
+    ],
+    "failure_mode": "OBJECT_NOT_RECOGNIZED",
+    "research_interpretation": "App/source recognition fails to identify Twitter screenshots in search bar, restricting queries to rigid entity names and objects.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating a specific screenshot taken inside the Twitter app.",
+      "what_user_remembers": "User remembers capturing a screenshot while browsing Twitter.",
+      "retrieval_clue_used": "Source application context / screenshot type ('Twitter screenshot').",
+      "what_they_tried": "Attempted to look up the screenshot via search bar.",
+      "what_happened": "Search bar failed to surface screenshot, only permitting specific item/person names.",
+      "workaround_or_outcome": "Asked community for fixes."
+    }
+  },
+  {
+    "review_id": "reddit-raw-043",
+    "app_name": "Google Photos",
+    "original_review": "This morning I added some descriptions to photos to better assist with finding them when searching. Unfortunately, searching this term doesn't show anything in the results. This happens with every descriptor I made.\nIs this working as intended?",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "KEYWORD_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve newly described photos using custom descriptive text added that morning",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Freshly added photo descriptions are not indexed in search results, rendering user-added metadata completely ineffective for discovery.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating photos immediately after adding custom descriptions.",
+      "what_user_remembers": "User spent the morning adding custom descriptive terms to photos to assist search.",
+      "retrieval_clue_used": "Exact descriptor terms added to photos.",
+      "what_they_tried": "Searched for the newly applied descriptor terms.",
+      "what_happened": "Search returned nothing across every descriptor created.",
+      "workaround_or_outcome": "Asked if this is intended indexing behavior."
+    }
+  },
+  {
+    "review_id": "reddit-raw-044",
+    "app_name": "Google Photos",
+    "original_review": "Let's say I searched for a particular photo and found it. Now I want to see the other photos I've taken at that event/place/location. The only way I can see to do it is to note the day of the photo I searched for, then back all the way out of my photo search to my camera's photo roll and then scroll down to the date I noted earlier.There has to be a better way, right? I cannot find one. I'm hoping you all can enlighten me. If this feature doesn't exist, it should. I have this issue frequently enough. For reference, I'm using a Pixel 7 Pro with Android 16. The Photos app is updated to the latest version.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "EVENT_CONTEXT_SEARCH",
+      "LOCATION_SEARCH",
+      "DATE_SEARCH",
+      "MANUAL_SCROLLING_REQUIRED"
+    ],
+    "job_to_be_done": "Retrieve surrounding photos taken at the same event/place/location after locating one photo via search",
+    "search_method": [
+      "KEYWORD_SEARCH",
+      "MANUAL_SCROLLING"
+    ],
+    "failure_mode": "MANUAL_SCROLLING_REQUIRED",
+    "research_interpretation": "Lack of 'jump to timeline' feature forces users who find an anchor photo via search to memorize its date, exit search, and manually scroll through their entire camera roll to find surrounding event photos.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Finding one photo from an event/location and needing to view surrounding event photos on Pixel 7 Pro (Android 16).",
+      "what_user_remembers": "User knows other photos were taken at that same event/place/location.",
+      "retrieval_clue_used": "Found anchor photo date as a reference.",
+      "what_they_tried": "Searched and found anchor photo; looked for option to view surrounding photos.",
+      "what_happened": "No option to jump to that moment in camera roll from search results.",
+      "workaround_or_outcome": "Forced workaround: noted the photo's date, exited search completely back to camera roll, and manually scrolled down to that date."
+    }
+  },
+  {
+    "review_id": "reddit-raw-045",
+    "app_name": "Google Photos",
+    "original_review": "What I mean is, some of my searches will give me a down arrow that shows other photos taken on that day, but there is no option to see beyond that day. I'd really like to jump to that moment in time in my camera roll rather than just see other photos from that single day. There have been searches I make that don't even have a down arrow to show me other photos taken on those days. It just presents a block of photos across my camera roll. For example of what I'd like to see happen: I searched for photos of my nephew. In the result, I see two of him from my sister's wedding. Tapping on those show me those photos, however in this search there was no down area to see other photos from that day. Further, the wedding event took place over multiple days as I had to travel up ahead of time, attend the rehearsal, and I stayed up there for four days in total before heading back home. So seeing a specific day isn't quite what I am after.",
+    "relevance": "RELEVANT",
+    "evidence_type": "PAIN_POINT",
+    "category": [
+      "EVENT_CONTEXT_SEARCH",
+      "PERSON_SEARCH",
+      "DATE_SEARCH",
+      "MANUAL_SCROLLING_REQUIRED"
+    ],
+    "job_to_be_done": "Retrieve surrounding event photos from a 4-day wedding trip (travel, rehearsal) using photos of nephew as an anchor",
+    "search_method": [
+      "PERSON_SEARCH"
+    ],
+    "failure_mode": "EVENT_NOT_RECOGNIZED",
+    "research_interpretation": "User retrieved nephew photos from sister's wedding but could not access the surrounding multi-day event context (rehearsal, 4-day trip) due to missing contextual navigation in search results.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Retrieving photos from sister's 4-day multi-day wedding trip using nephew search.",
+      "what_user_remembers": "Sister's wedding was a 4-day trip involving travel, rehearsal, and ceremony; remembers nephew attended.",
+      "retrieval_clue_used": "Person search query 'nephew'.",
+      "what_they_tried": "Searched for nephew, tapped on wedding photos, looked for down arrow / jump to camera roll timeline.",
+      "what_happened": "Search presented an isolated block; no down arrow appeared to show surrounding days of the 4-day event.",
+      "workaround_or_outcome": "Unable to transition from person search result to full multi-day event timeline."
+    }
+  },
+  {
+    "review_id": "reddit-raw-047",
+    "app_name": "Google Photos",
+    "original_review": "I ask for \"yellow truck\" and it finds 2 out of the 10 different days I had taken pictures of yellow trucks. They're all banana yellow and the images contain a truck and nothing else. I've been photographing and selling a fleet of yellow trucks for someone. I'll try different phrasing like \" pickup truck\" and it'll actually add a few more trucks but also lose some of the yellow trucks it initially found. It used to find all images that contained whatever keyword I asked for. Now it can't even find the most simple and blatant keywords. It will find the recent cluster of pictures and maybe one or two more pictures from years ago. And the obligatory dump of pictures that contain nothing close to the keyword. Before AI search I could search for \"fork\" and it would find every damn fork in my photos history. Now I'm lucky if it finds 10% of them.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "OBJECT_RECOGNITION",
+      "SEARCH_ACCURACY",
+      "SEARCH_PROBLEM",
+      "AI_SEARCH"
+    ],
+    "job_to_be_done": "Retrieve commercial vehicle photos of yellow trucks photographed across 10 days, and utensil photos (forks)",
+    "search_method": [
+      "OBJECT_SEARCH",
+      "KEYWORD_SEARCH",
+      "NATURAL_LANGUAGE"
+    ],
+    "failure_mode": "INCOMPLETE_RESULTS",
+    "research_interpretation": "Color-object descriptive queries ('yellow truck') missed 80% of dates (found 2 of 10 days of banana yellow trucks); query variation ('pickup truck') dropped previously found items; 'fork' recall dropped below 10%.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Commercial seller retrieving inventory photos of banana yellow trucks photographed on 10 different days, and searching for fork photos.",
+      "what_user_remembers": "Photographed banana yellow trucks on 10 specific days for client sale; trucks are isolated in frame; has fork photos.",
+      "retrieval_clue_used": "Color and object descriptive queries: 'yellow truck', 'pickup truck', 'fork'.",
+      "what_they_tried": "Searched 'yellow truck'; rephrased query to 'pickup truck'; searched 'fork'.",
+      "what_happened": "'yellow truck' found photos from only 2 of 10 days; 'pickup truck' added a few but lost original yellow trucks and dumped irrelevant photos; 'fork' returned <10% of library forks.",
+      "workaround_or_outcome": "Alternating between query phrasing variants with conflicting and degraded result sets."
+    }
+  },
+  {
+    "review_id": "reddit-raw-050",
+    "app_name": "Google Photos",
+    "original_review": "I've turned off Gemini search, and still can't find images and videos, searching by file names. In the past, if I searched the exact file name, I'd find the image or video. This is such a mess from Google.",
+    "relevance": "RELEVANT",
+    "evidence_type": "FAILURE",
+    "category": [
+      "KEYWORD_SEARCH",
+      "SEARCH_PROBLEM",
+      "RETRIEVAL_DIFFICULTY"
+    ],
+    "job_to_be_done": "Retrieve specific photos and videos using their exact file names",
+    "search_method": [
+      "KEYWORD_SEARCH"
+    ],
+    "failure_mode": "CANNOT_FIND_PHOTO",
+    "research_interpretation": "Exact filename search failed completely: searching by exact file name returns nothing even after disabling Gemini search.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating specific existing photos and videos using known exact file names.",
+      "what_user_remembers": "User remembers the exact file names of target images and videos.",
+      "retrieval_clue_used": "Exact filename string.",
+      "what_they_tried": "Disabled Gemini search; typed exact file name into search bar.",
+      "what_happened": "Search failed to return the image or video.",
+      "workaround_or_outcome": "Turned off Gemini search as a troubleshooting workaround, but filename search remained broken."
+    }
+  },
+  {
+    "review_id": "reddit-raw-052",
+    "app_name": "Google Photos",
+    "original_review": "click \"use classic search\" or click search twice and it searches like it used to. Gemini can be useful if you're looking for, e.g., a picture of myself with my arms crossed, when I can't remember anything else about the photo I'm looking for. It doesn't seem to work well when used like normal search, it's trying to find what you're looking for specifically, and sorts by relevance. Doesn't work so great if your search string is \"dogs\" and you're expecting it to return a list in reverse chronological order like you'd expect with normal search.\nYou can also try taking to it like an llm and telling it how you want the results - such as - saying/typing \"show me photos I've taken of dogs in reverse chronological order\" and it will do it. Seems silly but it can be a lot more flexible if you treat it this way.\nJust my two cents/limited experience. I too, get frustrated when things start working differently for seemingly no reason. That's Google for you.",
+    "relevance": "RELEVANT",
+    "evidence_type": "SUCCESS",
+    "category": [
+      "NATURAL_LANGUAGE_SEARCH",
+      "AI_SEARCH",
+      "OBJECT_RECOGNITION",
+      "SUCCESSFUL_RETRIEVAL"
+    ],
+    "job_to_be_done": "Retrieve photo based on physical posture/body pose when forgetting all other contextual clues (date, location)",
+    "search_method": [
+      "NATURAL_LANGUAGE",
+      "AI_SEARCH"
+    ],
+    "failure_mode": "NONE",
+    "research_interpretation": "Demonstrates successful AI retrieval using natural language body pose description ('picture of myself with my arms crossed') when all other context is forgotten, but notes that simple queries require explicit conversational instructions to sort chronologically.",
+    "signal_strength": "HIGH",
+    "source": "Reddit",
+    "specific_retrieval_situation": {
+      "situation_description": "Locating a personal photo based solely on body pose when all other context is forgotten, and querying dog photos.",
+      "what_user_remembers": "User remembers their physical posture in the picture ('myself with my arms crossed') but cannot remember date, location, or any other metadata.",
+      "retrieval_clue_used": "Natural language body pose description: 'picture of myself with my arms crossed'; conversational sorting prompt: 'show me photos I've taken of dogs in reverse chronological order'.",
+      "what_they_tried": "Searched body pose in Gemini AI; searched 'dogs'; commanded Gemini with explicit conversational ordering prompt; clicked search twice.",
+      "what_happened": "Gemini successfully retrieved the target photo based on body pose description; standard search 'dogs' failed reverse chronological sorting unless explicitly commanded.",
+      "workaround_or_outcome": "Workaround 1: Click 'use classic search' or double-click search for standard reverse chronological browsing. Workaround 2: Explicitly prompt LLM with formatting commands ('show me photos I've taken of dogs in reverse chronological order')."
+    }
+  }
+]

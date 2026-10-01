@@ -1,0 +1,1156 @@
+[
+  {
+    "candidate_id": "candidate-01",
+    "candidate_name": "Samidha",
+    "scenarios": [
+      {
+        "scenario_id": "c01-s01",
+        "scenario_title": "Finding a birthday photo using food/cake anchor",
+        "raw_text": "User wanted to find a birthday photo\nFirst clue - Cake\nThe first photo which user seen was the photo which she thought of\n110% satisfied",
+        "debrief_note": "What made you choose that search? Just because user was thinking something regarding food, her subconscious mind triggered to search for birthday and the key clue was by typing cake.",
+        "target_photo": "A specific birthday photo the user had in mind.",
+        "initial_memory_clue": "Food association -> Cake clue for a birthday photo",
+        "queries_attempted": [
+          "Cake"
+        ],
+        "navigation_steps": [
+          "Typed 'Cake' into Google Photos search bar."
+        ],
+        "result_position": "First photo displayed",
+        "grid_or_scroll_depth": "Grid 1, position 1 (immediate)",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_INSTANTLY",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "SUCCESSFUL_RETRIEVAL",
+          "EVENT_CONTEXT_SEARCH"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Retrieve a specific birthday party photo using visual/food clue 'cake'",
+        "research_interpretation": "Successful zero-friction retrieval when a salient physical object ('cake') serves as an exact proxy for a celebration event ('birthday').",
+        "situation_description": "Locating a birthday photo by querying the primary dessert item present in the photo.",
+        "what_user_remembers": "User recalled a birthday celebration anchored subconsciously through food and cake.",
+        "retrieval_clue_used": "Object clue 'Cake'.",
+        "what_they_tried": "Typed 'Cake' directly in search bar.",
+        "what_happened": "The exact target photo was returned as the very first result.",
+        "workaround_or_outcome": "Immediate retrieval with 110% reported satisfaction."
+      },
+      {
+        "scenario_id": "c01-s02",
+        "scenario_title": "Wedding photo with cousin vs virtual ceremony screenshot (Search Abandonment)",
+        "raw_text": "User wanted to see pictures of a wedding in which she was with her cousin physically however she got the photo where user was not physically there it was her sister’s wedding ceremony in which she was in virtual call and there was one screenshot of her being in the call.\nUser searched - wedding\nWorkaround - user scrolled first but she was not able to get that photo. Then she wrote HALDI and scrolled but was unable to retrieve. Then user wrote YELLOW SUIT then also the same result eventually user wrote CEREMONY and still was unable to find that picture.\nResult being user abandoned the search\nAnd complaints she know she has that photo and will eventually find it if scrolls manually but it will take much time so lets skip\n[ user skipped the thought that if the photo has her cousin inside it why not directly search with cousin’s name or by simply writing my photo with my cousin]\nAfter being told she tried but still was unable to find that picture. Result - complete abandonment",
+        "debrief_note": "User failed to find the photo in second scenario after being asked what do you think is preventing you from finding it? User replied: tried many key words to find the picture but was unable to get that, maybe the problem is to find the right keyword to actually get the right picture. And one more thing after trying so many times and still not getting the asked photo, user got pissed off and exited google photos.",
+        "target_photo": "Wedding photo where user was physically present with her cousin.",
+        "initial_memory_clue": "Physical wedding presence with cousin; Haldi ceremony; yellow suit worn.",
+        "queries_attempted": [
+          "wedding",
+          "HALDI",
+          "YELLOW SUIT",
+          "CEREMONY",
+          "[cousin's name]",
+          "my photo with my cousin"
+        ],
+        "navigation_steps": [
+          "Searched 'wedding' -> received screenshot of virtual video call instead of physical attendance.",
+          "Scrolled manually without success.",
+          "Searched cultural sub-event 'HALDI' and scrolled -> not found.",
+          "Searched visual clothing clue 'YELLOW SUIT' -> not found.",
+          "Searched broader event synonym 'CEREMONY' -> not found.",
+          "Prompted by interviewer to try cousin's name and 'my photo with my cousin' -> still failed.",
+          "User rage-quit and exited the app."
+        ],
+        "result_position": "Not found in top results; irrelevant screenshot surfaced first.",
+        "grid_or_scroll_depth": "Multiple grids scrolled across 6 query iterations.",
+        "ranking_section": "Best Match / Search Results",
+        "outcome": "ABANDONED",
+        "first_attempt_success": false,
+        "abandoned": true,
+        "reformulation_count": 5,
+        "evidence_type": "FAILURE",
+        "categories": [
+          "SEARCH_PROBLEM",
+          "RETRIEVAL_DIFFICULTY",
+          "EVENT_CONTEXT_SEARCH",
+          "PERSON_SEARCH",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "EVENT_SEARCH",
+          "COLOR_ATTRIBUTE_SEARCH",
+          "NATURAL_LANGUAGE"
+        ],
+        "failure_mode": "QUERY_REFORMULATION_FAILURE_AND_ABANDONMENT",
+        "job_to_be_done": "Differentiate and retrieve photos from an in-person wedding event with a cousin versus virtual call screenshots",
+        "research_interpretation": "Severe retrieval failure: user knows photo exists, attempts 6 query reformulations (event, ceremony stage, clothing color, person name, relational prompt), faces irrelevant video-call screenshots, experiences extreme frustration and exits app.",
+        "situation_description": "Attempting to retrieve physical wedding ceremony pictures with a cousin, differentiating from virtual attendance screenshots.",
+        "what_user_remembers": "Being physically at her sister's wedding with her cousin, Haldi ritual, wearing a yellow suit.",
+        "retrieval_clue_used": "Event 'wedding', ritual 'HALDI', attire 'YELLOW SUIT', ceremony 'CEREMONY', person 'cousin's name', relationship 'my photo with my cousin'.",
+        "what_they_tried": "Attempted 6 successive keyword and natural language searches, scrolling deeply after each attempt.",
+        "what_happened": "Google Photos returned irrelevant virtual call screenshots; target photo never surfaced.",
+        "workaround_or_outcome": "Complete abandonment: user stated manual scrolling would take too long, became frustrated ('pissed off'), and exited the app."
+      },
+      {
+        "scenario_id": "c01-s03",
+        "scenario_title": "Sunset photo retrieval via token splitting workaround",
+        "raw_text": "User has a glimpse of one of a photo she was unable to give words so she searched for a photo which was near the actual one with a event memory\nUser searched - sunset\nAfter 6-7 photos she got the one.\n3 grids down she has to scroll and get\nUser wanted a photo of sunset only but because she was having similar kind of photos so she was not having right words to describe the targeted one that’s why she chose to go around that memory.\nShe wrote sunset but she was unable to get the results\nSo she wrote sun and set separately and boom after 3 grids she got the desired result.",
+        "debrief_note": null,
+        "target_photo": "A specific sunset photo among many similar sunset pictures.",
+        "initial_memory_clue": "Visual memory of a sunset, but struggled to describe specific distinguishing details.",
+        "queries_attempted": [
+          "sunset",
+          "sun and set"
+        ],
+        "navigation_steps": [
+          "Searched compound word 'sunset' -> unable to get the desired result.",
+          "Reformulated by token-splitting into 'sun and set'.",
+          "Scrolled down 3 grids (~6-7 photos deep) to locate the target."
+        ],
+        "result_position": "6th to 7th photo",
+        "grid_or_scroll_depth": "3 grids down",
+        "ranking_section": "Best Match / Search grid",
+        "outcome": "FOUND_AFTER_REFORMULATION_AND_SCROLLING",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "PAIN_POINT",
+        "categories": [
+          "RETRIEVAL_DIFFICULTY",
+          "SEARCH_PROBLEM",
+          "OBJECT_RECOGNITION",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH"
+        ],
+        "failure_mode": "TOKENIZATION_AND_SIMILAR_PHOTO_CLUSTERING_FRICTION",
+        "job_to_be_done": "Isolate one specific sunset photo from a library containing dozens of visually similar sunset captures",
+        "research_interpretation": "User lacked precise descriptive vocabulary to differentiate identical visual scenes; keyword search failed on compound 'sunset' until user split tokens into 'sun and set', requiring 3 grids of scrolling.",
+        "situation_description": "Disambiguating a specific sunset shot from multiple visually similar sunset captures in the user's gallery.",
+        "what_user_remembers": "Had only a visual glimpse of the specific sunset, but could not articulate distinct visual features.",
+        "retrieval_clue_used": "Natural concept 'sunset' -> split into 'sun and set'.",
+        "what_they_tried": "Searched 'sunset' (failed), then searched 'sun and set' separately.",
+        "what_happened": "Compound query returned ineffective results; split-word query surfaced results 3 grids down (6-7 photos deep).",
+        "workaround_or_outcome": "Found after 3 grids of scrolling; user forced into unnatural keyword splitting workaround."
+      },
+      {
+        "scenario_id": "c01-s04",
+        "scenario_title": "Photobombed dog picture via tab-switching and keyword fallback",
+        "raw_text": "went to People and pets tab\nReturned back to search and types dogs\nShe got the photo after 1 grid\nShe was actually taking her photo but the person photobombed the picture and made it worse",
+        "debrief_note": null,
+        "target_photo": "A photo of the user taking a picture with a dog where someone photobombed the frame.",
+        "initial_memory_clue": "Personal photo with dog, photobombed by an unexpected person.",
+        "queries_attempted": [
+          "dogs"
+        ],
+        "navigation_steps": [
+          "Navigated directly to 'People & pets' tab.",
+          "Did not find or abandoned tab browsing; navigated back to main search bar.",
+          "Typed 'dogs' into search bar.",
+          "Scrolled 1 grid down to locate the photo."
+        ],
+        "result_position": "After 1 grid",
+        "grid_or_scroll_depth": "1 grid down",
+        "ranking_section": "Search Results",
+        "outcome": "FOUND_AFTER_TAB_BOUNCE",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "FACE_RECOGNITION",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "PEOPLE_AND_PETS_TAB",
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH"
+        ],
+        "failure_mode": "NAVIGATION_FRICTION_TAB_DISCOVERY",
+        "job_to_be_done": "Find a photobombed personal picture containing a dog",
+        "research_interpretation": "User initially attempted structured face/pet navigation in the People & Pets tab, found it inadequate or cumbersome, and fell back to simple keyword search 'dogs', finding the photo 1 grid down.",
+        "situation_description": "Locating a picture taken with a dog that was ruined/altered by a photobomber.",
+        "what_user_remembers": "Taking a picture with a dog that got photobombed.",
+        "retrieval_clue_used": "Pet entity 'dogs' and People & Pets tab.",
+        "what_they_tried": "Checked People & Pets tab, returned to search bar, typed 'dogs'.",
+        "what_happened": "Photo surfaced after scrolling 1 grid down.",
+        "workaround_or_outcome": "Recovered photo via keyword search after People & Pets tab failed to yield quick results."
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate-02",
+    "candidate_name": "Maa",
+    "scenarios": [
+      {
+        "scenario_id": "c02-s01",
+        "scenario_title": "Photo of 5 sisters (Semantic relation 'sisters' vs visual count 'girls')",
+        "raw_text": "User thought of a photo in which all her 5 sisters are there.\nUser typed 5 sisters but no relevant photo was found, then user searched for 5 girls and got that photo.\nIntended photo was the first one displayed my google photos\nIn short second attempt with some other keyword helped the user to get the correct photo.",
+        "debrief_note": null,
+        "target_photo": "A group photograph featuring all 5 sisters together.",
+        "initial_memory_clue": "Family relationship: 5 sisters together in one picture.",
+        "queries_attempted": [
+          "5 sisters",
+          "5 girls"
+        ],
+        "navigation_steps": [
+          "Typed relational query '5 sisters' -> zero relevant results returned.",
+          "Reformulated to generic visual demographic query '5 girls'.",
+          "Target photo displayed as the #1 first result."
+        ],
+        "result_position": "First photo displayed (#1)",
+        "grid_or_scroll_depth": "Grid 1, position 1",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "NATURAL_LANGUAGE_SEARCH",
+          "SEARCH_PROBLEM",
+          "PERSON_SEARCH",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "NATURAL_LANGUAGE",
+          "KEYWORD_SEARCH",
+          "PERSON_SEARCH"
+        ],
+        "failure_mode": "SEMANTIC_RELATION_VS_VISUAL_TAG_GAP",
+        "job_to_be_done": "Retrieve a family group portrait of 5 sisters",
+        "research_interpretation": "Classic semantic gap: Google Photos CV models detect object counts and visual classes ('5 girls'), but fail completely to map social/kinship relational terms ('5 sisters') without manual relationship knowledge graphs.",
+        "situation_description": "Locating a group portrait of 5 sisters.",
+        "what_user_remembers": "All 5 of her sisters appearing together in a single photo.",
+        "retrieval_clue_used": "Social relation + count '5 sisters' -> visual category + count '5 girls'.",
+        "what_they_tried": "Typed '5 sisters' (failed), then switched to '5 girls'.",
+        "what_happened": "'5 sisters' yielded no relevant photos; '5 girls' immediately surfaced the target as the #1 first result.",
+        "workaround_or_outcome": "User manually translated human kinship concept into machine-friendly visual description."
+      },
+      {
+        "scenario_id": "c02-s02",
+        "scenario_title": "Rohtang skiing trip photo (Hinglish failure & 'Recent' ranking degradation)",
+        "raw_text": "User wanted to retrieve a photo where she was in a family trip in rohtang and was skiing out there.\nUser typed - rohtang ki ice wali photo\nScreen displayed - no results found try something else\nUser typed sking photo.\nThe photo was not in the best match it was under recent section.\nUser scrolled and got the exact one in 4th grid\nThe photo was - user was skiing in rohtang where she was assisted by an instructor.",
+        "debrief_note": null,
+        "target_photo": "Family trip photo in Rohtang where user was skiing assisted by an instructor.",
+        "initial_memory_clue": "Rohtang location, snow/ice, skiing activity, family vacation.",
+        "queries_attempted": [
+          "rohtang ki ice wali photo",
+          "sking photo"
+        ],
+        "navigation_steps": [
+          "Typed natural conversational Hinglish query: 'rohtang ki ice wali photo' -> 'No results found try something else'.",
+          "Reformulated to misspelled English keyword: 'sking photo'.",
+          "Photo was absent from 'Best Match' section; degraded into 'Recent' section.",
+          "User scrolled through 4 grids under Recent section to find the exact photo."
+        ],
+        "result_position": "4th grid under Recent section",
+        "grid_or_scroll_depth": "4 grids down",
+        "ranking_section": "Recent (missing from Best Match)",
+        "outcome": "FOUND_AFTER_REFORMULATION_AND_HEAVY_SCROLL",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "FAILURE",
+        "categories": [
+          "NATURAL_LANGUAGE_SEARCH",
+          "SEARCH_PROBLEM",
+          "LOCATION_SEARCH",
+          "EVENT_CONTEXT_SEARCH",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "NATURAL_LANGUAGE",
+          "HINGLISH_QUERY",
+          "KEYWORD_SEARCH",
+          "ACTIVITY_SEARCH"
+        ],
+        "failure_mode": "MULTILINGUAL_HINGLISH_REJECTION_AND_RANKING_DEGRADATION",
+        "job_to_be_done": "Retrieve an action photo of skiing on snow during a family trip to Rohtang using natural phrasing",
+        "research_interpretation": "Natural-language Hinglish queries ('rohtang ki ice wali photo') completely break standard Google Photos search (0 results). Switching to English keyword ('sking photo') failed to trigger 'Best Match', forcing user into deep chronological browsing in 'Recent' across 4 grids.",
+        "situation_description": "Locating a vacation activity photo in snowy Rohtang.",
+        "what_user_remembers": "Skiing with an instructor in the snow during a Rohtang family trip.",
+        "retrieval_clue_used": "Location + sensory Hinglish phrase 'rohtang ki ice wali photo' -> activity keyword 'sking photo'.",
+        "what_they_tried": "Natural conversational Hinglish search, followed by activity keyword with slight spelling error.",
+        "what_happened": "Hinglish returned zero results; activity query bypassed Best Match entirely and pushed results to Recent section 4 grids down.",
+        "workaround_or_outcome": "Found after dropping natural language and scrolling deeply through Recent."
+      },
+      {
+        "scenario_id": "c02-s03",
+        "scenario_title": "2021 Marble cake photo (Hinglish syntax rejection & mental model articulation gap)",
+        "raw_text": "User thought of marble cake’s picture.\nThis picture was taken back in 2021\nUser typed marble cake wali photo\nScreen displayed - no results found try searching something else\nUser typed marble cake pic and got the intended photo by the first picture displayed under best results.\nAfter seeing the picture user agreed that they don’t exactly know how to convert this memory into words otherwise ai would have wrote brown cake on a steel plate with no one in background.",
+        "debrief_note": "After seeing the picture user agreed that they don't exactly know how to convert this memory into words, otherwise would have written 'brown cake on a steel plate with no one in background'.",
+        "target_photo": "Picture of a marble cake taken in 2021 (brown cake on a steel plate with plain background).",
+        "initial_memory_clue": "Marble cake baked in 2021.",
+        "queries_attempted": [
+          "marble cake wali photo",
+          "marble cake pic"
+        ],
+        "navigation_steps": [
+          "Typed Hinglish phrasing 'marble cake wali photo' -> 'No results found try searching something else'.",
+          "Replaced colloquial modifier 'wali photo' with keyword abbreviation 'pic': 'marble cake pic'.",
+          "Target photo displayed as the #1 first picture under Best Match."
+        ],
+        "result_position": "First picture (#1)",
+        "grid_or_scroll_depth": "Grid 1, position 1",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "NATURAL_LANGUAGE_SEARCH",
+          "SEARCH_PROBLEM",
+          "OBJECT_RECOGNITION",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "HINGLISH_QUERY",
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH"
+        ],
+        "failure_mode": "COLLOQUIAL_SYNTAX_PENALTY",
+        "job_to_be_done": "Find a photo of a specific homemade marble cake from 2021",
+        "research_interpretation": "Adding conversational Hinglish modifier ('wali photo') caused a total search blackout (0 results), whereas simply changing to 'pic' returned the exact photo at #1. User articulated a core mental model insight: users struggle to translate visual memory into computer-vision descriptive language ('brown cake on steel plate').",
+        "situation_description": "Finding a 2021 food photo of a marble cake.",
+        "what_user_remembers": "Baking a marble cake in 2021; visual recall of a brown cake sitting on a steel plate.",
+        "retrieval_clue_used": "Colloquial phrase 'marble cake wali photo' -> keyword 'marble cake pic'.",
+        "what_they_tried": "Colloquial Hinglish search first, followed by truncated keyword search.",
+        "what_happened": "'wali photo' triggered zero results; 'pic' immediately returned the photo at position 1 in Best Match.",
+        "workaround_or_outcome": "Stripped colloquial language to appease keyword engine."
+      },
+      {
+        "scenario_id": "c02-s04",
+        "scenario_title": "Maid Durga photo during Holi (Conversational query failure & face-occlusion workaround)",
+        "raw_text": "User was unable to get this thing right so gave her hints like-\nThink of a person who might be in the picture when our new home’s inauguration day was there, so many people you have interacted might be there was someone who you thought is a bit different and you still have a memory of them. You have a picture with them . Try remembering any such experience or any memory\nUser thought of her maid named DURGA\nUser remembered a memory she clicked a photo during HOLI with her maid\nUser typed durga ke sath picture jo meri maid hai\nNo result was found\nThen user typed holi pic\nGoogle photos displayed the exact photo under best results in the second grid, the number was 6th.\nUser didn’t thought of finding in a way where her own face was covered with colors.\nThis photo was taken back in 2020 and this is one and only photo she has with this person.",
+        "debrief_note": "What made you choose that search? The user mainly clicks photo when there is some kind of event like diwali, holi or weddings. That’s why all her memories regarding pictures are around an event, an experience.",
+        "target_photo": "Only existing photo with housemaid Durga taken during Holi 2020, with faces covered in colored powder.",
+        "initial_memory_clue": "Maid named Durga, only photo together, taken during Holi festival in 2020.",
+        "queries_attempted": [
+          "durga ke sath picture jo meri maid hai",
+          "holi pic"
+        ],
+        "navigation_steps": [
+          "Typed full relational conversational query in Hindi: 'durga ke sath picture jo meri maid hai' (picture with Durga who is my maid) -> 'No result was found'.",
+          "Fell back to broad cultural festival keyword: 'holi pic'.",
+          "Scrolled to 2nd grid; found target at 6th position under Best Results."
+        ],
+        "result_position": "6th position (2nd grid)",
+        "grid_or_scroll_depth": "2 grids down",
+        "ranking_section": "Best Results",
+        "outcome": "FOUND_AFTER_EVENT_FALLBACK",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "NATURAL_LANGUAGE_SEARCH",
+          "SEARCH_PROBLEM",
+          "PERSON_SEARCH",
+          "FACE_RECOGNITION",
+          "EVENT_CONTEXT_SEARCH"
+        ],
+        "search_methods": [
+          "NATURAL_LANGUAGE",
+          "HINGLISH_QUERY",
+          "EVENT_SEARCH"
+        ],
+        "failure_mode": "COMPLEX_RELATIONAL_QUERY_FAILURE",
+        "job_to_be_done": "Retrieve the sole historical photograph with domestic worker Durga where faces are obscured by festival colors",
+        "research_interpretation": "Full natural-language relational query failed completely. Face recognition was unusable because faces were coated in Holi colors and person was photographed only once (below facial clustering threshold). Photo was retrieved solely by falling back to event anchor 'holi pic'.",
+        "situation_description": "Locating a single rare photo of housemaid Durga taken during Holi 2020.",
+        "what_user_remembers": "Taking a picture with maid Durga during Holi 2020; both faces covered in colored powders.",
+        "retrieval_clue_used": "Relational conversational query -> cultural festival keyword 'holi pic'.",
+        "what_they_tried": "Entered natural language Hindi relational sentence, then switched to festival event keyword.",
+        "what_happened": "Conversational query returned 0 results; festival keyword returned target at 6th position in 2nd grid.",
+        "workaround_or_outcome": "Relied on episodic event memory ('holi') rather than person name or face detection."
+      },
+      {
+        "scenario_id": "c02-s05",
+        "scenario_title": "Elderly family photo (Compositional relationship vs clothing color search)",
+        "raw_text": "Third scenario one more try\nUser remembers one photo exists but don’t know when it was taken\nUser wanted a photo where her, father and father’s two sisters are there\nAll are old people\nUser thought for a while, tried to figure out what exactly she can write to get the phto and then typed- two ladies with a man\nGoogle displayed some photos but user was unable to get the intended photo\nthen typed -\n2 ladies with blue outfit\nUser got the picture but she needed to scroll a lot under best match. Something around 4-5 swipes down she got the picture",
+        "debrief_note": "What made you choose that search? The user mainly clicks photo when there is some kind of event like diwali, holi or weddings. That’s why all her memories regarding pictures are around an event, an experience.",
+        "target_photo": "Photo of user, her father, and father's two elderly sisters together; date unknown.",
+        "initial_memory_clue": "Composition: user with father and father's two elderly sisters; blue clothing.",
+        "queries_attempted": [
+          "two ladies with a man",
+          "2 ladies with blue outfit"
+        ],
+        "navigation_steps": [
+          "Pondered how to express the photo in words.",
+          "Typed demographic compositional query: 'two ladies with a man' -> returned unrelated photos.",
+          "Reformulated by adding visual color detail: '2 ladies with blue outfit'.",
+          "Scrolled deeply through Best Match (4-5 swipes down) before locating the photo."
+        ],
+        "result_position": "4-5 swipes down under Best Match",
+        "grid_or_scroll_depth": "4-5 swipes down (deep scroll)",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION_AND_DEEP_SCROLL",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "PAIN_POINT",
+        "categories": [
+          "RETRIEVAL_DIFFICULTY",
+          "SEARCH_PROBLEM",
+          "PERSON_SEARCH",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "NATURAL_LANGUAGE",
+          "COMPOSITIONAL_QUERY",
+          "COLOR_ATTRIBUTE_SEARCH"
+        ],
+        "failure_mode": "COMPOSITIONAL_DEMOGRAPHIC_AMBIGUITY_AND_DEEP_SCROLLING",
+        "job_to_be_done": "Retrieve an undated photograph of elderly relatives based on group composition and clothing color",
+        "research_interpretation": "Compositional query ('two ladies with a man') lacked discriminative power; adding visual color attribute ('blue outfit') surfaced the photo but required 4-5 swipes of scrolling friction under Best Match.",
+        "situation_description": "Locating an undated photo of elderly relatives (father and two paternal aunts).",
+        "what_user_remembers": "Elderly group portrait of father and two sisters wearing blue outfits; unknown date.",
+        "retrieval_clue_used": "Composition 'two ladies with a man' -> visual attribute '2 ladies with blue outfit'.",
+        "what_they_tried": "Attempted compositional description, followed by clothing color query with deep scrolling.",
+        "what_happened": "First query returned irrelevant images; second query returned the image but buried 4-5 swipes down.",
+        "workaround_or_outcome": "Found only through perseverance and heavy manual scrolling."
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate-03",
+    "candidate_name": "Durrani",
+    "scenarios": [
+      {
+        "scenario_id": "c03-s01",
+        "scenario_title": "Camera-captured document from 4 years ago",
+        "raw_text": "User thought about a photo of a document he has taken a picture by camera.\nUser typed document and was able to see many documents\nHe got the inteded one - after scrolling 2-3 swipes he got the photo in 3rd to 4th grid.\nThis photo was taken 4 years ago.",
+        "debrief_note": null,
+        "target_photo": "Physical document photographed with camera 4 years prior.",
+        "initial_memory_clue": "Type of media: physical paper document photographed with phone camera 4 years ago.",
+        "queries_attempted": [
+          "document"
+        ],
+        "navigation_steps": [
+          "Typed generic entity category 'document'.",
+          "Faced high library volume of various documents.",
+          "Scrolled 2-3 swipes down to locate target in 3rd to 4th grid."
+        ],
+        "result_position": "3rd to 4th grid",
+        "grid_or_scroll_depth": "2-3 swipes (3rd to 4th grid)",
+        "ranking_section": "Search Results",
+        "outcome": "FOUND_AFTER_MODERATE_SCROLL",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "RETRIEVAL_DIFFICULTY",
+          "DOCUMENT_SEARCH"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Find a specific physical document photographed 4 years ago among numerous stored documents",
+        "research_interpretation": "Category-level keyword 'document' accurately classified camera-captured documents, but lacked temporal or content filters, requiring 2-3 swipes to scan through chronological document clusters.",
+        "situation_description": "Locating a 4-year-old camera capture of a paper document.",
+        "what_user_remembers": "Taking a camera photo of an official document approximately 4 years ago.",
+        "retrieval_clue_used": "Category keyword 'document'.",
+        "what_they_tried": "Typed 'document' and browsed the returned document cluster.",
+        "what_happened": "Many documents appeared; user scrolled 2-3 swipes (3rd-4th grid) to find target.",
+        "workaround_or_outcome": "Found on first query through manual visual scanning."
+      },
+      {
+        "scenario_id": "c03-s02",
+        "scenario_title": "Mussoorie trip sitting alone on mountain",
+        "raw_text": "User searched about a photo which was taken during Mussoorie trip when the user was sitting on a mountain alone\nUser typed - mountain\nAnd got the photo under best match section in second grid 6 or 7th position",
+        "debrief_note": null,
+        "target_photo": "Solo photo sitting on a mountain during a vacation to Mussoorie.",
+        "initial_memory_clue": "Mussoorie trip; sitting alone on a mountain.",
+        "queries_attempted": [
+          "mountain"
+        ],
+        "navigation_steps": [
+          "Typed landscape feature 'mountain'.",
+          "Looked through Best Match section.",
+          "Located photo at 6th-7th position in 2nd grid."
+        ],
+        "result_position": "6th or 7th position (2nd grid)",
+        "grid_or_scroll_depth": "2nd grid",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_IN_TOP_RESULTS",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "LOCATION_SEARCH",
+          "SUCCESSFUL_RETRIEVAL"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "LANDSCAPE_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Retrieve a solo vacation picture taken on a mountain summit without typing trip location",
+        "research_interpretation": "Google Photos' landscape/scenery classifier effectively identified mountainous terrain, allowing user to retrieve the photo using only physical landscape keyword ('mountain') without remembering dates or trip names.",
+        "situation_description": "Retrieving a solo mountain summit picture from a Mussoorie trip.",
+        "what_user_remembers": "Sitting alone on a mountain peak during a trip to Mussoorie.",
+        "retrieval_clue_used": "Geographical terrain keyword 'mountain'.",
+        "what_they_tried": "Typed 'mountain' directly in search bar.",
+        "what_happened": "Found under Best Match in 2nd grid at position 6-7.",
+        "workaround_or_outcome": "Fast successful retrieval on first query attempt."
+      },
+      {
+        "scenario_id": "c03-s03",
+        "scenario_title": "Diwali photo with friends and lighted firecracker (Color disambiguation)",
+        "raw_text": "User wanted a photo of him with his 2 best friends. It is taken in diwali where all of them are posing with a firecracker lighted in their hands.\nUser typed - diwali\nHe was unable to find the intended photo then he typed, Diwali black\nThen he got the intended photo under best match 1st grid 6 or 7th position",
+        "debrief_note": null,
+        "target_photo": "Diwali photo with 2 best friends holding a lit firecracker, wearing black outfits.",
+        "initial_memory_clue": "Diwali festival, 2 best friends, holding a lighted firecracker, wearing black.",
+        "queries_attempted": [
+          "diwali",
+          "Diwali black"
+        ],
+        "navigation_steps": [
+          "Typed cultural event keyword 'diwali' -> flooded with festival photos, target not found.",
+          "Appended clothing color attribute: 'Diwali black'.",
+          "Target surfaced immediately under Best Match, 1st grid, 6th-7th position."
+        ],
+        "result_position": "6th or 7th position (1st grid)",
+        "grid_or_scroll_depth": "1st grid",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "EVENT_CONTEXT_SEARCH",
+          "SEARCH_ACCURACY",
+          "SEARCH_PROBLEM"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "EVENT_SEARCH",
+          "COLOR_ATTRIBUTE_SEARCH"
+        ],
+        "failure_mode": "EVENT_LEVEL_QUERY_OVERLOAD",
+        "job_to_be_done": "Isolate a specific Diwali memory with friends from multiple years of Diwali celebrations",
+        "research_interpretation": "Searching by event alone ('diwali') produced query overload across years of celebrations. Adding a visual color attribute ('black') effectively filtered the event pool, returning the photo in grid 1.",
+        "situation_description": "Locating a specific Diwali picture with two best friends holding a lit firecracker.",
+        "what_user_remembers": "Posing with two friends on Diwali with lighted firecrackers, wearing black.",
+        "retrieval_clue_used": "Event 'diwali' -> Event + color 'Diwali black'.",
+        "what_they_tried": "Searched event name, then augmented query with outfit color.",
+        "what_happened": "'diwali' was too broad; 'Diwali black' immediately brought it to grid 1 under Best Match.",
+        "workaround_or_outcome": "Successfully disambiguated via visual color attribute."
+      },
+      {
+        "scenario_id": "c03-s04",
+        "scenario_title": "Brother on white motorcycle at cousin's wedding",
+        "raw_text": "User knew there was one day when he was in a wedding of one of his cousin where he took a photo of a person only once. This photo contains his brother who was in a bike that too of white colour\nUser typed white bike\nUser got the photo under best match section without clicking on view more.",
+        "debrief_note": null,
+        "target_photo": "Unique photo of brother on a white motorcycle taken during a cousin's wedding.",
+        "initial_memory_clue": "Cousin's wedding, brother sitting on a white motorcycle/bike (photographed only once).",
+        "queries_attempted": [
+          "white bike"
+        ],
+        "navigation_steps": [
+          "Typed specific object + color combination: 'white bike'.",
+          "Located photo immediately in Best Match without needing to expand or click 'View More'."
+        ],
+        "result_position": "Within initial Best Match cards",
+        "grid_or_scroll_depth": "Grid 1 (no scroll, no 'view more')",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_INSTANTLY",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "SUCCESSFUL_RETRIEVAL"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH",
+          "COLOR_ATTRIBUTE_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Find a one-off photo of a brother on a white motorcycle taken at a wedding",
+        "research_interpretation": "High-specificity visual object query ('white bike') achieved instant zero-click retrieval, bypassing the need for person tagging or wedding event metadata.",
+        "situation_description": "Finding a photo of the user's brother riding a white motorcycle at a cousin's wedding.",
+        "what_user_remembers": "Brother on a white bike, photographed only on that single occasion.",
+        "retrieval_clue_used": "Color + vehicle object 'white bike'.",
+        "what_they_tried": "Typed 'white bike' directly.",
+        "what_happened": "Target photo appeared directly in Best Match without clicking 'view more'.",
+        "workaround_or_outcome": "Instant retrieval with zero friction."
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate-04",
+    "candidate_name": "Abhilasha",
+    "scenarios": [
+      {
+        "scenario_id": "c04-s01",
+        "scenario_title": "Outing photo with friend wearing white top (Exiled to 17th grid under Recent)",
+        "raw_text": "User wanted to search about her own photo when she went out after many days, she took a lot of photos that day with her friend. She wanted to retrieve that\nUser typed - white top\nUser got the photo under most recent section not in best match\nSwiped up 2 times and got the photo in 17th grid",
+        "debrief_note": null,
+        "target_photo": "Personal photo with a friend wearing a white top on an outing after a long hiatus.",
+        "initial_memory_clue": "Outing with friend after many days, took many photos, wore a white top.",
+        "queries_attempted": [
+          "white top"
+        ],
+        "navigation_steps": [
+          "Typed clothing description 'white top'.",
+          "Photo was missing entirely from Best Match section.",
+          "Navigated down to Most Recent section.",
+          "Swiped up twice and scrolled down to the 17th grid to find the target."
+        ],
+        "result_position": "17th grid under Most Recent section",
+        "grid_or_scroll_depth": "17 grids down (extreme scroll depth)",
+        "ranking_section": "Most Recent (absent from Best Match)",
+        "outcome": "FOUND_AFTER_EXTREME_SCROLL",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "PAIN_POINT",
+        "categories": [
+          "RETRIEVAL_DIFFICULTY",
+          "SEARCH_ACCURACY",
+          "SEARCH_PROBLEM"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "COLOR_ATTRIBUTE_SEARCH"
+        ],
+        "failure_mode": "RANKING_DEGRADATION_AND_EXTREME_SCROLLING",
+        "job_to_be_done": "Find photos from a specific social outing based on wearing a white top",
+        "research_interpretation": "Extreme ranking failure: search algorithm detected 'white top' chronologically but failed to score it into 'Best Match', burying the target 17 grids deep in 'Most Recent', requiring severe scrolling effort.",
+        "situation_description": "Locating photos from a rare outing with a friend based on outfit color.",
+        "what_user_remembers": "Going out with a friend after a long time and wearing a white top.",
+        "retrieval_clue_used": "Clothing color attribute 'white top'.",
+        "what_they_tried": "Typed 'white top' in search bar.",
+        "what_happened": "Best Match omitted the photo; it appeared in Most Recent 17 grids down.",
+        "workaround_or_outcome": "Found after two swipes up and scrolling through 17 grids of images."
+      },
+      {
+        "scenario_id": "c04-s02",
+        "scenario_title": "Uncle at beach with tentacle-like object (False memory & deep scrolling)",
+        "raw_text": "User thought about a memory where she went with her family to a trip to malwan (taali beach) where her uncle’s photo was taken with a thing like octopus’s tentacles kept on his head. The thing is not exactly an octopus it just looks like it.\nUser typed - octopus but wasn’t able to retrieve.\nAnd then typed - sea but this time as well she was unable to get that exact photo\nThen she typed - mustache and she was able to get that photo under most recent tab, second last grid after scrolling a lot. Almost at the end it took a while and a lot of patience.",
+        "debrief_note": null,
+        "target_photo": "Trip photo at Malwan beach with uncle who had a tentacle-resembling object placed on his head.",
+        "initial_memory_clue": "Malwan (Taali beach) family trip, uncle with an octopus-tentacle-like object on his head, uncle has a mustache.",
+        "queries_attempted": [
+          "octopus",
+          "sea",
+          "mustache"
+        ],
+        "navigation_steps": [
+          "Searched false visual memory 'octopus' -> 0 relevant results (object was not an actual octopus).",
+          "Searched environment/location proxy 'sea' -> unable to find photo.",
+          "Searched facial feature 'mustache'.",
+          "Navigated to Most Recent tab; scrolled extensively to the second-to-last grid near the very end."
+        ],
+        "result_position": "Second-to-last grid under Most Recent tab",
+        "grid_or_scroll_depth": "Near the very end of search results (extensive scroll)",
+        "ranking_section": "Most Recent",
+        "outcome": "FOUND_AFTER_REFORMULATION_AND_EXHAUSTIVE_SCROLL",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 2,
+        "evidence_type": "FAILURE",
+        "categories": [
+          "RETRIEVAL_DIFFICULTY",
+          "SEARCH_PROBLEM",
+          "OBJECT_RECOGNITION",
+          "FACE_RECOGNITION",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH",
+          "ENVIRONMENT_SEARCH",
+          "FACIAL_ATTRIBUTE_SEARCH"
+        ],
+        "failure_mode": "METAPHORICAL_OBJECT_FAILURE_AND_DEEP_RANKING_EXHAUSTION",
+        "job_to_be_done": "Retrieve an eccentric vacation photo where an uncle wore a prop resembling octopus tentacles",
+        "research_interpretation": "Human episodic memory frequently encodes visual metaphors ('octopus tentacles') rather than taxonomic truths. Keyword computer vision strictly tags reality, failing metaphorical queries. Bypassed via facial feature ('mustache') but buried at the very end of Most Recent.",
+        "situation_description": "Locating a vacation snapshot of an uncle with a tentacle-like object balanced on his head.",
+        "what_user_remembers": "Taali beach in Malwan, uncle with octopus-looking tentacles on head, sea, uncle's mustache.",
+        "retrieval_clue_used": "Visual metaphor 'octopus' -> landscape 'sea' -> facial attribute 'mustache'.",
+        "what_they_tried": "Searched metaphorical object, then geographic terrain, then facial feature.",
+        "what_happened": "'octopus' and 'sea' failed completely; 'mustache' surfaced it near the very end of Most Recent.",
+        "workaround_or_outcome": "Found only through immense patience and scrolling to the bottom of the collection."
+      },
+      {
+        "scenario_id": "c04-s03",
+        "scenario_title": "Bitcoin order ID screenshot (OCR retrieval with ranking noise)",
+        "raw_text": "User thought about a screenshot in which it is clearly written order id of a cryptocurrency basically bitcoin. She knew this photo exists but was finding problem what to exactly search\nUser typed - bitcoin\nThe photo was under best match section only. There were 2-3 photos and one of them was not relevant with the searched keyword.\nHowever was surprised when she saw same 2 photos were there under most recent section without including the irrelevant one.",
+        "debrief_note": null,
+        "target_photo": "Screenshot of a cryptocurrency transaction showing a Bitcoin order ID.",
+        "initial_memory_clue": "Cryptocurrency transaction screenshot with 'order id' and 'bitcoin' text.",
+        "queries_attempted": [
+          "bitcoin"
+        ],
+        "navigation_steps": [
+          "Hesitated on what exact keyword would retrieve text inside screenshots.",
+          "Typed text keyword 'bitcoin'.",
+          "Observed 2-3 photos in Best Match, including 1 irrelevant false positive.",
+          "Noticed Most Recent section displayed the 2 relevant screenshots cleanly without the false positive."
+        ],
+        "result_position": "Within 2-3 photos in Best Match / Most Recent",
+        "grid_or_scroll_depth": "Grid 1 (top of results)",
+        "ranking_section": "Best Match & Most Recent",
+        "outcome": "FOUND_WITH_MINOR_NOISE",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "MIXED",
+        "categories": [
+          "DOCUMENT_SEARCH",
+          "SEARCH_ACCURACY",
+          "SUCCESSFUL_RETRIEVAL"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "OCR_SEARCH"
+        ],
+        "failure_mode": "RANKING_ALGORITHM_FALSE_POSITIVE_NOISE",
+        "job_to_be_done": "Retrieve a specific financial screenshot containing an order ID for a Bitcoin transaction",
+        "research_interpretation": "OCR text extraction successfully matched embedded text ('bitcoin') in the screenshot, but Google Photos' Best Match algorithm injected an irrelevant false positive, which was paradoxically filtered out in the plain chronological Recent view.",
+        "situation_description": "Locating a transaction screenshot displaying a Bitcoin order confirmation.",
+        "what_user_remembers": "A screenshot explicitly stating a cryptocurrency order ID for Bitcoin.",
+        "retrieval_clue_used": "Embedded text token 'bitcoin'.",
+        "what_they_tried": "Typed 'bitcoin' into search bar.",
+        "what_happened": "Found in Best Match alongside an irrelevant photo; clean pair shown under Recent.",
+        "workaround_or_outcome": "Target retrieved quickly, though ranking showed unexplained algorithmic noise."
+      },
+      {
+        "scenario_id": "c04-s04",
+        "scenario_title": "Uncle peeling papaya to feed pet dog ('View More' 6-grid barrier)",
+        "raw_text": "User thought of a uncle who is peeling papaya and was about to feed his pet dog\nUser typed - papaya\nAnd she was able to retrieve that picture under best match section. She clicked on view more where she was forced to see a lot of photos she was served with 6 grids and the photo was in the second last grid. User had to scroll a bit to actually get the photo which was a bit hassle.",
+        "debrief_note": null,
+        "target_photo": "Photo of an uncle peeling a papaya preparing to feed his pet dog.",
+        "initial_memory_clue": "Uncle peeling papaya, about to feed dog.",
+        "queries_attempted": [
+          "papaya"
+        ],
+        "navigation_steps": [
+          "Typed fruit object keyword 'papaya'.",
+          "Photo was not in the immediate carousel; had to click 'View More'.",
+          "Presented with an expanded 6-grid view.",
+          "Scrolled down to the 5th (second-to-last) grid to locate the photo."
+        ],
+        "result_position": "Second-to-last grid (5th of 6 grids) in expanded view",
+        "grid_or_scroll_depth": "5 grids deep after clicking 'View More'",
+        "ranking_section": "Best Match (expanded via 'View More')",
+        "outcome": "FOUND_AFTER_UI_EXPANSION_AND_SCROLL",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "PAIN_POINT",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "RETRIEVAL_DIFFICULTY",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "OBJECT_SEARCH"
+        ],
+        "failure_mode": "EXPANDED_GRID_FRICTION_AND_DEEP_POSITIONING",
+        "job_to_be_done": "Find a family photo featuring an uncle preparing papaya fruit for a pet",
+        "research_interpretation": "Object recognition correctly identified 'papaya', but UI friction required expanding into 'View More' and scrolling past 4 grids of higher-ranked false positives/unrelated items to reach the target in grid 5.",
+        "situation_description": "Locating a snapshot of an uncle peeling papaya to feed a pet dog.",
+        "what_user_remembers": "Uncle peeling a papaya for his dog.",
+        "retrieval_clue_used": "Food object keyword 'papaya'.",
+        "what_they_tried": "Typed 'papaya', clicked 'View More', and scrolled through 6 grids.",
+        "what_happened": "Target photo was buried in the 5th grid out of 6 grids presented.",
+        "workaround_or_outcome": "Photo retrieved with notable friction and hassle."
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate-05",
+    "candidate_name": "Rehan",
+    "scenarios": [
+      {
+        "scenario_id": "c05-s01",
+        "scenario_title": "Best friend's engagement ring box joke photo",
+        "raw_text": "User wanted a photo from his best friend's engagement, where he was holding the ring box for a joke photo.\nUser searched — engagement\nGot 8-9 photos, but not the one. Scrolled 2 grids, found it under Best Match.",
+        "debrief_note": null,
+        "target_photo": "Comedic photo holding the ring box at his best friend's engagement party.",
+        "initial_memory_clue": "Best friend's engagement; holding ring box as a joke.",
+        "queries_attempted": [
+          "engagement"
+        ],
+        "navigation_steps": [
+          "Searched milestone event 'engagement'.",
+          "Received 8-9 engagement photos, but target was not among initial results.",
+          "Scrolled down 2 grids within Best Match to find the photo."
+        ],
+        "result_position": "2 grids down in Best Match",
+        "grid_or_scroll_depth": "2 grids down",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_MODERATE_SCROLL",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "EVENT_CONTEXT_SEARCH",
+          "SEARCH_ACCURACY",
+          "SUCCESSFUL_RETRIEVAL"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "EVENT_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Retrieve a specific joke photo from a close friend's engagement party",
+        "research_interpretation": "Event classification ('engagement') retrieved relevant ceremony images, but lacked sub-event or action-level ranking (holding ring box), requiring 2 grids of manual scanning.",
+        "situation_description": "Locating a comedic ring-box pose from a best friend's engagement party.",
+        "what_user_remembers": "Best friend's engagement party; posing humorously with the ring box.",
+        "retrieval_clue_used": "Event keyword 'engagement'.",
+        "what_they_tried": "Typed 'engagement' in search bar.",
+        "what_happened": "Returned 8-9 photos; target found after scrolling 2 grids under Best Match.",
+        "workaround_or_outcome": "Found on initial query with mild scrolling."
+      },
+      {
+        "scenario_id": "c05-s02",
+        "scenario_title": "Cold morning trip memory (Sensory mood query failure vs visual proxy)",
+        "raw_text": "User wanted a photo from a trip where he remembered the feeling (early morning, foggy, cold) but not the place or activity.\nUser searched — fog\nNo results found.\nUser searched — morning trip\nGot unrelated photos (breakfast plates, hotel rooms).\nUser then searched — clouds\nGot it in the 3rd grid under Best Match — turned out to be a photo of him standing on a viewpoint, mist below him. He said \"I didn't even remember it was a viewpoint until I saw it.\"",
+        "debrief_note": "What made you choose that search? He said he didn't have a landmark to anchor to, so he searched for a mood/visual detail instead, and only that worked — location-based search 'felt useless' because he genuinely didn't remember it.",
+        "target_photo": "Standing on a high scenic viewpoint with mist/clouds below on a cold morning trip.",
+        "initial_memory_clue": "Atmospheric feeling: early morning, cold, foggy; place and activity forgotten.",
+        "queries_attempted": [
+          "fog",
+          "morning trip",
+          "clouds"
+        ],
+        "navigation_steps": [
+          "Searched meteorological condition 'fog' -> 'No results found'.",
+          "Searched conceptual phrase 'morning trip' -> unrelated photos (breakfast plates, hotel rooms).",
+          "Searched visual proxy 'clouds'.",
+          "Located photo in 3rd grid under Best Match."
+        ],
+        "result_position": "3rd grid under Best Match",
+        "grid_or_scroll_depth": "3 grids down",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 2,
+        "evidence_type": "PAIN_POINT",
+        "categories": [
+          "NATURAL_LANGUAGE_SEARCH",
+          "SEARCH_PROBLEM",
+          "LOCATION_SEARCH",
+          "OBJECT_RECOGNITION",
+          "SEARCH_ACCURACY"
+        ],
+        "search_methods": [
+          "NATURAL_LANGUAGE",
+          "KEYWORD_SEARCH",
+          "WEATHER_SEARCH",
+          "CONCEPT_SEARCH"
+        ],
+        "failure_mode": "ATMOSPHERIC_AFFECTIVE_QUERY_FAILURE",
+        "job_to_be_done": "Find a vacation photo when only sensory/weather feelings are remembered and location is completely forgotten",
+        "research_interpretation": "Users remember affective feelings (cold morning, fog), but traditional search fails atmospheric concepts ('fog' -> 0 results) and misinterprets compound concepts ('morning trip' -> breakfast food). Only an approximate physical object proxy ('clouds') worked after multiple iterations.",
+        "situation_description": "Locating a mountain viewpoint photo based solely on a cold morning feeling without location knowledge.",
+        "what_user_remembers": "Early morning feeling, foggy, freezing cold; no memory of landmark, location name, or activity.",
+        "retrieval_clue_used": "Atmosphere 'fog' -> concept 'morning trip' -> visual proxy 'clouds'.",
+        "what_they_tried": "Searched weather term, conceptual trip description, then visual proxy.",
+        "what_happened": "'fog' returned 0; 'morning trip' returned breakfast/hotel photos; 'clouds' surfaced photo in 3rd grid.",
+        "workaround_or_outcome": "Found in 3rd grid after pivoting from affective memory to visual proxy."
+      },
+      {
+        "scenario_id": "c05-s03",
+        "scenario_title": "Deceased childhood dog (Personal ownership failure & pet tab discovery barrier)",
+        "raw_text": "User knew he had a photo with his childhood dog who passed away, but couldn't remember when it was taken.\nUser searched — dog\nToo many results (recent dog photos of a friend's pet dominated Best Match).\nReformulated — my dog\nSame issue.\nWent to People & Pets tab, scrolled manually under the pet's face group, found it after ~15 photos.\nSaid he didn't think to use the tab first because \"I forgot Google even groups pets separately.\"",
+        "debrief_note": "What do you think is preventing you from finding it, when it failed? He said the dog photos scenario was hardest because the 'keyword was too generic and shared with someone else's content' — his own words: 'the app doesn't know it's mine emotionally, just that it's a dog.'",
+        "target_photo": "Childhood photo with family dog who has since passed away; date unknown.",
+        "initial_memory_clue": "Childhood dog, passed away, emotional attachment; date forgotten.",
+        "queries_attempted": [
+          "dog",
+          "my dog"
+        ],
+        "navigation_steps": [
+          "Searched generic entity 'dog' -> overwhelmed by recent dog photos of friend's pet.",
+          "Reformulated with personal possessive pronoun: 'my dog' -> identical result overload.",
+          "Switched to 'People & Pets' tab.",
+          "Located the deceased pet's facial group and manually scrolled through ~15 photos to find the memory."
+        ],
+        "result_position": "~15 photos into pet face cluster",
+        "grid_or_scroll_depth": "~15 photos deep in pet cluster",
+        "ranking_section": "People & Pets tab (manual browsing)",
+        "outcome": "FOUND_VIA_TAB_BROWSING_WORKAROUND",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 2,
+        "evidence_type": "FAILURE",
+        "categories": [
+          "OBJECT_RECOGNITION",
+          "SEARCH_PROBLEM",
+          "FACE_RECOGNITION",
+          "RETRIEVAL_DIFFICULTY",
+          "NATURAL_LANGUAGE_SEARCH"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "NATURAL_LANGUAGE",
+          "PEOPLE_AND_PETS_TAB"
+        ],
+        "failure_mode": "LACK_OF_PERSONAL_TEMPORAL_AND_EMOTIONAL_AWARENESS",
+        "job_to_be_done": "Retrieve an emotionally significant memory of a deceased family pet amidst hundreds of casual dog photos",
+        "research_interpretation": "Critical quote: 'The app doesn't know it's mine emotionally, just that it's a dog.' Possessive query ('my dog') has no personal ownership grounding in current search. User forced into manual face cluster browsing because search bar cannot distinguish beloved family pets from casual third-party animal photos.",
+        "situation_description": "Locating an old photo of a deceased childhood dog overwhelmed by recent dog photos.",
+        "what_user_remembers": "Posing with childhood dog; dog is deceased; exact year forgotten.",
+        "retrieval_clue_used": "Entity 'dog' -> possessive 'my dog' -> People & Pets facial cluster.",
+        "what_they_tried": "Generic search, possessive search, then manual browsing in People & Pets tab.",
+        "what_happened": "Search returned flood of friend's recent dog photos; possessive query failed to disambiguate.",
+        "workaround_or_outcome": "Manually browsed People & Pets pet group and found photo after 15 photos."
+      },
+      {
+        "scenario_id": "c05-s04",
+        "scenario_title": "Colleague photographed once at farewell lunch (Canonical taxonomy success)",
+        "raw_text": "User wanted a photo of a colleague he'd photographed only once, at a farewell lunch.\nUser searched — farewell\nGot the correct photo directly, first result, Best Match, no scrolling needed.\nHe said this was the only search all session that worked on the first try, and attributed it to the word being \"the exact word people use for the event, not a guess.\"",
+        "debrief_note": "He said this was the only search all session that worked on the first try, and attributed it to the word being 'the exact word people use for the event, not a guess.'",
+        "target_photo": "Solo portrait of a colleague photographed once at a corporate farewell lunch.",
+        "initial_memory_clue": "Colleague photographed only once during a farewell lunch.",
+        "queries_attempted": [
+          "farewell"
+        ],
+        "navigation_steps": [
+          "Typed standardized event noun 'farewell'.",
+          "Correct photo appeared directly as the #1 first result in Best Match without scrolling."
+        ],
+        "result_position": "First result (#1)",
+        "grid_or_scroll_depth": "Grid 1, position 1 (0 scroll)",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_INSTANTLY",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "EVENT_CONTEXT_SEARCH",
+          "SUCCESSFUL_RETRIEVAL",
+          "PERSON_SEARCH"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "EVENT_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Retrieve a photo of an infrequent contact taken at a corporate farewell event",
+        "research_interpretation": "Pristine positive evidence for taxonomy alignment: when a user's episodic vocabulary perfectly matches the machine classifier's canonical label ('farewell'), retrieval is instantaneous.",
+        "situation_description": "Locating a picture of a former colleague taken during a farewell gathering.",
+        "what_user_remembers": "Colleague photographed on that single occasion during a farewell lunch.",
+        "retrieval_clue_used": "Event noun 'farewell'.",
+        "what_they_tried": "Typed 'farewell' in search bar.",
+        "what_happened": "Exact photo returned as the first result under Best Match.",
+        "workaround_or_outcome": "Immediate retrieval with zero scrolling or friction."
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate-06",
+    "candidate_name": "Priya",
+    "scenarios": [
+      {
+        "scenario_id": "c06-s01",
+        "scenario_title": "Grandmother's 80th birthday in matching yellow (Color over-generation & composite query)",
+        "raw_text": "User wanted a photo of her grandmother's 80th birthday, where the whole family wore matching yellow.\nUser searched — yellow\nWay too many irrelevant results (random yellow objects, clothes from other days).\nReformulated — birthday yellow\nNo result found.\nReformulated — family yellow\nFound it in 2nd grid, Best Match.",
+        "debrief_note": "What made you choose that search? She said 'yellow' felt like the strongest single visual fact she had, but it was too common a color to be a distinguishing word on its own — she only succeeded once she paired it with the event type.",
+        "target_photo": "Grandmother's 80th birthday party with entire family dressed in matching yellow outfits.",
+        "initial_memory_clue": "Grandmother's 80th birthday; family wearing matching yellow clothing.",
+        "queries_attempted": [
+          "yellow",
+          "birthday yellow",
+          "family yellow"
+        ],
+        "navigation_steps": [
+          "Searched primary visual fact 'yellow' -> flooded with random yellow objects and unrelated yellow clothes.",
+          "Attempted event + color composite query: 'birthday yellow' -> 'No result found'.",
+          "Reformulated to social entity + color: 'family yellow'.",
+          "Located photo in 2nd grid under Best Match."
+        ],
+        "result_position": "2nd grid under Best Match",
+        "grid_or_scroll_depth": "2 grids down",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 2,
+        "evidence_type": "PAIN_POINT",
+        "categories": [
+          "SEARCH_PROBLEM",
+          "EVENT_CONTEXT_SEARCH",
+          "COLOR_ATTRIBUTE_SEARCH",
+          "SEARCH_ACCURACY",
+          "NATURAL_LANGUAGE_SEARCH"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "COLOR_ATTRIBUTE_SEARCH",
+          "COMPOSITE_QUERY"
+        ],
+        "failure_mode": "MULTI_MODAL_COMPOSITE_QUERY_FAILURE",
+        "job_to_be_done": "Retrieve family celebration photos based on a strong color theme (matching yellow outfits)",
+        "research_interpretation": "Single color queries ('yellow') cause catastrophic over-generation. Combining event and color ('birthday yellow') broke the keyword parser (0 results). Only pairing social context with color ('family yellow') successfully narrowed results to grid 2.",
+        "situation_description": "Locating grandmother's 80th milestone birthday where family wore matching yellow.",
+        "what_user_remembers": "Entire family wearing yellow for grandmother's 80th birthday celebration.",
+        "retrieval_clue_used": "Color 'yellow' -> Event + color 'birthday yellow' -> Group + color 'family yellow'.",
+        "what_they_tried": "Color keyword, event+color compound, then social group+color compound.",
+        "what_happened": "'yellow' was flooded; 'birthday yellow' returned 0 results; 'family yellow' succeeded in 2nd grid.",
+        "workaround_or_outcome": "Found after two query reformulations."
+      },
+      {
+        "scenario_id": "c06-s02",
+        "scenario_title": "River rafting trip photo without knowing location",
+        "raw_text": "Trip photo, remembered the experience (river rafting) but not exact location.\nUser searched — rafting\nFound instantly, 1st result, Best Match. Said rafting is \"distinct enough that there's nothing else it could be.\"",
+        "debrief_note": "Said rafting is 'distinct enough that there's nothing else it could be.'",
+        "target_photo": "Vacation photo participating in river rafting; geographical location forgotten.",
+        "initial_memory_clue": "Action/experience: river rafting trip; exact location forgotten.",
+        "queries_attempted": [
+          "rafting"
+        ],
+        "navigation_steps": [
+          "Typed high-distinctiveness action keyword 'rafting'.",
+          "Photo appeared instantly as the #1 first result under Best Match."
+        ],
+        "result_position": "First result (#1)",
+        "grid_or_scroll_depth": "Grid 1, position 1 (0 scroll)",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_INSTANTLY",
+        "first_attempt_success": true,
+        "abandoned": false,
+        "reformulation_count": 0,
+        "evidence_type": "SUCCESS",
+        "categories": [
+          "ACTIVITY_SEARCH",
+          "SUCCESSFUL_RETRIEVAL",
+          "LOCATION_SEARCH"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "ACTIVITY_SEARCH"
+        ],
+        "failure_mode": null,
+        "job_to_be_done": "Find a trip memory using the core physical activity when geographic coordinates/location are forgotten",
+        "research_interpretation": "High-entropy, visually distinct activity keywords ('rafting') produce perfect retrieval accuracy, compensating completely for user amnesia regarding trip locations or dates.",
+        "situation_description": "Retrieving a river rafting action photo without remembering the river or city name.",
+        "what_user_remembers": "Experiential memory of river rafting; location forgotten.",
+        "retrieval_clue_used": "Activity keyword 'rafting'.",
+        "what_they_tried": "Typed 'rafting' in search bar.",
+        "what_happened": "Returned instantly as #1 result in Best Match.",
+        "workaround_or_outcome": "Immediate retrieval with zero effort."
+      },
+      {
+        "scenario_id": "c06-s03",
+        "scenario_title": "Flight ticket screenshot ('ticket' ambiguity vs 'boarding pass' specificity)",
+        "raw_text": "Knew a screenshot existed of a flight ticket but not which trip.\nUser searched — ticket\nGot several, mixed with movie tickets and event tickets.\nReformulated — boarding pass\nNarrowed down significantly, found it 4th position under Best Match.",
+        "debrief_note": "What were you expecting to see, when 'ticket' failed? She expected only travel-related documents, was surprised the app didn't distinguish a boarding pass screenshot from a movie ticket screenshot — 'to me these are obviously different but I guess visually they're both just a rectangle with text.'",
+        "target_photo": "Screenshot of an airline boarding pass/flight ticket; trip name and date forgotten.",
+        "initial_memory_clue": "Digital screenshot of a flight ticket/boarding pass.",
+        "queries_attempted": [
+          "ticket",
+          "boarding pass"
+        ],
+        "navigation_steps": [
+          "Searched broad document term 'ticket' -> cluttered mix of movie tickets, concert tickets, and receipts.",
+          "Reformulated to domain-specific term: 'boarding pass'.",
+          "Located flight ticket at 4th position under Best Match."
+        ],
+        "result_position": "4th position in Best Match",
+        "grid_or_scroll_depth": "Grid 1, position 4",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_AFTER_REFORMULATION",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "DOCUMENT_SEARCH",
+          "SEARCH_ACCURACY",
+          "SEARCH_PROBLEM"
+        ],
+        "search_methods": [
+          "KEYWORD_SEARCH",
+          "DOCUMENT_SEARCH",
+          "OCR_SEARCH"
+        ],
+        "failure_mode": "DOCUMENT_DOMAIN_COARSE_CLASSIFICATION",
+        "job_to_be_done": "Find a flight booking screenshot without knowing the date or travel destination",
+        "research_interpretation": "Key user insight: 'visually they're both just a rectangle with text.' Generic document classes ('ticket') fail to semantically separate high-stakes airline transit documents from low-stakes movie tickets. Succeeded only after user guessed airline-specific terminology ('boarding pass').",
+        "situation_description": "Locating a screenshot of a flight booking among numerous stored tickets.",
+        "what_user_remembers": "Saving a screenshot of a flight ticket; forgotten trip and date.",
+        "retrieval_clue_used": "Generic document 'ticket' -> specific travel artifact 'boarding pass'.",
+        "what_they_tried": "Searched 'ticket', then reformulated to 'boarding pass'.",
+        "what_happened": "'ticket' was heavily polluted by entertainment tickets; 'boarding pass' narrowed to position 4 in Best Match.",
+        "workaround_or_outcome": "Found after switching to specialized aviation vocabulary."
+      },
+      {
+        "scenario_id": "c06-s04",
+        "scenario_title": "Building watchman lighting diya at gate (Face clustering threshold failure & multi-object anchor)",
+        "raw_text": "Wanted photos of her building's watchman, who she'd photographed once during Diwali when he lit a diya at the gate.\nWent directly to People & Pets tab first — his face wasn't indexed as a separate person (grouped under \"unnamed faces\" cluster, buried).\nGave up on the tab, searched — diya gate\nGot the photo, 2nd grid, Best Match.\nShe noted: \"If I hadn't remembered Diwali, I don't think I'd have found this. The People tab was useless here because he's not someone I photograph often enough for it to learn his face properly.\"",
+        "debrief_note": "She noted: 'If I hadn't remembered Diwali, I don't think I'd have found this. The People tab was useless here because he's not someone I photograph often enough for it to learn his face properly.'",
+        "target_photo": "Single photo of building watchman lighting a festival oil lamp (diya) at the building gate during Diwali.",
+        "initial_memory_clue": "Building security guard / watchman, photographed only once during Diwali, lighting a diya at the gate.",
+        "queries_attempted": [
+          "diya gate"
+        ],
+        "navigation_steps": [
+          "Went directly to 'People & Pets' tab to search by face.",
+          "Face was missing from indexed people groups; buried inside unorganized 'unnamed faces' cluster.",
+          "Abandoned tab navigation.",
+          "Typed contextual multi-object query: 'diya gate'.",
+          "Found photo in 2nd grid under Best Match."
+        ],
+        "result_position": "2nd grid under Best Match",
+        "grid_or_scroll_depth": "2 grids down",
+        "ranking_section": "Best Match",
+        "outcome": "FOUND_VIA_SPATIAL_OBJECT_WORKAROUND",
+        "first_attempt_success": false,
+        "abandoned": false,
+        "reformulation_count": 1,
+        "evidence_type": "MIXED",
+        "categories": [
+          "FACE_RECOGNITION",
+          "PERSON_SEARCH",
+          "EVENT_CONTEXT_SEARCH",
+          "OBJECT_RECOGNITION",
+          "SEARCH_PROBLEM"
+        ],
+        "search_methods": [
+          "PEOPLE_AND_PETS_TAB",
+          "KEYWORD_SEARCH",
+          "MULTI_OBJECT_QUERY"
+        ],
+        "failure_mode": "INFREQUENT_CONTACT_FACIAL_CLUSTERING_THRESHOLD_FAILURE",
+        "job_to_be_done": "Find a one-off photograph of an acquaintance / service worker not frequently photographed",
+        "research_interpretation": "Critical systemic limitation: Facial recognition models require frequency thresholds to promote faces into searchable person entities. Infrequent contacts (watchmen, delivery workers, one-off interactions) are permanently lost to facial search. Retrieval was rescued solely by multi-object spatial co-occurrence ('diya gate').",
+        "situation_description": "Locating a one-off photo of a building watchman taken during Diwali.",
+        "what_user_remembers": "Building watchman lighting a diya at the main gate during Diwali.",
+        "retrieval_clue_used": "Facial lookup -> spatial multi-object query 'diya gate'.",
+        "what_they_tried": "Navigated People & Pets tab, abandoned upon discovering unindexed face, searched 'diya gate'.",
+        "what_happened": "Face tab failed completely; multi-object search surfaced photo in 2nd grid.",
+        "workaround_or_outcome": "Rescued via spatial-object context when face identification failed."
+      }
+    ]
+  }
+]

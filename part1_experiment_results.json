@@ -1,0 +1,2488 @@
+{
+  "experiment_metadata": {
+    "specification": "part1_discovery_engine_experimental_spec.md",
+    "benchmark_corpus": "part1_experimental_benchmark.json",
+    "reference_anchor_time": "2026-09-30T12:00:00+00:00",
+    "execution_timestamp": "2026-09-30T10:22:45.469192+00:00",
+    "total_cases": 8,
+    "total_benchmark_records": 65
+  },
+  "aggregate_metrics": {
+    "strategy_a_mean_target_recall": 0.65,
+    "strategy_b_mean_target_recall": 1.0,
+    "strategy_a_mean_precision_at_1_tie_adjusted": 0.406,
+    "strategy_b_mean_precision_at_1_tie_adjusted": 0.781,
+    "methodological_boundary_note": "Case 5 baseline is modeled as metadata lookup failure; Case 7 requires simulated initial truncation; Case 8 evaluated primarily via result organization clustering."
+  },
+  "cases": [
+    {
+      "case_id": "case_1",
+      "case_name": "5 sisters",
+      "raw_memory": "5 sisters",
+      "interpreted_memory": {
+        "raw_input": "5 sisters",
+        "people": [
+          {
+            "role": "sister",
+            "count": 5
+          }
+        ]
+      },
+      "retrieval_signals": {
+        "demographic_candidate_cue": {
+          "group_count": 5,
+          "apparent_gender": "female",
+          "apparent_age": "young_adult",
+          "translation_proxy": "sister -> group of females"
+        },
+        "active_paths": [
+          "relational_derived_demographic",
+          "visual_entity_group"
+        ]
+      },
+      "discovery_paths": [
+        "relational_derived_demographic",
+        "visual_entity_group"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "5",
+          "sisters"
+        ],
+        "admitted_candidate_count": 1,
+        "scored_candidates": [
+          {
+            "photo_id": "c1_dist_literal_sister_sign",
+            "matched_tokens": [
+              "sisters"
+            ],
+            "unmatched_tokens": [
+              "5"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c1_tgt_family_5sisters",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 2
+          },
+          {
+            "photo_id": "c1_rel_campus_5females",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c1_dist_3females",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c1_dist_7females",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c1_dist_5males",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c1_dist_5mixed",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c1_dist_1female_portrait",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "5",
+              "sisters"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 2
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c1_tgt_family_5sisters",
+          "c1_rel_campus_5females",
+          "c1_dist_3females",
+          "c1_dist_7females",
+          "c1_dist_5mixed",
+          "c1_dist_1female_portrait"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c1_tgt_family_5sisters",
+          "c1_rel_campus_5females",
+          "c1_dist_3females",
+          "c1_dist_7females",
+          "c1_dist_5mixed",
+          "c1_dist_1female_portrait"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c1_tgt_family_5sisters",
+            "dimension_matches": {
+              "people.cardinality": 1.0,
+              "people.gender": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Cardinality matches target count of 5.",
+              "Demographic gender matches female demographic primitive."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c1_rel_campus_5females",
+            "dimension_matches": {
+              "people.cardinality": 1.0,
+              "people.gender": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Cardinality matches target count of 5.",
+              "Demographic gender matches female demographic primitive."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c1_dist_3females",
+            "dimension_matches": {
+              "people.cardinality": 0.5,
+              "people.gender": 1.0
+            },
+            "final_score": 1.5,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Cardinality divergence: count=3 vs target=5 (score 0.5).",
+              "Demographic gender matches female demographic primitive."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c1_dist_7females",
+            "dimension_matches": {
+              "people.cardinality": 0.5,
+              "people.gender": 1.0
+            },
+            "final_score": 1.5,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Cardinality divergence: count=7 vs target=5 (score 0.5).",
+              "Demographic gender matches female demographic primitive."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c1_dist_5mixed",
+            "dimension_matches": {
+              "people.cardinality": 1.0,
+              "people.gender": 0.5
+            },
+            "final_score": 1.5,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Cardinality matches target count of 5.",
+              "Demographic gender partially matches (mixed group)."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c1_dist_1female_portrait",
+            "dimension_matches": {
+              "people.cardinality": 0.0,
+              "people.gender": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Cardinality divergence: count=1 vs target=5 (score 0.0).",
+              "Demographic gender matches female demographic primitive."
+            ],
+            "rank": 6
+          }
+        ],
+        "result_organization": {
+          "organization_type": "RELEVANCE_RANKED_ORDER",
+          "candidates": [
+            {
+              "photo_id": "c1_tgt_family_5sisters",
+              "timestamp": "2023-08-20T16:45:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c1_rel_campus_5females",
+              "timestamp": "2023-03-15T11:20:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c1_dist_3females",
+              "timestamp": "2023-09-02T18:00:00Z",
+              "score": 1.5,
+              "rank": 3
+            },
+            {
+              "photo_id": "c1_dist_7females",
+              "timestamp": "2023-10-14T20:30:00Z",
+              "score": 1.5,
+              "rank": 3
+            },
+            {
+              "photo_id": "c1_dist_5mixed",
+              "timestamp": "2023-07-04T13:00:00Z",
+              "score": 1.5,
+              "rank": 3
+            },
+            {
+              "photo_id": "c1_dist_1female_portrait",
+              "timestamp": "2023-11-05T15:00:00Z",
+              "score": 1.0,
+              "rank": 6
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 1,
+          "target_recall": 0.0,
+          "targets_recovered": 0,
+          "total_targets": 1,
+          "rank_of_first_target": null,
+          "top1_tied_candidate_count": 1,
+          "precision_at_1_tie_adjusted": 0.0,
+          "precision_at_3": 0.0,
+          "false_positives_admitted": 1
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 6,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 2,
+          "precision_at_1_tie_adjusted": 0.5,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 5
+        },
+        "case7_coverage_delta": null
+      }
+    },
+    {
+      "case_id": "case_2",
+      "case_name": "rohtang ki ice wali photo",
+      "raw_memory": "rohtang ki ice wali photo",
+      "interpreted_memory": {
+        "raw_input": "rohtang ki ice wali photo",
+        "objects": [
+          {
+            "name": "ice"
+          }
+        ],
+        "spatial_setting": "rohtang"
+      },
+      "retrieval_signals": {
+        "spatial_signal": {
+          "landmark": "rohtang",
+          "region_type": "mountain_pass"
+        },
+        "visual_entity_signal": {
+          "element": "ice",
+          "synonyms": [
+            "ice",
+            "snow"
+          ]
+        },
+        "stripped_particles": [
+          "ki",
+          "wali",
+          "photo"
+        ],
+        "active_paths": [
+          "spatial_environmental",
+          "visual_entity"
+        ]
+      },
+      "discovery_paths": [
+        "spatial_environmental",
+        "visual_entity"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "rohtang",
+          "ki",
+          "ice",
+          "wali",
+          "photo"
+        ],
+        "admitted_candidate_count": 6,
+        "scored_candidates": [
+          {
+            "photo_id": "c2_tgt_rohtang_snow",
+            "matched_tokens": [
+              "ice",
+              "rohtang"
+            ],
+            "unmatched_tokens": [
+              "ki",
+              "photo",
+              "wali"
+            ],
+            "raw_score": 0.4,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c2_dist_wali_sign",
+            "matched_tokens": [
+              "photo",
+              "wali"
+            ],
+            "unmatched_tokens": [
+              "ice",
+              "ki",
+              "rohtang"
+            ],
+            "raw_score": 0.4,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c2_dist_solang_snow",
+            "matched_tokens": [
+              "ice",
+              "ki"
+            ],
+            "unmatched_tokens": [
+              "photo",
+              "rohtang",
+              "wali"
+            ],
+            "raw_score": 0.4,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c2_dist_passport_photo_desk",
+            "matched_tokens": [
+              "ice",
+              "photo"
+            ],
+            "unmatched_tokens": [
+              "ki",
+              "rohtang",
+              "wali"
+            ],
+            "raw_score": 0.4,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c2_rel_rohtang_summer",
+            "matched_tokens": [
+              "rohtang"
+            ],
+            "unmatched_tokens": [
+              "ice",
+              "ki",
+              "photo",
+              "wali"
+            ],
+            "raw_score": 0.2,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c2_dist_ice_cream",
+            "matched_tokens": [
+              "ice"
+            ],
+            "unmatched_tokens": [
+              "ki",
+              "photo",
+              "rohtang",
+              "wali"
+            ],
+            "raw_score": 0.2,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c2_dist_goa_beach",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "ice",
+              "ki",
+              "photo",
+              "rohtang",
+              "wali"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 7
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c2_tgt_rohtang_snow",
+          "c2_rel_rohtang_summer",
+          "c2_dist_solang_snow",
+          "c2_dist_ice_cream"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c2_tgt_rohtang_snow",
+          "c2_rel_rohtang_summer",
+          "c2_dist_solang_snow",
+          "c2_dist_ice_cream"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c2_tgt_rohtang_snow",
+            "dimension_matches": {
+              "spatial_setting": 1.0,
+              "objects.ice": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Spatial setting matches geographic landmark 'Rohtang Pass'.",
+              "Visual entity matches salient winter element 'ice/snow'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c2_rel_rohtang_summer",
+            "dimension_matches": {
+              "spatial_setting": 1.0,
+              "objects.ice": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Spatial setting matches geographic landmark 'Rohtang Pass'.",
+              "Visual entity does not contain ice or snow."
+            ],
+            "rank": 2
+          },
+          {
+            "photo_id": "c2_dist_solang_snow",
+            "dimension_matches": {
+              "spatial_setting": 0.0,
+              "objects.ice": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Spatial setting mismatch: 'solang valley' is not Rohtang.",
+              "Visual entity matches salient winter element 'ice/snow'."
+            ],
+            "rank": 2
+          },
+          {
+            "photo_id": "c2_dist_ice_cream",
+            "dimension_matches": {
+              "spatial_setting": 0.0,
+              "objects.ice": 0.0
+            },
+            "final_score": 0.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Spatial setting mismatch: 'cafe' is not Rohtang.",
+              "Visual entity does not contain ice or snow."
+            ],
+            "rank": 4
+          }
+        ],
+        "result_organization": {
+          "organization_type": "RELEVANCE_RANKED_ORDER",
+          "candidates": [
+            {
+              "photo_id": "c2_tgt_rohtang_snow",
+              "timestamp": "2023-12-10T11:45:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c2_rel_rohtang_summer",
+              "timestamp": "2023-06-15T14:20:00Z",
+              "score": 1.0,
+              "rank": 2
+            },
+            {
+              "photo_id": "c2_dist_solang_snow",
+              "timestamp": "2023-12-12T10:30:00Z",
+              "score": 1.0,
+              "rank": 2
+            },
+            {
+              "photo_id": "c2_dist_ice_cream",
+              "timestamp": "2023-07-20T17:40:00Z",
+              "score": 0.0,
+              "rank": 4
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 6,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 4,
+          "precision_at_1_tie_adjusted": 0.25,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 5
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 4,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 1,
+          "precision_at_1_tie_adjusted": 1.0,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 2
+        },
+        "case7_coverage_delta": null
+      }
+    },
+    {
+      "case_id": "case_3",
+      "case_name": "white bike",
+      "raw_memory": "white bike",
+      "interpreted_memory": {
+        "raw_input": "white bike",
+        "objects": [
+          {
+            "name": "bike",
+            "attributes": [
+              "white"
+            ]
+          }
+        ]
+      },
+      "retrieval_signals": {
+        "bound_signal": {
+          "entity": "bike",
+          "attribute": "white"
+        },
+        "fallback_entity": "bike",
+        "active_paths": [
+          "bound_entity_attribute",
+          "visual_entity"
+        ]
+      },
+      "discovery_paths": [
+        "bound_entity_attribute",
+        "visual_entity"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "white",
+          "bike"
+        ],
+        "admitted_candidate_count": 8,
+        "scored_candidates": [
+          {
+            "photo_id": "c3_tgt_white_motorcycle",
+            "matched_tokens": [
+              "bike",
+              "white"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c3_rel_silver_white_bicycle",
+            "matched_tokens": [
+              "bike",
+              "white"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c3_dist_black_bike_white_shirt",
+            "matched_tokens": [
+              "bike",
+              "white"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c3_dist_black_bike_white_wall",
+            "matched_tokens": [
+              "bike",
+              "white"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c3_dist_white_car",
+            "matched_tokens": [
+              "white"
+            ],
+            "unmatched_tokens": [
+              "bike"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c3_dist_black_bike_alone",
+            "matched_tokens": [
+              "bike"
+            ],
+            "unmatched_tokens": [
+              "white"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c3_dist_white_shirt_person",
+            "matched_tokens": [
+              "white"
+            ],
+            "unmatched_tokens": [
+              "bike"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c3_dist_unrelated_white_dog",
+            "matched_tokens": [
+              "white"
+            ],
+            "unmatched_tokens": [
+              "bike"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 5
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c3_tgt_white_motorcycle",
+          "c3_rel_silver_white_bicycle",
+          "c3_dist_black_bike_white_shirt",
+          "c3_dist_black_bike_white_wall",
+          "c3_dist_black_bike_alone"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c3_tgt_white_motorcycle",
+          "c3_rel_silver_white_bicycle",
+          "c3_dist_black_bike_white_shirt",
+          "c3_dist_black_bike_white_wall",
+          "c3_dist_black_bike_alone"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c3_tgt_white_motorcycle",
+            "dimension_matches": {
+              "objects.bike.entity": 1.0,
+              "objects.bike.attribute_white": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'bike' present.",
+              "Attribute 'white' directly bound to host entity 'bike'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c3_rel_silver_white_bicycle",
+            "dimension_matches": {
+              "objects.bike.entity": 1.0,
+              "objects.bike.attribute_white": 0.6
+            },
+            "final_score": 1.6,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'bike' present.",
+              "Attribute 'silver_white' softly satisfies white two-wheeler."
+            ],
+            "rank": 2
+          },
+          {
+            "photo_id": "c3_dist_black_bike_white_shirt",
+            "dimension_matches": {
+              "objects.bike.entity": 1.0,
+              "objects.bike.attribute_white": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'bike' present.",
+              "Attribute 'white' appears disconnected on ['clothing', 'person'], NOT bound to 'bike' (score 0.0)."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c3_dist_black_bike_white_wall",
+            "dimension_matches": {
+              "objects.bike.entity": 1.0,
+              "objects.bike.attribute_white": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'bike' present.",
+              "Attribute 'white' appears disconnected on ['wall'], NOT bound to 'bike' (score 0.0)."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c3_dist_black_bike_alone",
+            "dimension_matches": {
+              "objects.bike.entity": 1.0,
+              "objects.bike.attribute_white": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'bike' present.",
+              "Attribute 'white' absent."
+            ],
+            "rank": 3
+          }
+        ],
+        "result_organization": {
+          "organization_type": "RELEVANCE_RANKED_ORDER",
+          "candidates": [
+            {
+              "photo_id": "c3_tgt_white_motorcycle",
+              "timestamp": "2024-03-12T15:10:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c3_rel_silver_white_bicycle",
+              "timestamp": "2024-04-05T08:30:00Z",
+              "score": 1.6,
+              "rank": 2
+            },
+            {
+              "photo_id": "c3_dist_black_bike_white_shirt",
+              "timestamp": "2024-03-20T16:45:00Z",
+              "score": 1.0,
+              "rank": 3
+            },
+            {
+              "photo_id": "c3_dist_black_bike_white_wall",
+              "timestamp": "2024-02-14T11:00:00Z",
+              "score": 1.0,
+              "rank": 3
+            },
+            {
+              "photo_id": "c3_dist_black_bike_alone",
+              "timestamp": "2024-05-02T17:30:00Z",
+              "score": 1.0,
+              "rank": 3
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 8,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 4,
+          "precision_at_1_tie_adjusted": 0.25,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 7
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 5,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 1,
+          "precision_at_1_tie_adjusted": 1.0,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 4
+        },
+        "case7_coverage_delta": null
+      }
+    },
+    {
+      "case_id": "case_4",
+      "case_name": "diya at the gate",
+      "raw_memory": "diya at the gate",
+      "interpreted_memory": {
+        "raw_input": "diya at the gate",
+        "objects": [
+          {
+            "name": "diya"
+          }
+        ],
+        "spatial_setting": "gate"
+      },
+      "retrieval_signals": {
+        "visual_entity_signal": {
+          "entity": "diya",
+          "synonyms": [
+            "diya",
+            "lamp",
+            "flame"
+          ]
+        },
+        "spatial_signal": {
+          "setting": "gate",
+          "synonyms": [
+            "gate",
+            "entrance",
+            "doorway"
+          ]
+        },
+        "active_paths": [
+          "visual_entity",
+          "spatial_environmental"
+        ]
+      },
+      "discovery_paths": [
+        "visual_entity",
+        "spatial_environmental"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "diya",
+          "at",
+          "the",
+          "gate"
+        ],
+        "admitted_candidate_count": 6,
+        "scored_candidates": [
+          {
+            "photo_id": "c4_tgt_diya_residential_gate",
+            "matched_tokens": [
+              "at",
+              "diya",
+              "gate"
+            ],
+            "unmatched_tokens": [
+              "the"
+            ],
+            "raw_score": 0.75,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c4_dist_gate_delivery_car",
+            "matched_tokens": [
+              "at",
+              "gate"
+            ],
+            "unmatched_tokens": [
+              "diya",
+              "the"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c4_dist_gate_dog",
+            "matched_tokens": [
+              "at",
+              "gate"
+            ],
+            "unmatched_tokens": [
+              "diya",
+              "the"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 2
+          },
+          {
+            "photo_id": "c4_rel_diya_front_porch",
+            "matched_tokens": [
+              "diya"
+            ],
+            "unmatched_tokens": [
+              "at",
+              "gate",
+              "the"
+            ],
+            "raw_score": 0.25,
+            "is_ground_truth_target": false,
+            "rank": 4
+          },
+          {
+            "photo_id": "c4_dist_diya_pooja_altar",
+            "matched_tokens": [
+              "diya"
+            ],
+            "unmatched_tokens": [
+              "at",
+              "gate",
+              "the"
+            ],
+            "raw_score": 0.25,
+            "is_ground_truth_target": false,
+            "rank": 4
+          },
+          {
+            "photo_id": "c4_dist_street_light_lamp",
+            "matched_tokens": [
+              "at"
+            ],
+            "unmatched_tokens": [
+              "diya",
+              "gate",
+              "the"
+            ],
+            "raw_score": 0.25,
+            "is_ground_truth_target": false,
+            "rank": 4
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c4_tgt_diya_residential_gate",
+          "c4_rel_diya_front_porch",
+          "c4_dist_diya_pooja_altar",
+          "c4_dist_gate_delivery_car",
+          "c4_dist_gate_dog",
+          "c4_dist_street_light_lamp"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c4_tgt_diya_residential_gate",
+          "c4_rel_diya_front_porch",
+          "c4_dist_diya_pooja_altar",
+          "c4_dist_gate_delivery_car",
+          "c4_dist_gate_dog",
+          "c4_dist_street_light_lamp"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c4_tgt_diya_residential_gate",
+            "dimension_matches": {
+              "objects.diya": 1.0,
+              "spatial_setting.gate": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Visual entity matches traditional oil lamp 'diya'.",
+              "Spatial setting matches entrance 'gate'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c4_rel_diya_front_porch",
+            "dimension_matches": {
+              "objects.diya": 1.0,
+              "spatial_setting.gate": 0.5
+            },
+            "final_score": 1.5,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Visual entity matches traditional oil lamp 'diya'.",
+              "Spatial setting partially matches entrance threshold (doorway porch)."
+            ],
+            "rank": 2
+          },
+          {
+            "photo_id": "c4_dist_diya_pooja_altar",
+            "dimension_matches": {
+              "objects.diya": 1.0,
+              "spatial_setting.gate": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Visual entity matches traditional oil lamp 'diya'.",
+              "Spatial setting mismatch: 'pooja room altar' is not gate/entrance."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c4_dist_gate_delivery_car",
+            "dimension_matches": {
+              "objects.diya": 0.0,
+              "spatial_setting.gate": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Object 'diya' absent.",
+              "Spatial setting matches entrance 'gate'."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c4_dist_gate_dog",
+            "dimension_matches": {
+              "objects.diya": 0.0,
+              "spatial_setting.gate": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Object 'diya' absent.",
+              "Spatial setting matches entrance 'gate'."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c4_dist_street_light_lamp",
+            "dimension_matches": {
+              "objects.diya": 0.0,
+              "spatial_setting.gate": 0.0
+            },
+            "final_score": 0.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Modern street lamp does not satisfy festival diya object.",
+              "Spatial setting mismatch: 'suburban road' is not gate/entrance."
+            ],
+            "rank": 6
+          }
+        ],
+        "result_organization": {
+          "organization_type": "RELEVANCE_RANKED_ORDER",
+          "candidates": [
+            {
+              "photo_id": "c4_tgt_diya_residential_gate",
+              "timestamp": "2023-11-12T19:40:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c4_rel_diya_front_porch",
+              "timestamp": "2023-11-12T19:15:00Z",
+              "score": 1.5,
+              "rank": 2
+            },
+            {
+              "photo_id": "c4_dist_diya_pooja_altar",
+              "timestamp": "2023-11-12T18:30:00Z",
+              "score": 1.0,
+              "rank": 3
+            },
+            {
+              "photo_id": "c4_dist_gate_delivery_car",
+              "timestamp": "2023-10-05T14:10:00Z",
+              "score": 1.0,
+              "rank": 3
+            },
+            {
+              "photo_id": "c4_dist_gate_dog",
+              "timestamp": "2023-08-14T08:00:00Z",
+              "score": 1.0,
+              "rank": 3
+            },
+            {
+              "photo_id": "c4_dist_street_light_lamp",
+              "timestamp": "2023-11-10T21:00:00Z",
+              "score": 0.0,
+              "rank": 6
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 6,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 1,
+          "precision_at_1_tie_adjusted": 1.0,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 5
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 6,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 1,
+          "precision_at_1_tie_adjusted": 1.0,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 4
+        },
+        "case7_coverage_delta": null
+      }
+    },
+    {
+      "case_id": "case_5",
+      "case_name": "Progressive",
+      "raw_memory": "Progressive",
+      "interpreted_memory": {
+        "raw_input": "Progressive",
+        "literal_text": [
+          "Progressive"
+        ]
+      },
+      "retrieval_signals": {
+        "literal_text_signal": {
+          "token": "Progressive",
+          "exact_match_required": true
+        },
+        "active_paths": [
+          "literal_in_image_text"
+        ]
+      },
+      "discovery_paths": [
+        "literal_in_image_text"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "progressive"
+        ],
+        "admitted_candidate_count": 0,
+        "scored_candidates": [
+          {
+            "photo_id": "c5_tgt_progressive_insurance_policy",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "progressive"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_rel_progressive_id_card",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "progressive"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_dist_geico_utility_bill",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "progressive"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_dist_tax_w2_document",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "progressive"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_dist_progress_fitness_banner",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "progressive"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_dist_progressive_rock_poster",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "progressive"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c5_tgt_progressive_insurance_policy",
+          "c5_rel_progressive_id_card",
+          "c5_dist_progressive_rock_poster"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c5_tgt_progressive_insurance_policy",
+          "c5_rel_progressive_id_card",
+          "c5_dist_progressive_rock_poster"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c5_tgt_progressive_insurance_policy",
+            "dimension_matches": {
+              "literal_text.Progressive": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Exact in-image text token 'Progressive' matched on official document."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_rel_progressive_id_card",
+            "dimension_matches": {
+              "literal_text.Progressive": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Exact in-image text token 'Progressive' matched on official document."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c5_dist_progressive_rock_poster",
+            "dimension_matches": {
+              "literal_text.Progressive": 0.8
+            },
+            "final_score": 0.8,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Exact in-image text token 'Progressive' matched on non-document media (poster)."
+            ],
+            "rank": 3
+          }
+        ],
+        "result_organization": {
+          "organization_type": "RELEVANCE_RANKED_ORDER",
+          "candidates": [
+            {
+              "photo_id": "c5_tgt_progressive_insurance_policy",
+              "timestamp": "2024-01-18T10:05:00Z",
+              "score": 1.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c5_rel_progressive_id_card",
+              "timestamp": "2024-01-20T11:15:00Z",
+              "score": 1.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c5_dist_progressive_rock_poster",
+              "timestamp": "2024-04-12T20:00:00Z",
+              "score": 0.8,
+              "rank": 3
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 0,
+          "target_recall": 0.0,
+          "targets_recovered": 0,
+          "total_targets": 1,
+          "rank_of_first_target": null,
+          "top1_tied_candidate_count": 0,
+          "precision_at_1_tie_adjusted": 0.0,
+          "precision_at_3": 0.0,
+          "false_positives_admitted": 0
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 3,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 2,
+          "precision_at_1_tie_adjusted": 0.5,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 2
+        },
+        "case7_coverage_delta": null
+      }
+    },
+    {
+      "case_id": "case_6",
+      "case_name": "document around 4 years ago",
+      "raw_memory": "document around 4 years ago",
+      "interpreted_memory": {
+        "raw_input": "document around 4 years ago",
+        "objects": [
+          {
+            "name": "document"
+          }
+        ],
+        "temporal": {
+          "raw_time_expression": "around 4 years ago",
+          "coarse_value": "4 years ago",
+          "temporal_nature": "RELATIVE_OFFSET"
+        }
+      },
+      "retrieval_signals": {
+        "visual_entity_signal": {
+          "entity": "document",
+          "synonyms": [
+            "document",
+            "paperwork"
+          ]
+        },
+        "temporal_constraint_signal": {
+          "window_years_min": 3.5,
+          "window_years_max": 4.5,
+          "center_years": 4.0,
+          "reference_time": "2026-09-30T12:00:00+00:00"
+        },
+        "active_paths": [
+          "visual_entity",
+          "temporal_interval"
+        ]
+      },
+      "discovery_paths": [
+        "visual_entity",
+        "temporal_interval"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "document",
+          "around",
+          "4",
+          "years",
+          "ago"
+        ],
+        "admitted_candidate_count": 4,
+        "scored_candidates": [
+          {
+            "photo_id": "c6_dist_old_document_2018",
+            "matched_tokens": [
+              "4",
+              "document",
+              "years"
+            ],
+            "unmatched_tokens": [
+              "ago",
+              "around"
+            ],
+            "raw_score": 0.6,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c6_tgt_lease_agreement_2022",
+            "matched_tokens": [
+              "document",
+              "years"
+            ],
+            "unmatched_tokens": [
+              "4",
+              "ago",
+              "around"
+            ],
+            "raw_score": 0.4,
+            "is_ground_truth_target": true,
+            "rank": 2
+          },
+          {
+            "photo_id": "c6_rel_bank_statement_2022",
+            "matched_tokens": [
+              "document"
+            ],
+            "unmatched_tokens": [
+              "4",
+              "ago",
+              "around",
+              "years"
+            ],
+            "raw_score": 0.2,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c6_dist_recent_document_2026",
+            "matched_tokens": [
+              "document"
+            ],
+            "unmatched_tokens": [
+              "4",
+              "ago",
+              "around",
+              "years"
+            ],
+            "raw_score": 0.2,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c6_dist_birthday_photo_2022",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "4",
+              "ago",
+              "around",
+              "document",
+              "years"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c6_dist_mountain_trip_2024",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "4",
+              "ago",
+              "around",
+              "document",
+              "years"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 5
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c6_tgt_lease_agreement_2022",
+          "c6_rel_bank_statement_2022",
+          "c6_dist_recent_document_2026",
+          "c6_dist_old_document_2018"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c6_tgt_lease_agreement_2022",
+          "c6_rel_bank_statement_2022",
+          "c6_dist_recent_document_2026",
+          "c6_dist_old_document_2018"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c6_tgt_lease_agreement_2022",
+            "dimension_matches": {
+              "objects.document": 1.0,
+              "temporal.continuous_window": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Visual entity matches 'document/paperwork'.",
+              "Timestamp (2022-08-14, 4.13y ago) falls within continuous interval [3.5y, 4.5y]."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c6_rel_bank_statement_2022",
+            "dimension_matches": {
+              "objects.document": 1.0,
+              "temporal.continuous_window": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Visual entity matches 'document/paperwork'.",
+              "Timestamp (2022-11-20, 3.86y ago) falls within continuous interval [3.5y, 4.5y]."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c6_dist_recent_document_2026",
+            "dimension_matches": {
+              "objects.document": 1.0,
+              "temporal.continuous_window": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Visual entity matches 'document/paperwork'.",
+              "Timestamp (2026-03-10, 0.56y ago) outside interval [3.5y, 4.5y] (score 0.0)."
+            ],
+            "rank": 3
+          },
+          {
+            "photo_id": "c6_dist_old_document_2018",
+            "dimension_matches": {
+              "objects.document": 1.0,
+              "temporal.continuous_window": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Visual entity matches 'document/paperwork'.",
+              "Timestamp (2018-04-12, 8.47y ago) outside interval [3.5y, 4.5y] (score 0.0)."
+            ],
+            "rank": 3
+          }
+        ],
+        "result_organization": {
+          "organization_type": "RELEVANCE_RANKED_ORDER",
+          "candidates": [
+            {
+              "photo_id": "c6_tgt_lease_agreement_2022",
+              "timestamp": "2022-08-14T10:15:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c6_rel_bank_statement_2022",
+              "timestamp": "2022-11-20T14:30:00Z",
+              "score": 2.0,
+              "rank": 1
+            },
+            {
+              "photo_id": "c6_dist_recent_document_2026",
+              "timestamp": "2026-03-10T09:00:00Z",
+              "score": 1.0,
+              "rank": 3
+            },
+            {
+              "photo_id": "c6_dist_old_document_2018",
+              "timestamp": "2018-04-12T11:00:00Z",
+              "score": 1.0,
+              "rank": 3
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 4,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 2,
+          "top1_tied_candidate_count": 1,
+          "precision_at_1_tie_adjusted": 0.0,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 3
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 4,
+          "target_recall": 1.0,
+          "targets_recovered": 1,
+          "total_targets": 1,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 2,
+          "precision_at_1_tie_adjusted": 0.5,
+          "precision_at_3": 0.333,
+          "false_positives_admitted": 3
+        },
+        "case7_coverage_delta": null
+      }
+    },
+    {
+      "case_id": "case_7",
+      "case_name": "yellow truck",
+      "raw_memory": "yellow truck",
+      "interpreted_memory": {
+        "raw_input": "yellow truck",
+        "objects": [
+          {
+            "name": "truck",
+            "attributes": [
+              "yellow"
+            ]
+          }
+        ]
+      },
+      "retrieval_signals": {
+        "primary_bound_signal": {
+          "entity": "truck",
+          "attribute": "yellow"
+        },
+        "secondary_entity": "truck",
+        "active_paths": [
+          "bound_entity_attribute",
+          "visual_entity",
+          "temporal_timeline"
+        ]
+      },
+      "discovery_paths": [
+        "bound_entity_attribute",
+        "visual_entity",
+        "temporal_timeline"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "yellow",
+          "truck"
+        ],
+        "admitted_candidate_count": 9,
+        "scored_candidates": [
+          {
+            "photo_id": "c7_tgt_truck_day01",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day02",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_dist_yellow_taxi",
+            "matched_tokens": [
+              "yellow"
+            ],
+            "unmatched_tokens": [
+              "truck"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_dist_yellow_school_bus",
+            "matched_tokens": [
+              "yellow"
+            ],
+            "unmatched_tokens": [
+              "truck"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_dist_blue_dump_truck",
+            "matched_tokens": [
+              "truck"
+            ],
+            "unmatched_tokens": [
+              "yellow"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_dist_red_pickup_truck",
+            "matched_tokens": [
+              "truck"
+            ],
+            "unmatched_tokens": [
+              "yellow"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_dist_white_semi_truck",
+            "matched_tokens": [
+              "truck"
+            ],
+            "unmatched_tokens": [
+              "yellow"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_dist_yellow_raincoat",
+            "matched_tokens": [
+              "yellow"
+            ],
+            "unmatched_tokens": [
+              "truck"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_dist_yellow_hardhat",
+            "matched_tokens": [
+              "yellow"
+            ],
+            "unmatched_tokens": [
+              "truck"
+            ],
+            "raw_score": 0.5,
+            "is_ground_truth_target": false,
+            "rank": 3
+          },
+          {
+            "photo_id": "c7_tgt_truck_day03",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day04",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day05",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day06",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day07",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day08",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day09",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          },
+          {
+            "photo_id": "c7_tgt_truck_day10",
+            "matched_tokens": [
+              "truck",
+              "yellow"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 0.0,
+            "is_ground_truth_target": true,
+            "rank": 10
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c7_tgt_truck_day01",
+          "c7_tgt_truck_day02",
+          "c7_dist_blue_dump_truck",
+          "c7_dist_red_pickup_truck",
+          "c7_dist_white_semi_truck"
+        ],
+        "coverage_check": {
+          "decision": "INSUFFICIENT",
+          "diagnostic_reason": "Candidate set is temporally concentrated in only 2 initial sessions (['2024-06-01', '2024-06-03']). Significant multi-day temporal gap detected for recurring entity."
+        },
+        "recovery_action": "Activated temporal timeline broadening across June 2024 project span. Recovered 8 additional target days into unified pool.",
+        "recovered_candidate_ids": [
+          "c7_tgt_truck_day03",
+          "c7_tgt_truck_day04",
+          "c7_tgt_truck_day05",
+          "c7_tgt_truck_day06",
+          "c7_tgt_truck_day07",
+          "c7_tgt_truck_day08",
+          "c7_tgt_truck_day09",
+          "c7_tgt_truck_day10"
+        ],
+        "final_candidate_ids": [
+          "c7_tgt_truck_day01",
+          "c7_tgt_truck_day02",
+          "c7_dist_blue_dump_truck",
+          "c7_dist_red_pickup_truck",
+          "c7_dist_white_semi_truck",
+          "c7_tgt_truck_day03",
+          "c7_tgt_truck_day04",
+          "c7_tgt_truck_day05",
+          "c7_tgt_truck_day06",
+          "c7_tgt_truck_day07",
+          "c7_tgt_truck_day08",
+          "c7_tgt_truck_day09",
+          "c7_tgt_truck_day10"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c7_tgt_truck_day01",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day02",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day03",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day04",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day05",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day06",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day07",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day08",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day09",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_tgt_truck_day10",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 1.0
+            },
+            "final_score": 2.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Attribute 'yellow' bound directly to vehicle 'truck'."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c7_dist_blue_dump_truck",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Color 'yellow' absent."
+            ],
+            "rank": 11
+          },
+          {
+            "photo_id": "c7_dist_red_pickup_truck",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Color 'yellow' absent."
+            ],
+            "rank": 11
+          },
+          {
+            "photo_id": "c7_dist_white_semi_truck",
+            "dimension_matches": {
+              "objects.truck.entity": 1.0,
+              "objects.truck.attribute_yellow": 0.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Host entity 'truck' present.",
+              "Color 'yellow' absent."
+            ],
+            "rank": 11
+          }
+        ],
+        "result_organization": {
+          "organization_type": "TEMPORAL_TIMELINE_SESSION_ORGANIZATION",
+          "distinct_days_count": 10,
+          "timeline": [
+            {
+              "photo_id": "c7_tgt_truck_day01",
+              "timestamp": "2024-06-01T09:15:00Z",
+              "spatial_setting": "construction_depot",
+              "event_context": "equipment_staging",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day02",
+              "timestamp": "2024-06-03T11:30:00Z",
+              "spatial_setting": "interstate_highway",
+              "event_context": "convoy_transit",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day03",
+              "timestamp": "2024-06-05T14:10:00Z",
+              "spatial_setting": "gravel_quarry",
+              "event_context": "quarry_loading",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day04",
+              "timestamp": "2024-06-08T08:45:00Z",
+              "spatial_setting": "industrial_warehouse",
+              "event_context": "cargo_intake",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day05",
+              "timestamp": "2024-06-11T16:20:00Z",
+              "spatial_setting": "access_road",
+              "event_context": "gravel_hauling",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day06",
+              "timestamp": "2024-06-14T10:00:00Z",
+              "spatial_setting": "maintenance_garage",
+              "event_context": "fleet_service",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day07",
+              "timestamp": "2024-06-17T13:40:00Z",
+              "spatial_setting": "mountain_pass_road",
+              "event_context": "steep_transport",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day08",
+              "timestamp": "2024-06-20T17:15:00Z",
+              "spatial_setting": "river_bridge_site",
+              "event_context": "bridge_construction",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day09",
+              "timestamp": "2024-06-23T07:50:00Z",
+              "spatial_setting": "equipment_yard",
+              "event_context": "morning_prep",
+              "score": 2.0
+            },
+            {
+              "photo_id": "c7_tgt_truck_day10",
+              "timestamp": "2024-06-26T12:05:00Z",
+              "spatial_setting": "project_headquarters",
+              "event_context": "project_wrapup",
+              "score": 2.0
+            }
+          ]
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 9,
+          "target_recall": 0.2,
+          "targets_recovered": 2,
+          "total_targets": 10,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 2,
+          "precision_at_1_tie_adjusted": 1.0,
+          "precision_at_3": 0.667,
+          "false_positives_admitted": 7
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 13,
+          "target_recall": 1.0,
+          "targets_recovered": 10,
+          "total_targets": 10,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 10,
+          "precision_at_1_tie_adjusted": 1.0,
+          "precision_at_3": 1.0,
+          "false_positives_admitted": 3
+        },
+        "case7_coverage_delta": {
+          "initial_days_captured": 2,
+          "final_days_captured": 10,
+          "total_simulated_days": 10,
+          "coverage_expansion_ratio": 5.0
+        }
+      }
+    },
+    {
+      "case_id": "case_8",
+      "case_name": "wedding",
+      "raw_memory": "wedding",
+      "interpreted_memory": {
+        "raw_input": "wedding",
+        "events": {
+          "event_name": "wedding"
+        }
+      },
+      "retrieval_signals": {
+        "event_milestone_signal": {
+          "event_name": "wedding",
+          "synonyms": [
+            "wedding",
+            "ceremony",
+            "reception",
+            "sangeet"
+          ]
+        },
+        "active_paths": [
+          "event_milestone"
+        ]
+      },
+      "discovery_paths": [
+        "event_milestone"
+      ],
+      "strategy_a_baseline": {
+        "strategy": "A_DIRECT_LITERAL_BASELINE",
+        "tokens": [
+          "wedding"
+        ],
+        "admitted_candidate_count": 4,
+        "scored_candidates": [
+          {
+            "photo_id": "c8_tgt_wedding_sangeet",
+            "matched_tokens": [
+              "wedding"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_tgt_wedding_ceremony",
+            "matched_tokens": [
+              "wedding"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_tgt_wedding_reception",
+            "matched_tokens": [
+              "wedding"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": true,
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_rel_colleague_wedding_2021",
+            "matched_tokens": [
+              "wedding"
+            ],
+            "unmatched_tokens": [],
+            "raw_score": 1.0,
+            "is_ground_truth_target": false,
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_dist_birthday_party_2024",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "wedding"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c8_dist_annual_office_gala_2023",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "wedding"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 5
+          },
+          {
+            "photo_id": "c8_dist_diwali_family_dinner_2023",
+            "matched_tokens": [],
+            "unmatched_tokens": [
+              "wedding"
+            ],
+            "raw_score": 0.0,
+            "is_ground_truth_target": false,
+            "rank": 5
+          }
+        ]
+      },
+      "strategy_b_discovery_engine": {
+        "initial_candidate_ids": [
+          "c8_tgt_wedding_sangeet",
+          "c8_tgt_wedding_ceremony",
+          "c8_tgt_wedding_reception",
+          "c8_rel_colleague_wedding_2021"
+        ],
+        "coverage_check": {
+          "decision": "SUFFICIENT",
+          "diagnostic_reason": "Initial multi-path candidate coverage is adequate for memory evaluation."
+        },
+        "recovery_action": "No recovery action required.",
+        "recovered_candidate_ids": [],
+        "final_candidate_ids": [
+          "c8_tgt_wedding_sangeet",
+          "c8_tgt_wedding_ceremony",
+          "c8_tgt_wedding_reception",
+          "c8_rel_colleague_wedding_2021"
+        ],
+        "candidate_evaluations": [
+          {
+            "photo_id": "c8_tgt_wedding_sangeet",
+            "dimension_matches": {
+              "events.wedding": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Event matches wedding celebration milestone ('Meera Wedding - Sangeet Night')."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_tgt_wedding_ceremony",
+            "dimension_matches": {
+              "events.wedding": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Event matches wedding celebration milestone ('Meera Wedding - Main Ceremony')."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_tgt_wedding_reception",
+            "dimension_matches": {
+              "events.wedding": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": true,
+            "match_explanations": [
+              "Event matches wedding celebration milestone ('Meera Wedding - Grand Reception')."
+            ],
+            "rank": 1
+          },
+          {
+            "photo_id": "c8_rel_colleague_wedding_2021",
+            "dimension_matches": {
+              "events.wedding": 1.0
+            },
+            "final_score": 1.0,
+            "is_ground_truth_target": false,
+            "match_explanations": [
+              "Event matches wedding celebration milestone ('Rohan Colleague Wedding')."
+            ],
+            "rank": 1
+          }
+        ],
+        "result_organization": {
+          "organization_type": "EVENT_CONTEXT_CHRONOLOGICAL_CLUSTERING",
+          "cluster_count": 2,
+          "clusters": {
+            "Meera Wedding (Target Event Cluster)": [
+              {
+                "photo_id": "c8_tgt_wedding_sangeet",
+                "timestamp": "2023-11-17T19:30:00Z",
+                "event_context": "Meera Wedding - Sangeet Night",
+                "score": 1.0,
+                "rank": 1
+              },
+              {
+                "photo_id": "c8_tgt_wedding_ceremony",
+                "timestamp": "2023-11-18T18:15:00Z",
+                "event_context": "Meera Wedding - Main Ceremony",
+                "score": 1.0,
+                "rank": 1
+              },
+              {
+                "photo_id": "c8_tgt_wedding_reception",
+                "timestamp": "2023-11-19T20:45:00Z",
+                "event_context": "Meera Wedding - Grand Reception",
+                "score": 1.0,
+                "rank": 1
+              }
+            ],
+            "Rohan Colleague Wedding (Secondary Cluster)": [
+              {
+                "photo_id": "c8_rel_colleague_wedding_2021",
+                "timestamp": "2021-02-14T19:00:00Z",
+                "event_context": "Rohan Colleague Wedding",
+                "score": 1.0,
+                "rank": 1
+              }
+            ]
+          }
+        }
+      },
+      "metrics": {
+        "strategy_a": {
+          "admitted_candidate_count": 4,
+          "target_recall": 1.0,
+          "targets_recovered": 3,
+          "total_targets": 3,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 4,
+          "precision_at_1_tie_adjusted": 0.75,
+          "precision_at_3": 1.0,
+          "false_positives_admitted": 1
+        },
+        "strategy_b": {
+          "admitted_candidate_count": 4,
+          "target_recall": 1.0,
+          "targets_recovered": 3,
+          "total_targets": 3,
+          "rank_of_first_target": 1,
+          "top1_tied_candidate_count": 4,
+          "precision_at_1_tie_adjusted": 0.75,
+          "precision_at_3": 1.0,
+          "false_positives_admitted": 1
+        },
+        "case7_coverage_delta": null
+      }
+    }
+  ]
+}

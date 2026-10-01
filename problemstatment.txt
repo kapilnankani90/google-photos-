@@ -1,0 +1,783 @@
+PROJECT: Evidence Collection for AI-Powered Photo Retrieval
+
+CONTEXT
+
+We are researching a product problem related to photo retrieval in Google Photos and similar photo-management applications.
+
+The hypothesis being investigated is:
+
+"Users have difficulty retrieving specific photos from their large photo libraries, and an AI-powered natural-language search experience could make photo retrieval easier than relying only on traditional search, albums, dates, locations, objects, or automatically detected faces."
+
+IMPORTANT:
+This project is currently in the EVIDENCE COLLECTION stage.
+
+Do NOT assume that the hypothesis is true.
+Do NOT search only for reviews that support the hypothesis.
+We need both positive and negative evidence.
+
+The goal is to identify what real users say about:
+1. Difficulty finding/retrieving photos.
+2. Searching for photos using natural language or descriptive queries.
+3. Problems with existing Google Photos search.
+4. Problems with face/person recognition.
+5. Problems with object/content recognition.
+6. Problems with date/location-based retrieval.
+7. Users' expectations from AI-powered photo search.
+8. Cases where users cannot find a photo even though they know it exists.
+9. Cases where AI/photo search successfully helps users find something.
+10. Cases where AI search gives irrelevant, incorrect, incomplete, or unexpected results.
+
+PRIMARY SOURCE
+
+Use Google Play Store reviews, especially reviews of:
+- Google Photos
+- Other major photo-management/photo-gallery applications when relevant
+
+Google Photos should be the primary source because this is the product being studied.
+
+Do NOT treat every review mentioning "search" as relevant.
+The review must contain evidence related to photo discovery, photo retrieval, photo organization, search, recognition, or finding specific photos.
+
+--------------------------------------------------
+STEP 1: COLLECT RAW REVIEWS
+--------------------------------------------------
+
+Collect as many relevant Google Play Store reviews as possible.
+
+For every review that passes the broad relevance filter, preserve:
+
+- Review text exactly as written
+- App name
+- Review date, if available
+- Star rating, if available
+- Reviewer name/ID, if available and permitted
+- Any available metadata
+- Source URL, if available
+
+DO NOT paraphrase the original review during collection.
+
+The original wording is important because this dataset will be used as research evidence.
+
+--------------------------------------------------
+STEP 2: BROAD INCLUSION CRITERIA
+--------------------------------------------------
+
+INCLUDE a review if it contains meaningful evidence about ANY of the following.
+
+A. PHOTO RETRIEVAL / FINDING PHOTOS
+
+Include reviews where users discuss:
+
+- difficulty finding a particular photo
+- inability to locate a photo they know exists
+- searching through a large photo library
+- spending too much time looking for a photo
+- scrolling through thousands of photos
+- wanting to find an old photo
+- wanting to find a specific moment/event/memory
+- wanting to find photos from a particular occasion
+- wanting to find photos containing a particular thing
+- wanting to find photos of a particular person
+- wanting to find photos based on what is happening in the photo
+- wanting to retrieve photos using descriptions rather than exact metadata
+- difficulty remembering when/where a photo was taken
+- difficulty finding photos without knowing the exact date
+- difficulty finding photos without knowing the exact location
+- difficulty finding photos when filenames are unknown
+- difficulty navigating albums/folders to locate a photo
+
+Example:
+"I know I have a picture of my daughter with the dog somewhere but I can't find it."
+
+INCLUDE.
+
+--------------------------------------------------
+
+B. SEARCH EXPERIENCE
+
+Include reviews discussing:
+
+- Google Photos search
+- photo search
+- search bar
+- searching photos
+- search suggestions
+- search results
+- natural-language photo search
+- conversational search
+- descriptive search
+- searching using phrases
+- searching using multiple concepts
+- searching by visual content
+- searching by meaning/context
+- searching by event/activity
+- searching by object
+- searching by person
+- searching by location
+- searching by date
+- searching by time period
+
+Example:
+"I searched for photos of my family at the beach and it showed the wrong pictures."
+
+INCLUDE.
+
+--------------------------------------------------
+
+C. AI / NATURAL-LANGUAGE PHOTO SEARCH
+
+Include reviews discussing:
+
+- AI search
+- AI-powered search
+- Gemini-powered photo search
+- Ask Photos
+- natural-language queries
+- conversational queries
+- descriptive queries
+- semantic search
+- searching by concepts rather than keywords
+- asking questions about the photo library
+- AI finding photos based on context
+- AI understanding what is in a photo
+- AI understanding relationships between people/objects/events
+
+Example:
+"I can ask it to find pictures from my trip and it actually finds them."
+
+INCLUDE.
+
+Also include reviews that describe the same behavior without explicitly using the word "AI."
+
+For example:
+"I typed 'photos of my dog at the beach' and it found them."
+
+This is relevant even if the reviewer never says "AI."
+
+--------------------------------------------------
+
+D. FACE / PERSON RECOGNITION
+
+Include reviews discussing:
+
+- incorrect face recognition
+- missing faces
+- inability to identify a person
+- manually adding a person
+- manually assigning faces
+- wrong person being identified
+- same person appearing as multiple people
+- multiple people being merged incorrectly
+- photos of people not appearing under that person's collection
+- side-profile recognition problems
+- back-of-head recognition problems
+- poor recognition in dark/low-light photos
+- recognition failures in old photos
+- inability to search for a person
+- wanting better person search
+
+Example:
+"The app doesn't recognize my mother's face in side-profile photos, so I can't find all her pictures."
+
+INCLUDE.
+
+Important:
+These reviews are relevant because they reveal limitations of an existing retrieval mechanism.
+
+--------------------------------------------------
+
+E. OBJECT / IMAGE CONTENT RECOGNITION
+
+Include reviews discussing inability to find photos based on:
+
+- objects
+- animals
+- food
+- vehicles
+- clothing
+- documents
+- buildings
+- landmarks
+- scenery
+- screenshots
+- specific visual elements
+- activities
+- events
+- visual characteristics
+
+Example:
+"I have hundreds of pictures of receipts but search doesn't find them properly."
+
+INCLUDE.
+
+--------------------------------------------------
+
+F. DATE / LOCATION / EVENT RETRIEVAL
+
+Include reviews where users discuss:
+
+- finding photos by date
+- finding photos by month/year
+- finding photos from a trip
+- finding photos from an event
+- finding photos from a particular location
+- incorrect dates
+- missing dates
+- incorrect locations
+- missing locations
+- inability to remember the exact date
+- inability to remember the exact location
+- wanting to retrieve photos based on an event rather than metadata
+
+Example:
+"I want to find the photos from my cousin's wedding but I don't remember the date."
+
+INCLUDE.
+
+--------------------------------------------------
+
+G. PHOTO LIBRARY SCALE / INFORMATION OVERLOAD
+
+Include reviews discussing:
+
+- thousands of photos
+- tens of thousands of photos
+- huge photo libraries
+- difficulty navigating large libraries
+- endless scrolling
+- too many photos
+- inability to organize photos
+- difficulty retrieving old photos
+- difficulty finding something among many photos
+
+These reviews are important even if they do not explicitly mention AI.
+
+--------------------------------------------------
+
+H. USER EXPECTATIONS / FEATURE REQUESTS
+
+Include reviews where users request:
+
+- better photo search
+- smarter search
+- natural-language search
+- AI search
+- conversational search
+- better face recognition
+- better object recognition
+- better event recognition
+- better photo retrieval
+- manually tagging people
+- manually tagging photos
+- improved search accuracy
+- improved search relevance
+- ability to describe what they are looking for
+
+These are valuable because they reveal unmet user needs.
+
+--------------------------------------------------
+STEP 3: EXCLUSION CRITERIA
+--------------------------------------------------
+
+REMOVE reviews that are unrelated to photo retrieval/search/discovery.
+
+Exclude reviews primarily about:
+
+A. STORAGE
+
+Examples:
+- storage prices
+- storage limits
+- buying more storage
+- storage plans
+- subscription pricing
+
+UNLESS the review also contains meaningful evidence about photo retrieval/search.
+
+Example:
+"I bought extra storage, but now I can't find my old photos."
+
+KEEP.
+
+Example:
+"Storage is too expensive."
+
+REMOVE.
+
+--------------------------------------------------
+
+B. BACKUP / SYNC
+
+Exclude reviews solely about:
+
+- backup failures
+- syncing problems
+- cloud backup
+- automatic backup
+- upload speed
+- photos not uploading
+
+UNLESS the review connects the problem to finding/retrieving photos.
+
+--------------------------------------------------
+
+C. PHOTO EDITING
+
+Exclude reviews solely about:
+
+- filters
+- cropping
+- editing tools
+- AI editing
+- Magic Eraser
+- brightness
+- contrast
+- video editing
+- effects
+
+UNLESS the review also discusses photo retrieval/search.
+
+--------------------------------------------------
+
+D. SHARING
+
+Exclude reviews solely about:
+
+- sharing photos
+- sharing links
+- sending photos
+- family sharing
+- partner sharing
+
+UNLESS the review contains evidence related to finding/retrieving photos.
+
+--------------------------------------------------
+
+E. GENERAL PERFORMANCE
+
+Exclude reviews solely about:
+
+- app crashes
+- freezing
+- battery drain
+- slow loading
+- device compatibility
+- overheating
+
+UNLESS the performance issue specifically affects photo search/retrieval.
+
+--------------------------------------------------
+
+F. GENERAL UI / DESIGN
+
+Exclude reviews solely about:
+
+- interface appearance
+- buttons
+- layout
+- animations
+- dark mode
+- font size
+
+UNLESS directly connected to photo retrieval/search.
+
+--------------------------------------------------
+
+G. PRIVACY / SECURITY
+
+Exclude reviews solely about:
+
+- privacy concerns
+- permissions
+- security
+- facial recognition privacy
+- data collection
+
+UNLESS the review also provides evidence about actual photo retrieval/search behavior.
+
+--------------------------------------------------
+
+H. DUPLICATE / EMPTY / NON-INFORMATIVE REVIEWS
+
+Remove:
+
+- "Great app"
+- "Best app"
+- "I love Google Photos"
+- "Worst app ever"
+- reviews with no meaningful explanation
+- spam
+- advertisements
+- emojis only
+- reviews consisting only of punctuation
+- duplicate reviews
+- reviews that provide no evidence relevant to the research question
+
+--------------------------------------------------
+STEP 4: IMPORTANT FILTERING PRINCIPLE
+--------------------------------------------------
+
+DO NOT FILTER BASED ONLY ON KEYWORDS.
+
+A review does NOT need to contain words such as:
+"search", "AI", "find", "photo search", or "retrieval".
+
+The semantic meaning of the review matters.
+
+For example:
+
+"Every time I want to show someone an old picture, I have to scroll forever."
+
+KEEP.
+
+This is evidence of a retrieval/discovery problem even though the word "search" may not appear.
+
+Another example:
+
+"I wish I could just type 'photos from my Goa trip with my friends' and get them."
+
+KEEP.
+
+Another example:
+
+"The app is great and I purchased 2TB."
+
+REMOVE unless there is additional evidence about retrieval/search.
+
+--------------------------------------------------
+STEP 5: CLASSIFY EVERY INCLUDED REVIEW
+--------------------------------------------------
+
+After filtering, assign one or more categories to each included review.
+
+Use these categories:
+
+1. RETRIEVAL_DIFFICULTY
+2. SEARCH_PROBLEM
+3. NATURAL_LANGUAGE_SEARCH
+4. AI_SEARCH
+5. FACE_RECOGNITION
+6. OBJECT_RECOGNITION
+7. EVENT_CONTEXT_SEARCH
+8. DATE_SEARCH
+9. LOCATION_SEARCH
+10. LARGE_LIBRARY_OVERLOAD
+11. SEARCH_ACCURACY
+12. SEARCH_RELEVANCE
+13. FEATURE_REQUEST
+14. SUCCESSFUL_RETRIEVAL
+15. OTHER_RETRIEVAL_EVIDENCE
+
+A review may have multiple categories.
+
+--------------------------------------------------
+STEP 6: CLASSIFY THE DIRECTION OF EVIDENCE
+--------------------------------------------------
+
+For every included review, classify the evidence as one of:
+
+PAIN_POINT
+- User describes a problem, frustration, failure, or unmet need.
+
+FEATURE_REQUEST
+- User explicitly asks for a capability.
+
+SUCCESS
+- User describes successful retrieval/search.
+
+FAILURE
+- User describes unsuccessful or inaccurate retrieval/search.
+
+EXPECTATION
+- User describes what they expect the product to understand or do.
+
+MIXED
+- Review contains both positive and negative evidence.
+
+Do NOT convert these into subjective judgments about the product.
+
+--------------------------------------------------
+STEP 7: IDENTIFY THE USER'S JOB-TO-BE-DONE
+--------------------------------------------------
+
+For each review where possible, extract the underlying retrieval task.
+
+Use concise descriptions such as:
+
+- Find photos of a specific person
+- Find photos from a trip
+- Find an old memory
+- Find a photo containing a specific object
+- Find photos from an event
+- Find photos without remembering the date
+- Find photos without remembering the location
+- Find a photo based on visual description
+- Find photos based on an activity
+- Find photos based on a relationship between people
+- Find a specific document/screenshot
+- Retrieve a photo from a large library
+
+Do NOT invent a job if the review does not support one.
+
+Use:
+"UNKNOWN"
+when the job cannot reasonably be inferred.
+
+--------------------------------------------------
+STEP 8: EXTRACT THE SEARCH METHOD
+--------------------------------------------------
+
+When possible, identify how the user attempted to find the photo.
+
+Possible values:
+
+- KEYWORD_SEARCH
+- PERSON_SEARCH
+- FACE_RECOGNITION
+- OBJECT_SEARCH
+- DATE_SEARCH
+- LOCATION_SEARCH
+- ALBUM
+- MANUAL_SCROLLING
+- NATURAL_LANGUAGE
+- AI_SEARCH
+- UNKNOWN
+
+If the review describes multiple methods, record all relevant methods.
+
+--------------------------------------------------
+STEP 9: IDENTIFY THE FAILURE MODE
+--------------------------------------------------
+
+For reviews describing a problem, identify the specific failure mode.
+
+Possible values:
+
+- CANNOT_FIND_PHOTO
+- IRRELEVANT_RESULTS
+- INCOMPLETE_RESULTS
+- WRONG_PERSON
+- PERSON_NOT_RECOGNIZED
+- OBJECT_NOT_RECOGNIZED
+- EVENT_NOT_RECOGNIZED
+- CONTEXT_NOT_UNDERSTOOD
+- SEARCH_TOO_BROAD
+- SEARCH_TOO_NARROW
+- REQUIRES_EXACT_DATE
+- REQUIRES_EXACT_LOCATION
+- MANUAL_SCROLLING_REQUIRED
+- TOO_MANY_RESULTS
+- DUPLICATE_RESULTS
+- OTHER
+- UNKNOWN
+
+Do not force a category if the evidence does not support it.
+
+--------------------------------------------------
+STEP 10: EXTRACT THE USER'S LANGUAGE
+--------------------------------------------------
+
+Preserve the original review exactly.
+
+Do not correct grammar.
+
+Do not rewrite the user's words.
+
+Do not summarize the review in place of the original.
+
+Create separate fields for:
+
+ORIGINAL_REVIEW
+and
+RESEARCH_INTERPRETATION
+
+The interpretation should be concise and evidence-based.
+
+Example:
+
+ORIGINAL_REVIEW:
+"I know I have a picture of my dog at the beach but search never shows it."
+
+RESEARCH_INTERPRETATION:
+"User knows the photo exists but cannot retrieve it using search."
+
+--------------------------------------------------
+STEP 11: DETECT STRONG EVIDENCE
+--------------------------------------------------
+
+Flag reviews as HIGH_SIGNAL when they contain specific behavioral evidence.
+
+Examples:
+
+HIGH_SIGNAL:
+"I searched for photos of my daughter at her school function and it only showed 3 pictures even though I have dozens."
+
+HIGH_SIGNAL:
+"I have over 20,000 photos and finding an old picture means scrolling for hours."
+
+HIGH_SIGNAL:
+"I wish I could type what I remember about a picture instead of knowing the exact date."
+
+HIGH_SIGNAL:
+"The face recognition doesn't identify my father in photos where he is looking away."
+
+LOW_SIGNAL:
+"Search could be better."
+
+The goal is to prioritize evidence containing a concrete user behavior, task, problem, failure, or expectation.
+
+--------------------------------------------------
+STEP 12: DO NOT CREATE FALSE EVIDENCE
+--------------------------------------------------
+
+CRITICAL RULE:
+
+Never fabricate, rewrite, merge, or embellish reviews.
+
+Never turn a vague review into a specific user problem.
+
+Never assume that a user wants AI search unless the review provides evidence supporting that interpretation.
+
+Never infer demographic information unless explicitly stated.
+
+Never infer intent that is not reasonably supported by the review.
+
+If uncertain, mark the field as UNKNOWN.
+
+--------------------------------------------------
+STEP 13: REMOVE DUPLICATES
+--------------------------------------------------
+
+If the same review appears multiple times:
+
+- Keep one copy.
+- Preserve the most complete version.
+- Record that duplicates were detected if metadata allows.
+
+Do not artificially increase evidence counts by counting duplicated reviews.
+
+--------------------------------------------------
+STEP 14: OUTPUT FORMAT
+--------------------------------------------------
+
+Create a structured dataset containing at minimum:
+
+review_id
+app_name
+review_date
+rating
+original_review
+relevance
+evidence_type
+category
+job_to_be_done
+search_method
+failure_mode
+research_interpretation
+signal_strength
+source
+
+Where:
+
+relevance =
+RELEVANT / NOT_RELEVANT
+
+evidence_type =
+PAIN_POINT / FEATURE_REQUEST / SUCCESS / FAILURE / EXPECTATION / MIXED
+
+signal_strength =
+HIGH / MEDIUM / LOW
+
+--------------------------------------------------
+STEP 15: CREATE A RESEARCH SUMMARY
+--------------------------------------------------
+
+After filtering and classification, generate a separate summary.
+
+The summary MUST NOT simply count keyword mentions.
+
+Instead, identify patterns in actual user behavior.
+
+Report:
+
+1. Total reviews collected
+2. Total relevant reviews
+3. Total excluded reviews
+4. Number of high-signal reviews
+5. Number of reviews describing retrieval difficulty
+6. Number describing search failure
+7. Number describing successful retrieval
+8. Number requesting better search
+9. Number related to face/person recognition
+10. Number related to object/content recognition
+11. Number related to natural-language/AI search
+12. Number related to large photo libraries
+
+Then identify recurring patterns such as:
+
+- Users knowing a photo exists but being unable to find it.
+- Users relying on manual scrolling.
+- Users forgetting the exact date/location.
+- Search returning irrelevant results.
+- Face recognition failing in specific visual conditions.
+- Users wanting to describe what they remember rather than use metadata.
+- Users successfully finding photos through semantic/natural-language search.
+
+Only report a pattern if supported by multiple reviews or particularly strong specific evidence.
+
+--------------------------------------------------
+STEP 16: SEPARATE EVIDENCE FROM INTERPRETATION
+--------------------------------------------------
+
+The final output must clearly distinguish:
+
+RAW USER EVIDENCE
+from
+RESEARCH INTERPRETATION.
+
+Do not state:
+
+"Users definitely need AI photo search."
+
+Instead state:
+
+"X reviews describe difficulty retrieving photos using existing mechanisms."
+
+Then show the underlying evidence.
+
+Do not convert evidence into a product conclusion prematurely.
+
+--------------------------------------------------
+FINAL RESEARCH OBJECTIVE
+--------------------------------------------------
+
+The purpose of this dataset is NOT to prove that an AI-powered photo retrieval system is the correct solution.
+
+The purpose is to answer these questions:
+
+1. Do users actually experience difficulty retrieving photos from large libraries?
+2. What specific retrieval tasks are difficult?
+3. What methods do users currently use?
+4. Where do existing search/retrieval mechanisms fail?
+5. What do users explicitly ask for?
+6. Are there examples of users successfully using natural-language/semantic/AI search?
+7. What recurring unmet needs can be supported by actual user evidence?
+8. What evidence contradicts or weakens the hypothesis?
+
+The final research output should allow a product team to move from:
+
+USER REVIEW
+→ USER BEHAVIOR
+→ RETRIEVAL PROBLEM
+→ PATTERN
+→ EVIDENCE-BACKED OPPORTUNITY
+
+without skipping the evidence stage.
+
+IMPORTANT FINAL RULE:
+
+Do not optimize the dataset to support the proposed AI solution.
+
+If the reviews indicate that the real problem is something else, report that honestly.
+
+Evidence should determine the problem, and the problem should determine whether an AI solution is justified.

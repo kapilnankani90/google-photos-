@@ -1,0 +1,1678 @@
+[
+  {
+    "photo_id": "c1_tgt_family_5sisters",
+    "visual_entities": [
+      "person",
+      "group_portrait",
+      "sofa"
+    ],
+    "bound_attributes": {
+      "person": [
+        "traditional_attire",
+        "smiling"
+      ]
+    },
+    "demographic_tags": {
+      "count": 5,
+      "apparent_gender": "female",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-08-20T16:45:00Z",
+    "spatial_setting": "living_room",
+    "event_context": "family_gathering",
+    "is_ground_truth_target": true,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_rel_campus_5females",
+    "visual_entities": [
+      "person",
+      "group_portrait",
+      "backpack"
+    ],
+    "bound_attributes": {
+      "person": [
+        "casual_clothing"
+      ]
+    },
+    "demographic_tags": {
+      "count": 5,
+      "apparent_gender": "female",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-03-15T11:20:00Z",
+    "spatial_setting": "college_campus",
+    "event_context": "graduation_reunion",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_dist_3females",
+    "visual_entities": [
+      "person",
+      "group_portrait"
+    ],
+    "bound_attributes": {
+      "person": [
+        "casual_clothing"
+      ]
+    },
+    "demographic_tags": {
+      "count": 3,
+      "apparent_gender": "female",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-09-02T18:00:00Z",
+    "spatial_setting": "patio",
+    "event_context": "casual_meetup",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_dist_7females",
+    "visual_entities": [
+      "person",
+      "group_portrait"
+    ],
+    "bound_attributes": {
+      "person": [
+        "party_clothing"
+      ]
+    },
+    "demographic_tags": {
+      "count": 7,
+      "apparent_gender": "female",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-10-14T20:30:00Z",
+    "spatial_setting": "banquet_room",
+    "event_context": "birthday_party",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_dist_5males",
+    "visual_entities": [
+      "person",
+      "group_portrait"
+    ],
+    "bound_attributes": {
+      "person": [
+        "sports_jersey"
+      ]
+    },
+    "demographic_tags": {
+      "count": 5,
+      "apparent_gender": "male",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-05-18T17:10:00Z",
+    "spatial_setting": "sports_field",
+    "event_context": "basketball_game",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_dist_5mixed",
+    "visual_entities": [
+      "person",
+      "group_portrait"
+    ],
+    "bound_attributes": {
+      "person": [
+        "casual_clothing"
+      ]
+    },
+    "demographic_tags": {
+      "count": 5,
+      "apparent_gender": "mixed",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-07-04T13:00:00Z",
+    "spatial_setting": "park",
+    "event_context": "picnic",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_dist_1female_portrait",
+    "visual_entities": [
+      "person",
+      "portrait"
+    ],
+    "bound_attributes": {
+      "person": [
+        "formal_attire"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "female",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-05T15:00:00Z",
+    "spatial_setting": "studio",
+    "event_context": "headshot",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c1_dist_literal_sister_sign",
+    "visual_entities": [
+      "storefront",
+      "sign"
+    ],
+    "bound_attributes": {
+      "sign": [
+        "illuminated",
+        "retail"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Seven Sisters Bakery"
+    ],
+    "timestamp": "2023-04-12T10:15:00Z",
+    "spatial_setting": "commercial_street",
+    "event_context": "city_walk",
+    "is_ground_truth_target": false,
+    "target_case": "5 sisters"
+  },
+  {
+    "photo_id": "c2_tgt_rohtang_snow",
+    "visual_entities": [
+      "snow",
+      "ice",
+      "mountain",
+      "tourist"
+    ],
+    "bound_attributes": {
+      "mountain": [
+        "snow_covered"
+      ],
+      "ice": [
+        "glacial"
+      ]
+    },
+    "demographic_tags": {
+      "count": 2,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-12-10T11:45:00Z",
+    "spatial_setting": "Rohtang Pass",
+    "event_context": "Manali winter trip",
+    "is_ground_truth_target": true,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c2_rel_rohtang_summer",
+    "visual_entities": [
+      "mountain",
+      "valley",
+      "tourist",
+      "rocks"
+    ],
+    "bound_attributes": {
+      "mountain": [
+        "rocky",
+        "green"
+      ]
+    },
+    "demographic_tags": {
+      "count": 2,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-06-15T14:20:00Z",
+    "spatial_setting": "Rohtang Pass",
+    "event_context": "Manali summer trip",
+    "is_ground_truth_target": false,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c2_dist_wali_sign",
+    "visual_entities": [
+      "storefront",
+      "sign"
+    ],
+    "bound_attributes": {
+      "sign": [
+        "painted_wood"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Paranthe Wali Gali Famous Photo Studio"
+    ],
+    "timestamp": "2023-02-18T16:00:00Z",
+    "spatial_setting": "Old Delhi",
+    "event_context": "heritage_walk",
+    "is_ground_truth_target": false,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c2_dist_solang_snow",
+    "visual_entities": [
+      "snow",
+      "ice",
+      "ski_slope"
+    ],
+    "bound_attributes": {
+      "ski_slope": [
+        "snow_covered"
+      ]
+    },
+    "demographic_tags": {
+      "count": 3,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-12-12T10:30:00Z",
+    "spatial_setting": "Solang Valley",
+    "event_context": "Manali winter trip",
+    "is_ground_truth_target": false,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c2_dist_ice_cream",
+    "visual_entities": [
+      "ice_cream",
+      "dessert",
+      "table"
+    ],
+    "bound_attributes": {
+      "ice_cream": [
+        "vanilla",
+        "cone"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-07-20T17:40:00Z",
+    "spatial_setting": "cafe",
+    "event_context": "dessert_outing",
+    "is_ground_truth_target": false,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c2_dist_passport_photo_desk",
+    "visual_entities": [
+      "document",
+      "desk"
+    ],
+    "bound_attributes": {
+      "document": [
+        "printed_paper"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Passport Photo Printout"
+    ],
+    "timestamp": "2023-09-05T09:15:00Z",
+    "spatial_setting": "home_office",
+    "event_context": "visa_application",
+    "is_ground_truth_target": false,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c2_dist_goa_beach",
+    "visual_entities": [
+      "beach",
+      "ocean",
+      "palm_trees"
+    ],
+    "bound_attributes": {
+      "ocean": [
+        "blue",
+        "calm"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "female",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-25T17:15:00Z",
+    "spatial_setting": "Goa Beach",
+    "event_context": "beach_vacation",
+    "is_ground_truth_target": false,
+    "target_case": "rohtang ki ice wali photo"
+  },
+  {
+    "photo_id": "c3_tgt_white_motorcycle",
+    "visual_entities": [
+      "bike",
+      "person",
+      "road"
+    ],
+    "bound_attributes": {
+      "bike": [
+        "white"
+      ],
+      "person": [
+        "black_jacket",
+        "helmet"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "male",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-03-12T15:10:00Z",
+    "spatial_setting": "mountain_highway",
+    "event_context": "weekend_ride",
+    "is_ground_truth_target": true,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_rel_silver_white_bicycle",
+    "visual_entities": [
+      "bike",
+      "person"
+    ],
+    "bound_attributes": {
+      "bike": [
+        "silver_white",
+        "metallic"
+      ],
+      "person": [
+        "sportswear"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "female",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-04-05T08:30:00Z",
+    "spatial_setting": "city_park",
+    "event_context": "morning_cycling",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_dist_black_bike_white_shirt",
+    "visual_entities": [
+      "bike",
+      "person",
+      "clothing"
+    ],
+    "bound_attributes": {
+      "bike": [
+        "black",
+        "matte"
+      ],
+      "clothing": [
+        "white_shirt"
+      ],
+      "person": [
+        "white_shirt"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "male",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-03-20T16:45:00Z",
+    "spatial_setting": "driveway",
+    "event_context": "afternoon_commute",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_dist_black_bike_white_wall",
+    "visual_entities": [
+      "bike",
+      "wall"
+    ],
+    "bound_attributes": {
+      "bike": [
+        "black",
+        "glossy"
+      ],
+      "wall": [
+        "white",
+        "brick"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-02-14T11:00:00Z",
+    "spatial_setting": "garage_alley",
+    "event_context": "bike_storage",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_dist_white_car",
+    "visual_entities": [
+      "car",
+      "street"
+    ],
+    "bound_attributes": {
+      "car": [
+        "white"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-01-10T14:15:00Z",
+    "spatial_setting": "parking_lot",
+    "event_context": "car_parking",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_dist_black_bike_alone",
+    "visual_entities": [
+      "bike",
+      "asphalt"
+    ],
+    "bound_attributes": {
+      "bike": [
+        "black"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-05-02T17:30:00Z",
+    "spatial_setting": "street_curb",
+    "event_context": "parking",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_dist_white_shirt_person",
+    "visual_entities": [
+      "person",
+      "clothing",
+      "garden"
+    ],
+    "bound_attributes": {
+      "clothing": [
+        "white_shirt"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "female",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-18T10:45:00Z",
+    "spatial_setting": "botanical_garden",
+    "event_context": "garden_visit",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c3_dist_unrelated_white_dog",
+    "visual_entities": [
+      "dog",
+      "grass"
+    ],
+    "bound_attributes": {
+      "dog": [
+        "white",
+        "fluffy"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-05-20T16:00:00Z",
+    "spatial_setting": "backyard",
+    "event_context": "pet_playtime",
+    "is_ground_truth_target": false,
+    "target_case": "white bike"
+  },
+  {
+    "photo_id": "c4_tgt_diya_residential_gate",
+    "visual_entities": [
+      "diya",
+      "gate",
+      "flame",
+      "person"
+    ],
+    "bound_attributes": {
+      "diya": [
+        "lit",
+        "brass",
+        "clay"
+      ],
+      "gate": [
+        "iron_gate",
+        "residential"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "male",
+      "apparent_age": "middle_aged"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-12T19:40:00Z",
+    "spatial_setting": "residential entrance gate",
+    "event_context": "Diwali evening",
+    "is_ground_truth_target": true,
+    "target_case": "diya at the gate"
+  },
+  {
+    "photo_id": "c4_rel_diya_front_porch",
+    "visual_entities": [
+      "diya",
+      "doorway",
+      "rangoli",
+      "flame"
+    ],
+    "bound_attributes": {
+      "diya": [
+        "lit",
+        "terracotta"
+      ],
+      "doorway": [
+        "wooden_door"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-12T19:15:00Z",
+    "spatial_setting": "front doorway porch",
+    "event_context": "Diwali evening",
+    "is_ground_truth_target": false,
+    "target_case": "diya at the gate"
+  },
+  {
+    "photo_id": "c4_dist_diya_pooja_altar",
+    "visual_entities": [
+      "diya",
+      "flowers",
+      "idol",
+      "incense"
+    ],
+    "bound_attributes": {
+      "diya": [
+        "lit",
+        "brass"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-12T18:30:00Z",
+    "spatial_setting": "pooja room altar",
+    "event_context": "Diwali prayer",
+    "is_ground_truth_target": false,
+    "target_case": "diya at the gate"
+  },
+  {
+    "photo_id": "c4_dist_gate_delivery_car",
+    "visual_entities": [
+      "gate",
+      "car",
+      "delivery_box"
+    ],
+    "bound_attributes": {
+      "gate": [
+        "iron_gate"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "male",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-10-05T14:10:00Z",
+    "spatial_setting": "residential entrance gate",
+    "event_context": "package_delivery",
+    "is_ground_truth_target": false,
+    "target_case": "diya at the gate"
+  },
+  {
+    "photo_id": "c4_dist_gate_dog",
+    "visual_entities": [
+      "gate",
+      "dog"
+    ],
+    "bound_attributes": {
+      "gate": [
+        "iron_gate"
+      ],
+      "dog": [
+        "sleeping",
+        "brown"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-08-14T08:00:00Z",
+    "spatial_setting": "residential entrance gate",
+    "event_context": "morning_guard",
+    "is_ground_truth_target": false,
+    "target_case": "diya at the gate"
+  },
+  {
+    "photo_id": "c4_dist_street_light_lamp",
+    "visual_entities": [
+      "street_lamp",
+      "road"
+    ],
+    "bound_attributes": {
+      "street_lamp": [
+        "electric",
+        "illuminated"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-10T21:00:00Z",
+    "spatial_setting": "suburban road",
+    "event_context": "night_drive",
+    "is_ground_truth_target": false,
+    "target_case": "diya at the gate"
+  },
+  {
+    "photo_id": "c5_tgt_progressive_insurance_policy",
+    "visual_entities": [
+      "document",
+      "paperwork"
+    ],
+    "bound_attributes": {
+      "document": [
+        "printed_statement",
+        "official"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Progressive",
+      "Auto Insurance Policy",
+      "Declarations Page",
+      "Policy Number",
+      "Premium Due"
+    ],
+    "timestamp": "2024-01-18T10:05:00Z",
+    "spatial_setting": "desk",
+    "event_context": "insurance renewal",
+    "is_ground_truth_target": true,
+    "target_case": "Progressive"
+  },
+  {
+    "photo_id": "c5_rel_progressive_id_card",
+    "visual_entities": [
+      "document",
+      "insurance_card"
+    ],
+    "bound_attributes": {
+      "document": [
+        "wallet_card"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Progressive Insurance",
+      "Proof of Insurance Card",
+      "Effective Date"
+    ],
+    "timestamp": "2024-01-20T11:15:00Z",
+    "spatial_setting": "table",
+    "event_context": "glovebox paperwork",
+    "is_ground_truth_target": false,
+    "target_case": "Progressive"
+  },
+  {
+    "photo_id": "c5_dist_geico_utility_bill",
+    "visual_entities": [
+      "document",
+      "paperwork"
+    ],
+    "bound_attributes": {
+      "document": [
+        "printed_statement"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Consolidated Edison",
+      "Monthly Electric Bill",
+      "Account 89324",
+      "Total Amount Due"
+    ],
+    "timestamp": "2024-02-10T14:20:00Z",
+    "spatial_setting": "kitchen_counter",
+    "event_context": "bill_payment",
+    "is_ground_truth_target": false,
+    "target_case": "Progressive"
+  },
+  {
+    "photo_id": "c5_dist_tax_w2_document",
+    "visual_entities": [
+      "document",
+      "tax_form"
+    ],
+    "bound_attributes": {
+      "document": [
+        "printed_form"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Internal Revenue Service",
+      "Form W-2",
+      "Wage and Tax Statement"
+    ],
+    "timestamp": "2024-01-28T09:30:00Z",
+    "spatial_setting": "office_desk",
+    "event_context": "tax_preparation",
+    "is_ground_truth_target": false,
+    "target_case": "Progressive"
+  },
+  {
+    "photo_id": "c5_dist_progress_fitness_banner",
+    "visual_entities": [
+      "sign",
+      "banner",
+      "gym_equipment"
+    ],
+    "bound_attributes": {
+      "banner": [
+        "vinyl",
+        "hanging"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Progress Fitness Club",
+      "Members Only Entrance"
+    ],
+    "timestamp": "2024-03-05T18:00:00Z",
+    "spatial_setting": "gym",
+    "event_context": "workout",
+    "is_ground_truth_target": false,
+    "target_case": "Progressive"
+  },
+  {
+    "photo_id": "c5_dist_progressive_rock_poster",
+    "visual_entities": [
+      "poster",
+      "wall"
+    ],
+    "bound_attributes": {
+      "poster": [
+        "colorful",
+        "paper"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Progressive Rock Festival",
+      "Live Weekend 2024"
+    ],
+    "timestamp": "2024-04-12T20:00:00Z",
+    "spatial_setting": "bedroom_wall",
+    "event_context": "music_memorabilia",
+    "is_ground_truth_target": false,
+    "target_case": "Progressive"
+  },
+  {
+    "photo_id": "c6_tgt_lease_agreement_2022",
+    "visual_entities": [
+      "document",
+      "paperwork"
+    ],
+    "bound_attributes": {
+      "document": [
+        "notarized_contract",
+        "signed"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "Residential Lease Agreement",
+      "Notary Seal",
+      "Term: Two Years",
+      "Signatures"
+    ],
+    "timestamp": "2022-08-14T10:15:00Z",
+    "spatial_setting": "office_desk",
+    "event_context": "apartment_lease_signing",
+    "is_ground_truth_target": true,
+    "target_case": "document around 4 years ago"
+  },
+  {
+    "photo_id": "c6_rel_bank_statement_2022",
+    "visual_entities": [
+      "document",
+      "paperwork"
+    ],
+    "bound_attributes": {
+      "document": [
+        "financial_statement"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "First National Bank",
+      "Monthly Statement",
+      "Account Activity"
+    ],
+    "timestamp": "2022-11-20T14:30:00Z",
+    "spatial_setting": "desk",
+    "event_context": "banking_records",
+    "is_ground_truth_target": false,
+    "target_case": "document around 4 years ago"
+  },
+  {
+    "photo_id": "c6_dist_recent_document_2026",
+    "visual_entities": [
+      "document",
+      "paperwork"
+    ],
+    "bound_attributes": {
+      "document": [
+        "medical_bill"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "General Hospital Billing",
+      "Statement Date 2026-03-10"
+    ],
+    "timestamp": "2026-03-10T09:00:00Z",
+    "spatial_setting": "kitchen_counter",
+    "event_context": "medical_payment",
+    "is_ground_truth_target": false,
+    "target_case": "document around 4 years ago"
+  },
+  {
+    "photo_id": "c6_dist_old_document_2018",
+    "visual_entities": [
+      "document",
+      "paperwork"
+    ],
+    "bound_attributes": {
+      "document": [
+        "tax_filing"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "IRS Form 1040",
+      "Tax Year 2017",
+      "Filing Copy"
+    ],
+    "timestamp": "2018-04-12T11:00:00Z",
+    "spatial_setting": "archive_box",
+    "event_context": "tax_archive",
+    "is_ground_truth_target": false,
+    "target_case": "document around 4 years ago"
+  },
+  {
+    "photo_id": "c6_dist_birthday_photo_2022",
+    "visual_entities": [
+      "cake",
+      "people",
+      "party_balloons"
+    ],
+    "bound_attributes": {
+      "cake": [
+        "chocolate"
+      ],
+      "party_balloons": [
+        "colorful"
+      ]
+    },
+    "demographic_tags": {
+      "count": 4,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [
+      "Happy 25th Birthday!"
+    ],
+    "timestamp": "2022-07-22T19:30:00Z",
+    "spatial_setting": "dining_room",
+    "event_context": "birthday_party",
+    "is_ground_truth_target": false,
+    "target_case": "document around 4 years ago"
+  },
+  {
+    "photo_id": "c6_dist_mountain_trip_2024",
+    "visual_entities": [
+      "mountain",
+      "lake",
+      "hiking_boots"
+    ],
+    "bound_attributes": {
+      "mountain": [
+        "scenic"
+      ]
+    },
+    "demographic_tags": {
+      "count": 2,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-05-18T12:00:00Z",
+    "spatial_setting": "national_park",
+    "event_context": "hiking_vacation",
+    "is_ground_truth_target": false,
+    "target_case": "document around 4 years ago"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day01",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-01T09:15:00Z",
+    "spatial_setting": "construction_depot",
+    "event_context": "equipment_staging",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day02",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-03T11:30:00Z",
+    "spatial_setting": "interstate_highway",
+    "event_context": "convoy_transit",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day03",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-05T14:10:00Z",
+    "spatial_setting": "gravel_quarry",
+    "event_context": "quarry_loading",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day04",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-08T08:45:00Z",
+    "spatial_setting": "industrial_warehouse",
+    "event_context": "cargo_intake",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day05",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-11T16:20:00Z",
+    "spatial_setting": "access_road",
+    "event_context": "gravel_hauling",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day06",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-14T10:00:00Z",
+    "spatial_setting": "maintenance_garage",
+    "event_context": "fleet_service",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day07",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-17T13:40:00Z",
+    "spatial_setting": "mountain_pass_road",
+    "event_context": "steep_transport",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day08",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-20T17:15:00Z",
+    "spatial_setting": "river_bridge_site",
+    "event_context": "bridge_construction",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day09",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-23T07:50:00Z",
+    "spatial_setting": "equipment_yard",
+    "event_context": "morning_prep",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_tgt_truck_day10",
+    "visual_entities": [
+      "truck",
+      "utility_vehicle"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "yellow"
+      ],
+      "utility_vehicle": [
+        "heavy_duty"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-26T12:05:00Z",
+    "spatial_setting": "project_headquarters",
+    "event_context": "project_wrapup",
+    "is_ground_truth_target": true,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_yellow_taxi",
+    "visual_entities": [
+      "car",
+      "taxi"
+    ],
+    "bound_attributes": {
+      "car": [
+        "yellow"
+      ],
+      "taxi": [
+        "yellow"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "NYC Taxi"
+    ],
+    "timestamp": "2024-06-04T15:20:00Z",
+    "spatial_setting": "city_avenue",
+    "event_context": "urban_traffic",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_yellow_school_bus",
+    "visual_entities": [
+      "bus",
+      "school_bus"
+    ],
+    "bound_attributes": {
+      "bus": [
+        "yellow"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [
+      "School District"
+    ],
+    "timestamp": "2024-06-09T08:15:00Z",
+    "spatial_setting": "school_parking",
+    "event_context": "morning_dropoff",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_blue_dump_truck",
+    "visual_entities": [
+      "truck",
+      "dump_truck"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "blue"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-12T11:00:00Z",
+    "spatial_setting": "quarry",
+    "event_context": "earthmoving",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_red_pickup_truck",
+    "visual_entities": [
+      "truck",
+      "pickup"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "red"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-15T18:40:00Z",
+    "spatial_setting": "suburban_driveway",
+    "event_context": "personal_vehicle",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_white_semi_truck",
+    "visual_entities": [
+      "truck",
+      "semi_truck"
+    ],
+    "bound_attributes": {
+      "truck": [
+        "white"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-18T14:00:00Z",
+    "spatial_setting": "highway_rest_stop",
+    "event_context": "freight_shipping",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_yellow_raincoat",
+    "visual_entities": [
+      "person",
+      "raincoat",
+      "umbrella"
+    ],
+    "bound_attributes": {
+      "raincoat": [
+        "yellow"
+      ]
+    },
+    "demographic_tags": {
+      "count": 1,
+      "apparent_gender": "male",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-21T10:30:00Z",
+    "spatial_setting": "city_street",
+    "event_context": "rainy_day",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c7_dist_yellow_hardhat",
+    "visual_entities": [
+      "helmet",
+      "hardhat"
+    ],
+    "bound_attributes": {
+      "hardhat": [
+        "yellow"
+      ]
+    },
+    "demographic_tags": {
+      "count": 0,
+      "apparent_gender": "none",
+      "apparent_age": "none"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-06-24T13:10:00Z",
+    "spatial_setting": "workbench",
+    "event_context": "site_safety",
+    "is_ground_truth_target": false,
+    "target_case": "yellow truck"
+  },
+  {
+    "photo_id": "c8_tgt_wedding_sangeet",
+    "visual_entities": [
+      "dance_stage",
+      "family",
+      "traditional_decorations"
+    ],
+    "bound_attributes": {
+      "family": [
+        "festive_attire",
+        "dancing"
+      ]
+    },
+    "demographic_tags": {
+      "count": 8,
+      "apparent_gender": "mixed",
+      "apparent_age": "mixed"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-17T19:30:00Z",
+    "spatial_setting": "hotel_courtyard",
+    "event_context": "Meera Wedding - Sangeet Night",
+    "is_ground_truth_target": true,
+    "target_case": "wedding"
+  },
+  {
+    "photo_id": "c8_tgt_wedding_ceremony",
+    "visual_entities": [
+      "wedding_mandap",
+      "bride",
+      "groom",
+      "fire_altar"
+    ],
+    "bound_attributes": {
+      "bride": [
+        "red_lehenga",
+        "gold_jewelry"
+      ],
+      "groom": [
+        "sherwani"
+      ]
+    },
+    "demographic_tags": {
+      "count": 2,
+      "apparent_gender": "mixed",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-18T18:15:00Z",
+    "spatial_setting": "wedding_banquet_hall",
+    "event_context": "Meera Wedding - Main Ceremony",
+    "is_ground_truth_target": true,
+    "target_case": "wedding"
+  },
+  {
+    "photo_id": "c8_tgt_wedding_reception",
+    "visual_entities": [
+      "stage",
+      "couple",
+      "guests",
+      "floral_backdrop"
+    ],
+    "bound_attributes": {
+      "couple": [
+        "formal_attire"
+      ],
+      "floral_backdrop": [
+        "white_roses"
+      ]
+    },
+    "demographic_tags": {
+      "count": 6,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-19T20:45:00Z",
+    "spatial_setting": "palace_gardens",
+    "event_context": "Meera Wedding - Grand Reception",
+    "is_ground_truth_target": true,
+    "target_case": "wedding"
+  },
+  {
+    "photo_id": "c8_rel_colleague_wedding_2021",
+    "visual_entities": [
+      "wedding_stage",
+      "bride",
+      "groom",
+      "guests"
+    ],
+    "bound_attributes": {
+      "bride": [
+        "silk_saree"
+      ]
+    },
+    "demographic_tags": {
+      "count": 4,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2021-02-14T19:00:00Z",
+    "spatial_setting": "community_hall",
+    "event_context": "Rohan Colleague Wedding",
+    "is_ground_truth_target": false,
+    "target_case": "wedding"
+  },
+  {
+    "photo_id": "c8_dist_birthday_party_2024",
+    "visual_entities": [
+      "birthday_cake",
+      "balloons",
+      "guests"
+    ],
+    "bound_attributes": {
+      "birthday_cake": [
+        "chocolate_truffle"
+      ]
+    },
+    "demographic_tags": {
+      "count": 5,
+      "apparent_gender": "mixed",
+      "apparent_age": "young_adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2024-04-10T20:00:00Z",
+    "spatial_setting": "rooftop_lounge",
+    "event_context": "Kavya 25th Birthday",
+    "is_ground_truth_target": false,
+    "target_case": "wedding"
+  },
+  {
+    "photo_id": "c8_dist_annual_office_gala_2023",
+    "visual_entities": [
+      "podium",
+      "dinner_table",
+      "wine_glasses",
+      "guests"
+    ],
+    "bound_attributes": {
+      "guests": [
+        "business_formal_suits"
+      ]
+    },
+    "demographic_tags": {
+      "count": 6,
+      "apparent_gender": "mixed",
+      "apparent_age": "adult"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-12-15T18:00:00Z",
+    "spatial_setting": "convention_center",
+    "event_context": "Annual Corporate Gala 2023",
+    "is_ground_truth_target": false,
+    "target_case": "wedding"
+  },
+  {
+    "photo_id": "c8_dist_diwali_family_dinner_2023",
+    "visual_entities": [
+      "dinner_spread",
+      "sweets",
+      "family",
+      "traditional_clothing"
+    ],
+    "bound_attributes": {
+      "family": [
+        "ethnic_wear"
+      ]
+    },
+    "demographic_tags": {
+      "count": 5,
+      "apparent_gender": "mixed",
+      "apparent_age": "mixed"
+    },
+    "in_image_text": [],
+    "timestamp": "2023-11-12T20:30:00Z",
+    "spatial_setting": "dining_room",
+    "event_context": "Diwali Family Dinner 2023",
+    "is_ground_truth_target": false,
+    "target_case": "wedding"
+  }
+]
