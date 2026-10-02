@@ -1,1 +1,21 @@
--r backend/requirements.txt
+# Root Dependencies for Railway Railpack Build (Google Photos Discovery Engine)
+# Runtime API Framework
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+python-dotenv>=1.0.1
+httpx>=0.27.0
+
+# Database Persistence (Supabase PostgreSQL / pgvector)
+asyncpg>=0.29.0
+
+# CPU-Only Transformer Embeddings & Vector Operations (Step 5 Benchmark Candidate Runtime)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
+sentence-transformers>=3.0.0
+numpy>=1.24.0
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
