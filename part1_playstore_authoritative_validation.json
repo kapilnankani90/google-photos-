@@ -1,0 +1,25 @@
+{
+  "dataset_name": "part1_playstore_evidence_245_authoritative.json",
+  "total_records": 245,
+  "valid_records": 245,
+  "invalid_records": 0,
+  "duplicate_records": 0,
+  "schema_errors": [],
+  "provenance_errors": [],
+  "missing_required_fields": [],
+  "inference_violations": [],
+  "component_breakdown": {
+    "component_a_phase_3b1_validated": 151,
+    "component_b_phase_3b31_supplemental": 56,
+    "component_c_phase_3b32_remaining_pool": 17,
+    "component_d_phase_3b4_final_precision": 21,
+    "total_playstore": 245
+  },
+  "reconciliation": {
+    "play_store": 245,
+    "reddit": 38,
+    "user_interviews": 25,
+    "total_master_corpus": 308
+  },
+  "status": "PASS"
+}

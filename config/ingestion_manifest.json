@@ -9,6 +9,7 @@
       "methodology": "UNSOLICITED_PUBLIC",
       "name": "Google Play Store Public Reviews",
       "document_reference": "raw_reviews_dataset.json",
+      "authoritative_dataset": "part1_playstore_evidence_245_authoritative.json",
       "target_record_count": 245,
       "optional_subsets": {
         "pristine_curated": 23,
@@ -21,6 +22,7 @@
       "methodology": "UNSOLICITED_PUBLIC",
       "name": "Reddit r/googlephotos Power-User Discussions",
       "document_reference": "reddit reviews .docx",
+      "authoritative_dataset": "reddit_evidence_dataset.json",
       "target_record_count": 38,
       "required_fields": ["external_id", "raw_text", "failure_mode", "structured_situation"]
     },
@@ -29,6 +31,7 @@
       "methodology": "PROMPTED_INTERVIEW",
       "name": "1:1 Behavioral Retrieval Testing Episodes",
       "document_reference": "GOOGLE PHOTOS INTERVIEW (1).docx",
+      "authoritative_dataset": "interview_evidence_dataset.json",
       "target_record_count": 25,
       "participant_count": 6,
       "required_fields": ["external_id", "raw_text", "user_debrief", "failure_mode"]

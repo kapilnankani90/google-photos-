@@ -1,6 +1,6 @@
 # Database Migrations
 
-**Implementation Status: Scheduled for Step 2 (Supabase Foundation)**
+**Implementation Status: Active (Step 2 — Supabase Foundation)**
 
-This directory will house the executable SQL migration files starting in Step 2.
-No migrations are active or applied during Step 1.
+This directory contains version-controlled database migrations:
+- `001_initial_schema.sql`: Initial schema defining the 9 approved core tables, PostgreSQL extensions (`uuid-ossp`, `vector`), 384-dimensional vector column with HNSW index, English tsvector FTS column with GIN index, and referential constraints.
