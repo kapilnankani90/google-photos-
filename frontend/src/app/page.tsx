@@ -520,7 +520,7 @@ export default function DiscoveryEngineConsole() {
                 </div>
               </div>
 
-              {/* Expanded search used / Initial search sufficient */}
+              {/* Expanded search used / Insufficient evidence / Initial search sufficient */}
               {response.controlled_recovery_triggered ? (
                 <div className="recovery-banner-active">
                   <AlertCircle size={16} style={{ flexShrink: 0 }} />
@@ -528,6 +528,31 @@ export default function DiscoveryEngineConsole() {
                     Expanded search used
                     <div style={{ fontSize: "0.6875rem", fontWeight: 400, color: "#FEF08A" }}>
                       Initial search found limited matches, so an expanded search was run automatically.
+                    </div>
+                  </div>
+                </div>
+              ) : response.candidate_pool_size === 0 || (response.coverage_status && response.coverage_status.includes("INSUFFICIENT")) ? (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.6rem",
+                    padding: "0.75rem 1rem",
+                    background: "rgba(245, 158, 11, 0.1)",
+                    border: "1px solid rgba(245, 158, 11, 0.25)",
+                    borderRadius: "8px",
+                    color: "#FCD34D",
+                    fontSize: "0.8125rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  <AlertCircle size={16} style={{ flexShrink: 0, color: "#FBBF24" }} />
+                  <div>
+                    Insufficient evidence
+                    <div style={{ fontSize: "0.6875rem", fontWeight: 400, color: "#FDE68A" }}>
+                      {response.candidate_pool_size === 0
+                        ? "No matching evidence was found in the database."
+                        : "Initial search found limited evidence."}
                     </div>
                   </div>
                 </div>
