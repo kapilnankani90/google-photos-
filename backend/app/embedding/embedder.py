@@ -15,11 +15,10 @@ SPECIFICATION CONTRACT:
 Zero external/paid APIs.
 """
 
-from typing import List, Optional
+from typing import List, Optional, Any
 import os
 import threading
 import logging
-from sentence_transformers import SentenceTransformer
 
 logger = logging.getLogger("LocalEmbedder")
 
@@ -37,30 +36,42 @@ DISQUALIFIED_MODELS = [
 class LocalEmbedder:
     """
     Singleton local text embedder using SentenceTransformer on CPU.
-    Guarantees exact 384-dimensional vector outputs.
-    Adheres strictly to the specification-approved benchmark candidates.
+    Guarantees exact 384-dimensional vector outputs when an approved candidate is active.
+    Protects Railway container memory headroom by preventing SentenceTransformer loading
+    when lexical FTS fallback mode is active (RETRIEVAL_MODE == 'lexical_fts' or EMBEDDING_MODEL_NAME is empty/'none').
     """
     _instance: Optional["LocalEmbedder"] = None
     _lock = threading.Lock()
 
     def __init__(self, model_name: Optional[str] = None):
-        # Resolve model name: explicit argument -> env var -> initial candidate
-        resolved = (
-            model_name
-            or os.getenv("EMBEDDING_MODEL_NAME")
-            or INITIAL_BENCHMARK_CANDIDATE
-        ).strip()
+        retrieval_mode = os.getenv("RETRIEVAL_MODE", "").strip().lower()
+        raw_env_model = os.getenv("EMBEDDING_MODEL_NAME")
+        env_model = raw_env_model.strip() if raw_env_model else ""
 
-        if resolved in DISQUALIFIED_MODELS:
-            logger.warning(
-                f"Model '{resolved}' is marked as DISQUALIFIED in spec Section 9.1 "
-                f"(fails Hinglish vernacular queries). Defaulting to approved initial candidate '{INITIAL_BENCHMARK_CANDIDATE}'."
-            )
-            resolved = INITIAL_BENCHMARK_CANDIDATE
+        # Determine if lexical fallback is active
+        if model_name is not None and model_name.strip().lower() in ("none", "null", "disabled", "lexical_fts"):
+            self.is_fallback = True
+            resolved = "lexical_fts_fallback"
+        elif model_name is None and (
+            retrieval_mode == "lexical_fts"
+            or not env_model
+            or env_model.lower() in ("none", "null", "disabled")
+        ):
+            self.is_fallback = True
+            resolved = "lexical_fts_fallback"
+        else:
+            self.is_fallback = False
+            resolved = (model_name or env_model or INITIAL_BENCHMARK_CANDIDATE).strip()
+            if resolved in DISQUALIFIED_MODELS:
+                logger.warning(
+                    f"Model '{resolved}' is marked as DISQUALIFIED in spec Section 9.1 "
+                    f"(fails Hinglish vernacular queries). Defaulting to approved initial candidate '{INITIAL_BENCHMARK_CANDIDATE}'."
+                )
+                resolved = INITIAL_BENCHMARK_CANDIDATE
 
         self.model_name = resolved
         self.expected_dim = 384
-        self._model: Optional[SentenceTransformer] = None
+        self._model: Optional[Any] = None
         self._init_lock = threading.Lock()
 
     @classmethod
@@ -79,11 +90,17 @@ class LocalEmbedder:
             cls._instance = None
 
     @property
-    def model(self) -> SentenceTransformer:
+    def model(self) -> Any:
         """Lazy loader for the SentenceTransformer model on CPU."""
+        if self.is_fallback:
+            raise RuntimeError(
+                "LocalEmbedder model loading is disabled: RETRIEVAL_MODE is 'lexical_fts' "
+                "(PostgreSQL Lexical FTS fallback active). Zero SentenceTransformer weights allocated."
+            )
         if self._model is None:
             with self._init_lock:
                 if self._model is None:
+                    from sentence_transformers import SentenceTransformer
                     # Explicitly run on CPU to meet zero-GPU deployment constraint
                     # Ensure offline loading is prioritized to avoid network drops
                     os.environ["HF_HUB_OFFLINE"] = "1"
@@ -103,6 +120,8 @@ class LocalEmbedder:
         """
         Encode a single text passage into a 384-dimensional float vector.
         """
+        if self.is_fallback:
+            raise RuntimeError("Vector encoding is disabled in lexical FTS fallback mode.")
         if not text or not text.strip():
             # For empty passages, encode a space to produce a valid vector
             text = " "
@@ -117,6 +136,8 @@ class LocalEmbedder:
         """
         Encode a batch of text passages into 384-dimensional float vectors.
         """
+        if self.is_fallback:
+            raise RuntimeError("Vector encoding is disabled in lexical FTS fallback mode.")
         if not texts:
             return []
         cleaned = [t if (t and t.strip()) else " " for t in texts]
@@ -135,3 +156,4 @@ class LocalEmbedder:
                 )
             results.append(v_list)
         return results
+

@@ -11,7 +11,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env", "backend/.env"),
         env_file_encoding="utf-8",
         extra="ignore",
     )
@@ -28,8 +28,12 @@ class Settings(BaseSettings):
     # Server-Side AI (Google Gemini) — Scheduled for Step 7
     GEMINI_API_KEY: Optional[str] = None
 
-    # Embedding Model (Railway CPU Container) — Selection Pending Benchmark (Step 5)
-    # No candidate is selected or defaulted during Step 1 foundation.
+    # Retrieval Configuration (Step 6 / Section 24 Fallback)
+    # Active fallback following Step 5 NO_ELIGIBLE_CANDIDATE determination
+    RETRIEVAL_MODE: str = "lexical_fts"
+
+    # Embedding Model (Railway CPU Container)
+    # Model loading is disabled when RETRIEVAL_MODE == "lexical_fts" or when unset.
     EMBEDDING_MODEL_NAME: Optional[str] = None
 
     # CORS Allowed Origins
@@ -41,7 +45,14 @@ class Settings(BaseSettings):
 
     @property
     def embedding_selection_status(self) -> str:
-        return "selected" if self.EMBEDDING_MODEL_NAME else "pending_benchmark"
+        if (
+            self.RETRIEVAL_MODE == "lexical_fts"
+            or not self.EMBEDDING_MODEL_NAME
+            or self.EMBEDDING_MODEL_NAME.strip().lower() in ("none", "null", "disabled")
+        ):
+            return "lexical_fts_fallback"
+        return "selected"
 
 
 settings = Settings()
+
