@@ -1,9 +1,10 @@
 /**
- * Core Type Definitions for Google Photos Discovery Engine (Part 1).
+ * Core Type Definitions for Google Photos Discovery Engine (Deliverable 1).
  * 
  * Strict alignment with:
  * - part1_memory_representation_schema_v2.md (Locked V2 Schema)
- * - part1_discovery_engine_implementation_spec.md
+ * - part1_discovery_engine_implementation_spec.md (Section 18.2)
+ * - backend/app/retrieval/models.py
  */
 
 export type TemporalNature = 
@@ -48,32 +49,89 @@ export interface V2MemoryRepresentation {
   spatial_setting?: string | null;
 }
 
-/** Derived Search Primitives (Scaffold for Step 4) */
+/** Derived Search Primitives (Stage 3) */
 export interface RetrievalSignals {
   visual_entities: string[];
   bound_attributes: Record<string, unknown>[];
-  demographic_proxies: Record<string, unknown>[];
+  demographic_proxies?: Record<string, unknown>[];
   action_signals: string[];
   temporal_interval?: { start_utc?: string; end_utc?: string } | null;
   literal_text_tokens: string[];
   spatial_cues: string[];
+  search_query_terms?: string[];
 }
 
-/** Candidate Ranking Result (Scaffold for Step 6) */
+/** Candidate Score Breakdown (Stage 5) */
+export interface ScoreBreakdown {
+  base_rrf: number;
+  bound_bonus: number;
+  distractor_penalty: number;
+}
+
+/** Candidate Ranking Result (Stage 6) */
 export interface CandidateResult {
   candidate_id: string;
+  chunk_id?: string | null;
+  case_id?: string | null;
+  chunk_type?: string | null;
+  content: string;
   rank: number;
   score: number;
-  score_breakdown: {
-    base_rrf: number;
-    bound_bonus: number;
-    distractor_penalty: number;
-  };
+  score_breakdown: ScoreBreakdown;
   retrieval_paths: string[];
-  metadata: Record<string, unknown>;
+  metadata: {
+    external_id?: string | null;
+    methodology?: string | null;
+    rating?: number | null;
+    failure_mode?: string | null;
+    category_tags?: string[] | null;
+    evidence_type?: string | null;
+    case_created_at?: string | null;
+    [key: string]: unknown;
+  };
 }
 
-/** Research Grounded Synthesis Response (Scaffold for Step 7) */
+/** Locked Section 18.2 Discovery Engine Response */
+export interface DiscoveryResponse {
+  raw_input: string;
+  v2_frame: V2MemoryRepresentation;
+  retrieval_signals: RetrievalSignals;
+  coverage_status: string;
+  controlled_recovery_triggered: boolean;
+  candidate_pool_size: number;
+  results: CandidateResult[];
+}
+
+/** API Request Payload */
+export interface DiscoveryRequestPayload {
+  raw_input?: string;
+  query?: string | V2MemoryRepresentation;
+  v2_representation?: V2MemoryRepresentation;
+  filters?: {
+    source_type?: string;
+    methodology?: string;
+    evidence_type?: string;
+    failure_mode?: string;
+    rating?: number;
+    category_tags?: string[];
+    signal_strength?: string;
+    start_date?: string;
+    end_date?: string;
+  };
+  top_k?: number;
+  enable_recovery?: boolean;
+}
+
+/** Canonical Benchmark Case */
+export interface CanonicalCase {
+  id: string;
+  title: string;
+  query: string;
+  category: string;
+  description: string;
+}
+
+/** Research Grounded Synthesis Response (Subsystem B scaffold) */
 export interface ClaimCitation {
   claim_text: string;
   cited_case_id: string;
