@@ -93,6 +93,14 @@ OBJECT_VOCABULARY = {
     "passport": "passport",
     "laptop": "laptop",
     "bill": "bill", "invoice": "invoice",
+    "kurta": "kurta",
+    "shirt": "shirt", "t-shirt": "shirt", "tshirt": "shirt",
+    "dress": "dress",
+    "backpack": "backpack", "bag": "bag",
+    "suit": "suit",
+    "saree": "saree", "sari": "saree",
+    "jacket": "jacket",
+    "hat": "hat", "cap": "cap",
 }
 
 # Milestone events & celebrations (Section 5.3)
@@ -388,6 +396,32 @@ def extract_objects(text: str) -> List[ObjectConcept]:
                     attributes=attributes,
                     possessive=possessive,
                 ))
+
+    # Compositional color + noun extraction (e.g. "yellow kurta", "red car", "blue shirt", "black backpack", "green dress")
+    for col in COLOR_ATTRIBUTES:
+        matches = re.finditer(rf'\b({col})\s+([a-zA-Z]{{3,}})\b', lower)
+        for m in matches:
+            c_attr = m.group(1)
+            noun = m.group(2)
+            if (
+                noun not in COLOR_ATTRIBUTES
+                and noun not in VERNACULAR_PARTICLES
+                and noun not in KINSHIP_ROLES
+                and noun not in EVENT_VOCABULARY
+                and noun not in SPATIAL_VOCABULARY
+                and noun not in LITERAL_OCR_TARGETS
+            ):
+                canonical_noun = OBJECT_VOCABULARY.get(noun, noun)
+                existing = next((o for o in objects if o.name == canonical_noun), None)
+                if existing:
+                    if c_attr not in existing.attributes:
+                        existing.attributes.append(c_attr)
+                else:
+                    objects.append(ObjectConcept(
+                        name=canonical_noun,
+                        attributes=[c_attr],
+                        possessive=possessive,
+                    ))
 
     return objects
 

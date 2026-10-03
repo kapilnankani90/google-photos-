@@ -164,7 +164,22 @@ class MultiPathRetriever:
         if broaden:
             # Broadened OR-clause query: 'term1 | term2 | ...'
             sanitized_terms = [re.sub(r"[^\w]", "", t) for t in signals.search_query_terms if len(t) > 1]
-            or_tsquery = " | ".join(sanitized_terms) if sanitized_terms else query_str
+            if signals.bound_attributes:
+                # In controlled recovery, preserve entity constraints and do not broaden to loose attribute modifiers alone
+                bound_attr_terms = set()
+                for b in signals.bound_attributes:
+                    attr_val = b.get("attribute", "")
+                    for token in attr_val.lower().split():
+                        cleaned = re.sub(r"[^\w]", "", token)
+                        if cleaned:
+                            bound_attr_terms.add(cleaned)
+                broadened_terms = [t for t in sanitized_terms if t.lower() not in bound_attr_terms]
+                if not broadened_terms:
+                    broadened_terms = sanitized_terms
+            else:
+                broadened_terms = sanitized_terms
+
+            or_tsquery = " | ".join(broadened_terms) if broadened_terms else query_str
             tsquery_expr = f"to_tsquery('english', ${param_idx})"
             params.append(or_tsquery)
         else:
@@ -340,8 +355,15 @@ class MultiPathRetriever:
                     if ent in searchable_text and attr in searchable_text:
                         bound_bonus += 1.5
 
-            # Distractor penalty (0.0 standard baseline)
+            # Distractor penalty: penalize candidates matching only the attribute of a bound pair
+            # while missing the required entity (Section 13.1)
             distractor_penalty = 0.0
+            for binding in signals.bound_attributes:
+                ent = binding.get("entity", "").lower()
+                attr = binding.get("attribute", "").lower()
+                if ent and attr:
+                    if attr in searchable_text and ent not in searchable_text:
+                        distractor_penalty += 1.0
 
             final_score = base_rrf + bound_bonus - distractor_penalty
 
