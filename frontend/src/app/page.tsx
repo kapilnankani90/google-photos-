@@ -5,7 +5,6 @@ import {
   Search,
   Sparkles,
   Layers,
-  Database,
   AlertCircle,
   CheckCircle2,
   RefreshCw,
@@ -30,61 +29,87 @@ import {
 const CANONICAL_CASES: CanonicalCase[] = [
   {
     id: "case-1",
-    title: "Case 1: Kinship & Cardinality",
+    title: "5 sisters",
     query: "5 sisters",
-    category: "Kinship Gap",
+    category: "Kinship",
     description: "Evaluates social role 'sister' with explicit group count 5.",
   },
   {
     id: "case-2",
-    title: "Case 2: Multilingual Hinglish",
+    title: "rohtang ki ice wali photo",
     query: "rohtang ki ice wali photo",
-    category: "Hinglish Location",
-    description: "Evaluates colloquial Hinglish 'ki ... wali' with spatial anchor 'rohtang' and prop 'ice'.",
+    category: "Multilingual / Place",
+    description: "Colloquial Hinglish memory with place 'rohtang' and prop 'ice'.",
   },
   {
     id: "case-3",
-    title: "Case 3: Bound Attribute",
+    title: "white bike",
     query: "white bike",
-    category: "Attribute Binding",
-    description: "Tests compositional modifier 'white' bound specifically to 'bike' with +1.5 bonus.",
+    category: "Bound Attribute",
+    description: "Tests modifier 'white' bound specifically to 'bike'.",
   },
   {
     id: "case-4",
-    title: "Case 4: Cultural & Spatial Anchor",
+    title: "diya at the gate",
     query: "diya at the gate",
-    category: "Cultural Anchor",
-    description: "Tests Diwali ritual anchor 'diya' bound to entrance boundary 'gate'.",
+    category: "Cultural / Spatial",
+    description: "Diwali ritual anchor 'diya' bound to entrance 'gate'.",
   },
   {
     id: "case-5",
-    title: "Case 5: In-Image Alphanumeric Text",
+    title: "Progressive",
     query: "Progressive",
-    category: "OCR / Literal Text",
-    description: "Tests literal alphanumeric brand/policy name printed on physical paperwork.",
+    category: "In-Image Text",
+    description: "Literal alphanumeric text printed on paperwork.",
   },
   {
     id: "case-6",
-    title: "Case 6: Elapsed Temporal Anchor",
+    title: "document around 4 years ago",
     query: "document around 4 years ago",
     category: "Relative Time",
-    description: "Evaluates relative elapsed offset ('around 4 years ago') mapped to coarse era.",
+    description: "Relative elapsed offset mapped to coarse era.",
   },
   {
     id: "case-7",
-    title: "Case 7: Multi-Session Project Span",
+    title: "yellow truck",
     query: "yellow truck",
-    category: "Temporal Cluster",
-    description: "Tests controlled recovery broadening across a multi-day utility project span.",
+    category: "Expanded Search",
+    description: "Tests search broadening across an episodic project span.",
   },
   {
     id: "case-8",
-    title: "Case 8: Event Context Broad",
+    title: "wedding",
     query: "wedding",
-    category: "Event Occasion",
-    description: "Tests broad milestone occasion retrieval across diverse sub-events and albums.",
+    category: "Occasion",
+    description: "Broad milestone occasion retrieval across albums.",
   },
 ];
+
+function getFriendlyEvidenceType(cand: CandidateResult): string {
+  const chunkType = cand.chunk_type?.toUpperCase() || "";
+  const evType = (cand.metadata?.evidence_type as string)?.toUpperCase() || "";
+
+  if (chunkType === "RAW_QUOTE") return "User Evidence";
+  if (chunkType === "SITUATION_SUMMARY") return "Case Summary";
+  if (chunkType === "JTBD") return "User Goal";
+  if (chunkType === "SOLUTION_FAILURE") return "Failure Case";
+
+  if (evType === "RAW_QUOTE" || evType === "USER_EVIDENCE") return "User Evidence";
+  if (evType === "FAILURE") return "Failure Case";
+  if (evType === "NEUTRAL") return "User Case";
+  if (evType === "SUCCESS") return "Success Case";
+
+  if (chunkType) {
+    return chunkType.replace(/_/g, " ").toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
+  }
+  return "Evidence Record";
+}
+
+function getFriendlyCoverageStatus(status: string): string {
+  if (status === "INSUFFICIENT_VOLUME") return "Not enough evidence found initially";
+  if (status === "COVERAGE_SUFFICIENT" || status === "SUFFICIENT") return "Sufficient evidence found";
+  return status.replace(/_/g, " ").toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
+}
 
 export default function DiscoveryEngineConsole() {
   const [query, setQuery] = useState<string>("rohtang ki ice wali photo");
@@ -99,7 +124,7 @@ export default function DiscoveryEngineConsole() {
 
   const executeDiscovery = useCallback(async (searchQuery: string, kLimit: number) => {
     if (!searchQuery.trim()) {
-      setError("Please enter a memory query or select a canonical benchmark case.");
+      setError("Please enter a memory description or select an example memory.");
       return;
     }
 
@@ -167,7 +192,7 @@ export default function DiscoveryEngineConsole() {
           </div>
           <div>
             <h1 className="brand-title">Google Photos AI-Powered Discovery Engine</h1>
-            <p className="brand-subtitle">Deliverable 1 — Evaluator &amp; Research Console (Stages 2–6 Retrieval)</p>
+            <p className="brand-subtitle">Deliverable 1 — Evaluator Console</p>
           </div>
         </div>
 
@@ -179,17 +204,17 @@ export default function DiscoveryEngineConsole() {
         </div>
       </header>
 
-      {/* Deliverable 1 Product Boundary Callout */}
+      {/* Deliverable 1 Plain-English Scope Callout */}
       <div className="boundary-banner">
         <Compass size={20} color="#60A5FA" style={{ flexShrink: 0, marginTop: "2px" }} />
         <div>
           <div className="boundary-banner-title">
-            Deliverable 1 Architectural Scope Boundary
+            Deliverable 1 — AI-Powered Discovery Engine
           </div>
           <div className="boundary-banner-text">
-            This console is the <strong>Evaluator-Facing Discovery Engine</strong> demonstrating episodic memory interpretation (Stage 2), multi-signal derivation (Stage 3), PostgreSQL GIN tsvector retrieval &amp; controlled recovery (Stage 4), and compositional bound-attribute ranking (Stages 5–6).
+            This evaluator console shows how a vague memory is converted into search clues and used to retrieve relevant evidence.
             <span style={{ display: "block", marginTop: "0.25rem", color: "#93C5FD" }}>
-              Note: This is <strong>NOT</strong> the separate consumer-facing AI-Native MVP (Deliverable 2).
+              This is the Discovery Engine, not the separate consumer-facing Memory Search MVP.
             </span>
           </div>
         </div>
@@ -207,17 +232,18 @@ export default function DiscoveryEngineConsole() {
                 setQuery(e.target.value);
                 setSelectedCaseId("");
               }}
-              placeholder="Enter episodic memory description (e.g., rohtang ki ice wali photo, 5 sisters...)"
+              placeholder="Enter a memory description (e.g., rohtang ki ice wali photo, yellow kurta, 5 sisters...)"
               disabled={loading}
             />
 
-            <div className="topk-select-wrapper">
-              <span>Top K:</span>
+            <div className="topk-select-wrapper" title="Choose how many evidence results to display.">
+              <span>Results to show:</span>
               <select
                 className="topk-select"
                 value={topK}
                 onChange={(e) => setTopK(Number(e.target.value))}
                 disabled={loading}
+                aria-label="Choose how many evidence results to display"
               >
                 <option value={3}>3</option>
                 <option value={5}>5</option>
@@ -246,11 +272,11 @@ export default function DiscoveryEngineConsole() {
           </div>
         </form>
 
-        {/* 8 Canonical Benchmark Cases Selector */}
+        {/* Example Memories */}
         <div className="benchmarks-section">
           <div className="benchmarks-title">
             <Sparkles size={14} color="#FBBC05" />
-            <span>Canonical Benchmark Test Suite (Phase 3 Verified)</span>
+            <span>Try an example memory</span>
           </div>
           <div className="benchmarks-grid">
             {CANONICAL_CASES.map((c) => (
@@ -262,7 +288,7 @@ export default function DiscoveryEngineConsole() {
                 disabled={loading}
               >
                 <span className="benchmark-chip-query">&ldquo;{c.query}&rdquo;</span>
-                <span className="benchmark-chip-label">{c.title} • {c.category}</span>
+                <span className="benchmark-chip-label">{c.category}</span>
               </button>
             ))}
           </div>
@@ -295,14 +321,13 @@ export default function DiscoveryEngineConsole() {
         </div>
       )}
 
-      {/* Pipeline Stage Trace (Stages 2, 3, 4) */}
+      {/* Three Main Stages: Understand Memory, Extract Clues, Find Evidence */}
       {response && (
         <div className="trace-grid-3col">
-          {/* Stage 2: Memory Interpretation */}
+          {/* Card 1: Understand the Memory */}
           <div className="stage-card">
             <div className="stage-header">
-              <span className="stage-title">Stage 2: Memory Interpretation</span>
-              <span className="stage-number-badge">V2 Frame</span>
+              <span className="stage-title">1. Understand the Memory</span>
             </div>
 
             <div className="stage-body">
@@ -310,7 +335,7 @@ export default function DiscoveryEngineConsole() {
               <div className="concept-item">
                 <span className="concept-label">
                   <Users size={12} style={{ display: "inline", marginRight: "4px" }} />
-                  People / Kinship
+                  People
                 </span>
                 <div className="concept-value">
                   {response.v2_frame.people && response.v2_frame.people.length > 0 ? (
@@ -326,11 +351,11 @@ export default function DiscoveryEngineConsole() {
                 </div>
               </div>
 
-              {/* Objects */}
+              {/* Objects & details */}
               <div className="concept-item">
                 <span className="concept-label">
                   <Tag size={12} style={{ display: "inline", marginRight: "4px" }} />
-                  Salient Objects &amp; Modifiers
+                  Objects &amp; details
                 </span>
                 <div className="concept-value">
                   {response.v2_frame.objects && response.v2_frame.objects.length > 0 ? (
@@ -346,11 +371,11 @@ export default function DiscoveryEngineConsole() {
                 </div>
               </div>
 
-              {/* Spatial Setting */}
+              {/* Place */}
               <div className="concept-item">
                 <span className="concept-label">
                   <MapPin size={12} style={{ display: "inline", marginRight: "4px" }} />
-                  Spatial / Geographic Setting
+                  Place
                 </span>
                 <div className="concept-value">
                   {response.v2_frame.spatial_setting ? (
@@ -361,17 +386,16 @@ export default function DiscoveryEngineConsole() {
                 </div>
               </div>
 
-              {/* Temporal */}
+              {/* Time */}
               <div className="concept-item">
                 <span className="concept-label">
                   <Clock size={12} style={{ display: "inline", marginRight: "4px" }} />
-                  Temporal Anchor
+                  Time
                 </span>
                 <div className="concept-value">
                   {response.v2_frame.temporal ? (
                     <span className="chip-tag chip-tag-purple">
                       {response.v2_frame.temporal.raw_time_expression}
-                      {response.v2_frame.temporal.temporal_nature ? ` (${response.v2_frame.temporal.temporal_nature})` : ""}
                     </span>
                   ) : (
                     <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>None identified</span>
@@ -382,10 +406,10 @@ export default function DiscoveryEngineConsole() {
               {/* Events & Literal Text */}
               {(response.v2_frame.events || (response.v2_frame.literal_text && response.v2_frame.literal_text.length > 0)) && (
                 <div className="concept-item">
-                  <span className="concept-label">Events &amp; Literal OCR Text</span>
+                  <span className="concept-label">Events &amp; in-image text</span>
                   <div className="concept-value">
                     {response.v2_frame.events && (
-                      <span className="chip-tag chip-tag-blue">Event: {response.v2_frame.events.event_name}</span>
+                      <span className="chip-tag chip-tag-blue">{response.v2_frame.events.event_name}</span>
                     )}
                     {response.v2_frame.literal_text?.map((txt, idx) => (
                       <span key={idx} className="chip-tag">&ldquo;{txt}&rdquo;</span>
@@ -396,17 +420,16 @@ export default function DiscoveryEngineConsole() {
             </div>
           </div>
 
-          {/* Stage 3: Retrieval Signal Generation */}
+          {/* Card 2: Extract Search Clues */}
           <div className="stage-card">
             <div className="stage-header">
-              <span className="stage-title">Stage 3: Retrieval Signals</span>
-              <span className="stage-number-badge">Search Primitives</span>
+              <span className="stage-title">2. Extract Search Clues</span>
             </div>
 
             <div className="stage-body">
-              {/* Search Query Terms */}
+              {/* Search terms */}
               <div className="concept-item">
-                <span className="concept-label">PostgreSQL FTS Query Terms</span>
+                <span className="concept-label">Search terms</span>
                 <div className="concept-value">
                   {response.retrieval_signals.search_query_terms && response.retrieval_signals.search_query_terms.length > 0 ? (
                     response.retrieval_signals.search_query_terms.map((term, idx) => (
@@ -420,29 +443,9 @@ export default function DiscoveryEngineConsole() {
                 </div>
               </div>
 
-              {/* Bound Attributes */}
+              {/* Objects detected */}
               <div className="concept-item">
-                <span className="concept-label">Compositional Bound Attributes</span>
-                <div className="concept-value">
-                  {response.retrieval_signals.bound_attributes && response.retrieval_signals.bound_attributes.length > 0 ? (
-                    response.retrieval_signals.bound_attributes.map((ba, idx) => {
-                      const entity = String((ba as Record<string, unknown>).entity || "entity");
-                      const attr = String((ba as Record<string, unknown>).attribute || "attribute");
-                      return (
-                        <span key={idx} className="chip-tag chip-tag-yellow">
-                          {entity} ⇄ {attr}
-                        </span>
-                      );
-                    })
-                  ) : (
-                    <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>No bound entity-attribute pairs</span>
-                  )}
-                </div>
-              </div>
-
-              {/* Visual Entities */}
-              <div className="concept-item">
-                <span className="concept-label">Visual Entities</span>
+                <span className="concept-label">Objects detected</span>
                 <div className="concept-value">
                   {response.retrieval_signals.visual_entities && response.retrieval_signals.visual_entities.length > 0 ? (
                     response.retrieval_signals.visual_entities.map((ent, idx) => (
@@ -451,14 +454,14 @@ export default function DiscoveryEngineConsole() {
                       </span>
                     ))
                   ) : (
-                    <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>None</span>
+                    <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>None identified</span>
                   )}
                 </div>
               </div>
 
-              {/* Spatial Cues */}
+              {/* Place / location */}
               <div className="concept-item">
-                <span className="concept-label">Spatial &amp; Location Cues</span>
+                <span className="concept-label">Place / location</span>
                 <div className="concept-value">
                   {response.retrieval_signals.spatial_cues && response.retrieval_signals.spatial_cues.length > 0 ? (
                     response.retrieval_signals.spatial_cues.map((sc, idx) => (
@@ -467,135 +470,168 @@ export default function DiscoveryEngineConsole() {
                       </span>
                     ))
                   ) : (
-                    <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>None</span>
+                    <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>None identified</span>
+                  )}
+                </div>
+              </div>
+
+              {/* Other clues */}
+              <div className="concept-item">
+                <span className="concept-label">Other clues</span>
+                <div className="concept-value">
+                  {response.retrieval_signals.bound_attributes && response.retrieval_signals.bound_attributes.length > 0 ? (
+                    response.retrieval_signals.bound_attributes.map((ba, idx) => {
+                      const entity = String((ba as Record<string, unknown>).entity || "entity");
+                      const attr = String((ba as Record<string, unknown>).attribute || "attribute");
+                      return (
+                        <span key={idx} className="chip-tag chip-tag-yellow">
+                          {attr} {entity}
+                        </span>
+                      );
+                    })
+                  ) : response.retrieval_signals.action_signals && response.retrieval_signals.action_signals.length > 0 ? (
+                    response.retrieval_signals.action_signals.map((act, idx) => (
+                      <span key={idx} className="chip-tag chip-tag-purple">
+                        {act}
+                      </span>
+                    ))
+                  ) : (
+                    <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>None identified</span>
                   )}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Stage 4: Coverage Checking & Recovery */}
+          {/* Card 3: Find Relevant Evidence */}
           <div className="stage-card">
             <div className="stage-header">
-              <span className="stage-title">Stage 4: Coverage &amp; Recovery</span>
-              <span className="stage-number-badge">Candidate Discovery</span>
+              <span className="stage-title">3. Find Relevant Evidence</span>
             </div>
 
             <div className="stage-body">
-              {/* Coverage Status */}
+              {/* Did we find enough evidence? */}
               <div className="concept-item">
-                <span className="concept-label">Candidate Coverage Outcome</span>
+                <span className="concept-label">Did we find enough evidence?</span>
                 <div className="concept-value">
-                  <span className="chip-tag chip-tag-blue" style={{ fontWeight: 700 }}>
-                    {response.coverage_status}
+                  <span className="chip-tag chip-tag-blue" style={{ fontWeight: 600 }}>
+                    {getFriendlyCoverageStatus(response.coverage_status)}
                   </span>
                 </div>
               </div>
 
-              {/* Controlled Recovery Callout */}
+              {/* Expanded search used / Initial search sufficient */}
               {response.controlled_recovery_triggered ? (
                 <div className="recovery-banner-active">
-                  <AlertCircle size={16} />
+                  <AlertCircle size={16} style={{ flexShrink: 0 }} />
                   <div>
-                    Controlled Recovery Triggered
+                    Expanded search used
                     <div style={{ fontSize: "0.6875rem", fontWeight: 400, color: "#FEF08A" }}>
-                      Initial candidate volume was insufficient. Automated broadening pass executed successfully.
+                      Initial search found limited matches, so an expanded search was run automatically.
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="recovery-banner-inactive">
-                  <CheckCircle2 size={16} />
+                  <CheckCircle2 size={16} style={{ flexShrink: 0 }} />
                   <div>
-                    Initial Pass Sufficient
+                    Initial search sufficient
                     <div style={{ fontSize: "0.6875rem", fontWeight: 400, color: "#BBF7D0" }}>
-                      Target coverage criteria met without requiring broadening recovery.
+                      Found enough matching evidence without needing an expanded search.
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Pool Size & Architecture */}
+              {/* Evidence stats */}
               <div className="concept-item">
-                <span className="concept-label">Candidate Pool Volume</span>
                 <div className="status-row" style={{ padding: "0.4rem 0.6rem" }}>
-                  <span className="status-label">Total Recovered:</span>
+                  <span className="status-label">Evidence found:</span>
                   <span className="status-val" style={{ color: "#4ADE80" }}>
-                    {response.candidate_pool_size} candidate chunks
+                    {response.candidate_pool_size} items
                   </span>
                 </div>
                 <div className="status-row" style={{ padding: "0.4rem 0.6rem" }}>
-                  <span className="status-label">Ranked Top K:</span>
-                  <span className="status-val">{response.results.length} returned</span>
+                  <span className="status-label">Results shown:</span>
+                  <span className="status-val">{response.results.length} results</span>
                 </div>
                 <div className="status-row" style={{ padding: "0.4rem 0.6rem" }}>
-                  <span className="status-label">Active Index:</span>
-                  <span className="status-val" style={{ fontSize: "0.6875rem" }}>PostgreSQL GIN (idx_chunks_fts)</span>
+                  <span className="status-label">Recovery used:</span>
+                  <span className="status-val">{response.controlled_recovery_triggered ? "Yes (expanded search)" : "No"}</span>
                 </div>
               </div>
+
+              {/* Collapsed Technical details */}
+              <details className="tech-details-dropdown">
+                <summary className="tech-details-summary">Technical details</summary>
+                <div className="tech-details-content">
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", fontSize: "0.75rem" }}>
+                    <div><span className="tech-label">Coverage Status:</span> <span className="tech-val">{response.coverage_status}</span></div>
+                    <div><span className="tech-label">Active Index:</span> <span className="tech-val">PostgreSQL GIN (idx_chunks_fts)</span></div>
+                    <div><span className="tech-label">Candidate Pool Size:</span> <span className="tech-val">{response.candidate_pool_size}</span></div>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
       )}
 
-      {/* Stage 5 & 6: Ranked Candidate Results */}
+      {/* Retrieved Evidence */}
       {response && (
         <section className="results-section">
+          {/* Query context banner to make query-dependent results crystal clear */}
+          <div className="results-context-banner">
+            <div className="results-context-query">
+              Evidence retrieved for: <strong>&ldquo;{response.raw_input || query}&rdquo;</strong>
+            </div>
+            <div className="results-context-hint">
+              The results below are based on the memory entered above.
+            </div>
+          </div>
+
           <div className="results-header">
-            <h2 className="results-title">
-              <Layers size={20} color="#4285F4" />
-              <span>Ranked Candidate Evidence Results</span>
-            </h2>
+            <div>
+              <h2 className="results-title">
+                <Layers size={20} color="#4285F4" />
+                <span>Retrieved Evidence</span>
+              </h2>
+              <p className="results-subtitle">
+                These are the evidence records the engine found for the user&apos;s memory.
+              </p>
+            </div>
             <span className="results-count-badge">
-              Showing {response.results.length} of {response.candidate_pool_size} discovered
+              Showing {response.results.length} of {response.candidate_pool_size} found
             </span>
           </div>
 
           {response.results.length === 0 ? (
             <div className="card" style={{ textAlign: "center", padding: "3rem 1.5rem" }}>
               <Info size={32} color="#94A3B8" style={{ margin: "0 auto 1rem auto" }} />
-              <h3 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "0.5rem" }}>No Candidates Found</h3>
+              <h3 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "0.5rem" }}>No Evidence Found</h3>
               <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem", maxWidth: "500px", margin: "0 auto" }}>
-                Zero candidate records matched the tsvector FTS query. Try broadening your memory description or select one of the 8 canonical benchmark queries above.
+                Zero evidence records matched this description. Try entering a different memory or select one of the example memories above.
               </p>
             </div>
           ) : (
             response.results.map((cand: CandidateResult) => {
-              const hasBoundBonus = cand.score_breakdown.bound_bonus > 0;
-              const isRankOne = cand.rank === 1;
+              const friendlyType = getFriendlyEvidenceType(cand);
 
               return (
                 <div key={cand.candidate_id} className="candidate-card">
                   <div className="candidate-card-header">
                     <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                      <span className={`rank-badge ${isRankOne ? "rank-badge-top" : ""}`}>
+                      <span className="rank-badge">
                         #{cand.rank}
                       </span>
                       <div>
-                        <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "var(--text-primary)" }}>
-                          {cand.metadata.external_id || cand.candidate_id}
-                          {cand.chunk_type && (
-                            <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginLeft: "0.5rem" }}>
-                              [{cand.chunk_type}]
-                            </span>
-                          )}
-                        </div>
-                        <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
-                          Methodology: {cand.metadata.methodology || "UNSOLICITED_PUBLIC"}
-                          {cand.metadata.failure_mode ? ` • ${cand.metadata.failure_mode}` : ""}
+                        <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--text-primary)" }}>
+                          Result {cand.rank}
+                          <span className="chip-tag chip-tag-blue" style={{ marginLeft: "0.5rem", fontSize: "0.75rem", fontWeight: 600 }}>
+                            {friendlyType}
+                          </span>
                         </div>
                       </div>
-                    </div>
-
-                    <div className="score-cluster">
-                      {hasBoundBonus && (
-                        <span className="bound-bonus-badge">
-                          +1.5 Bound Bonus
-                        </span>
-                      )}
-                      <span className="total-score-pill">
-                        Score: {cand.score.toFixed(4)}
-                      </span>
                     </div>
                   </div>
 
@@ -604,31 +640,53 @@ export default function DiscoveryEngineConsole() {
                     {cand.content}
                   </div>
 
-                  {/* Card Footer: Score breakdown and metadata tags */}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
-                    <div className="score-breakdown-details">
-                      <span>RRF Base: {cand.score_breakdown.base_rrf.toFixed(4)}</span>
-                      <span>Bound Bonus: {cand.score_breakdown.bound_bonus.toFixed(2)}</span>
-                      <span>Penalty: {cand.score_breakdown.distractor_penalty.toFixed(2)}</span>
-                    </div>
-
-                    <div className="candidate-metadata-row">
-                      {cand.metadata.evidence_type && (
-                        <span className="metadata-pill" style={{ color: cand.metadata.evidence_type === "FAILURE" ? "#FCA5A5" : "#86EFAC" }}>
-                          Type: {cand.metadata.evidence_type}
-                        </span>
-                      )}
-                      {cand.metadata.category_tags && Array.isArray(cand.metadata.category_tags) && (
-                        cand.metadata.category_tags.slice(0, 3).map((tag, tIdx) => (
+                  {/* Card Footer: Metadata tags & Collapsible Technical Details */}
+                  <div className="candidate-card-footer">
+                    {cand.metadata.category_tags && Array.isArray(cand.metadata.category_tags) && cand.metadata.category_tags.length > 0 && (
+                      <div className="candidate-metadata-row">
+                        {cand.metadata.category_tags.slice(0, 3).map((tag, tIdx) => (
                           <span key={tIdx} className="metadata-pill">
                             {tag}
                           </span>
-                        ))
-                      )}
-                      <span className="metadata-pill" style={{ fontFamily: "var(--font-mono)" }}>
-                        Path: {cand.retrieval_paths.join(", ")}
-                      </span>
-                    </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <details className="tech-details-dropdown">
+                      <summary className="tech-details-summary">
+                        Technical details
+                      </summary>
+                      <div className="tech-details-content">
+                        <div className="tech-details-grid">
+                          <div>
+                            <span className="tech-label">Internal Ranking Score:</span>{" "}
+                            <span className="tech-val">{cand.score.toFixed(4)}</span>
+                          </div>
+                          <div>
+                            <span className="tech-label">RRF Base:</span>{" "}
+                            <span className="tech-val">{cand.score_breakdown.base_rrf.toFixed(4)}</span>
+                          </div>
+                          <div>
+                            <span className="tech-label">Bound Bonus:</span>{" "}
+                            <span className="tech-val">{cand.score_breakdown.bound_bonus.toFixed(2)}</span>
+                          </div>
+                          <div>
+                            <span className="tech-label">Penalty:</span>{" "}
+                            <span className="tech-val">{cand.score_breakdown.distractor_penalty.toFixed(2)}</span>
+                          </div>
+                          <div>
+                            <span className="tech-label">Retrieval Path:</span>{" "}
+                            <span className="tech-val">{cand.retrieval_paths.join(", ") || "fts"}</span>
+                          </div>
+                          {cand.metadata.external_id && (
+                            <div>
+                              <span className="tech-label">External ID:</span>{" "}
+                              <span className="tech-val">{String(cand.metadata.external_id)}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </details>
                   </div>
                 </div>
               );
@@ -646,7 +704,7 @@ export default function DiscoveryEngineConsole() {
             onClick={() => setShowRawJson(!showRawJson)}
           >
             <FileCode size={14} />
-            <span>{showRawJson ? "Hide" : "Inspect"} Section 18.2 Raw DiscoveryResponse JSON</span>
+            <span>{showRawJson ? "Hide" : "Inspect"} Raw Response (JSON)</span>
             {showRawJson ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
           </button>
 
@@ -661,19 +719,17 @@ export default function DiscoveryEngineConsole() {
       {/* Initial Empty State before search */}
       {!response && !loading && !error && (
         <div className="card" style={{ textAlign: "center", padding: "3rem 1.5rem" }}>
-          <Database size={40} color="#4285F4" style={{ margin: "0 auto 1.25rem auto" }} />
+          <Search size={40} color="#4285F4" style={{ margin: "0 auto 1.25rem auto" }} />
           <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.5rem" }}>
-            Ready to Evaluate Algorithmic Retrieval
+            Ready to Discover Evidence
           </h2>
-          <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem", maxWidth: "600px", margin: "0 auto 1.5rem auto", lineHeight: 1.5 }}>
-            Type an arbitrary episodic memory query or select one of the 8 canonical benchmark cases above to execute the live multi-path discovery pipeline against Supabase PostgreSQL.
+          <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem", maxWidth: "560px", margin: "0 auto 1.5rem auto", lineHeight: 1.5 }}>
+            Type a memory description above or select one of the example memories to see how the system understands the memory, extracts clues, and retrieves relevant evidence.
           </p>
           <div style={{ display: "inline-flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-            <span className="badge">Stage 2: Memory Interpretation</span>
-            <span className="badge">Stage 3: Signal Derivation</span>
-            <span className="badge">Stage 4: PostgreSQL GIN FTS</span>
-            <span className="badge">Stage 5: Bound Attribute Bonus</span>
-            <span className="badge">Stage 6: RRF Composite Ranking</span>
+            <span className="badge">1. Understand Memory</span>
+            <span className="badge">2. Extract Search Clues</span>
+            <span className="badge">3. Find Evidence</span>
           </div>
         </div>
       )}
