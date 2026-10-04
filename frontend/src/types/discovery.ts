@@ -148,3 +148,96 @@ export interface ResearchSynthesisResponse {
   cited_cases: ClaimCitation[];
   contradictions: unknown[] | null;
 }
+
+/** Groq NLU Clue Types */
+export type ClueCertainty = "explicit" | "inferred" | "unknown";
+
+export interface PersonClue {
+  role: string;
+  count?: number | null;
+  attributes: string[];
+  possessive?: string | null;
+  certainty: ClueCertainty;
+}
+
+export interface LocationClue {
+  place: string;
+  attributes: string[];
+  certainty: ClueCertainty;
+}
+
+export interface TemporalClue {
+  raw_expression: string;
+  coarse_value?: string | null;
+  temporal_nature?: string | null;
+  certainty: ClueCertainty;
+}
+
+export interface EventActivityClue {
+  event_name?: string | null;
+  activity?: string | null;
+  certainty: ClueCertainty;
+}
+
+export interface ObjectClue {
+  name: string;
+  attributes: string[];
+  certainty: ClueCertainty;
+}
+
+export interface VisualAttributeClue {
+  attribute: string;
+  target_entity?: string | null;
+  certainty: ClueCertainty;
+}
+
+export interface SceneEnvironmentClue {
+  environment: string;
+  certainty: ClueCertainty;
+}
+
+export interface RelationshipContextClue {
+  context: string;
+  certainty: ClueCertainty;
+}
+
+export interface AmbiguityAssessment {
+  is_ambiguous: boolean;
+  confidence_score: number;
+  hedges_detected: string[];
+  ambiguity_reasons: string[];
+  clarification_question?: string | null;
+}
+
+export interface MemoryStructuredClues {
+  original_memory_text: string;
+  people: PersonClue[];
+  place_location?: LocationClue | null;
+  time_temporal?: TemporalClue | null;
+  event_activity?: EventActivityClue | null;
+  objects: ObjectClue[];
+  visual_attributes: VisualAttributeClue[];
+  scene_environment?: SceneEnvironmentClue | null;
+  relationship_context?: RelationshipContextClue | null;
+  uncertainty_ambiguity: AmbiguityAssessment;
+  explicit_clues: string[];
+  inferred_clues: string[];
+  unknown_dimensions: string[];
+}
+
+export interface MemorySearchResponse {
+  original_memory_text: string;
+  raw_input: string;
+  llm_provider: "groq" | "fallback";
+  model_name?: string | null;
+  structured_clues: MemoryStructuredClues;
+  clarification_question?: string | null;
+  is_ambiguous: boolean;
+  v2_frame: V2MemoryRepresentation;
+  retrieval_signals: RetrievalSignals;
+  results: CandidateResult[];
+  coverage_status: string;
+  controlled_recovery_triggered: boolean;
+  candidate_pool_size: number;
+  execution_time_ms?: number;
+}

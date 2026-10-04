@@ -6,7 +6,7 @@ Mounts existing foundation endpoints and establishes clean mount points for subs
 """
 
 from fastapi import APIRouter
-from app.api.v1.endpoints import health, discover
+from app.api.v1.endpoints import health, discover, transcribe, memory_search
 
 api_v1_router = APIRouter(prefix="/api/v1")
 
@@ -15,6 +15,12 @@ api_v1_router.include_router(health.router, tags=["Health"])
 
 # Mount discovery engine endpoint (Phase 3 Integration)
 api_v1_router.include_router(discover.router, prefix="/discover", tags=["Discovery Engine"])
+
+# Mount audio transcription endpoint (Voice Input)
+api_v1_router.include_router(transcribe.router, prefix="/transcribe", tags=["Voice Transcription"])
+
+# Mount AI-Native Memory Search endpoint (Groq NLU Layer)
+api_v1_router.include_router(memory_search.router, prefix="/memory", tags=["Memory Search"])
 
 # Future Phase Router Mount Points (Documented for seamless Phase 4-5 addition):
 # api_v1_router.include_router(research.router, prefix="/research", tags=["Research Insights"])

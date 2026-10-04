@@ -28,6 +28,11 @@ class Settings(BaseSettings):
     # Server-Side AI (Google Gemini) — Scheduled for Step 7
     GEMINI_API_KEY: Optional[str] = None
 
+    # Server-Side NLU (Groq LLM for Memory Search MVP)
+    GROQ_API_KEY: Optional[str] = None
+    GROQ_MODEL_NAME: str = "qwen/qwen3.8-27b"
+    GROQ_TIMEOUT_SECONDS: float = 12.0
+
     # Retrieval Configuration (Step 6 / Section 24 Fallback)
     # Active fallback following Step 5 NO_ELIGIBLE_CANDIDATE determination
     RETRIEVAL_MODE: str = "lexical_fts"
@@ -37,7 +42,7 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL_NAME: Optional[str] = None
 
     # CORS Allowed Origins
-    CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
+    CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001"
 
     @property
     def cors_origin_list(self) -> List[str]:
