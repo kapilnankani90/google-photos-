@@ -213,7 +213,7 @@ class GroqMemoryInterpreter:
                         {"role": "system", "content": GROQ_MEMORY_SYSTEM_PROMPT},
                         {"role": "user", "content": f"USER MEMORY QUERY:\n{raw_input}"},
                     ],
-                    "temperature": 0.1,
+                    "temperature": 0.0,
                     "max_tokens": 1024,
                     "response_format": {"type": "json_object"},
                 }
