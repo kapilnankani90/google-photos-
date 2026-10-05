@@ -1,5 +1,5 @@
 """
-Server-Side Audio Transcription Endpoint via Gemini Multimodal API.
+Server-Side Audio Transcription Endpoint via Groq Speech-to-Text API.
 
 Supports:
 - High-fidelity speech transcription for natural personal memories
@@ -8,7 +8,7 @@ Supports:
 - In-memory audio processing without persistent file or database storage
 """
 
-import base64
+import asyncio
 import logging
 from typing import Optional
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException, status
@@ -21,34 +21,14 @@ logger = logging.getLogger("TranscribeEndpoint")
 
 router = APIRouter()
 
-GEMINI_TRANSCRIPTION_MODEL = "gemini-3.5-flash"
-GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+GROQ_TRANSCRIPTION_MODEL = "whisper-large-v3"
+GROQ_TRANSCRIPTION_URL = "https://api.groq.com/openai/v1/audio/transcriptions"
 
-TRANSCRIPTION_PROMPT = (
-    "Transcribe the spoken audio verbatim as text.\n\n"
-    "CRITICAL SCRIPT & FIDELITY RULES:\n"
-    "1. SCRIPT: Output MUST be exclusively in the Roman/Latin alphabet (English letters). NEVER output Devanagari or any non-Latin script.\n"
-    "2. NO TRANSLATION & NO NORMALIZATION:\n"
-    "   Hindi and Hinglish words must be transcribed according to their spoken Hindi/Hinglish pronunciation, using Roman/Latin letters. "
-    "Do not translate, normalize, or replace Hindi words with semantically similar English words.\n"
-    "3. PREFER HINDI/HINGLISH INTERPRETATION FOR HOMOPHONES:\n"
-    "   If a Hindi word sounds like an English word, prefer the Hindi/Hinglish interpretation when the surrounding speech is clearly Hinglish or code-switched.\n"
-    "   Examples:\n"
-    "   - 'ek photo' -> 'ek photo' (NOT 'each photo', 'a photo', or '8 photo')\n"
-    "   - 'photo hai' -> 'photo hai' (NOT 'photo hijab')\n"
-    "   - 'photo hai jab' -> 'photo hai jab' (NOT 'photo hijab')\n"
-    "   - 'thand thi' -> 'thand thi' (NOT 'thandi')\n"
-    "4. EXACT SPOKEN LEXICAL CONTENT, GENDER & TENSE:\n"
-    "   Preserve the exact spoken lexical content as closely as possible. "
-    "Do not infer a different gender, tense, subject, object, or quantity from context or vocal pitch.\n"
-    "   Examples:\n"
-    "   - 'kar raha tha' -> 'kar raha tha' (NOT 'kar rahi thi')\n"
-    "   - 'gaye the' -> 'gaye the'\n"
-    "   - Do NOT invent or add words such as 'hi', 'bhi', or 'ek hi' unless explicitly spoken.\n"
-    "5. PRESERVE CODE-SWITCHED HINDI WORDS VERBATIM:\n"
-    "   Do NOT translate words such as: 'yaar', 'ek', 'yaad hai', 'jab hum', 'gaye the', 'bahut', 'thi', 'tha', 'saath', 'ke', 'pe', 'main', 'thand', 'aur', 'car se'.\n"
-    "6. PROPER NOUNS & ENTITIES: Preserve proper nouns and entities exactly (e.g. 'Rohtang', 'snow', 'skiing', 'trip', 'family', 'car').\n"
-    "7. OUTPUT FORMAT: Output ONLY the plain transcription text with no quotes, commentary, markdown, or timestamps."
+GROQ_WHISPER_PROMPT = (
+    "Transcribe the spoken audio verbatim in Latin/Roman script. "
+    "Preserve English, Hindi, and Hinglish speech exactly as spoken without translation or normalization. "
+    "Do not translate Hindi to English. "
+    "Examples: ek photo, photo hai jab, thand thi, kar raha tha, gaye the, bohot accha, saath mein."
 )
 
 DEVANAGARI_TO_ROMAN_MAP = {
@@ -72,109 +52,151 @@ def ensure_roman_script(text: str) -> str:
     return "".join(DEVANAGARI_TO_ROMAN_MAP.get(ch, ch) for ch in text)
 
 
+def _determine_audio_filename(upload_filename: Optional[str], mime_type: str) -> str:
+    """
+    Selects an appropriate audio filename with extension for Groq Whisper.
+    Groq validates audio file extensions (flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm).
+    """
+    if upload_filename and "." in upload_filename:
+        ext = upload_filename.rsplit(".", 1)[-1].lower()
+        if ext in {"webm", "m4a", "wav", "mp3", "mp4", "mpeg", "mpga", "ogg", "flac"}:
+            return upload_filename
+
+    mime_to_ext = {
+        "audio/webm": "audio.webm",
+        "audio/wav": "audio.wav",
+        "audio/x-wav": "audio.wav",
+        "audio/wave": "audio.wav",
+        "audio/m4a": "audio.m4a",
+        "audio/x-m4a": "audio.m4a",
+        "audio/mp4": "audio.mp4",
+        "audio/mpeg": "audio.mp3",
+        "audio/mp3": "audio.mp3",
+        "audio/ogg": "audio.ogg",
+        "audio/flac": "audio.flac",
+        "audio/x-flac": "audio.flac",
+    }
+    return mime_to_ext.get(mime_type.lower(), "audio.webm")
+
+
 class TranscriptionResponse(BaseModel):
     """Clean transcription result schema."""
     transcript: str = Field(..., description="Verbatim transcribed speech text")
     model: str = Field(..., description="Underlying transcription model used")
 
 
-CANDIDATE_MODELS = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
-
-
-async def transcribe_audio_bytes(audio_bytes: bytes, mime_type: str = "audio/webm") -> str:
+async def transcribe_audio_bytes(
+    audio_bytes: bytes,
+    mime_type: str = "audio/webm",
+    filename: Optional[str] = None,
+) -> str:
     """
-    Sends raw audio bytes to Gemini multimodal generateContent API for verbatim transcription.
+    Sends raw audio bytes to Groq Speech-to-Text API (whisper-large-v3) for verbatim transcription.
     Never persists audio to disk or database.
-    Prioritizes dedicated gemini-3.5-transcribe capability with automatic language identification
-    and seamless intra/inter-sentence code-switching (English + Hindi / Hinglish).
+    Preserves automatic language identification and seamless Hinglish code-switching.
     """
-    import asyncio
-
-    api_key = settings.GEMINI_API_KEY
+    api_key = settings.GROQ_API_KEY
     if not api_key:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Server transcription service is unconfigured (GEMINI_API_KEY missing).",
+            detail="Server transcription service is unconfigured (GROQ_API_KEY missing).",
         )
 
-    b64_audio = base64.b64encode(audio_bytes).decode("utf-8")
-
-    payload = {
-        "contents": [
-            {
-                "role": "user",
-                "parts": [
-                    {
-                        "inline_data": {
-                            "mime_type": mime_type,
-                            "data": b64_audio,
-                        }
-                    },
-                    {
-                        "text": TRANSCRIPTION_PROMPT,
-                    },
-                ],
-            }
-        ],
-        "generationConfig": {
-            "temperature": 0.0,
-        },
+    audio_filename = _determine_audio_filename(filename, mime_type)
+    files = {
+        "file": (audio_filename, audio_bytes, mime_type),
+    }
+    data = {
+        "model": GROQ_TRANSCRIPTION_MODEL,
+        "temperature": "0.0",
+        "response_format": "json",
+        "prompt": GROQ_WHISPER_PROMPT,
+    }
+    headers = {
+        "Authorization": f"Bearer {api_key}",
     }
 
     last_error_status = 500
     last_error_text = ""
 
     async with httpx.AsyncClient(timeout=25.0) as client:
-        for model in CANDIDATE_MODELS:
-            url = f"{GEMINI_API_URL_TEMPLATE.format(model=model)}?key={api_key}"
-            for attempt in range(2):
-                try:
-                    resp = await client.post(url, json=payload)
-                    if resp.status_code == 200:
-                        data = resp.json()
-                        candidates = data.get("candidates", [])
-                        if candidates:
-                            content_parts = candidates[0].get("content", {}).get("parts", [])
-                            text_pieces = []
-                            for part in content_parts:
-                                if "audioTranscription" in part and isinstance(part["audioTranscription"], dict):
-                                    text_pieces.append(part["audioTranscription"].get("text", ""))
-                                elif "text" in part and part["text"]:
-                                    text_pieces.append(part["text"])
-
-                            transcript = "".join(text_pieces).strip()
-                            if (transcript.startswith('"') and transcript.endswith('"')) or (
-                                transcript.startswith("'") and transcript.endswith("'")
-                            ):
-                                transcript = transcript[1:-1].strip()
-                            transcript = ensure_roman_script(transcript)
-                            return transcript
-                        return ""
-                    elif resp.status_code in (429, 503):
-                        last_error_status = resp.status_code
-                        last_error_text = resp.text[:200]
-                        logger.warning("Model %s returned %s on attempt %s, sleeping 1.5s", model, resp.status_code, attempt)
+        for attempt in range(2):
+            try:
+                resp = await client.post(
+                    GROQ_TRANSCRIPTION_URL,
+                    files=files,
+                    data=data,
+                    headers=headers,
+                )
+                if resp.status_code == 200:
+                    result = resp.json()
+                    raw_text = result.get("text", "")
+                    transcript = raw_text.strip()
+                    if (transcript.startswith('"') and transcript.endswith('"')) or (
+                        transcript.startswith("'") and transcript.endswith("'")
+                    ):
+                        transcript = transcript[1:-1].strip()
+                    transcript = ensure_roman_script(transcript)
+                    return transcript
+                elif resp.status_code in (429, 503):
+                    last_error_status = resp.status_code
+                    last_error_text = resp.text[:200]
+                    logger.warning(
+                        "Groq transcription returned %s on attempt %s, sleeping 1.5s",
+                        resp.status_code,
+                        attempt,
+                    )
+                    if attempt == 0:
                         await asyncio.sleep(1.5)
                         continue
-                    else:
-                        last_error_status = resp.status_code
-                        last_error_text = resp.text[:200]
-                        logger.warning("Model %s returned %s: %s; trying next model", model, resp.status_code, last_error_text)
-                        break
-                except httpx.TimeoutException:
-                    logger.warning("Model %s timed out; trying next model", model)
-                    last_error_status = 504
-                    last_error_text = "Timeout"
                     break
-                except Exception as exc:
-                    logger.warning("Model %s network error: %s", model, exc)
-                    last_error_status = 502
-                    last_error_text = str(exc)
+                else:
+                    last_error_status = resp.status_code
+                    last_error_text = resp.text[:200]
+                    logger.warning(
+                        "Groq transcription returned %s: %s",
+                        resp.status_code,
+                        last_error_text,
+                    )
                     break
+            except httpx.TimeoutException:
+                logger.warning("Groq transcription request timed out on attempt %s", attempt)
+                last_error_status = 504
+                last_error_text = "Timeout"
+                if attempt == 0:
+                    await asyncio.sleep(1.0)
+                    continue
+                break
+            except httpx.RequestError as exc:
+                logger.warning("Groq transcription network error: %s", exc)
+                last_error_status = 502
+                last_error_text = str(exc)
+                break
+            except Exception as exc:
+                logger.warning("Unexpected error during Groq transcription: %s", exc)
+                last_error_status = 500
+                last_error_text = str(exc)
+                break
+
+    if last_error_status == 429:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Transcription provider rate limit reached. Please wait a moment and try again.",
+        )
+    elif last_error_status == 503:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Transcription provider is temporarily unavailable. Please try again shortly.",
+        )
+    elif last_error_status == 504:
+        raise HTTPException(
+            status_code=status.HTTP_504_GATEWAY_TIMEOUT,
+            detail="Transcription provider timed out. Please try again.",
+        )
 
     raise HTTPException(
         status_code=status.HTTP_502_BAD_GATEWAY,
-        detail=f"Transcription providers currently busy or unavailable ({last_error_status}). Please try again.",
+        detail=f"Transcription provider currently busy or unavailable ({last_error_status}). Please try again.",
     )
 
 
@@ -185,8 +207,8 @@ async def transcribe_endpoint(
     mime_type: Optional[str] = Form(None),
 ) -> TranscriptionResponse:
     """
-    Accepts multipart audio upload (WebM, WAV, MP4, etc.), forwards to Gemini for multilingual transcription,
-    and returns verbatim transcribed text.
+    Accepts multipart audio upload (WebM, WAV, MP4, etc.), forwards to Groq Speech-to-Text
+    (whisper-large-v3) for multilingual transcription, and returns verbatim transcribed text.
     """
     upload = audio or file
     if not upload:
@@ -208,7 +230,11 @@ async def transcribe_endpoint(
         # Strip codecs parameter (e.g. 'audio/webm;codecs=opus' -> 'audio/webm')
         resolved_mime = resolved_mime.split(";")[0].strip()
 
-    transcript = await transcribe_audio_bytes(audio_bytes, mime_type=resolved_mime)
+    transcript = await transcribe_audio_bytes(
+        audio_bytes,
+        mime_type=resolved_mime,
+        filename=upload.filename,
+    )
 
     if not transcript:
         raise HTTPException(
@@ -218,5 +244,5 @@ async def transcribe_endpoint(
 
     return TranscriptionResponse(
         transcript=transcript,
-        model=GEMINI_TRANSCRIPTION_MODEL,
+        model=GROQ_TRANSCRIPTION_MODEL,
     )
