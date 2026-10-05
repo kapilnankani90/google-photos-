@@ -10,6 +10,7 @@ Supports:
 
 import asyncio
 import logging
+import re
 from typing import Optional
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException, status
 from pydantic import BaseModel, Field
@@ -31,6 +32,308 @@ GROQ_WHISPER_PROMPT = (
     "Examples: ek photo, photo hai jab, thand thi, kar raha tha, gaye the, bohot accha, saath mein."
 )
 
+# ---------------------------------------------------------------------------
+# Script Normalization & Transliteration Layer (Devanagari + Arabic/Urdu -> Roman)
+# ---------------------------------------------------------------------------
+
+URDU_TO_ROMAN_WORD_MAP = {
+    # English loanwords frequently used in memories
+    'فیملی': 'family',
+    'ٹرپ': 'trip',
+    'بیچ': 'beach',
+    'سنسٹ': 'sunset',
+    'ٹائم': 'time',
+    'فوٹو': 'photo',
+    'فوٹوز': 'photos',
+    'تصویر': 'tasveer',
+    'تصویریں': 'tasveerein',
+    'تصویروں': 'tasveeron',
+    'کار': 'car',
+    'سنو': 'snow',
+    'سکینگ': 'skiing',
+    'اسکینگ': 'skiing',
+    'برتھڈے': 'birthday',
+    'برتھ ڈے': 'birthday',
+    'پارٹی': 'party',
+    'کیک': 'cake',
+    'ہوٹل': 'hotel',
+    'ریسٹورنٹ': 'restaurant',
+    'کیفے': 'cafe',
+    'روڈ': 'road',
+    'فلائٹ': 'flight',
+    'پلین': 'plane',
+    'ائیرپورٹ': 'airport',
+    'ایئرپورٹ': 'airport',
+    'ٹرین': 'train',
+    'سٹیشن': 'station',
+    'اسٹیشن': 'station',
+    'پارک': 'park',
+    'گارڈن': 'garden',
+    'پکنک': 'picnic',
+    'کیمپس': 'campus',
+    'کالج': 'college',
+    'سکول': 'school',
+    'آفس': 'office',
+    'مندر': 'mandir',
+    'ٹیمپل': 'temple',
+    'چرچ': 'church',
+    'مسجد': 'masjid',
+    'ڈنر': 'dinner',
+    'لنچ': 'lunch',
+    'بریکفاسٹ': 'breakfast',
+    'بریک فاسٹ': 'breakfast',
+    'کافی': 'coffee',
+    'چائے': 'chai',
+    'سلفی': 'selfie',
+    'سیلفی': 'selfie',
+    'ویڈیو': 'video',
+    'کیمرہ': 'camera',
+    'موبائل': 'mobile',
+    'فون': 'phone',
+    'فرینڈز': 'friends',
+    'فرینڈ': 'friend',
+    'دوست': 'friends',
+    'دوستوں': 'doston',
+    'ریڈ': 'red',
+    'بلیو': 'blue',
+    'گرین': 'green',
+    'ییلو': 'yellow',
+    'وائٹ': 'white',
+    'بلیک': 'black',
+    'پنک': 'pink',
+    'ڈاگ': 'dog',
+    'کیٹ': 'cat',
+    'ڈریس': 'dress',
+    'شرٹ': 'shirt',
+    # Places
+    'گوا': 'Goa',
+    'منالی': 'Manali',
+    'شملہ': 'Shimla',
+    'کشمیر': 'Kashmir',
+    'دہلی': 'Delhi',
+    'ممبئی': 'Mumbai',
+    'جے پور': 'Jaipur',
+    'روہتانگ': 'Rohtang',
+    'روہتنگ': 'Rohtang',
+    'لداخ': 'Ladakh',
+    # Common Hindi / Urdu / Hinglish lexical vocabulary
+    'مجھے': 'mujhe',
+    'مجھ': 'mujh',
+    'یاد': 'yaad',
+    'ہے': 'hai',
+    'ہیں': 'hain',
+    'ہوں': 'hoon',
+    'ہو': 'ho',
+    'ایک': 'ek',
+    'تھا': 'tha',
+    'تھی': 'thi',
+    'تھے': 'the',
+    'تھیں': 'theen',
+    'ہم': 'hum',
+    'ہمیں': 'humein',
+    'ہمارا': 'hamara',
+    'ہماری': 'hamari',
+    'ہمارے': 'hamare',
+    'پر': 'par',
+    'پہ': 'pe',
+    'پے': 'pe',
+    'کے': 'ke',
+    'کی': 'ki',
+    'کا': 'ka',
+    'کو': 'ko',
+    'سے': 'se',
+    'میں': 'mein',
+    'ساتھ': 'saath',
+    'اور': 'aur',
+    'یا': 'ya',
+    'لیکن': 'lekin',
+    'بہت': 'bahut',
+    'زیادہ': 'zyada',
+    'اچھا': 'achha',
+    'اچھی': 'achhi',
+    'اچھے': 'achhe',
+    'بڑا': 'bada',
+    'بڑی': 'badi',
+    'بڑے': 'bade',
+    'چھوٹا': 'chhota',
+    'چھوٹی': 'chhoti',
+    'چھوٹے': 'chhote',
+    'یار': 'yaar',
+    'بھائی': 'bhai',
+    'بہن': 'behan',
+    'ممی': 'mummy',
+    'امی': 'ammi',
+    'پاپا': 'papa',
+    'ابو': 'abbu',
+    'بچے': 'bachhe',
+    'بچہ': 'bachha',
+    'لوگ': 'log',
+    'لوگوں': 'logon',
+    'سب': 'sab',
+    'سارے': 'saare',
+    'ساری': 'saari',
+    'سارا': 'saara',
+    'یہ': 'yeh',
+    'وہ': 'woh',
+    'اس': 'is',
+    'ان': 'un',
+    'اسکا': 'uska',
+    'اسکی': 'uski',
+    'اسکے': 'uske',
+    'انکا': 'unka',
+    'انکی': 'unki',
+    'انکے': 'unke',
+    'اپنا': 'apna',
+    'अपनी': 'apni',
+    'اپنی': 'apni',
+    'اپنے': 'apne',
+    'میرا': 'mera',
+    'میری': 'meri',
+    'میرے': 'mere',
+    'تیرا': 'tera',
+    'تیری': 'teri',
+    'تیرے': 'tere',
+    'آپ': 'aap',
+    'آپکا': 'aapka',
+    'آپکی': 'aapki',
+    'آپکے': 'aapke',
+    'جب': 'jab',
+    'تب': 'tab',
+    'کب': 'kab',
+    'کہاں': 'kahan',
+    'یہاں': 'yahan',
+    'وہاں': 'wahan',
+    'کچھ': 'kuch',
+    'کوئی': 'koi',
+    'کیا': 'kya',
+    'کیوں': 'kyun',
+    'کون': 'kaun',
+    'کیسے': 'kaise',
+    'کتنا': 'kitna',
+    'کر': 'kar',
+    'کرنا': 'karna',
+    'کرتے': 'karte',
+    'کرتی': 'karti',
+    'کرتا': 'karta',
+    'رہا': 'raha',
+    'رہی': 'rahi',
+    'رہے': 'rahe',
+    'گیا': 'gaya',
+    'گئی': 'gayi',
+    'گئے': 'gaye',
+    'گۓ': 'gaye',
+    'آیا': 'aaya',
+    'آئی': 'aayi',
+    'آئے': 'aaye',
+    'آۓ': 'aaye',
+    'دیکھا': 'dekha',
+    'دیکھی': 'dekhi',
+    'دیکھے': 'dekhe',
+    'ٹھنڈ': 'thand',
+    'سردی': 'sardi',
+    'گرمی': 'garmi',
+    'بارش': 'barish',
+    'صبح': 'subah',
+    'شام': 'shaam',
+    'رات': 'raat',
+    'دن': 'din',
+    'بھی': 'bhi',
+    'ہی': 'hi',
+    'صرف': 'sirf',
+    'پہلے': 'pehle',
+    'بعد': 'baad',
+    'پاس': 'paas',
+    'دور': 'door',
+    'اندر': 'andar',
+    'باہر': 'bahar',
+    'اوپر': 'upar',
+    'نیچے': 'neeche',
+    'پہاڑ': 'pahad',
+    'پہاڑوں': 'pahadon',
+    'سمندر': 'samundar',
+    'دریا': 'darya',
+    'ندی': 'nadi',
+    'پانی': 'pani',
+    'کھانا': 'khana',
+    'برف': 'barf',
+    'شاید': 'shayad',
+    'لگتا': 'lagta',
+    'سال': 'saal',
+}
+
+DEVANAGARI_TO_ROMAN_WORD_MAP = {
+    # English loanwords
+    'फैमिली': 'family',
+    'ट्रिप': 'trip',
+    'बीच': 'beach',
+    'सनसेट': 'sunset',
+    'टाइम': 'time',
+    'फोटो': 'photo',
+    'फ़ोटो': 'photo',
+    'फोटोज़': 'photos',
+    'फ़ोटोज़': 'photos',
+    'कार': 'car',
+    'स्नो': 'snow',
+    'स्कीइंग': 'skiing',
+    'पार्टी': 'party',
+    'होटल': 'hotel',
+    'फ्रेंड्स': 'friends',
+    'फ्रेंड': 'friend',
+    'बर्थडे': 'birthday',
+    'रोहतांग': 'Rohtang',
+    'मनाली': 'Manali',
+    'गोवा': 'Goa',
+    'दिल्ली': 'Delhi',
+    'मुंबई': 'Mumbai',
+    # Common Hinglish words
+    'मुझे': 'mujhe',
+    'याद': 'yaad',
+    'है': 'hai',
+    'हैं': 'hain',
+    'एक': 'ek',
+    'था': 'tha',
+    'थी': 'thi',
+    'थे': 'the',
+    'हम': 'hum',
+    'पर': 'par',
+    'पे': 'pe',
+    'के': 'ke',
+    'का': 'ka',
+    'की': 'ki',
+    'को': 'ko',
+    'से': 'se',
+    'में': 'mein',
+    'साथ': 'saath',
+    'और': 'aur',
+    'बहुत': 'bahut',
+    'अच्छा': 'achha',
+    'अच्छी': 'achhi',
+    'अच्छे': 'achhe',
+    'ठंड': 'thand',
+    'गर्मी': 'garmi',
+    'बारिश': 'barish',
+}
+
+URDU_DIGRAPHS = [
+    ('بھ', 'bh'), ('پھ', 'ph'), ('تھ', 'th'), ('ٹھ', 'th'),
+    ('جھ', 'jh'), ('چھ', 'chh'), ('دھ', 'dh'), ('ڈھ', 'dh'),
+    ('کھ', 'kh'), ('گھ', 'gh'), ('ڑھ', 'rh'), ('ئے', 'e'),
+]
+
+URDU_CHAR_MAP = {
+    'ا': 'a', 'آ': 'aa', 'أ': 'a', 'إ': 'i', 'ء': '',
+    'ب': 'b', 'پ': 'p', 'ت': 't', 'ٹ': 't', 'ث': 's',
+    'ج': 'j', 'چ': 'ch', 'ح': 'h', 'خ': 'kh',
+    'د': 'd', 'ڈ': 'd', 'ذ': 'z', 'ر': 'r', 'ڑ': 'r', 'ز': 'z', 'ژ': 'zh',
+    'س': 's', 'ش': 'sh', 'ص': 's', 'ض': 'z', 'ط': 't', 'ظ': 'z',
+    'ع': 'a', 'غ': 'gh', 'ف': 'f', 'ق': 'q', 'ک': 'k', 'گ': 'g',
+    'ل': 'l', 'م': 'm', 'ن': 'n', 'ں': 'n', 'و': 'o', 'ؤ': 'o',
+    'ہ': 'h', 'ۂ': 'h', 'ۃ': 't', 'ھ': 'h',
+    'ی': 'i', 'ئ': 'e', 'ے': 'e',
+    '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9',
+    '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4', '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9',
+}
+
 DEVANAGARI_TO_ROMAN_MAP = {
     'अ': 'a', 'आ': 'aa', 'इ': 'i', 'ई': 'ee', 'उ': 'u', 'ऊ': 'oo', 'ऋ': 'ri', 'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au',
     'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'ङ': 'ng',
@@ -44,12 +347,74 @@ DEVANAGARI_TO_ROMAN_MAP = {
     '०': '0', '१': '1', '२': '2', '३': '3', '४': '4', '५': '5', '६': '6', '७': '7', '८': '8', '९': '9'
 }
 
+ARABIC_PUNCTUATION_MAP = {
+    '۔': '.', '،': ',', '؟': '?', '؛': ';', '٪': '%',
+}
+
+ARABIC_DIACRITICS = set('\u064B\u064C\u064D\u064E\u064F\u0650\u0651\u0652\u0670')
+
+ARABIC_WORD_REGEX = re.compile(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+')
+DEVANAGARI_WORD_REGEX = re.compile(r'[\u0900-\u097F]+')
+
+NON_LATIN_SCRIPT_CHECK = re.compile(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\u0900-\u097F]')
+
+
+def _transliterate_urdu_chars(word: str) -> str:
+    """Character/digraph fallback transliterator for Urdu/Arabic tokens."""
+    res = word
+    for dg, repl in URDU_DIGRAPHS:
+        res = res.replace(dg, repl)
+    out = []
+    for ch in res:
+        if ch in ARABIC_DIACRITICS:
+            continue
+        out.append(URDU_CHAR_MAP.get(ch, ''))
+    return ''.join(out)
+
+
+def _transliterate_urdu_word(word: str) -> str:
+    """Transliterates a single Arabic/Urdu word to Roman script."""
+    if word in URDU_TO_ROMAN_WORD_MAP:
+        return URDU_TO_ROMAN_WORD_MAP[word]
+    clean_word = ''.join(c for c in word if c not in ARABIC_DIACRITICS)
+    if clean_word in URDU_TO_ROMAN_WORD_MAP:
+        return URDU_TO_ROMAN_WORD_MAP[clean_word]
+    return _transliterate_urdu_chars(clean_word)
+
+
+def _transliterate_devanagari_word(word: str) -> str:
+    """Transliterates a single Devanagari word to Roman script."""
+    if word in DEVANAGARI_TO_ROMAN_WORD_MAP:
+        return DEVANAGARI_TO_ROMAN_WORD_MAP[word]
+    return ''.join(DEVANAGARI_TO_ROMAN_MAP.get(ch, ch) for ch in word)
+
 
 def ensure_roman_script(text: str) -> str:
-    """Fallback safety: guarantees any stray Devanagari characters are converted to Roman Hinglish."""
-    if not any('\u0900' <= ch <= '\u097f' for ch in text):
+    """
+    Guarantees any Devanagari or Arabic/Urdu script is converted to Roman Hinglish.
+    Preserves Latin portions untouched and ensures no non-Latin script characters remain.
+    """
+    if not NON_LATIN_SCRIPT_CHECK.search(text):
         return text
-    return "".join(DEVANAGARI_TO_ROMAN_MAP.get(ch, ch) for ch in text)
+
+    # Replace Arabic punctuation marks
+    for ch, repl in ARABIC_PUNCTUATION_MAP.items():
+        if ch in text:
+            text = text.replace(ch, repl)
+
+    # Transliterate Arabic/Urdu words
+    text = ARABIC_WORD_REGEX.sub(lambda m: _transliterate_urdu_word(m.group(0)), text)
+    # Transliterate Devanagari words
+    text = DEVANAGARI_WORD_REGEX.sub(lambda m: _transliterate_devanagari_word(m.group(0)), text)
+
+    # Residual cleanup safety: ensure no stray non-Latin characters remain
+    if NON_LATIN_SCRIPT_CHECK.search(text):
+        text = ''.join(
+            DEVANAGARI_TO_ROMAN_MAP.get(ch, URDU_CHAR_MAP.get(ch, ch))
+            for ch in text
+        )
+
+    return re.sub(r' +', ' ', text).strip()
 
 
 def _determine_audio_filename(upload_filename: Optional[str], mime_type: str) -> str:
