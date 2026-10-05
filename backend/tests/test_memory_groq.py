@@ -244,6 +244,63 @@ def client():
         yield test_client
 
 
+SAMPLE_DISCOVERY_RESPONSE = {
+    "raw_input": SAMPLE_FUZZY_QUERY,
+    "v2_frame": {
+        "raw_input": SAMPLE_FUZZY_QUERY,
+        "people": [
+            {
+                "role": "friends",
+                "count": None,
+                "attributes": [],
+                "possessive": None
+            }
+        ],
+        "events": None,
+        "objects": [
+            {
+                "name": "beach",
+                "attributes": [],
+                "possessive": None
+            }
+        ],
+        "actions": [],
+        "temporal": None,
+        "literal_text": [],
+        "spatial_setting": "Goa"
+    },
+    "retrieval_signals": {
+        "search_query_terms": ["Goa", "beach", "friends"],
+        "visual_entities": ["beach"],
+        "bound_attributes": []
+    },
+    "coverage_status": "COVERAGE_SUFFICIENT",
+    "controlled_recovery_triggered": False,
+    "candidate_pool_size": 1,
+    "results": [
+        {
+            "candidate_id": "mock_chunk_1",
+            "chunk_id": "chunk_uuid_1",
+            "case_id": "case_ext_1",
+            "chunk_type": "RAW_QUOTE",
+            "content": "A photo of me and my friends at Goa beach.",
+            "rank": 1,
+            "score": 1.85,
+            "score_breakdown": {
+                "base_rrf": 0.35,
+                "bound_bonus": 1.5,
+                "distractor_penalty": 0.0
+            },
+            "retrieval_paths": ["lexical_fts"],
+            "metadata": {
+                "evidence_type": "SUCCESS",
+                "source_type": "USER_INTERVIEW"
+            }
+        }
+    ]
+}
+
+
 def test_memory_search_endpoint_with_mocked_groq(monkeypatch, client):
     """Verifies POST /api/v1/memory/search returns 200 with structured clues and discovery results."""
     mock_key = "gsk_test_mock_secret_key"
@@ -260,6 +317,22 @@ def test_memory_search_endpoint_with_mocked_groq(monkeypatch, client):
         return MemoryStructuredClues.model_validate(data)
 
     monkeypatch.setattr(GroqMemoryInterpreter, "_call_groq", mock_call_groq)
+
+    async def mock_d1_post(self, url, *args, **kwargs):
+        url_str = str(url)
+        assert url_str.endswith("/api/v1/discover"), f"Expected URL to end with /api/v1/discover, got {url_str}"
+        req_json = kwargs.get("json", {})
+        assert req_json.get("top_k") == 5
+        assert req_json.get("enable_recovery") is True
+        assert "v2_representation" in req_json
+        assert isinstance(req_json["v2_representation"], dict)
+        return httpx.Response(
+            status_code=200,
+            json=SAMPLE_DISCOVERY_RESPONSE,
+            request=httpx.Request("POST", url_str),
+        )
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", mock_d1_post)
 
     payload = {
         "raw_input": SAMPLE_FUZZY_QUERY,

@@ -615,7 +615,7 @@ export default function MemorySearch() {
             <div className="ms-interpretation-header">
               <div className="ms-interpretation-badge">
                 <Sparkles size={14} color="#FBBC05" />
-                <span>Step 2 · AI NLU Interpretation</span>
+                <span>AI Memory Assistant · Understood Intent</span>
               </div>
               {memorySearchResp?.llm_provider && (
                 <span className={`ms-provider-pill ${memorySearchResp.llm_provider === "groq" ? "" : "ms-provider-fallback"}`}>
@@ -628,261 +628,122 @@ export default function MemorySearch() {
             </div>
 
             <div className="ms-interpretation-body">
-              <p className="ms-interpretation-desc">
-                The AI interpreted your natural memory into the following retrieval clues without requiring exact filenames or database keywords:
-              </p>
+              {/* Coherent Memory Facets ("You remembered...") */}
+              <div className="ms-understanding-hero">
+                <div className="ms-you-remember-title">
+                  <Sparkles size={14} color="var(--accent-blue)" />
+                  <span>You Remembered:</span>
+                </div>
 
-              <div className="ms-clues-row">
-                {/* Structured Clues from Groq */}
-                {structuredClues ? (
-                  <>
-                    {/* People */}
-                    {structuredClues.people && structuredClues.people.length > 0 && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Users size={14} color="#60A5FA" />
-                          <span>Who</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          {structuredClues.people.map((p, idx) => (
-                            <span key={idx} className="ms-clue-pill ms-pill-blue">
-                              {p.count ? `${p.count}× ` : ""}{p.role}
-                              {p.attributes?.length ? ` (${p.attributes.join(", ")})` : ""}
-                              <span className={`ms-certainty-badge ms-certainty-${p.certainty}`}>
-                                {p.certainty === "explicit" ? "Stated" : "Inferred"}
-                              </span>
-                            </span>
-                          ))}
-                        </div>
+                <div className="ms-facets-grid">
+                  {/* Occasion / Event */}
+                  {structuredClues?.event_activity && (structuredClues.event_activity.event_name || structuredClues.event_activity.activity) && (
+                    <div className="ms-facet-card">
+                      <div className="ms-facet-header">
+                        <span className="ms-facet-label">
+                          <Calendar size={13} color="#F472B6" /> Occasion / Event
+                        </span>
+                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.event_activity.certainty}`}>
+                          {structuredClues.event_activity.certainty === "explicit" ? "Stated" : "Inferred"}
+                        </span>
                       </div>
-                    )}
+                      <div className="ms-facet-value">
+                        {[structuredClues.event_activity.event_name, structuredClues.event_activity.activity].filter(Boolean).join(" · ")}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* Place / Location */}
-                    {structuredClues.place_location && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <MapPin size={14} color="#34D399" />
-                          <span>Where</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-green">
-                            {structuredClues.place_location.place}
-                            {structuredClues.place_location.attributes?.length ? ` (${structuredClues.place_location.attributes.join(", ")})` : ""}
-                            <span className={`ms-certainty-badge ms-certainty-${structuredClues.place_location.certainty}`}>
-                              {structuredClues.place_location.certainty === "explicit" ? "Stated" : "Inferred"}
-                            </span>
-                          </span>
-                        </div>
+                  {/* Place / Location / Setting */}
+                  {(structuredClues?.place_location?.place || structuredClues?.scene_environment?.environment) && (
+                    <div className="ms-facet-card">
+                      <div className="ms-facet-header">
+                        <span className="ms-facet-label">
+                          <MapPin size={13} color="#34D399" /> Location / Setting
+                        </span>
+                        <span className={`ms-certainty-badge ms-certainty-${structuredClues?.place_location?.certainty || structuredClues?.scene_environment?.certainty}`}>
+                          {(structuredClues?.place_location?.certainty || structuredClues?.scene_environment?.certainty) === "explicit" ? "Stated" : "Inferred"}
+                        </span>
                       </div>
-                    )}
+                      <div className="ms-facet-value">
+                        {structuredClues?.place_location
+                          ? [structuredClues.place_location.attributes?.join(" "), structuredClues.place_location.place].filter(Boolean).join(" ")
+                          : structuredClues?.scene_environment?.environment}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* Objects */}
-                    {structuredClues.objects && structuredClues.objects.length > 0 && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Tag size={14} color="#FBBF24" />
-                          <span>Objects / Props</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          {structuredClues.objects.map((o, idx) => (
-                            <span key={idx} className="ms-clue-pill ms-pill-yellow">
-                              {o.attributes?.length ? `${o.attributes.join(" ")} ` : ""}{o.name}
-                              <span className={`ms-certainty-badge ms-certainty-${o.certainty}`}>
-                                {o.certainty === "explicit" ? "Stated" : "Inferred"}
-                              </span>
-                            </span>
-                          ))}
-                        </div>
+                  {/* Approximate Time */}
+                  {structuredClues?.time_temporal?.raw_expression && (
+                    <div className="ms-facet-card">
+                      <div className="ms-facet-header">
+                        <span className="ms-facet-label">
+                          <Clock size={13} color="#C084FC" /> Time Anchor
+                        </span>
+                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.time_temporal.certainty}`}>
+                          {structuredClues.time_temporal.certainty === "explicit" ? "Stated" : "Inferred"}
+                        </span>
                       </div>
-                    )}
+                      <div className="ms-facet-value">
+                        {structuredClues.time_temporal.raw_expression}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* Time / Temporal */}
-                    {structuredClues.time_temporal && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Clock size={14} color="#C084FC" />
-                          <span>When</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-purple">
-                            {structuredClues.time_temporal.raw_expression}
-                            <span className={`ms-certainty-badge ms-certainty-${structuredClues.time_temporal.certainty}`}>
-                              {structuredClues.time_temporal.certainty === "explicit" ? "Stated" : "Inferred"}
-                            </span>
-                          </span>
-                        </div>
+                  {/* Objects & Appearance */}
+                  {((structuredClues?.objects && structuredClues.objects.length > 0) || (structuredClues?.visual_attributes && structuredClues.visual_attributes.length > 0)) && (
+                    <div className="ms-facet-card">
+                      <div className="ms-facet-header">
+                        <span className="ms-facet-label">
+                          <Tag size={13} color="#FBBF24" /> Objects & Details
+                        </span>
+                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.objects?.[0]?.certainty || structuredClues.visual_attributes?.[0]?.certainty || "explicit"}`}>
+                          {(structuredClues.objects?.[0]?.certainty || structuredClues.visual_attributes?.[0]?.certainty) === "explicit" ? "Stated" : "Inferred"}
+                        </span>
                       </div>
-                    )}
+                      <div className="ms-facet-value">
+                        {[
+                          ...(structuredClues.objects || []).map(o => [o.attributes?.join(" "), o.name].filter(Boolean).join(" ")),
+                          ...(structuredClues.visual_attributes || []).map(v => v.attribute)
+                        ].filter((v, i, a) => a.indexOf(v) === i).join(", ")}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* Event / Activity */}
-                    {structuredClues.event_activity && (structuredClues.event_activity.event_name || structuredClues.event_activity.activity) && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Calendar size={14} color="#F472B6" />
-                          <span>Event / Action</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-pink">
-                            {[structuredClues.event_activity.event_name, structuredClues.event_activity.activity].filter(Boolean).join(" · ")}
-                            <span className={`ms-certainty-badge ms-certainty-${structuredClues.event_activity.certainty}`}>
-                              {structuredClues.event_activity.certainty === "explicit" ? "Stated" : "Inferred"}
-                            </span>
-                          </span>
-                        </div>
+                  {/* People / Kinship */}
+                  {structuredClues?.people && structuredClues.people.length > 0 && (
+                    <div className="ms-facet-card">
+                      <div className="ms-facet-header">
+                        <span className="ms-facet-label">
+                          <Users size={13} color="#60A5FA" /> Who
+                        </span>
+                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.people[0]?.certainty || "explicit"}`}>
+                          {structuredClues.people[0]?.certainty === "explicit" ? "Stated" : "Inferred"}
+                        </span>
                       </div>
-                    )}
+                      <div className="ms-facet-value">
+                        {structuredClues.people.map(p => `${p.count ? `${p.count}× ` : ""}${p.role}${p.attributes?.length ? ` (${p.attributes.join(", ")})` : ""}`).join(", ")}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* Visual Attributes */}
-                    {structuredClues.visual_attributes && structuredClues.visual_attributes.length > 0 && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Sparkles size={14} color="#38BDF8" />
-                          <span>Visuals</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          {structuredClues.visual_attributes.map((v, idx) => (
-                            <span key={idx} className="ms-clue-pill ms-pill-cyan">
-                              {v.attribute}
-                              <span className={`ms-certainty-badge ms-certainty-${v.certainty}`}>
-                                {v.certainty === "explicit" ? "Stated" : "Inferred"}
-                              </span>
-                            </span>
-                          ))}
-                        </div>
+                  {!hasClues && (
+                    <div className="ms-facet-card">
+                      <div className="ms-facet-value" style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
+                        Fuzzy memory mapped through semantic search terms: {response.retrieval_signals.search_query_terms?.join(", ") || "None"}
                       </div>
-                    )}
+                    </div>
+                  )}
+                </div>
 
-                    {/* Scene / Environment */}
-                    {structuredClues.scene_environment && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Compass size={14} color="#34D399" />
-                          <span>Scene</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-green">
-                            {structuredClues.scene_environment.environment}
-                            <span className={`ms-certainty-badge ms-certainty-${structuredClues.scene_environment.certainty}`}>
-                              {structuredClues.scene_environment.certainty === "explicit" ? "Stated" : "Inferred"}
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Relationship Context */}
-                    {structuredClues.relationship_context && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Users size={14} color="#60A5FA" />
-                          <span>Context</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-blue">
-                            {structuredClues.relationship_context.context}
-                            <span className={`ms-certainty-badge ms-certainty-${structuredClues.relationship_context.certainty}`}>
-                              {structuredClues.relationship_context.certainty === "explicit" ? "Stated" : "Inferred"}
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  /* Fallback to frame representation */
-                  <>
-                    {frame?.people && frame.people.length > 0 && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Users size={14} color="#60A5FA" />
-                          <span>Who</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          {frame.people.map((p, idx) => (
-                            <span key={idx} className="ms-clue-pill ms-pill-blue">
-                              {p.count ? `${p.count}× ` : ""}{p.role}
-                              {p.attributes?.length ? ` (${p.attributes.join(", ")})` : ""}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {frame?.spatial_setting && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <MapPin size={14} color="#34D399" />
-                          <span>Where</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-green">{frame.spatial_setting}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {frame?.objects && frame.objects.length > 0 && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Tag size={14} color="#FBBF24" />
-                          <span>What / Details</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          {frame.objects.map((o, idx) => (
-                            <span key={idx} className="ms-clue-pill ms-pill-yellow">
-                              {o.attributes?.length ? `${o.attributes.join(" ")} ` : ""}{o.name}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {frame?.temporal && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Clock size={14} color="#C084FC" />
-                          <span>When</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-purple">{frame.temporal.raw_time_expression}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {frame?.events && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Calendar size={14} color="#F472B6" />
-                          <span>Occasion</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          <span className="ms-clue-pill ms-pill-pink">{frame.events.event_name}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {frame?.actions && frame.actions.length > 0 && (
-                      <div className="ms-clue-item">
-                        <div className="ms-clue-label">
-                          <Compass size={14} color="#38BDF8" />
-                          <span>Activity</span>
-                        </div>
-                        <div className="ms-clue-tags">
-                          {frame.actions.map((act, idx) => (
-                            <span key={idx} className="ms-clue-pill ms-pill-cyan">
-                              {act}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
-
-                {!hasClues && (
-                  <div className="ms-clue-item">
-                    <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
-                      Fuzzy memory mapped through semantic search terms: {response.retrieval_signals.search_query_terms?.join(", ") || "None"}
-                    </span>
+                {/* Coherent Natural Language Synthesis */}
+                {structuredClues && (
+                  <div className="ms-synthesis-box">
+                    <strong>Coherent Search Intent:</strong> Searching for moments
+                    {structuredClues.people?.length ? <> of <strong>{structuredClues.people.map(p => p.role).join(", ")}</strong></> : null}
+                    {structuredClues.event_activity?.event_name ? <> during <strong>{structuredClues.event_activity.event_name}</strong></> : null}
+                    {structuredClues.place_location?.place ? <> near <strong>{structuredClues.place_location.place}</strong></> : null}
+                    {structuredClues.time_temporal?.raw_expression ? <> ({structuredClues.time_temporal.raw_expression})</> : null}
+                    {structuredClues.objects?.length ? <> with <strong>{structuredClues.objects.map(o => [o.attributes?.join(" "), o.name].filter(Boolean).join(" ")).join(", ")}</strong></> : null}.
                   </div>
                 )}
               </div>
@@ -915,7 +776,7 @@ export default function MemorySearch() {
                   <Sparkles size={12} color="#FDE047" />
                   <span>Clarification Question</span>
                 </span>
-                <span className="ms-clarification-title">Fuzzy or hedged memory detected</span>
+                <span className="ms-clarification-title">To help narrow down the exact moment from similar memories:</span>
               </div>
               <div className="ms-clarification-question">
                 &ldquo;{memorySearchResp.clarification_question}&rdquo;
@@ -949,17 +810,17 @@ export default function MemorySearch() {
             <div>
               <h2 className="ms-results-title">
                 <BookmarkCheck size={22} color="var(--accent-blue)" />
-                <span>Candidate Moments Retrieved ({response.results.length})</span>
+                <span>Evidence Records Retrieved ({response.results.length} cases)</span>
               </h2>
               <p className="ms-results-subtitle">
-                Review the evidence records below. Click <strong>&ldquo;I recognize this memory!&rdquo;</strong> to confirm a match.
+                The prototype evaluates retrieval against the 308-record qualitative research archive of Google Photos user search challenges. In production, these signals query your personal photo library.
               </p>
             </div>
 
             {recognizedIds.size > 0 && (
               <div className="ms-recognized-counter">
                 <CheckCircle2 size={16} color="#34D399" />
-                <span>{recognizedIds.size} memory recognized</span>
+                <span>{recognizedIds.size} evidence reviewed</span>
               </div>
             )}
           </div>
@@ -1015,7 +876,7 @@ export default function MemorySearch() {
                         <span className="ms-card-emoji">{memoryIcon}</span>
                         <div>
                           <div className="ms-card-category">
-                            {isTopMatch ? "Best Memory Match" : `Memory Evidence #${item.rank}`}
+                            Evidence Case #{item.rank}
                           </div>
                           <div className="ms-card-id">
                             Record ID: {item.candidate_id.slice(0, 8)}...
@@ -1023,9 +884,9 @@ export default function MemorySearch() {
                         </div>
                       </div>
 
-                      {/* Match Confidence Indicator */}
+                      {/* Match Indicator */}
                       <span className={`ms-match-badge ${isTopMatch ? "ms-match-best" : "ms-match-normal"}`}>
-                        {isTopMatch ? "High Confidence" : "Candidate Match"}
+                        {isTopMatch ? "Primary Signal Match" : "Signal Match"}
                       </span>
                     </div>
 

@@ -33,6 +33,9 @@ class Settings(BaseSettings):
     GROQ_MODEL_NAME: str = "qwen/qwen3.8-27b"
     GROQ_TIMEOUT_SECONDS: float = 12.0
 
+    # D1 Discovery Engine API Endpoint (for D2 HTTP consumption)
+    DISCOVERY_ENGINE_URL: str = "http://localhost:8000"
+
     # Retrieval Configuration (Step 6 / Section 24 Fallback)
     # Active fallback following Step 5 NO_ELIGIBLE_CANDIDATE determination
     RETRIEVAL_MODE: str = "lexical_fts"

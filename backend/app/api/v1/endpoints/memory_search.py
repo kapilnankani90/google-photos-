@@ -8,16 +8,18 @@ Provides:
 """
 
 import logging
-from typing import Optional
+import time
+import httpx
 from fastapi import APIRouter, Depends, HTTPException, status
 
+from app.core.config import settings
 from app.memory.schemas import (
     MemorySearchRequest,
     MemorySearchResponse,
     MemoryInterpretationResponse,
 )
 from app.memory.groq_service import GroqMemoryInterpreter
-from app.retrieval.pipeline import DiscoveryEnginePipeline
+from app.retrieval.models import DiscoveryResponse
 
 logger = logging.getLogger("MemorySearchEndpoint")
 
@@ -27,11 +29,6 @@ router = APIRouter()
 def get_groq_interpreter() -> GroqMemoryInterpreter:
     """Dependency provider for GroqMemoryInterpreter."""
     return GroqMemoryInterpreter()
-
-
-def get_discovery_pipeline() -> DiscoveryEnginePipeline:
-    """Dependency provider for the existing DiscoveryEnginePipeline."""
-    return DiscoveryEnginePipeline()
 
 
 @router.post(
@@ -48,13 +45,12 @@ def get_discovery_pipeline() -> DiscoveryEnginePipeline:
 async def search_memory(
     request: MemorySearchRequest,
     interpreter: GroqMemoryInterpreter = Depends(get_groq_interpreter),
-    pipeline: DiscoveryEnginePipeline = Depends(get_discovery_pipeline),
 ) -> MemorySearchResponse:
     """
     Primary endpoint for Memory Search MVP.
     1. Interprets natural language memory via Groq into structured clues.
     2. Maps clues cleanly into frozen V2MemoryRepresentation.
-    3. Executes Discovery Engine retrieval pipeline.
+    3. Executes Discovery Engine retrieval via HTTP POST to D1 /api/v1/discover.
     4. Returns candidate results alongside transparent clue provenance and clarification questions.
     """
     clean_input = request.raw_input.strip()
@@ -64,7 +60,6 @@ async def search_memory(
             detail="A non-empty natural language memory query is required.",
         )
 
-    import time
     start_time = time.perf_counter()
 
     try:
@@ -74,11 +69,30 @@ async def search_memory(
         # Step 2: Convert to locked V2 representation
         v2_frame = interpreter.to_v2_representation(structured_clues)
 
-        # Step 3: Execute Discovery Engine retrieval using the V2 frame
-        discovery_res = await pipeline.run(
-            query=v2_frame,
-            top_k=request.top_k,
-        )
+        # Step 3: Execute Discovery Engine retrieval via HTTP POST to D1
+        d1_url = f"{settings.DISCOVERY_ENGINE_URL.rstrip('/')}/api/v1/discover"
+        payload = {
+            "v2_representation": v2_frame.model_dump(),
+            "top_k": request.top_k,
+            "enable_recovery": request.enable_recovery,
+        }
+
+        try:
+            async with httpx.AsyncClient(timeout=settings.GROQ_TIMEOUT_SECONDS) as client:
+                res = await client.post(d1_url, json=payload)
+                if res.status_code != 200:
+                    logger.error("Failed to call D1 Discovery Engine: HTTP %s - %s", res.status_code, res.text[:200])
+                    raise HTTPException(
+                        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                        detail="Memory search failed: D1 Discovery Engine returned an error",
+                    )
+                discovery_res = DiscoveryResponse.model_validate(res.json())
+        except httpx.HTTPError as http_err:
+            logger.error("Failed to call D1 Discovery Engine: %s", type(http_err).__name__)
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Memory search failed: Unable to connect to D1 Discovery Engine",
+            )
 
         elapsed_ms = round((time.perf_counter() - start_time) * 1000, 2)
 

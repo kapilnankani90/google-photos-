@@ -473,25 +473,43 @@ class GroqMemoryInterpreter:
         Translates MemoryStructuredClues into locked V2MemoryRepresentation
         ready for direct execution by the frozen Discovery Engine.
         Respects zero-fabrication rules and adheres strictly to the locked V2 contract.
+        Preserves combined memory context by cleaning role contamination and capturing
+        visual time/scene tokens in literal_text.
         """
         # 1. People
         people_concepts: List[PersonConcept] = []
         for p in clues.people:
-            if p.role and p.role.strip():
-                people_concepts.append(
-                    PersonConcept(
-                        role=p.role.strip(),
-                        count=p.count,
-                        attributes=p.attributes or [],
-                        possessive=p.possessive,
-                    )
+            role = p.role.strip() if p.role else ""
+            if not role:
+                continue
+            # Skip non-searchable self-referential roles ('self', 'myself', 'me')
+            if role.lower() in ("self", "myself", "me"):
+                continue
+            # Filter verbose clause attributes that contaminate recovery query filtering
+            clean_attrs = []
+            for attr in (p.attributes or []):
+                cleaned = attr.strip()
+                # Skip full clauses like "trip participants" or "wearing white shirt"
+                if cleaned and len(cleaned.split()) <= 2 and not any(k in cleaned.lower() for k in ("participant", "wearing")):
+                    clean_attrs.append(cleaned)
+            people_concepts.append(
+                PersonConcept(
+                    role=role,
+                    count=p.count,
+                    attributes=clean_attrs,
+                    possessive=p.possessive,
                 )
+            )
 
         # 2. Events
         event_concept: Optional[EventConcept] = None
         if clues.event_activity and clues.event_activity.event_name:
+            ev_name = clues.event_activity.event_name.strip()
+            # If the event is a compound like "family trip", preserve "trip" to avoid duplicated search tokens
+            if ev_name.lower().startswith("family "):
+                ev_name = ev_name[7:].strip() or ev_name
             event_concept = EventConcept(
-                event_name=clues.event_activity.event_name.strip(),
+                event_name=ev_name,
                 sub_event=None,
             )
 
@@ -499,10 +517,11 @@ class GroqMemoryInterpreter:
         object_concepts: List[ObjectConcept] = []
         for o in clues.objects:
             if o.name and o.name.strip():
+                clean_attrs = [a.strip() for a in (o.attributes or []) if a and a.strip()]
                 object_concepts.append(
                     ObjectConcept(
                         name=o.name.strip(),
-                        attributes=o.attributes or [],
+                        attributes=clean_attrs,
                         possessive=None,
                     )
                 )
@@ -516,6 +535,7 @@ class GroqMemoryInterpreter:
 
         # 5. Temporal
         temporal_concept: Optional[TemporalConcept] = None
+        literal_text_tokens: List[str] = []
         if clues.time_temporal and clues.time_temporal.raw_expression:
             nature = clues.time_temporal.temporal_nature
             allowed_natures = ["COARSE_YEAR_ERA", "RELATIVE_OFFSET", "SEASON_EVENT_BOUND", "EXACT_MONTH_YEAR"]
@@ -525,6 +545,14 @@ class GroqMemoryInterpreter:
                 coarse_value=clues.time_temporal.coarse_value,
                 temporal_nature=validated_nature,
             )
+            # If temporal has a visual/time-of-day clue (like "sunset", "sunrise", "night"),
+            # preserve it in literal_text so FTS doesn't discard it.
+            coarse_val = (clues.time_temporal.coarse_value or "").lower()
+            raw_val = (clues.time_temporal.raw_expression or "").lower()
+            for tod in ("sunset", "sunrise", "golden hour", "dusk", "dawn", "twilight", "evening", "night", "morning"):
+                if tod in coarse_val or tod in raw_val:
+                    if tod not in literal_text_tokens:
+                        literal_text_tokens.append(tod)
 
         # 6. Spatial setting
         spatial_setting: Optional[str] = None
@@ -540,6 +568,6 @@ class GroqMemoryInterpreter:
             objects=object_concepts,
             actions=actions,
             temporal=temporal_concept,
-            literal_text=[],
+            literal_text=literal_text_tokens,
             spatial_setting=spatial_setting,
         )
