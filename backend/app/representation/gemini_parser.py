@@ -27,16 +27,29 @@ from app.representation.models import V2MemoryRepresentation
 
 logger = logging.getLogger("GeminiParser")
 
-GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent"
 
 V2_PROMPT_SYSTEM = """You are the Google Photos V2 Memory Representation Interpreter.
 Your sole job is to translate the user's natural-language memory query into the locked V2 JSON structure.
 
+Decompose the user's memory into MULTIPLE independent, useful retrieval clues across all applicable categories:
+- people / relationships (roles, counts, group togetherness, attire)
+- places / settings (geographic destinations, college, outside, outdoors, beach, mountain)
+- events / occasions (wedding, birthday, trip, college trip, vacation, picnic)
+- objects / props (cake, bike, car, snow, ice, fire, bonfire, food, vehicles)
+- activities / actions (sitting, travelling, holding, dressed up, skiing, walking)
+- temporal / time (night, old, relative offsets, seasons, calendar)
+- visual attributes (colors, sizes like big)
+
 STRICT EXTRACTION RULES:
 1. Preserve verbatim wording in raw_input.
 2. DO NOT invent or fabricate details not explicitly stated (no specific dates, no unmentioned names, no imaginary locations).
-3. If an entity is not recalled, leave the corresponding field empty or null.
-4. Output MUST BE strictly valid JSON matching the schema below with NO additional keys.
+3. If an entity or category is not recalled, leave the corresponding field empty or null. Do not force every memory into every category.
+4. If the user mentions environment/weather clues like 'cold', 'snow', or 'ice', capture them as objects or spatial/setting clues (e.g. object name="snow" or spatial_setting="cold").
+5. If the user mentions activities like 'sitting', 'travelling', 'holding', capture them in actions: [string].
+6. If the user mentions social grouping like 'all together' or 'with family/friends', capture them in people.
+7. If the user mentions 'trip' or 'wedding' or 'birthday', capture them in events.
+8. Output MUST BE strictly valid JSON matching the schema below with NO additional keys.
 
 ALLOWED SCHEMA:
 {
@@ -74,7 +87,7 @@ ALLOWED SCHEMA:
 
 class GeminiParserClient:
     """
-    Client for structured fallback intent interpretation via Gemini 2.5 Flash.
+    Client for structured fallback intent interpretation via Gemini 3.8 Flash.
     Designed for testability with clean dependency injection.
     """
 

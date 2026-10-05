@@ -86,6 +86,8 @@ OBJECT_VOCABULARY = {
     "document": "document", "documents": "document",
     "boarding pass": "boarding pass",
     "ice": "ice",
+    "snow": "snow",
+    "fire": "fire", "bonfire": "bonfire", "campfire": "campfire",
     "car": "car",
     "fan": "cooling fan", "cooling fan": "cooling fan",
     "order confirmation": "order confirmation",
@@ -115,9 +117,16 @@ EVENT_VOCABULARY = {
     "farewell lunch": ("farewell", "farewell lunch"),
     "farewell": ("farewell", None),
     "engagement": ("engagement", None),
+    "college trips": ("college trip", None),
     "college trip": ("college trip", None),
     "convocation": ("convocation", None),
     "anniversary": ("anniversary", None),
+    "trip": ("trip", None),
+    "trips": ("trip", None),
+    "vacation": ("vacation", None),
+    "vacations": ("vacation", None),
+    "picnic": ("picnic", None),
+    "party": ("party", None),
 }
 
 # Spatial settings (Section 5.8)
@@ -134,6 +143,10 @@ SPATIAL_VOCABULARY = {
     "temple": "temple",
     "office": "office",
     "college": "college",
+    "outside": "outside",
+    "outdoors": "outdoors",
+    "somewhere cold": "cold",
+    "cold": "cold",
     "lake": "lake",
     "park": "park",
     "garden": "garden",
@@ -142,6 +155,14 @@ SPATIAL_VOCABULARY = {
 # Visual attributes (colors, attire)
 COLOR_ATTRIBUTES = {
     "white", "yellow", "blue", "black", "red", "green", "pink", "purple", "orange",
+}
+
+# Size and condition attributes
+SIZE_ATTRIBUTES = {
+    "big", "large", "small", "huge", "tiny",
+}
+CONDITION_ATTRIBUTES = {
+    "cold", "frozen",
 }
 
 # Known literal text targets (e.g. from canonical cases / OCR queries)
@@ -278,6 +299,29 @@ def extract_temporal(text: str) -> Optional[TemporalConcept]:
             temporal_nature="COARSE_YEAR_ERA",
         )
 
+    # 5. TIME_OF_DAY: at night, evening, morning, afternoon
+    tod_regex = r'\b(at\s+night|nighttime|in\s+the\s+evening|in\s+the\s+morning|afternoon)\b'
+    match_tod = re.search(tod_regex, lower)
+    if match_tod:
+        raw_expr = match_tod.group(1).strip()
+        val = "night" if "night" in raw_expr else ("evening" if "evening" in raw_expr else "morning")
+        return TemporalConcept(
+            raw_time_expression=raw_expr,
+            coarse_value=val,
+            temporal_nature="SEASON_EVENT_BOUND",
+        )
+
+    # 6. COARSE_PAST: old, in the past, long ago
+    past_regex = r'\b(old|in\s+the\s+past|long\s+ago)\b'
+    match_past = re.search(past_regex, lower)
+    if match_past:
+        raw_expr = match_past.group(1).strip()
+        return TemporalConcept(
+            raw_time_expression=raw_expr,
+            coarse_value="past",
+            temporal_nature="RELATIVE_OFFSET",
+        )
+
     return None
 
 
@@ -296,6 +340,8 @@ def extract_events(text: str) -> Optional[EventConcept]:
                     sub = "rehearsal"
                 elif "farewell lunch" in lower:
                     sub = "farewell lunch"
+                elif "college" in lower and name == "trip":
+                    sub = "college trip"
             return EventConcept(event_name=name, sub_event=sub)
     return None
 
@@ -356,6 +402,47 @@ def extract_people(text: str) -> List[PersonConcept]:
                     possessive=possessive,
                 ))
 
+    # Social togetherness: "all together", "we were all together", "together"
+    if re.search(r'\b(?:all\s+together|together)\b', lower):
+        if not any(p.role == "group" for p in people):
+            people.append(PersonConcept(
+                role="group",
+                count=None,
+                attributes=["together"],
+                possessive=possessive,
+            ))
+    elif re.search(r'\b(?:we\s+were|we\s+had|we\s+went|with\s+us)\b', lower):
+        if not people:
+            people.append(PersonConcept(
+                role="group",
+                count=None,
+                attributes=[],
+                possessive=possessive,
+            ))
+
+    # Everyone dressed up / everyone
+    if re.search(r'\beveryone\b', lower):
+        attrs = []
+        if "dressed up" in lower:
+            attrs.append("dressed up")
+        if not any(p.role in ("everyone", "group") for p in people):
+            people.append(PersonConcept(
+                role="everyone",
+                count=None,
+                attributes=attrs,
+                possessive=None,
+            ))
+
+    # Explicit self mention: "picture of me", "photo of me"
+    if re.search(r'\b(?:picture|photo)\s+of\s+me\b', lower):
+        if not any(p.role == "myself" for p in people):
+            people.append(PersonConcept(
+                role="myself",
+                count=1,
+                attributes=[],
+                possessive=None,
+            ))
+
     return people
 
 
@@ -363,7 +450,7 @@ def extract_objects(text: str) -> List[ObjectConcept]:
     """
     Extracts physical objects, vehicles, props, and documents:
     - Name
-    - Bound visual modifiers (e.g., 'white' for bike, 'yellow' for truck)
+    - Bound visual modifiers (e.g., 'white' for bike, 'yellow' for truck, 'big' for cake)
     - Possessive (e.g., 'my')
     """
     objects: List[ObjectConcept] = []
@@ -378,14 +465,19 @@ def extract_objects(text: str) -> List[ObjectConcept]:
 
     # Search for object items
     for obj_surface, canonical_name in sorted(OBJECT_VOCABULARY.items(), key=lambda x: len(x[0]), reverse=True):
+        # Do not extract "dress" as an object prop when it occurs as part of "dressed up"
+        if canonical_name == "dress" and re.search(r'\bdressed\s+up\b', lower):
+            continue
+
         pattern = r'\b' + re.escape(obj_surface) + r'\b'
         if re.search(pattern, lower):
-            # Check for bound visual attributes (e.g. "white bike", "yellow truck", "steel plate")
+            # Check for bound visual and modifier attributes (colors, sizes, conditions)
             attributes = []
-            for col in COLOR_ATTRIBUTES:
-                col_pattern = rf'\b{col}\s+{re.escape(obj_surface)}\b'
-                if re.search(col_pattern, lower):
-                    attributes.append(col)
+            for mod in (COLOR_ATTRIBUTES | SIZE_ATTRIBUTES | CONDITION_ATTRIBUTES):
+                mod_pattern = rf'\b{mod}\s+(?:[\w]+\s+)?{re.escape(obj_surface)}\b'
+                if re.search(mod_pattern, lower):
+                    if mod not in attributes:
+                        attributes.append(mod)
             if "steel plate" in lower and canonical_name == "cake":
                 attributes.append("steel plate")
 
@@ -439,6 +531,13 @@ def extract_actions(text: str) -> List[str]:
         (r'\b(?:arms\s+crossed|crossed\s+arms)\b', "arms crossed"),
         (r'\b(?:holding\s+(?:the\s+)?ring\s+box)\b', "holding the ring box"),
         (r'\b(?:firecracker\s+lighted)\b', "firecracker lighted"),
+        (r'\b(?:sitting|sat)\b', "sitting"),
+        (r'\b(?:travelling|traveling|travel|travelled|traveled)\b', "travelling"),
+        (r'\b(?:holding)\b', "holding"),
+        (r'\b(?:dressed\s+up|dressing\s+up)\b', "dressed up"),
+        (r'\b(?:walking|walked)\b', "walking"),
+        (r'\b(?:standing|stood)\b', "standing"),
+        (r'\b(?:dancing|danced)\b', "dancing"),
     ]
 
     for pat, action_name in action_patterns:
@@ -471,16 +570,21 @@ def is_ambiguous_query(
 
     A query is considered DETERMINISTIC (does not need Gemini) if:
     - It matches one of the canonical patterns (e.g. 5 sisters, white bike, Progressive, etc.)
-    - It has cleanly extracted non-empty core structures (e.g. people, objects, events, or literal_text)
+    - It has cleanly extracted non-empty core structures (e.g. concrete people, objects, events, actions, or literal_text)
 
     A query is considered AMBIGUOUS / OPEN-DOMAIN if:
     - It is a long, conversational, or multi-clause sentence where NO structured fields
       could be extracted deterministically, or where intent cannot be pinned down.
-    - E.g. "I think there was a snapshot where we were all sitting around looking surprised at something"
+    - E.g. "show me that thing we were looking at when everybody felt so amazed and shocked"
     """
+    has_concrete_people = any(
+        p.role not in ("group", "everyone") or p.count is not None or bool(p.attributes)
+        for p in parsed.people
+    )
+
     # If the user has extracted any substantive frame components:
     has_substantive = bool(
-        parsed.people or
+        has_concrete_people or
         parsed.events or
         parsed.objects or
         parsed.actions or
