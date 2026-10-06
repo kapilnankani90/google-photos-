@@ -1171,7 +1171,7 @@ export default function MemorySearch({
           <div
             className="gp-rediscovery-card"
             style={{
-              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/sunset-trip.jpg')",
+              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/sunset-trip.jpg'), linear-gradient(135deg, #f12711 0%, #f5af19 100%)",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -1185,7 +1185,7 @@ export default function MemorySearch({
           <div
             className="gp-rediscovery-card"
             style={{
-              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/white-bike.jpg')",
+              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/white-bike.jpg'), linear-gradient(135deg, #757f9a 0%, #d7dde8 100%)",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -1199,7 +1199,7 @@ export default function MemorySearch({
           <div
             className="gp-rediscovery-card"
             style={{
-              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/mountain-trek.jpg')",
+              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/mountain-trek.jpg'), linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%)",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

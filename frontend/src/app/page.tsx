@@ -48,6 +48,29 @@ function MemorySearchIcon() {
   );
 }
 
+function GooglePhotosPinwheel({ size = 26, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 200 200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Google Photos"
+    >
+      {/* Top Petal - Red */}
+      <path d="M 100,100 L 100,30 A 35,35 0 0 1 100,100 Z" fill="#EA4335" />
+      {/* Left Petal - Yellow */}
+      <path d="M 100,100 L 30,100 A 35,35 0 0 1 100,100 Z" fill="#FBBC05" />
+      {/* Bottom Petal - Green */}
+      <path d="M 100,100 L 100,170 A 35,35 0 0 1 100,100 Z" fill="#34A853" />
+      {/* Right Petal - Blue */}
+      <path d="M 100,100 L 170,100 A 35,35 0 0 1 100,100 Z" fill="#4285F4" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [currentScreen, setCurrentScreen] = useState<AppScreen>("splash");
   const [splashFading, setSplashFading] = useState<boolean>(false);
@@ -123,13 +146,7 @@ export default function Home() {
       {currentScreen === "splash" && (
         <div className={`gp-splash-screen ${splashFading ? "fade-out" : ""}`}>
           <div className="gp-splash-content">
-            <img
-              src="/images/home/google-photos-logo.png"
-              alt="Google Photos"
-              className="gp-splash-pinwheel-img"
-              width={80}
-              height={80}
-            />
+            <GooglePhotosPinwheel size={80} className="gp-splash-pinwheel-img" />
             <span className="gp-splash-wordmark">PHOTOS</span>
           </div>
         </div>
@@ -143,13 +160,7 @@ export default function Home() {
           {/* Top App Bar */}
           <header className="gp-home-appbar">
             <div className="gp-home-brand-row">
-              <img
-                src="/images/home/google-photos-logo.png"
-                alt="Google Photos"
-                className="gp-home-pinwheel-img"
-                width={26}
-                height={26}
-              />
+              <GooglePhotosPinwheel size={26} className="gp-home-pinwheel-img" />
               <span className="gp-home-brand-text">Google Photos</span>
             </div>
 
@@ -180,7 +191,7 @@ export default function Home() {
                   role="button"
                   tabIndex={0}
                   style={{
-                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%), url('/images/home/coastal-getaway.jpg')",
+                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%), url('/images/home/coastal-getaway.jpg'), linear-gradient(135deg, #1f4037 0%, #99f2c8 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -196,7 +207,7 @@ export default function Home() {
                   role="button"
                   tabIndex={0}
                   style={{
-                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%), url('/images/home/mountain-trail.jpg')",
+                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%), url('/images/home/mountain-trail.jpg'), linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -212,7 +223,7 @@ export default function Home() {
                   role="button"
                   tabIndex={0}
                   style={{
-                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%), url('/images/home/summer-sunset.jpg')",
+                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%), url('/images/home/summer-sunset.jpg'), linear-gradient(135deg, #f12711 0%, #f5af19 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -242,7 +253,7 @@ export default function Home() {
               <div
                 className="gp-hero-photo-card"
                 style={{
-                  backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%), url('/images/home/golden-gate-hero.jpg')",
+                  backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%), url('/images/home/golden-gate-hero.jpg'), linear-gradient(135deg, #e65c00 0%, #f9d423 100%)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -258,7 +269,7 @@ export default function Home() {
                 <div
                   className="gp-split-photo"
                   style={{
-                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%), url('/images/home/cafe.jpg')",
+                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%), url('/images/home/cafe.jpg'), linear-gradient(135deg, #3e2723 0%, #8d6e63 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -271,7 +282,7 @@ export default function Home() {
                 <div
                   className="gp-split-photo"
                   style={{
-                    backgroundImage: "url('/images/home/architecture.jpg')",
+                    backgroundImage: "url('/images/home/architecture.jpg'), linear-gradient(135deg, #37474f 0%, #78909c 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -299,7 +310,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile"
                   style={{
-                    backgroundImage: "url('/images/home/last-weekend-cliff.jpg')",
+                    backgroundImage: "url('/images/home/last-weekend-cliff.jpg'), linear-gradient(135deg, #005c97 0%, #363795 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -310,7 +321,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile"
                   style={{
-                    backgroundImage: "url('/images/home/last-weekend-campfire.jpg')",
+                    backgroundImage: "url('/images/home/last-weekend-campfire.jpg'), linear-gradient(135deg, #141e30 0%, #243b55 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -323,7 +334,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile"
                   style={{
-                    backgroundImage: "url('/images/home/last-weekend-arch.jpg')",
+                    backgroundImage: "url('/images/home/last-weekend-arch.jpg'), linear-gradient(135deg, #4b6cb7 0%, #182848 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -334,7 +345,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile"
                   style={{
-                    backgroundImage: "url('/images/home/last-weekend-car.jpg')",
+                    backgroundImage: "url('/images/home/last-weekend-car.jpg'), linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -345,7 +356,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile"
                   style={{
-                    backgroundImage: "url('/images/home/last-weekend-foam.jpg')",
+                    backgroundImage: "url('/images/home/last-weekend-foam.jpg'), linear-gradient(135deg, #1d976c 0%, #93f9b9 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -356,7 +367,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile gp-tile-plus"
                   style={{
-                    backgroundImage: "linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), url('/images/home/last-weekend-sunset.jpg')",
+                    backgroundImage: "linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), url('/images/home/last-weekend-sunset.jpg'), linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -383,7 +394,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile-lg"
                   style={{
-                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%), url('/images/home/sept-celebration.jpg')",
+                    backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%), url('/images/home/sept-celebration.jpg'), linear-gradient(135deg, #d38312 0%, #a83279 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -396,7 +407,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile-lg"
                   style={{
-                    backgroundImage: "url('/images/home/sept-dinner.jpg')",
+                    backgroundImage: "url('/images/home/sept-dinner.jpg'), linear-gradient(135deg, #870000 0%, #190a05 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -407,7 +418,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile-tall"
                   style={{
-                    backgroundImage: "url('/images/home/sept-redwood.jpg')",
+                    backgroundImage: "url('/images/home/sept-redwood.jpg'), linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -418,7 +429,7 @@ export default function Home() {
                 <div
                   className="gp-grid-tile-tall"
                   style={{
-                    backgroundImage: "url('/images/home/sept-autumn-trail.jpg')",
+                    backgroundImage: "url('/images/home/sept-autumn-trail.jpg'), linear-gradient(135deg, #ba8b02 0%, #181818 100%)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -500,10 +511,10 @@ export default function Home() {
             <section className="gp-people-section">
               <div className="gp-people-row">
                 {[
-                  { name: "Arjun", img: "/images/people/person-1.jpg" },
-                  { name: "Priya", img: "/images/people/person-2.jpg" },
-                  { name: "Kabir", img: "/images/people/person-3.jpg" },
-                  { name: "Milo", img: "/images/people/pet-milo.jpg" },
+                  { name: "Arjun", img: "/images/people/person-1.jpg", bg: "#1A73E8", letter: "A" },
+                  { name: "Priya", img: "/images/people/person-2.jpg", bg: "#EA4335", letter: "P" },
+                  { name: "Kabir", img: "/images/people/person-3.jpg", bg: "#FBBC05", letter: "K" },
+                  { name: "Milo", img: "/images/people/pet-milo.jpg", bg: "#34A853", letter: "🐶" },
                 ].map((person, idx) => (
                   <div
                     key={idx}
@@ -512,12 +523,37 @@ export default function Home() {
                     role="button"
                     tabIndex={0}
                     title={person.name}
+                    style={{ position: "relative", overflow: "hidden", backgroundColor: person.bg }}
                   >
                     <img
                       src={person.img}
                       alt={person.name}
                       className="gp-people-avatar-img"
+                      style={{ position: "relative", zIndex: 1, width: "100%", height: "100%", objectFit: "cover" }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
                     />
+                    <span
+                      className="gp-people-fallback-text"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "100%",
+                        height: "100%",
+                        color: "#FFFFFF",
+                        fontWeight: 700,
+                        fontSize: person.letter === "🐶" ? "1.25rem" : "1.1rem",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        zIndex: 0,
+                        userSelect: "none",
+                      }}
+                    >
+                      {person.letter}
+                    </span>
                   </div>
                 ))}
                 <div

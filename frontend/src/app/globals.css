@@ -3091,6 +3091,10 @@ html, body {
   color: #FFFFFF;
   position: relative;
   overflow: hidden;
+  background-color: #3C4043;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }

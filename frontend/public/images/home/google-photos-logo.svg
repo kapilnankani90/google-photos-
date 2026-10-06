@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Google Photos Pinwheel Logo -->
+  <path d="M 100,100 L 100,30 A 35,35 0 0 1 100,100 Z" fill="#EA4335" />
+  <path d="M 100,100 L 30,100 A 35,35 0 0 1 100,100 Z" fill="#FBBC05" />
+  <path d="M 100,100 L 100,170 A 35,35 0 0 1 100,100 Z" fill="#34A853" />
+  <path d="M 100,100 L 170,100 A 35,35 0 0 1 100,100 Z" fill="#4285F4" />
+</svg>
