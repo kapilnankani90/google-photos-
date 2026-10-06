@@ -26,7 +26,7 @@ from app.memory.response_cache import (
     cache_interpretation_response,
     make_deterministic_candidate_ordering,
 )
-from app.retrieval.models import DiscoveryResponse
+from app.retrieval.models import CandidateResult, DiscoveryResponse
 
 logger = logging.getLogger("MemorySearchEndpoint")
 
