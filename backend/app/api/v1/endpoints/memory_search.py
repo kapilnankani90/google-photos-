@@ -19,6 +19,13 @@ from app.memory.schemas import (
     MemoryInterpretationResponse,
 )
 from app.memory.groq_service import GroqMemoryInterpreter
+from app.memory.response_cache import (
+    get_cached_search_response,
+    cache_search_response,
+    get_cached_interpretation_response,
+    cache_interpretation_response,
+    make_deterministic_candidate_ordering,
+)
 from app.retrieval.models import DiscoveryResponse
 
 logger = logging.getLogger("MemorySearchEndpoint")
@@ -29,6 +36,136 @@ router = APIRouter()
 def get_groq_interpreter() -> GroqMemoryInterpreter:
     """Dependency provider for GroqMemoryInterpreter."""
     return GroqMemoryInterpreter()
+
+
+def is_eligible_consumer_memory(candidate: CandidateResult) -> bool:
+    """
+    D2 Presentation-layer eligibility gate:
+    Includes only genuine successful memory/photo-retrieval episodes.
+    Excludes product complaints, feature requests, and failure diagnostics.
+    """
+    meta = getattr(candidate, "metadata", None) or {}
+    if not isinstance(meta, dict):
+        meta = getattr(meta, "model_dump", lambda: {})() if hasattr(meta, "model_dump") else getattr(meta, "__dict__", {})
+
+    evidence_type = str(meta.get("evidence_type") or "").upper()
+    if evidence_type in ("FAILURE", "PAIN_POINT"):
+        return False
+
+    tags = meta.get("category_tags") or []
+    if isinstance(tags, (list, tuple, set)):
+        upper_tags = {str(t).upper() for t in tags}
+        if "SEARCH_PROBLEM" in upper_tags:
+            return False
+    elif isinstance(tags, str) and tags.upper() == "SEARCH_PROBLEM":
+        return False
+
+    failure_mode = meta.get("failure_mode")
+    if failure_mode and str(failure_mode).upper() not in ("NONE", "NULL", ""):
+        return False
+
+    methodology = str(meta.get("methodology") or "").upper()
+    if methodology == "UNSOLICITED_PUBLIC":
+        return False
+
+    if evidence_type == "SUCCESS" or methodology == "PROMPTED_INTERVIEW":
+        return True
+
+    source = str(meta.get("source") or meta.get("source_type") or "").upper()
+    if source in ("PHOTO_ARCHIVE", "USER_INTERVIEW"):
+        return True
+
+    if not evidence_type and not methodology and not failure_mode:
+        return True
+
+GENERIC_META_STOPWORDS = {
+    "photo", "photos", "picture", "pictures", "image", "images", "remember",
+    "memory", "memories", "took", "taken", "taking", "look", "looking",
+    "search", "show", "find", "nice", "good", "there", "were", "with",
+    "from", "about", "that", "this", "some", "our", "my", "me", "i", "we",
+    "the", "a", "an", "and", "or", "in", "on", "at", "to", "for", "of", "was"
+}
+
+DOCUMENT_TAGS = {"DOCUMENT_SEARCH", "OCR", "RECEIPT_SEARCH"}
+DOCUMENT_TERMS = {"document", "receipt", "paper", "text", "bill", "invoice", "license", "card"}
+
+
+def is_grounded_consumer_memory(
+    candidate: CandidateResult,
+    v2_frame: Optional[Any] = None,
+    structured_clues: Optional[Any] = None,
+    raw_query: str = "",
+) -> bool:
+    """
+    Consumer grounding boundary:
+    Ensures candidates returned by broad lexical retrieval are genuinely grounded
+    in the consumer's memory clues, rather than accidental lexical matches on
+    generic meta-words like 'photo' or document-scanning research cases.
+    """
+    meta = getattr(candidate, "metadata", None) or {}
+    if not isinstance(meta, dict):
+        meta = getattr(meta, "model_dump", lambda: {})() if hasattr(meta, "model_dump") else getattr(meta, "__dict__", {})
+
+    tags = meta.get("category_tags") or []
+    upper_tags = {str(t).upper() for t in tags} if isinstance(tags, (list, tuple, set)) else {str(tags).upper()}
+
+    # 1. Reject document-search candidates unless query explicitly requested a document
+    query_lower = raw_query.lower()
+    is_doc_query = any(doc_word in query_lower for doc_word in DOCUMENT_TERMS)
+    if not is_doc_query and upper_tags.intersection(DOCUMENT_TAGS):
+        return False
+
+    # 2. If candidate has compositional bound entity bonus (+1.5), it is strongly grounded
+    score_breakdown = getattr(candidate, "score_breakdown", None)
+    if score_breakdown and getattr(score_breakdown, "bound_bonus", 0.0) > 0.0:
+        return True
+
+    # 3. Collect salient clue tokens from structured dimensions (people, events, objects, places, etc.)
+    salient_clues: set[str] = set()
+    if structured_clues:
+        for p in getattr(structured_clues, "people", []) or []:
+            if getattr(p, "role", None):
+                salient_clues.update(p.role.lower().split())
+        for o in getattr(structured_clues, "objects", []) or []:
+            if getattr(o, "name", None):
+                salient_clues.update(o.name.lower().split())
+            for attr in getattr(o, "attributes", []) or []:
+                salient_clues.update(attr.lower().split())
+        ev = getattr(structured_clues, "event_activity", None)
+        if ev:
+            if getattr(ev, "event_name", None):
+                salient_clues.update(ev.event_name.lower().split())
+            if getattr(ev, "activity", None):
+                salient_clues.update(ev.activity.lower().split())
+        pl = getattr(structured_clues, "place_location", None)
+        if pl and getattr(pl, "place", None):
+            salient_clues.update(pl.place.lower().split())
+        for vd in getattr(structured_clues, "visual_details", []) or []:
+            salient_clues.update(vd.lower().split())
+
+    if v2_frame:
+        for p in getattr(v2_frame, "people", []) or []:
+            if getattr(p, "role", None):
+                salient_clues.update(p.role.lower().split())
+        for o in getattr(v2_frame, "objects", []) or []:
+            if getattr(o, "name", None):
+                salient_clues.update(o.name.lower().split())
+        if getattr(v2_frame, "spatial_setting", None):
+            salient_clues.update(v2_frame.spatial_setting.lower().split())
+        ev = getattr(v2_frame, "events", None)
+        if ev and getattr(ev, "event_name", None):
+            salient_clues.update(ev.event_name.lower().split())
+
+    # Filter out generic stopwords
+    salient_tokens = {w for w in salient_clues if len(w) > 2 and w not in GENERIC_META_STOPWORDS}
+
+    # If salient clues were identified, the candidate content or tags must match at least one
+    if salient_tokens:
+        candidate_text = (getattr(candidate, "content", "") + " " + " ".join(upper_tags)).lower()
+        if not any(token in candidate_text for token in salient_tokens):
+            return False
+
+    return True
 
 
 @router.post(
@@ -59,6 +196,15 @@ async def search_memory(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail="A non-empty natural language memory query is required.",
         )
+
+    # Check D2 Full Search Response Cache (canonical normalized key lookup)
+    cached_search = get_cached_search_response(
+        clean_input,
+        top_k=request.top_k,
+        enable_recovery=request.enable_recovery,
+    )
+    if cached_search is not None:
+        return cached_search
 
     start_time = time.perf_counter()
 
@@ -96,7 +242,18 @@ async def search_memory(
 
         elapsed_ms = round((time.perf_counter() - start_time) * 1000, 2)
 
-        return MemorySearchResponse(
+        # Step 4: D2 consumer-facing candidate eligibility & grounding filter
+        consumer_results = [
+            cand
+            for cand in discovery_res.results
+            if is_eligible_consumer_memory(cand)
+            and is_grounded_consumer_memory(cand, v2_frame, structured_clues, clean_input)
+        ]
+
+        # Recompute deterministic candidate ordering and sequential ranks (1..N)
+        ordered_results = make_deterministic_candidate_ordering(consumer_results)
+
+        full_response = MemorySearchResponse(
             original_memory_text=clean_input,
             raw_input=clean_input,
             llm_provider=provider,  # type: ignore[arg-type]
@@ -106,12 +263,23 @@ async def search_memory(
             is_ambiguous=structured_clues.uncertainty_ambiguity.is_ambiguous,
             v2_frame=discovery_res.v2_frame,
             retrieval_signals=discovery_res.retrieval_signals,
-            results=discovery_res.results,
+            results=ordered_results,
             coverage_status=discovery_res.coverage_status,
             controlled_recovery_triggered=discovery_res.controlled_recovery_triggered,
-            candidate_pool_size=discovery_res.candidate_pool_size,
+            candidate_pool_size=len(ordered_results),
             execution_time_ms=elapsed_ms,
         )
+
+        # Step 5: Cache COMPLETE response under canonical normalized query key
+        cache_search_response(
+            clean_input,
+            full_response,
+            top_k=request.top_k,
+            enable_recovery=request.enable_recovery,
+        )
+
+        return full_response
+
     except HTTPException:
         raise
     except Exception as exc:
@@ -141,10 +309,15 @@ async def interpret_memory(
             detail="A non-empty natural language memory query is required.",
         )
 
+    # Check cached interpretation
+    cached_interp = get_cached_interpretation_response(clean_input)
+    if cached_interp is not None:
+        return cached_interp
+
     structured_clues, provider = await interpreter.interpret(clean_input)
     v2_frame = interpreter.to_v2_representation(structured_clues)
 
-    return MemoryInterpretationResponse(
+    interp_response = MemoryInterpretationResponse(
         original_memory_text=clean_input,
         llm_provider=provider,  # type: ignore[arg-type]
         model_name=interpreter.model_name if provider == "groq" else None,
@@ -153,3 +326,6 @@ async def interpret_memory(
         is_ambiguous=structured_clues.uncertainty_ambiguity.is_ambiguous,
         clarification_question=structured_clues.uncertainty_ambiguity.clarification_question,
     )
+
+    cache_interpretation_response(clean_input, interp_response)
+    return interp_response

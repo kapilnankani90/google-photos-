@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Google Photos Discovery Engine — Research & Evidence Console",
+  title: "Memory Search — Google Photos",
   description: "Interactive Research Discovery and Qualitative Evidence Console for Google Photos Retrieval",
 };
 

@@ -5,97 +5,40 @@ import {
   Search,
   Sparkles,
   Mic,
-  MicOff,
   RotateCcw,
   CheckCircle2,
-  BookmarkCheck,
-  MapPin,
-  Users,
-  Tag,
-  Clock,
-  Calendar,
   ArrowRight,
   AlertCircle,
   Heart,
   Compass,
+  ArrowLeft,
+  X,
+  Share2,
+  FolderPlus,
+  HelpCircle,
+  Grid,
 } from "lucide-react";
-import { DiscoveryResponse, CandidateResult, MemorySearchResponse } from "../types/discovery";
+import {
+  DiscoveryResponse,
+  CandidateResult,
+  MemorySearchResponse,
+} from "../types/discovery";
 
-interface CuratedMemory {
-  id: string;
-  category: "Place / Context" | "People / Count" | "Object / Modifier" | "Time-Relative" | "Occasion / Anchor";
-  icon: string;
-  label: string;
-  memoryText: string;
-  hint: string;
+export type AppScreen =
+  | "splash"
+  | "photos"
+  | "search"
+  | "memory-search"
+  | "listening"
+  | "results"
+  | "clarification";
+
+export interface MemorySearchProps {
+  currentScreen: "memory-search" | "listening" | "results" | "clarification";
+  setCurrentScreen: (screen: AppScreen) => void;
+  initialQuery?: string;
+  onNavigateBackToSearch: () => void;
 }
-
-const CURATED_MEMORIES: CuratedMemory[] = [
-  {
-    id: "mem-fuzzy-sea",
-    category: "Place / Context",
-    icon: "🌅",
-    label: "Sunset near sea in Goa",
-    memoryText: "I'm looking for that photo from a trip where I was standing near the sea at sunset, maybe around Goa, and I think my friends were with me.",
-    hint: "Conversational fuzzy memory demonstrating Groq NLU dimension extraction & ambiguity clarification",
-  },
-  {
-    id: "mem-place",
-    category: "Place / Context",
-    icon: "🏔️",
-    label: "Trip in the snow",
-    memoryText: "A cold trip with ice and snow in Rohtang",
-    hint: "Contextual memory with location and weather features",
-  },
-  {
-    id: "mem-people",
-    category: "People / Count",
-    icon: "👥",
-    label: "5 sisters together",
-    memoryText: "A photo with my 5 sisters together",
-    hint: "Social kinship memory with exact count",
-  },
-  {
-    id: "mem-object",
-    category: "Object / Modifier",
-    icon: "🚲",
-    label: "White bicycle",
-    memoryText: "A picture with that white bike",
-    hint: "Salient physical prop with bound color modifier",
-  },
-  {
-    id: "mem-time",
-    category: "Time-Relative",
-    icon: "⏳",
-    label: "Document 4 years ago",
-    memoryText: "A document from around 4 years ago",
-    hint: "Temporal anchor expressed as elapsed relative offset",
-  },
-  {
-    id: "mem-spatial",
-    category: "Occasion / Anchor",
-    icon: "🪔",
-    label: "Diya by the gate",
-    memoryText: "Diya lit at the entrance gate",
-    hint: "Cultural occasion detail tied to architectural anchor",
-  },
-  {
-    id: "mem-occasion",
-    category: "Occasion / Anchor",
-    icon: "🎊",
-    label: "Wedding celebration",
-    memoryText: "A family wedding celebration",
-    hint: "Broad milestone event across personal albums",
-  },
-];
-
-const REFINEMENT_PROMPTS = [
-  { label: "+ Add people", text: " with my family and friends" },
-  { label: "+ Add place", text: " somewhere outdoors in the mountains" },
-  { label: "+ Add colors", text: " wearing bright yellow clothes" },
-  { label: "+ Add approximate time", text: " from around 2 or 3 years ago" },
-  { label: "+ Add season", text: " during winter trip" },
-];
 
 export type VoiceStatus = "idle" | "listening" | "transcribing" | "unsupported" | "error";
 
@@ -104,12 +47,138 @@ export interface VoiceNotice {
   level: "info" | "listening" | "transcribing" | "success" | "error";
 }
 
-export default function MemorySearch() {
-  const [memoryInput, setMemoryInput] = useState<string>("");
+const GENERIC_META_STOPWORDS = new Set([
+  "photo", "photos", "picture", "pictures", "image", "images", "remember",
+  "memory", "memories", "took", "taken", "taking", "look", "looking",
+  "search", "show", "find", "nice", "good", "there", "were", "with",
+  "from", "about", "that", "this", "some", "our", "my", "me", "i", "we",
+  "the", "a", "an", "and", "or", "in", "on", "at", "to", "for", "of", "was",
+]);
+
+const DOCUMENT_TAGS = new Set(["DOCUMENT_SEARCH", "OCR", "RECEIPT_SEARCH"]);
+const DOCUMENT_TERMS = ["document", "receipt", "paper", "text", "bill", "invoice", "license", "card"];
+
+function isEligibleAndGroundedCandidate(
+  item: CandidateResult,
+  queryText: string,
+  response: MemorySearchResponse | DiscoveryResponse | null
+): boolean {
+  const meta = item.metadata || {};
+
+  // 1. Existing consumer eligibility gates
+  const evidenceType = String(meta.evidence_type || "").toUpperCase();
+  if (evidenceType === "FAILURE" || evidenceType === "PAIN_POINT") return false;
+
+  const tags = Array.isArray(meta.category_tags) ? meta.category_tags : [];
+  const upperTags = tags.map((t: string) => String(t).toUpperCase());
+  if (upperTags.includes("SEARCH_PROBLEM")) return false;
+
+  const failureMode = meta.failure_mode;
+  if (failureMode && !["NONE", "NULL", ""].includes(String(failureMode).toUpperCase())) {
+    return false;
+  }
+
+  const methodology = String(meta.methodology || "").toUpperCase();
+  if (methodology === "UNSOLICITED_PUBLIC") return false;
+
+  // 2. Reject document/OCR search cases unless user explicitly asks for documents
+  const lowerQuery = queryText.toLowerCase();
+  const isDocQuery = DOCUMENT_TERMS.some((term) => lowerQuery.includes(term));
+  if (!isDocQuery && upperTags.some((t) => DOCUMENT_TAGS.has(t))) {
+    return false;
+  }
+
+  // Baseline eligibility
+  const isEligible =
+    evidenceType === "SUCCESS" ||
+    methodology === "PROMPTED_INTERVIEW" ||
+    ["PHOTO_ARCHIVE", "USER_INTERVIEW"].includes(
+      String(
+        (meta as Record<string, unknown>).source ||
+        (meta as Record<string, unknown>).source_type ||
+        ""
+      ).toUpperCase()
+    ) ||
+    (!evidenceType && !methodology && !failureMode);
+
+  if (!isEligible) return false;
+
+  // 3. Bound entity bonus check: candidates with bound_bonus > 0 are strongly grounded
+  const boundBonus = item.score_breakdown?.bound_bonus ?? 0;
+  if (boundBonus > 0) return true;
+
+  // 4. For bound_bonus <= 0, require at least one salient structured clue overlap
+  const salientTokens = new Set<string>();
+
+  const memoryResp =
+    response && "structured_clues" in response
+      ? (response as MemorySearchResponse)
+      : null;
+  const structuredClues = memoryResp?.structured_clues;
+  const v2Frame = response?.v2_frame;
+
+  if (structuredClues) {
+    structuredClues.people?.forEach((p) => {
+      if (p.role) p.role.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    });
+    structuredClues.objects?.forEach((o) => {
+      if (o.name) o.name.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+      o.attributes?.forEach((a) => a.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w)));
+    });
+    if (structuredClues.event_activity?.event_name) {
+      structuredClues.event_activity.event_name.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    }
+    if (structuredClues.event_activity?.activity) {
+      structuredClues.event_activity.activity.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    }
+    if (structuredClues.place_location?.place) {
+      structuredClues.place_location.place.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    }
+    structuredClues.visual_attributes?.forEach((v) => {
+      if (v.attribute) v.attribute.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    });
+  }
+
+  if (v2Frame) {
+    v2Frame.people?.forEach((p) => {
+      if (p.role) p.role.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    });
+    v2Frame.objects?.forEach((o) => {
+      if (o.name) o.name.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    });
+    if (v2Frame.spatial_setting) {
+      v2Frame.spatial_setting.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    }
+    if (v2Frame.events?.event_name) {
+      v2Frame.events.event_name.toLowerCase().split(/\s+/).forEach((w) => salientTokens.add(w));
+    }
+  }
+
+  // Filter out generic meta stopwords
+  const filteredTokens = Array.from(salientTokens).filter(
+    (w) => w.length > 2 && !GENERIC_META_STOPWORDS.has(w)
+  );
+
+  if (filteredTokens.length > 0) {
+    const candidateText = `${item.content || ""} ${upperTags.join(" ")}`.toLowerCase();
+    const hasOverlap = filteredTokens.some((token) => candidateText.includes(token));
+    if (!hasOverlap) return false;
+  }
+
+  return true;
+}
+
+export default function MemorySearch({
+  currentScreen,
+  setCurrentScreen,
+  initialQuery,
+  onNavigateBackToSearch,
+}: MemorySearchProps) {
+  const [memoryInput, setMemoryInput] = useState<string>(initialQuery || "");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<MemorySearchResponse | DiscoveryResponse | null>(null);
-  const [clarificationInput, setClarificationInput] = useState<string>("" );
+  const [clarificationInput, setClarificationInput] = useState<string>("");
   const [recognizedIds, setRecognizedIds] = useState<Set<string>>(new Set());
 
   // MediaRecorder audio capture state
@@ -119,19 +188,34 @@ export default function MemorySearch() {
   const audioChunksRef = useRef<Blob[]>([]);
   const mediaStreamRef = useRef<MediaStream | null>(null);
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+  const apiBaseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL || "https://google-photos-mvp-production.up.railway.app";
 
-  // Check MediaRecorder capability on client mount
+  // Check MediaRecorder capability on client mount and ensure microphone cleanup on unmount
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (!navigator?.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
         setVoiceStatus("unsupported");
       }
     }
+    return () => {
+      // Ensure microphone stream is stopped if component unmounts while listening
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+        mediaStreamRef.current = null;
+      }
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+        try {
+          mediaRecorderRef.current.stop();
+        } catch {}
+      }
+    };
   }, []);
 
+  const [refinementCount, setRefinementCount] = useState<number>(0);
+
   const executeMemorySearch = useCallback(
-    async (queryText: string) => {
+    async (queryText: string, isRefinement = false) => {
       const cleanText = queryText.trim();
       if (!cleanText) return;
 
@@ -139,7 +223,7 @@ export default function MemorySearch() {
       setError(null);
 
       try {
-        let res = await fetch(`${apiBaseUrl}/api/v1/memory/search`, {
+        const res = await fetch(`${apiBaseUrl}/api/v1/memory/search`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -151,21 +235,6 @@ export default function MemorySearch() {
           }),
         });
 
-        // Graceful fallback to legacy /discover if /memory/search is not available
-        if (res.status === 404) {
-          res = await fetch(`${apiBaseUrl}/api/v1/discover`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              raw_input: cleanText,
-              top_k: 8,
-              enable_recovery: true,
-            }),
-          });
-        }
-
         if (!res.ok) {
           let errorDetail = `Service error (${res.status})`;
           try {
@@ -173,14 +242,21 @@ export default function MemorySearch() {
             if (errData?.detail) {
               errorDetail = typeof errData.detail === "string" ? errData.detail : JSON.stringify(errData.detail);
             }
-          } catch {
-            // Keep status string
-          }
+          } catch {}
           throw new Error(errorDetail);
         }
 
-        const data = await res.json();
+        const data: MemorySearchResponse | DiscoveryResponse = await res.json();
         setResponse(data);
+
+        // CONDITIONAL ROUTING: Ambiguity -> Screen 7 (Clarification) vs Clear -> Screen 6 (Results)
+        // If user already answered clarification (isRefinement = true or refinementCount > 0), proceed to results to avoid infinite loop
+        const isAmbiguous = "is_ambiguous" in data && Boolean(data.is_ambiguous) && Boolean(data.clarification_question);
+        if (isAmbiguous && !isRefinement && refinementCount === 0) {
+          setCurrentScreen("clarification");
+        } else {
+          setCurrentScreen("results");
+        }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : "Unable to retrieve memories right now.";
         setError(msg);
@@ -188,50 +264,18 @@ export default function MemorySearch() {
         setLoading(false);
       }
     },
-    [apiBaseUrl]
+    [apiBaseUrl, setCurrentScreen, refinementCount]
   );
 
-  const handleClarificationSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!clarificationInput.trim() || loading) return;
-    const refined = `${memoryInput.trim()}, ${clarificationInput.trim()}`;
-    setMemoryInput(refined);
-    setClarificationInput("");
-    executeMemorySearch(refined);
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (loading || voiceStatus === "transcribing" || voiceStatus === "listening") {
-      return;
+  // Sync initialQuery if changed from parent
+  useEffect(() => {
+    if (initialQuery && initialQuery.trim()) {
+      setMemoryInput(initialQuery);
     }
-    executeMemorySearch(memoryInput);
-  };
+  }, [initialQuery]);
 
-  const handleSelectCurated = (m: CuratedMemory) => {
-    setMemoryInput(m.memoryText);
-    executeMemorySearch(m.memoryText);
-  };
-
-  const toggleRecognized = (candidateId: string) => {
-    setRecognizedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(candidateId)) {
-        next.delete(candidateId);
-      } else {
-        next.add(candidateId);
-      }
-      return next;
-    });
-  };
-
-  const applyRefinement = (addition: string) => {
-    const updated = `${memoryInput.trim()}${addition}`;
-    setMemoryInput(updated);
-    executeMemorySearch(updated);
-  };
-
-  const handleVoiceToggle = async () => {
+  // Voice recording starter
+  const startListening = async () => {
     if (typeof window === "undefined") return;
 
     if (voiceStatus === "unsupported") {
@@ -242,38 +286,15 @@ export default function MemorySearch() {
       return;
     }
 
-    // Ignore toggle requests while transcribing
-    if (voiceStatus === "transcribing") {
-      return;
-    }
-
-    // If currently listening, stop recording -> onstop sends audio to backend
-    if (voiceStatus === "listening") {
-      if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
-        try {
-          mediaRecorderRef.current.stop();
-        } catch {
-          // recorder might have already stopped
-        }
-      }
-      return;
-    }
-
-    // Start a new recording session
     try {
       if (!navigator?.mediaDevices?.getUserMedia) {
         setVoiceStatus("unsupported");
-        setVoiceNotice({
-          text: "Audio recording is not supported in this browser. You can type your memory instead.",
-          level: "info",
-        });
         return;
       }
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaStreamRef.current = stream;
 
-      // Select supported audio MIME type
       let chosenMime = "audio/webm";
       if (typeof MediaRecorder.isTypeSupported === "function") {
         if (MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) {
@@ -298,7 +319,6 @@ export default function MemorySearch() {
       };
 
       recorder.onstop = async () => {
-        // Free microphone tracks immediately
         if (mediaStreamRef.current) {
           mediaStreamRef.current.getTracks().forEach((track) => track.stop());
           mediaStreamRef.current = null;
@@ -308,19 +328,19 @@ export default function MemorySearch() {
         if (!chunks || chunks.length === 0) {
           setVoiceStatus("error");
           setVoiceNotice({
-            text: "No audio was captured. Please click the microphone to try again.",
+            text: "No audio was captured. Please try speaking again.",
             level: "error",
           });
+          setCurrentScreen("memory-search");
           return;
         }
 
         const mime = recorder.mimeType || chosenMime || "audio/webm";
         const audioBlob = new Blob(chunks, { type: mime });
 
-        // Transition immediately to transcribing
         setVoiceStatus("transcribing");
         setVoiceNotice({
-          text: "Transcribing your memory with Gemini...",
+          text: "Transcribing your memory...",
           level: "transcribing",
         });
 
@@ -351,21 +371,19 @@ export default function MemorySearch() {
           if (!text) {
             setVoiceStatus("error");
             setVoiceNotice({
-              text: "No speech recognized. Please speak your memory clearly and try again.",
+              text: "No speech recognized. Please speak clearly and try again.",
               level: "error",
             });
+            setCurrentScreen("memory-search");
             return;
           }
 
-          // Populate the same memory input
+          // POPULATE MEMORY INPUT WITHOUT AUTO-SEARCHING (Requirement 6)
           setMemoryInput(text);
-
-          // State lifecycle: never stuck in 'finishing' or 'transcribing'
           setVoiceStatus("idle");
-          setVoiceNotice({
-            text: "Memory transcribed! Review or edit the text above, then click Find Memory.",
-            level: "success",
-          });
+          setVoiceNotice(null);
+          // Return to Screen 4 so user can review/edit before clicking Find Memory
+          setCurrentScreen("memory-search");
         } catch (err: unknown) {
           setVoiceStatus("error");
           const msg = err instanceof Error ? err.message : "Failed to transcribe audio.";
@@ -373,612 +391,836 @@ export default function MemorySearch() {
             text: msg,
             level: "error",
           });
+          setCurrentScreen("memory-search");
         }
       };
 
       recorder.start();
       setVoiceStatus("listening");
-      setVoiceNotice({
-        text: "Listening... speak your complete memory naturally (English or Hinglish)",
-        level: "listening",
-      });
-    } catch (err: unknown) {
+      setCurrentScreen("listening");
+    } catch {
       if (mediaStreamRef.current) {
         mediaStreamRef.current.getTracks().forEach((track) => track.stop());
         mediaStreamRef.current = null;
       }
       setVoiceStatus("error");
-      if (err && typeof err === "object" && "name" in err) {
-        const errorName = (err as { name: string }).name;
-        if (errorName === "NotAllowedError" || errorName === "PermissionDeniedError") {
-          setVoiceNotice({
-            text: "Microphone permission denied. Please allow microphone access or type your memory.",
-            level: "error",
-          });
-          return;
-        }
-      }
-      setVoiceNotice({
-        text: "Could not access microphone. You can type your memory above.",
-        level: "error",
-      });
     }
   };
 
-  const clearSearch = () => {
-    setMemoryInput("");
-    setResponse(null);
-    setError(null);
-    setVoiceNotice(null);
+  // Stop speaking action (RED BUTTON)
+  const stopListening = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+      try {
+        mediaRecorderRef.current.stop();
+      } catch {}
+    }
   };
 
-  // Helper to extract clean human-friendly clues from v2 frame or Groq structured clues
+  // Cancel listening action (BLUE BUTTON)
+  const cancelListening = () => {
+    if (mediaStreamRef.current) {
+      mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+      mediaStreamRef.current = null;
+    }
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+      try {
+        mediaRecorderRef.current.stop();
+      } catch {}
+    }
+    audioChunksRef.current = [];
+    setVoiceStatus("idle");
+    setVoiceNotice(null);
+    setCurrentScreen("memory-search");
+  };
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (loading || voiceStatus === "transcribing" || voiceStatus === "listening") return;
+    setRefinementCount(0);
+    executeMemorySearch(memoryInput, false);
+  };
+
+  const handleClarificationSubmit = (answer: string) => {
+    if (!answer.trim() || loading) return;
+    const refined = `${memoryInput.trim()}, ${answer.trim()}`;
+    setMemoryInput(refined);
+    setClarificationInput("");
+    setRefinementCount((prev) => prev + 1);
+    executeMemorySearch(refined, true);
+  };
+
+  const toggleRecognized = (candidateId: string) => {
+    setRecognizedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(candidateId)) {
+        next.delete(candidateId);
+      } else {
+        next.add(candidateId);
+      }
+      return next;
+    });
+  };
+
+  // Extract structured clues safely
   const memorySearchResp = response && "structured_clues" in response ? (response as MemorySearchResponse) : null;
   const structuredClues = memorySearchResp?.structured_clues;
-  const frame = response?.v2_frame;
-  const hasClues =
-    Boolean(structuredClues) ||
-    Boolean(
-      frame &&
-      ((frame.people && frame.people.length > 0) ||
-        frame.spatial_setting ||
-        (frame.objects && frame.objects.length > 0) ||
-        frame.temporal ||
-        frame.events ||
-        (frame.literal_text && frame.literal_text.length > 0))
-    );
 
-  return (
-    <div className="ms-container">
-      {/* Hero Presentation */}
-      <section className="ms-hero">
-        <div className="ms-hero-pill">
-          <Sparkles size={14} color="#FBBC05" />
-          <span>AI-Native Prototype · The Representation Gap Solution</span>
+  // Build facet chip items dynamically from actual backend response
+  const facetChips: { label: string; icon: string }[] = [];
+  if (structuredClues) {
+    if (structuredClues.people && structuredClues.people.length > 0) {
+      structuredClues.people.forEach((p) => {
+        facetChips.push({
+          label: `${p.count ? `${p.count}× ` : ""}${p.role}${p.attributes?.length ? ` (${p.attributes.join(", ")})` : ""}`,
+          icon: "👥",
+        });
+      });
+    }
+    if (structuredClues.place_location?.place) {
+      facetChips.push({ label: structuredClues.place_location.place, icon: "🏖️" });
+    }
+    if (structuredClues.event_activity?.event_name || structuredClues.event_activity?.activity) {
+      const ev = [structuredClues.event_activity.event_name, structuredClues.event_activity.activity].filter(Boolean).join(" · ");
+      facetChips.push({ label: ev, icon: "🌅" });
+    }
+    if (structuredClues.objects && structuredClues.objects.length > 0) {
+      structuredClues.objects.forEach((o) => {
+        const fullObj = [o.attributes?.join(" "), o.name].filter(Boolean).join(" ");
+        facetChips.push({ label: fullObj, icon: "🚲" });
+      });
+    }
+    if (structuredClues.time_temporal?.raw_expression) {
+      facetChips.push({ label: structuredClues.time_temporal.raw_expression, icon: "⏳" });
+    }
+  } else if (response?.v2_frame) {
+    const f = response.v2_frame;
+    f.people?.forEach((p) => facetChips.push({ label: p.role, icon: "👥" }));
+    if (f.spatial_setting) facetChips.push({ label: f.spatial_setting, icon: "🏖️" });
+    f.objects?.forEach((o) => facetChips.push({ label: o.name, icon: "🚲" }));
+    if (f.events?.event_name) facetChips.push({ label: f.events.event_name, icon: "🌅" });
+  }
+
+  // =========================================================================
+  // SCREEN 5: VOICE LISTENING SCREEN
+  // =========================================================================
+  if (currentScreen === "listening") {
+    return (
+      <div className="gp-screen-container">
+        {/* Top Header */}
+        <div className="gp-screen-header">
+          <button
+            type="button"
+            className="gp-header-back-btn"
+            onClick={cancelListening}
+            title="Cancel and return"
+          >
+            <ArrowLeft size={20} color="#202124" />
+          </button>
+          <h2 className="gp-header-title">Memory Search</h2>
+          <div className="gp-header-avatar">
+            <span>K</span>
+          </div>
         </div>
-        <h1 className="ms-hero-title">
-          Search your photos <span className="ms-hero-gradient">the way you remember them</span>
-        </h1>
-        <p className="ms-hero-subtitle">
-          You don&apos;t remember photos as database keywords. Describe the feeling, who was there, a salient object, or where you were, and the AI will interpret your memory to find the moment.
-        </p>
-      </section>
 
-      {/* Primary Conversational Search Box */}
-      <div className="ms-search-card">
-        <form onSubmit={handleSearchSubmit} className="ms-search-form">
-          <div className="ms-input-box">
-            <div className="ms-input-icon">
-              <Search size={22} color="var(--accent-blue)" />
+        {/* AI SEARCH Sub-badge */}
+        <div className="gp-ai-sub-badge">
+          <Sparkles size={14} color="#1A73E8" />
+          <span>AI SEARCH · Natural Memory Recall</span>
+        </div>
+
+        {/* Central Listening Card */}
+        <div className="gp-voice-card">
+          <h3 className="gp-voice-title">
+            {voiceStatus === "transcribing" ? "Transcribing memory..." : "Listening..."}
+          </h3>
+          <p className="gp-voice-subtitle">
+            {voiceStatus === "transcribing"
+              ? "Converting your speech into natural memory clues..."
+              : "Tell me what you remember about the photo."}
+          </p>
+
+          {/* Animated Pulsing Mic Circle */}
+          <div className="gp-voice-mic-container">
+            {voiceStatus === "listening" && <div className="gp-listening-pulse" />}
+            <div className={`gp-voice-mic-circle ${voiceStatus === "listening" ? "active" : ""}`}>
+              {voiceStatus === "transcribing" ? (
+                <RotateCcw size={32} className="gp-spin" color="#1A73E8" />
+              ) : (
+                <Mic size={36} color="#1A73E8" />
+              )}
             </div>
+          </div>
 
-            <input
-              type="text"
-              className="ms-input-field"
-              value={memoryInput}
-              onChange={(e) => setMemoryInput(e.target.value)}
-              placeholder={
-                voiceStatus === "listening"
-                  ? "Listening... speak your complete memory naturally..."
-                  : voiceStatus === "transcribing"
-                  ? "Transcribing your memory with Gemini..."
-                  : "e.g. I remember a cold trip in the snow with my friends, or that picture with the white bike..."
-              }
-              disabled={loading || voiceStatus === "transcribing"}
-            />
+          <div className="gp-voice-cue">
+            <span>👂 &ldquo;listening for people, places, or moments...&rdquo;</span>
+          </div>
 
-            {/* Clear Button */}
-            {memoryInput && !loading && (
-              <button
-                type="button"
-                onClick={clearSearch}
-                className="ms-icon-btn ms-clear-btn"
-                title="Clear memory"
-                aria-label="Clear memory text"
-              >
-                ✕
-              </button>
-            )}
-
-            {/* Voice Input Button */}
+          {/* TWO VISUALLY DISTINCT BUTTONS: Strong RED Stop vs BLUE Cancel */}
+          <div className="gp-voice-actions">
             <button
               type="button"
-              onClick={handleVoiceToggle}
+              className="gp-btn-stop-speaking"
+              onClick={stopListening}
               disabled={voiceStatus === "transcribing"}
-              className={`ms-icon-btn ms-mic-btn ms-mic-status-${voiceStatus} ${
-                voiceStatus === "listening" ? "ms-mic-listening" : ""
-              }`}
-              title={
-                voiceStatus === "unsupported"
-                  ? "Audio recording isn't supported in this browser. You can type your memory instead."
-                  : voiceStatus === "listening"
-                  ? "Listening... Click to stop and transcribe"
-                  : voiceStatus === "transcribing"
-                  ? "Transcribing audio..."
-                  : "Click to speak your memory (supports English, Hindi & Hinglish)"
-              }
-              aria-label={
-                voiceStatus === "listening"
-                  ? "Stop voice recording"
-                  : "Start voice recording"
-              }
             >
-              {voiceStatus === "listening" ? (
-                <MicOff size={20} color="#EA4335" />
-              ) : voiceStatus === "transcribing" ? (
-                <RotateCcw size={18} className="ms-spin" color="var(--accent-blue)" />
-              ) : (
-                <Mic
-                  size={20}
-                  color={voiceStatus === "unsupported" ? "var(--text-muted)" : "var(--text-secondary)"}
-                />
-              )}
+              <span>■ Stop Speaking</span>
             </button>
 
-            {/* Primary Action Button */}
             <button
-              type="submit"
-              className="ms-submit-btn"
-              disabled={loading || voiceStatus === "transcribing" || !memoryInput.trim()}
+              type="button"
+              className="gp-btn-cancel-listening"
+              onClick={cancelListening}
             >
-              {loading ? (
-                <>
-                  <RotateCcw size={16} className="ms-spin" />
-                  <span>Interpreting...</span>
-                </>
-              ) : (
-                <>
-                  <Sparkles size={16} />
-                  <span>Find Memory</span>
-                </>
-              )}
+              <span>Cancel</span>
             </button>
           </div>
-        </form>
+        </div>
 
-        {/* Voice Feedback / Notification Banner */}
-        {voiceNotice && (
-          <div className={`ms-voice-feedback ms-voice-feedback-${voiceNotice.level}`}>
-            {voiceStatus === "listening" && <span className="ms-pulse-dot" />}
-            {voiceStatus === "transcribing" && <RotateCcw size={14} className="ms-spin" />}
-            <span className="ms-voice-feedback-text">{voiceNotice.text}</span>
-            {voiceStatus === "listening" && (
-              <button
-                type="button"
-                onClick={handleVoiceToggle}
-                className="ms-voice-stop-chip"
-                title="Finish speaking and transcribe"
-              >
-                Stop Speaking ■
-              </button>
-            )}
-            {voiceStatus !== "listening" && voiceStatus !== "transcribing" && (
-              <button
-                type="button"
-                onClick={() => setVoiceNotice(null)}
-                className="ms-voice-dismiss-btn"
-                title="Dismiss"
-                aria-label="Dismiss voice notice"
-              >
-                ✕
-              </button>
-            )}
+        {/* Helper Card Below */}
+        <div className="gp-voice-helper-card">
+          <div className="gp-helper-header">
+            <span className="gp-helper-bulb">💡</span>
+            <span className="gp-helper-title">Speak freely and naturally</span>
+          </div>
+          <p className="gp-helper-desc">
+            Describe the moment as you recall it — who was there, an item, the location, or how the light felt.
+          </p>
+          <div className="gp-helper-examples">
+            <div className="gp-helper-example-item">
+              <span>🚲</span>
+              <span>&ldquo;shadi me bhai ke saath white bike ...&rdquo;</span>
+            </div>
+            <div className="gp-helper-example-item">
+              <span>🌅</span>
+              <span>&ldquo;with family we went to a view point ..&rdquo;</span>
+            </div>
+            <div className="gp-helper-example-item">
+              <span>🏔️</span>
+              <span>&ldquo;hiking trip aur wo foggy mountains..&rdquo;</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Language & Privacy Info */}
+        <div className="gp-voice-footer">
+          <div className="gp-lang-pill-row">
+            <span>🌐 Search in English, Hindi &amp; Hinglish</span>
+            <span className="gp-auto-badge">Auto</span>
+          </div>
+          <p className="gp-privacy-note">
+            Your search requests stay private and protected by Google Photos.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================================
+  // SCREEN 7: CLARIFICATION SCREEN (CONDITIONAL ONLY)
+  // =========================================================================
+  if (currentScreen === "clarification" && memorySearchResp?.clarification_question) {
+    return (
+      <div className="gp-screen-container">
+        {/* Top Header */}
+        <div className="gp-screen-header">
+          <button
+            type="button"
+            className="gp-header-back-btn"
+            onClick={() => setCurrentScreen("memory-search")}
+            title="Back to search input"
+          >
+            <ArrowLeft size={20} color="#202124" />
+          </button>
+          <h2 className="gp-header-title">Memory Search</h2>
+          <div className="gp-header-avatar">
+            <span>K</span>
+          </div>
+        </div>
+
+        {/* Top Query Pill Bar */}
+        <div className="gp-results-query-bar">
+          <span className="gp-query-bar-text">&ldquo;{memoryInput}&rdquo;</span>
+          <button
+            type="button"
+            className="gp-query-bar-btn"
+            onClick={() => setCurrentScreen("memory-search")}
+            title="Edit memory"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Memory Assistant Conversational Card */}
+        <div className="gp-clarification-card">
+          <div className="gp-clarification-card-header">
+            <div className="gp-card-badge-row">
+              <Sparkles size={16} color="#1A73E8" />
+              <span className="gp-card-badge-title">Memory Assistant</span>
+            </div>
+            <span className="gp-card-badge-count">
+              {response?.results ? `${response.results.length} candidate moments` : "3 candidates"}
+            </span>
+          </div>
+
+          <p className="gp-clarification-intro">
+            I found a few moments that could match. Help me narrow down the exact moment:
+          </p>
+
+          <div className="gp-clarification-question-box">
+            <HelpCircle size={20} color="#1A73E8" style={{ flexShrink: 0 }} />
+            <span className="gp-clarification-question-text">
+              {memorySearchResp.clarification_question}
+            </span>
+          </div>
+
+          {/* Quick Option Cards for Tap Selection */}
+          <div className="gp-clarification-options">
+            <button
+              type="button"
+              className="gp-clarification-option-btn"
+              onClick={() => handleClarificationSubmit("near the beach in Goa")}
+              disabled={loading}
+            >
+              <span className="gp-option-icon">☀️</span>
+              <div className="gp-option-text">
+                <span className="gp-option-title">Beach / Coast</span>
+                <span className="gp-option-sub">Goa coastal trip</span>
+              </div>
+              <ArrowRight size={16} color="#5F6368" />
+            </button>
+
+            <button
+              type="button"
+              className="gp-clarification-option-btn"
+              onClick={() => handleClarificationSubmit("in the mountains in snow")}
+              disabled={loading}
+            >
+              <span className="gp-option-icon">🏔️</span>
+              <div className="gp-option-text">
+                <span className="gp-option-title">Mountains / Snow</span>
+                <span className="gp-option-sub">Rohtang / Himachal trek</span>
+              </div>
+              <ArrowRight size={16} color="#5F6368" />
+            </button>
+          </div>
+
+          {/* Text Clarification Form */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleClarificationSubmit(clarificationInput);
+            }}
+            className="gp-clarification-form"
+          >
+            <input
+              type="text"
+              className="gp-clarification-input"
+              value={clarificationInput}
+              onChange={(e) => setClarificationInput(e.target.value)}
+              placeholder="Or type a clarifying detail (e.g. November 2023)..."
+              disabled={loading}
+            />
+            <button
+              type="submit"
+              className="gp-clarification-submit-btn"
+              disabled={loading || !clarificationInput.trim()}
+            >
+              {loading ? "Narrowing..." : "Refine Memory →"}
+            </button>
+          </form>
+        </div>
+
+        {/* Candidate Moments Preview */}
+        {response?.results && response.results.length > 0 && (
+          <div className="gp-candidate-preview-section">
+            <div className="gp-section-subhead">
+              <span>Candidate Memories</span>
+              <span style={{ fontSize: "0.8rem", color: "#5F6368" }}>Why we asked</span>
+            </div>
+            <div className="gp-candidate-grid">
+              {response.results
+                .filter((item) => isEligibleAndGroundedCandidate(item, memoryInput, response))
+                .slice(0, 2)
+                .map((item, idx) => (
+                  <div key={item.candidate_id || idx} className="gp-candidate-card">
+                    <div className="gp-candidate-card-header">
+                      <span className="gp-candidate-tag">Candidate #{idx + 1}</span>
+                    </div>
+                    <p className="gp-candidate-snippet">&ldquo;{item.content}&rdquo;</p>
+                  </div>
+                ))}
+            </div>
           </div>
         )}
 
-        {/* Curated Prompt Memories for Testability */}
-        <div className="ms-curated-section">
-          <div className="ms-curated-label">
-            <span>Or try a remembered moment:</span>
-          </div>
-          <div className="ms-curated-grid">
-            {CURATED_MEMORIES.map((m) => {
-              const isSelected = memoryInput === m.memoryText;
-              return (
-                <button
-                  key={m.id}
-                  type="button"
-                  className={`ms-curated-chip ${isSelected ? "ms-curated-chip-active" : ""}`}
-                  onClick={() => handleSelectCurated(m)}
-                  disabled={loading}
-                  title={m.hint}
-                >
-                  <span className="ms-curated-icon">{m.icon}</span>
-                  <div className="ms-curated-text">
-                    <span className="ms-curated-title">{m.label}</span>
-                    <span className="ms-curated-cat">{m.category}</span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+        <div className="gp-voice-footer">
+          <p className="gp-privacy-note">
+            Your search requests stay private and protected by Google Photos.
+          </p>
         </div>
       </div>
+    );
+  }
 
-      {/* Error Notice */}
-      {error && (
-        <div className="ms-error-card">
-          <AlertCircle size={20} color="#EA4335" />
-          <div>
-            <strong>Unable to complete memory search:</strong> {error}
-            <div style={{ marginTop: "0.25rem", fontSize: "0.8125rem", color: "#FCA5A5" }}>
-              Please ensure the backend server is running at <code>{apiBaseUrl}</code>.
-            </div>
+  // =========================================================================
+  // SCREEN 6: RESULTS SCREEN
+  // =========================================================================
+  if (currentScreen === "results" && response) {
+    // Consumer-facing candidate filtering: include only genuine photo memories / successful retrieval episodes
+    const candidates = (response.results || []).filter((item: CandidateResult) =>
+      isEligibleAndGroundedCandidate(item, memoryInput, response)
+    );
+    const resultsCount = candidates.length;
+
+    return (
+      <div className="gp-screen-container">
+        {/* Top Header */}
+        <div className="gp-screen-header">
+          <button
+            type="button"
+            className="gp-header-back-btn"
+            onClick={() => setCurrentScreen("memory-search")}
+            title="Return to memory input"
+          >
+            <ArrowLeft size={20} color="#202124" />
+          </button>
+          <h2 className="gp-header-title">Memory Search</h2>
+          <div className="gp-header-avatar">
+            <span>K</span>
           </div>
         </div>
-      )}
 
-      {/* Experience Stage: AI Interpretation Feedback ("Behind the Scenes" made intuitive) */}
-      {response && (
-        <>
-          <section className="ms-interpretation-card">
-            <div className="ms-interpretation-header">
-              <div className="ms-interpretation-badge">
-                <Sparkles size={14} color="#FBBC05" />
-                <span>AI Memory Assistant · Understood Intent</span>
-              </div>
-              {memorySearchResp?.llm_provider && (
-                <span className={`ms-provider-pill ${memorySearchResp.llm_provider === "groq" ? "" : "ms-provider-fallback"}`}>
-                  {memorySearchResp.llm_provider === "groq" ? `⚡ Groq NLU (${memorySearchResp.model_name || "Llama 3.3"})` : "⚙️ Fallback NLU"}
+        {/* Active Query Pill Bar */}
+        <div
+          className="gp-results-query-bar"
+          onClick={() => setCurrentScreen("memory-search")}
+          role="button"
+          tabIndex={0}
+        >
+          <Search size={16} color="#5F6368" />
+          <span className="gp-query-bar-text">&ldquo;{memoryInput}&rdquo;</span>
+          <button
+            type="button"
+            className="gp-query-bar-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setMemoryInput("");
+              setCurrentScreen("memory-search");
+            }}
+            title="Clear query"
+          >
+            <X size={15} />
+          </button>
+          <button
+            type="button"
+            className="gp-query-bar-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              startListening();
+            }}
+            title="Speak again"
+          >
+            <Mic size={15} color="#1A73E8" />
+          </button>
+        </div>
+
+        {/* "✦ You remembered" AI Intent Understanding Card */}
+        <div className="gp-remembered-card">
+          <div className="gp-remembered-header">
+            <div className="gp-card-badge-row">
+              <Sparkles size={16} color="#1A73E8" />
+              <span className="gp-remembered-title">You remembered</span>
+            </div>
+            <span className="gp-remembered-matches">{resultsCount} matches</span>
+          </div>
+
+          {/* Structured Clues Facet Chips */}
+          <div className="gp-facet-chips-row">
+            {facetChips.length > 0 ? (
+              facetChips.map((chip, idx) => (
+                <span key={idx} className="gp-facet-chip">
+                  <span style={{ marginRight: "4px" }}>{chip.icon}</span>
+                  {chip.label}
                 </span>
-              )}
-              <div className="ms-interpretation-query">
-                Remembered: <strong>&ldquo;{response.raw_input}&rdquo;</strong>
-              </div>
-            </div>
-
-            <div className="ms-interpretation-body">
-              {/* Coherent Memory Facets ("You remembered...") */}
-              <div className="ms-understanding-hero">
-                <div className="ms-you-remember-title">
-                  <Sparkles size={14} color="var(--accent-blue)" />
-                  <span>You Remembered:</span>
-                </div>
-
-                <div className="ms-facets-grid">
-                  {/* Occasion / Event */}
-                  {structuredClues?.event_activity && (structuredClues.event_activity.event_name || structuredClues.event_activity.activity) && (
-                    <div className="ms-facet-card">
-                      <div className="ms-facet-header">
-                        <span className="ms-facet-label">
-                          <Calendar size={13} color="#F472B6" /> Occasion / Event
-                        </span>
-                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.event_activity.certainty}`}>
-                          {structuredClues.event_activity.certainty === "explicit" ? "Stated" : "Inferred"}
-                        </span>
-                      </div>
-                      <div className="ms-facet-value">
-                        {[structuredClues.event_activity.event_name, structuredClues.event_activity.activity].filter(Boolean).join(" · ")}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Place / Location / Setting */}
-                  {(structuredClues?.place_location?.place || structuredClues?.scene_environment?.environment) && (
-                    <div className="ms-facet-card">
-                      <div className="ms-facet-header">
-                        <span className="ms-facet-label">
-                          <MapPin size={13} color="#34D399" /> Location / Setting
-                        </span>
-                        <span className={`ms-certainty-badge ms-certainty-${structuredClues?.place_location?.certainty || structuredClues?.scene_environment?.certainty}`}>
-                          {(structuredClues?.place_location?.certainty || structuredClues?.scene_environment?.certainty) === "explicit" ? "Stated" : "Inferred"}
-                        </span>
-                      </div>
-                      <div className="ms-facet-value">
-                        {structuredClues?.place_location
-                          ? [structuredClues.place_location.attributes?.join(" "), structuredClues.place_location.place].filter(Boolean).join(" ")
-                          : structuredClues?.scene_environment?.environment}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Approximate Time */}
-                  {structuredClues?.time_temporal?.raw_expression && (
-                    <div className="ms-facet-card">
-                      <div className="ms-facet-header">
-                        <span className="ms-facet-label">
-                          <Clock size={13} color="#C084FC" /> Time Anchor
-                        </span>
-                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.time_temporal.certainty}`}>
-                          {structuredClues.time_temporal.certainty === "explicit" ? "Stated" : "Inferred"}
-                        </span>
-                      </div>
-                      <div className="ms-facet-value">
-                        {structuredClues.time_temporal.raw_expression}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Objects & Appearance */}
-                  {((structuredClues?.objects && structuredClues.objects.length > 0) || (structuredClues?.visual_attributes && structuredClues.visual_attributes.length > 0)) && (
-                    <div className="ms-facet-card">
-                      <div className="ms-facet-header">
-                        <span className="ms-facet-label">
-                          <Tag size={13} color="#FBBF24" /> Objects & Details
-                        </span>
-                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.objects?.[0]?.certainty || structuredClues.visual_attributes?.[0]?.certainty || "explicit"}`}>
-                          {(structuredClues.objects?.[0]?.certainty || structuredClues.visual_attributes?.[0]?.certainty) === "explicit" ? "Stated" : "Inferred"}
-                        </span>
-                      </div>
-                      <div className="ms-facet-value">
-                        {[
-                          ...(structuredClues.objects || []).map(o => [o.attributes?.join(" "), o.name].filter(Boolean).join(" ")),
-                          ...(structuredClues.visual_attributes || []).map(v => v.attribute)
-                        ].filter((v, i, a) => a.indexOf(v) === i).join(", ")}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* People / Kinship */}
-                  {structuredClues?.people && structuredClues.people.length > 0 && (
-                    <div className="ms-facet-card">
-                      <div className="ms-facet-header">
-                        <span className="ms-facet-label">
-                          <Users size={13} color="#60A5FA" /> Who
-                        </span>
-                        <span className={`ms-certainty-badge ms-certainty-${structuredClues.people[0]?.certainty || "explicit"}`}>
-                          {structuredClues.people[0]?.certainty === "explicit" ? "Stated" : "Inferred"}
-                        </span>
-                      </div>
-                      <div className="ms-facet-value">
-                        {structuredClues.people.map(p => `${p.count ? `${p.count}× ` : ""}${p.role}${p.attributes?.length ? ` (${p.attributes.join(", ")})` : ""}`).join(", ")}
-                      </div>
-                    </div>
-                  )}
-
-                  {!hasClues && (
-                    <div className="ms-facet-card">
-                      <div className="ms-facet-value" style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
-                        Fuzzy memory mapped through semantic search terms: {response.retrieval_signals.search_query_terms?.join(", ") || "None"}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Coherent Natural Language Synthesis */}
-                {structuredClues && (
-                  <div className="ms-synthesis-box">
-                    <strong>Coherent Search Intent:</strong> Searching for moments
-                    {structuredClues.people?.length ? <> of <strong>{structuredClues.people.map(p => p.role).join(", ")}</strong></> : null}
-                    {structuredClues.event_activity?.event_name ? <> during <strong>{structuredClues.event_activity.event_name}</strong></> : null}
-                    {structuredClues.place_location?.place ? <> near <strong>{structuredClues.place_location.place}</strong></> : null}
-                    {structuredClues.time_temporal?.raw_expression ? <> ({structuredClues.time_temporal.raw_expression})</> : null}
-                    {structuredClues.objects?.length ? <> with <strong>{structuredClues.objects.map(o => [o.attributes?.join(" "), o.name].filter(Boolean).join(" ")).join(", ")}</strong></> : null}.
-                  </div>
-                )}
-              </div>
-
-              {/* Explicit vs Inferred Clues Summary */}
-              {structuredClues && ((structuredClues.explicit_clues && structuredClues.explicit_clues.length > 0) || (structuredClues.inferred_clues && structuredClues.inferred_clues.length > 0)) && (
-                <div className="ms-clues-summary-box">
-                  {structuredClues.explicit_clues && structuredClues.explicit_clues.length > 0 && (
-                    <div className="ms-clues-summary-line">
-                      <span className="ms-clues-summary-tag ms-tag-explicit-label">Explicit Clues</span>
-                      <span style={{ color: "var(--text-primary)" }}>{structuredClues.explicit_clues.join(" · ")}</span>
-                    </div>
-                  )}
-                  {structuredClues.inferred_clues && structuredClues.inferred_clues.length > 0 && (
-                    <div className="ms-clues-summary-line">
-                      <span className="ms-clues-summary-tag ms-tag-inferred-label">Inferred (Hedged)</span>
-                      <span style={{ color: "var(--text-secondary)" }}>{structuredClues.inferred_clues.join(" · ")}</span>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </section>
-
-          {/* Conversational Clarification Block if Memory is Ambiguous */}
-          {memorySearchResp?.is_ambiguous && memorySearchResp?.clarification_question && (
-            <section className="ms-clarification-card">
-              <div className="ms-clarification-header">
-                <span className="ms-clarification-badge">
-                  <Sparkles size={12} color="#FDE047" />
-                  <span>Clarification Question</span>
-                </span>
-                <span className="ms-clarification-title">To help narrow down the exact moment from similar memories:</span>
-              </div>
-              <div className="ms-clarification-question">
-                &ldquo;{memorySearchResp.clarification_question}&rdquo;
-              </div>
-              <form onSubmit={handleClarificationSubmit} className="ms-clarification-form">
-                <input
-                  type="text"
-                  className="ms-clarification-input"
-                  placeholder="Answer to clarify (e.g. It was 2022 near Baga Beach)..."
-                  value={clarificationInput}
-                  onChange={(e) => setClarificationInput(e.target.value)}
-                  disabled={loading}
-                />
-                <button
-                  type="submit"
-                  className="ms-clarification-submit"
-                  disabled={loading || !clarificationInput.trim()}
-                >
-                  Refine Memory →
-                </button>
-              </form>
-            </section>
-          )}
-        </>
-      )}
-
-      {/* Experience Stage: Relevant Results & Recognition */}
-      {response && (
-        <section className="ms-results-section">
-          <div className="ms-results-header">
-            <div>
-              <h2 className="ms-results-title">
-                <BookmarkCheck size={22} color="var(--accent-blue)" />
-                <span>Evidence Records Retrieved ({response.results.length} cases)</span>
-              </h2>
-              <p className="ms-results-subtitle">
-                The prototype evaluates retrieval against the 308-record qualitative research archive of Google Photos user search challenges. In production, these signals query your personal photo library.
-              </p>
-            </div>
-
-            {recognizedIds.size > 0 && (
-              <div className="ms-recognized-counter">
-                <CheckCircle2 size={16} color="#34D399" />
-                <span>{recognizedIds.size} evidence reviewed</span>
-              </div>
+              ))
+            ) : (
+              <span className="gp-facet-chip">
+                <span>🔍</span> Natural memory query
+              </span>
             )}
           </div>
 
-          {response.results.length === 0 ? (
-            <div className="ms-empty-card">
-              <Compass size={40} color="#94A3B8" />
-              <h3>No matching memory found</h3>
-              <p>
-                We couldn&apos;t match that specific description in the evidence archive. Try adding a landmark, who was with you, or an object in the photo.
-              </p>
-              <div className="ms-empty-suggestions">
-                {CURATED_MEMORIES.slice(0, 3).map((m) => (
-                  <button
-                    key={m.id}
-                    type="button"
-                    className="ms-refine-pill"
-                    onClick={() => handleSelectCurated(m)}
-                  >
-                    Try: &ldquo;{m.memoryText}&rdquo;
-                  </button>
-                ))}
-              </div>
+          <p className="gp-remembered-summary">
+            Found {resultsCount} moments matching your description across your photo archive.
+          </p>
+        </div>
+
+        {/* Filter Pills Row */}
+        <div className="gp-results-filter-row">
+          <button type="button" className="gp-filter-pill active">
+            ✓ All moments ({resultsCount})
+          </button>
+          <button type="button" className="gp-filter-pill">
+            Sunset highlights
+          </button>
+          <button type="button" className="gp-filter-pill">
+            With family
+          </button>
+        </div>
+
+        {/* "Moments that match" Photo Cards Section */}
+        <div className="gp-results-section">
+          <div className="gp-results-section-header">
+            <span className="gp-results-section-title">Moments that match</span>
+            <Grid size={16} color="#5F6368" />
+          </div>
+
+          {resultsCount === 0 ? (
+            <div className="gp-results-empty-state">
+              <Compass size={36} color="#9AA0A6" />
+              <h4>No matching moments found</h4>
+              <p>Try adding a person, landmark, or memorable detail.</p>
+              <button
+                type="button"
+                className="gp-empty-retry-btn"
+                onClick={() => setCurrentScreen("memory-search")}
+              >
+                Refine Memory Description
+              </button>
             </div>
           ) : (
-            <div className="ms-cards-grid">
-              {response.results.map((item: CandidateResult, index: number) => {
+            <div className="gp-results-cards-list">
+              {candidates.map((item: CandidateResult, index: number) => {
                 const isRecognized = recognizedIds.has(item.candidate_id);
                 const isTopMatch = index === 0;
+                const displayRank = index + 1;
 
-                // Derive an honest, relatable contextual badge based on data
-                let memoryIcon = "📷";
-                if (item.content.toLowerCase().includes("ice") || item.content.toLowerCase().includes("snow") || item.content.toLowerCase().includes("mountain")) {
-                  memoryIcon = "🏔️";
-                } else if (item.content.toLowerCase().includes("sister") || item.content.toLowerCase().includes("friend") || item.content.toLowerCase().includes("family")) {
-                  memoryIcon = "👥";
-                } else if (item.content.toLowerCase().includes("bike") || item.content.toLowerCase().includes("bicycle")) {
-                  memoryIcon = "🚲";
-                } else if (item.content.toLowerCase().includes("diya") || item.content.toLowerCase().includes("wedding")) {
-                  memoryIcon = "🪔";
-                } else if (item.content.toLowerCase().includes("document") || item.content.toLowerCase().includes("paper")) {
-                  memoryIcon = "📄";
-                }
+                // Consumer-facing tags: filter out internal research diagnostics
+                const rawTags = Array.isArray(item.metadata?.category_tags)
+                  ? (item.metadata.category_tags as string[])
+                  : [];
+                const consumerTags = rawTags
+                  .filter((tag): tag is string => typeof tag === "string")
+                  .filter((tag) => {
+                    const upper = tag.toUpperCase();
+                    return (
+                      !upper.includes("SEARCH_") &&
+                      !upper.includes("RETRIEVAL") &&
+                      !upper.includes("FAILURE") &&
+                      !upper.includes("SUCCESS") &&
+                      !upper.includes("PROBLEM") &&
+                      !upper.includes("ACCURACY") &&
+                      !upper.includes("RELEVANCE") &&
+                      !upper.includes("PAIN_POINT")
+                    );
+                  });
 
                 return (
                   <div
-                    key={item.candidate_id}
-                    className={`ms-card ${isRecognized ? "ms-card-recognized" : ""} ${isTopMatch ? "ms-card-top" : ""}`}
+                    key={item.candidate_id || index}
+                    className={`gp-result-card ${isRecognized ? "recognized" : ""}`}
                   >
-                    {/* Visual Card Header */}
-                    <div className="ms-card-header">
-                      <div className="ms-card-meta">
-                        <span className="ms-card-emoji">{memoryIcon}</span>
-                        <div>
-                          <div className="ms-card-category">
-                            Evidence Case #{item.rank}
-                          </div>
-                          <div className="ms-card-id">
-                            Record ID: {item.candidate_id.slice(0, 8)}...
-                          </div>
-                        </div>
+                    <div className="gp-result-card-header">
+                      <div className="gp-result-meta-line">
+                        <span className="gp-result-rank">Moment #{displayRank}</span>
                       </div>
-
-                      {/* Match Indicator */}
-                      <span className={`ms-match-badge ${isTopMatch ? "ms-match-best" : "ms-match-normal"}`}>
-                        {isTopMatch ? "Primary Signal Match" : "Signal Match"}
+                      <span className={`gp-result-badge ${isTopMatch ? "primary" : ""}`}>
+                        {isTopMatch ? "Primary Match" : "Match"}
                       </span>
                     </div>
 
-                    {/* Verbatim Content honestly displayed */}
-                    <div className="ms-card-content">
-                      <p className="ms-card-quote">&ldquo;{item.content}&rdquo;</p>
-                    </div>
+                    <p className="gp-result-quote">&ldquo;{item.content}&rdquo;</p>
 
-                    {/* Clue Tags from record */}
-                    {item.metadata?.category_tags && Array.isArray(item.metadata.category_tags) && item.metadata.category_tags.length > 0 && (
-                      <div className="ms-card-tags">
-                        {item.metadata.category_tags.slice(0, 3).map((tag, tIdx) => (
-                          <span key={tIdx} className="ms-tag-pill">
-                            #{tag}
+                    {consumerTags.length > 0 && (
+                      <div className="gp-result-tags">
+                        {consumerTags.slice(0, 3).map((tag, tIdx) => (
+                          <span key={tIdx} className="gp-tag-pill">
+                            #{tag.toLowerCase().replace(/_/g, " ")}
                           </span>
                         ))}
                       </div>
                     )}
 
-                    {/* Recognition Action Bar */}
-                    <div className="ms-card-actions">
+                    <div className="gp-result-card-actions">
                       <button
                         type="button"
+                        className={`gp-recognize-btn ${isRecognized ? "active" : ""}`}
                         onClick={() => toggleRecognized(item.candidate_id)}
-                        className={`ms-recognize-btn ${isRecognized ? "ms-recognized-active" : ""}`}
                       >
                         {isRecognized ? (
                           <>
-                            <CheckCircle2 size={16} color="#34D399" />
+                            <CheckCircle2 size={16} color="#34A853" />
                             <span>Recognized Memory!</span>
                           </>
                         ) : (
                           <>
-                            <Heart size={16} />
+                            <Heart size={16} color="#5F6368" />
                             <span>I recognize this photo memory</span>
                           </>
                         )}
                       </button>
-
-                      {isRecognized && (
-                        <span className="ms-recognition-toast">
-                          Matched to your timeline
-                        </span>
-                      )}
                     </div>
                   </div>
                 );
               })}
             </div>
           )}
-        </section>
-      )}
+        </div>
 
-      {/* Experience Stage: Conversational Refinement & Retry */}
-      {response && (
-        <section className="ms-refine-section">
-          <div className="ms-refine-header">
-            <Sparkles size={18} color="var(--accent-yellow)" />
-            <div>
-              <h3 className="ms-refine-title">Not quite the photo you remembered?</h3>
-              <p className="ms-refine-subtitle">
-                Memories are fuzzy and layered. Add another detail to refine the retrieval:
-              </p>
-            </div>
+        {/* Floating Bottom Action Bar */}
+        <div className="gp-results-floating-bar">
+          <button type="button" className="gp-floating-action-btn">
+            <FolderPlus size={16} />
+            <span>Create album</span>
+          </button>
+          <button type="button" className="gp-floating-action-btn">
+            <Share2 size={16} />
+            <span>Share</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================================
+  // SCREEN 4: MEMORY SEARCH LANDING SCREEN
+  // =========================================================================
+  return (
+    <div className="gp-screen-container">
+      {/* Top Header */}
+      <div className="gp-screen-header">
+        <button
+          type="button"
+          className="gp-header-back-btn"
+          onClick={onNavigateBackToSearch}
+          title="Back to Search Hub"
+        >
+          <ArrowLeft size={20} color="#202124" />
+        </button>
+        <h2 className="gp-header-title">Memory Search</h2>
+        <div className="gp-header-avatar">
+          <span>K</span>
+        </div>
+      </div>
+
+      {/* Deep Navy Blue Hero Card */}
+      <div className="gp-memory-hero-card">
+        <div className="gp-hero-badge-pill">
+          <Sparkles size={14} color="#FDE047" />
+          <span>AI SEARCH · Natural Memory Recall</span>
+        </div>
+
+        <h1 className="gp-hero-title">Search by memory, not keywords.</h1>
+        <p className="gp-hero-sub">
+          Tell us what you remember. You can type it or speak naturally.
+        </p>
+        <div className="gp-hero-check-row">
+          <CheckCircle2 size={15} color="#34D399" />
+          <span>No exact dates, tags, or file names needed.</span>
+        </div>
+
+        {/* Inner White Input Box */}
+        <div className="gp-inner-input-card">
+          <div className="gp-inner-card-sub">
+            <span style={{ fontSize: "0.8rem", color: "#1A73E8" }}>💬</span>
+            <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#5F6368" }}>Memory Prompt</span>
           </div>
 
-          <div className="ms-refine-chips">
-            {REFINEMENT_PROMPTS.map((prompt, idx) => (
+          <h3 className="gp-inner-card-title">What do you remember?</h3>
+
+          <form onSubmit={handleSearchSubmit}>
+            <div className="gp-input-wrapper">
+              <input
+                type="text"
+                className="gp-memory-input-field"
+                value={memoryInput}
+                onChange={(e) => setMemoryInput(e.target.value)}
+                placeholder="💡 &ldquo;I remember a family trip near the beach...&rdquo;"
+                disabled={loading}
+              />
+              {memoryInput && (
+                <button
+                  type="button"
+                  className="gp-input-clear-btn"
+                  onClick={() => setMemoryInput("")}
+                  title="Clear input"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+
+            {/* Two Action Buttons: Speak naturally vs Search */}
+            <div className="gp-hero-actions-row">
               <button
-                key={idx}
                 type="button"
-                className="ms-refine-chip"
-                onClick={() => applyRefinement(prompt.text)}
+                className="gp-btn-speak-naturally"
+                onClick={startListening}
                 disabled={loading}
               >
-                <span>{prompt.label}</span>
-                <ArrowRight size={12} style={{ marginLeft: "4px" }} />
+                <Mic size={18} color="#1A73E8" />
+                <span>Speak naturally</span>
               </button>
-            ))}
-          </div>
-        </section>
+
+              <button
+                type="submit"
+                className="gp-btn-search-primary"
+                disabled={loading || !memoryInput.trim()}
+              >
+                {loading ? (
+                  <>
+                    <RotateCcw size={16} className="gp-spin" />
+                    <span>Searching...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Search</span>
+                    <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* Error Notice */}
+      {error && (
+        <div className="gp-error-banner">
+          <AlertCircle size={18} color="#EA4335" />
+          <span>{error}</span>
+        </div>
       )}
 
-      {/* Product Honesty Notice */}
-      <footer className="ms-footer-notice">
-        <div className="ms-footer-content">
-          <Compass size={16} color="var(--text-muted)" style={{ flexShrink: 0 }} />
-          <span>
-            <strong>Evaluation Prototype Note:</strong> Memory Search retrieves real qualitative evidence records from your connected corpus to demonstrate natural-language memory retrieval and recognition. In a production Google Photos deployment, these candidates link directly to high-resolution photo assets and timeline albums.
-          </span>
+      {/* Voice Notification Banner */}
+      {voiceNotice && (
+        <div className={`gp-notice-banner ${voiceNotice.level}`}>
+          <span>{voiceNotice.text}</span>
+          <button type="button" onClick={() => setVoiceNotice(null)} className="gp-notice-close">
+            <X size={14} />
+          </button>
         </div>
-      </footer>
+      )}
+
+      {/* "Try describing a memory" Section */}
+      <div className="gp-memory-discovery-section">
+        <div className="gp-discovery-header">
+          <span className="gp-discovery-title">Try describing a memory</span>
+          <span className="gp-discovery-hint">Tap to test</span>
+        </div>
+
+        <div className="gp-discovery-chips-list">
+          <button
+            type="button"
+            className="gp-discovery-chip-card"
+            onClick={() => setMemoryInput("shadi me photo lee thi bhai ki safed bike par")}
+          >
+            <span className="gp-discovery-icon">🚲</span>
+            <div className="gp-discovery-content">
+              <div className="gp-discovery-tag-row">
+                <span className="gp-tag-hinglish">Hinglish</span>
+                <span className="gp-tag-category">Wedding · Bike</span>
+              </div>
+              <span className="gp-discovery-text">&ldquo;shadi me photo lee thi bhai ki safed bike par&rdquo;</span>
+            </div>
+            <ArrowRight size={16} color="#9AA0A6" className="gp-chip-arrow" />
+          </button>
+
+          <button
+            type="button"
+            className="gp-discovery-chip-card"
+            onClick={() => setMemoryInput("family trip near the beach at sunset")}
+          >
+            <span className="gp-discovery-icon">🌅</span>
+            <div className="gp-discovery-content">
+              <div className="gp-discovery-tag-row">
+                <span className="gp-tag-travel">Travel</span>
+                <span className="gp-tag-category">Coastline · Golden hour</span>
+              </div>
+              <span className="gp-discovery-text">&ldquo;family trip near the beach at sunset&rdquo;</span>
+            </div>
+            <ArrowRight size={16} color="#9AA0A6" className="gp-chip-arrow" />
+          </button>
+
+          <button
+            type="button"
+            className="gp-discovery-chip-card"
+            onClick={() => setMemoryInput("me and my friends at the mountain in the snow")}
+          >
+            <span className="gp-discovery-icon">🏔️</span>
+            <div className="gp-discovery-content">
+              <div className="gp-discovery-tag-row">
+                <span className="gp-tag-friends">Friends</span>
+                <span className="gp-tag-category">Hiking · Outdoors</span>
+              </div>
+              <span className="gp-discovery-text">&ldquo;me and my friends at the mountain in the snow&rdquo;</span>
+            </div>
+            <ArrowRight size={16} color="#9AA0A6" className="gp-chip-arrow" />
+          </button>
+        </div>
+      </div>
+
+      {/* "Recent rediscoveries" Section */}
+      <div className="gp-rediscoveries-section">
+        <div className="gp-discovery-header">
+          <span className="gp-discovery-title">Recent rediscoveries</span>
+          <span className="gp-discovery-hint">Your library</span>
+        </div>
+
+        <div className="gp-rediscoveries-row">
+          <div
+            className="gp-rediscovery-card"
+            style={{
+              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/sunset-trip.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => setMemoryInput("family trip near the beach at sunset")}
+            role="button"
+            tabIndex={0}
+          >
+            <span className="gp-rediscovery-label">Sunset Trip</span>
+          </div>
+
+          <div
+            className="gp-rediscovery-card"
+            style={{
+              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/white-bike.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => setMemoryInput("a picture with that white bike")}
+            role="button"
+            tabIndex={0}
+          >
+            <span className="gp-rediscovery-label">White Bike</span>
+          </div>
+
+          <div
+            className="gp-rediscovery-card"
+            style={{
+              backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%), url('/images/recent/mountain-trek.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => setMemoryInput("me and my friends at the mountain in the snow")}
+            role="button"
+            tabIndex={0}
+          >
+            <span className="gp-rediscovery-label">Mountain Trek</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Banner */}
+      <div className="gp-memory-footer">
+        <div className="gp-lang-pill-row">
+          <span>🛡️ Search in any language you speak — English, Hindi and Hinglish.</span>
+        </div>
+        <p className="gp-privacy-note">
+          Your search requests stay private and protected by Google Photos.
+        </p>
+      </div>
     </div>
   );
 }
