@@ -1,3 +1,4 @@
+[View the case study deck (PDF)](https://github.com/user-attachments/files/35173527/GooglePhotos_MemorySearch.pdf)
 # Google Photos Discovery Engine — Interactive Research & Evidence Console
 
 > **Part 1 Engineering Foundation — Google Photos Graduation Project**  
